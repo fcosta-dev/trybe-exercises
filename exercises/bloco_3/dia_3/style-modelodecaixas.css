@@ -1,0 +1,28 @@
+.caixa {
+    color: white;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.width-and-height {
+    height: 50px;
+    width: 50px;
+    margin: -2px; /* Reduz a margem entre A e B */
+}
+
+.padding {
+  /* insira aqui um padding de 20px na classe abaixo para aplicá-lo aos itens B, C e D */
+    padding: 20px; /* Aumenta tamanho das caixas para 20px altura e largura*/
+}
+
+.margin {
+  /* insira aqui uma margem de 30px na classe abaixo para aplicá-la aos itens C e D */
+    margin: 30px; /*  Desce o box 30px do topo para baixo*/
+}
+
+.border {
+  /* insira aqui uma borda com valor '5px solid black' para aplicá-la ao item D */
+  border: 5px solid black; /* coloca a borda preta de 5px */
+}

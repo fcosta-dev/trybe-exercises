@@ -1,0 +1,7 @@
+/** Estilize as divs para que, ao passar o cursor por cima das mesmas, elas
+ganhem uma borda. **/
+
+div:hover{
+    border: 5px solid;
+    color:blue;
+}

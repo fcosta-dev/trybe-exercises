@@ -1,0 +1,42 @@
+/** Posicione os elementos para que tenham alguma distância entre si **/
+
+/** Posicione o Mario acima do Goomba **/
+.super-mario {
+    position: absolute;
+    max-width:200px;
+    max-height:200px;
+    margin-left: 50px;
+}
+.goomba {
+    position: absolute;
+    max-width:100px;
+    max-height:100px;
+    margin-top: 200px;
+    margin-left: 60px;
+}
+
+/** Posicione a tag p para que fique dentro do balão de fala **/
+/** Posicione o balão para que se torne uma fala de Bowser **/
+.baloon {
+    position: absolute;
+    max-width:200px;
+    max-height:200px;
+    margin-top: 90px;
+    margin-left: 280px;
+    z-index: 1;
+}
+
+.word {
+    position: absolute;
+    margin-top: 135px;
+    margin-left: 300px;
+    z-index: 2;
+}
+
+.bowser{
+    position: absolute;
+    max-width:150px;
+    max-height:150px;
+    margin-top: 155px;
+    margin-left: 460px;
+}
