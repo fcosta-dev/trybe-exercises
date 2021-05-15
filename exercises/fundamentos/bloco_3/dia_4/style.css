@@ -1,0 +1,48 @@
+h1 {
+    text-align: center;
+  }
+
+.first {
+background-color: rgb(235, 200, 84);
+font-size: 20px;
+height: 50px;
+text-align: center;
+width: 200px;
+}
+
+.second {
+background-color: rgb(219, 219, 219);
+font-size: 20px;
+height: 50px;
+text-align: center;
+width: 300px;
+}
+
+.third {
+background-color: rgb(170, 142, 106);
+font-size: 20px;
+height: 50px;
+text-align: center;
+width: 300px;
+}
+
+.first, .second, .third {
+    display: inline-block;
+    margin: 0px;
+}
+.bloco_1 {
+    text-align: center;
+ }
+.bloco_2 {
+    display: flex;
+    justify-content: center; /**Quando tem mais de um, do lado do outro**/
+}
+
+h3 {
+    text-align: center;
+}
+
+.primeiro_lugar, .segundo_lugar, .terceiro_lugar {
+    display: flex;
+    justify-content: center;
+}
