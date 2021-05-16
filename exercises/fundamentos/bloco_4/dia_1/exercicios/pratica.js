@@ -104,3 +104,39 @@ switch (nomePecaXadrex){
     default:
         console.log("Peça incorreta. Seguem opções: rei, rainha, bispo, cavalo, torre, peão.")
 }
+//Escreva um programa que converte uma nota dada em porcentagem (de 0 a 100) em conceitos de A a F. Siga essas regras:
+//Porcentagem >= 90 -> A
+//Porcentagem >= 80 -> B
+//Porcentagem >= 70 -> C
+//Porcentagem >= 60 -> D
+//Porcentagem >= 50 -> E
+//Porcentagem < 50 -> F
+//O programa deve retornar uma mensagem de erro e encerrar se a nota passada for menor que 0 ou maior que 100.
+let notaDada = 65;
+let conversaoPercentual = (notaDada / 100)
+let conceito = "";
+if (conversaoPercentual > 1.00 || conversaoPercentual < 0) {
+    console.log("Erro encontrado!")
+}
+else if (conversaoPercentual >= 0.90) {
+    conceito = "A";
+}
+else if (conversaoPercentual >= 0.80) {
+    conceito = "B";
+}
+else if (conversaoPercentual >= 0.70) {
+    conceito = "C";
+}
+else if (conversaoPercentual >= 0.60) {
+    conceito = "D";
+}
+else if (conversaoPercentual >= 0.50) {
+    conceito = "E";
+}
+else {
+    conceito = "F"
+}
+
+if (conceito != "") {
+    console.log("O conceito da nota " + notaDada + " tem o conceito " + conceito + " !")
+}
