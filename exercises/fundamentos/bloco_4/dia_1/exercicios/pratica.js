@@ -151,19 +151,19 @@ if ((numero1 % 2 == 0) || (numero2 % 2 == 0) || (numero3 % 2 == 0)) {
     console.log("EXERCICIO 8 - Pelo menos um dos três números: " + numero1 + ", " +numero2 + ", " + numero3 + " é par!")
 }
 else {
-    console.log("EXERCICIO 8 - Pelo menos um dos três números: " + numero1 + ", " +numero2 + ", " + numero3 + " é impar!")
+    console.log("EXERCICIO 8 - Um dos três números é par? " + resultadoNumeros + " : " + numero1 + ", " +numero2 + ", " + numero3 + ".")
 }
 
 //Escreva um programa que defina três números em variáveis e retorne true se pelo menos uma das três for ímpar. Caso contrário, ele retorna false .
 //Bonus: use somente um if .
-let numero1 = 3
-let numero2 = 5
-let numero3 = 6
-let resultadoNumeros = false
-if ((numero1 % 2 == 1) || (numero2 % 2 == 1) || (numero3 % 2 == 1)) {
-    resultadoNumeros = true
-    console.log("EXERCICIO 9 - Pelo menos um dos três números: " + numero1 + ", " +numero2 + ", " + numero3 + " é impar!")
+let numero_1 = 2;
+let numero_2 = 4;
+let numero_3 = 6;
+let resultadoTresNumeros = false;
+if ((numero_1 % 2 == 1) || (numero_2 % 2 == 1) || (numero_3 % 2 == 1)) {
+    resultadoTresNumeros = true;
+    console.log("EXERCICIO 9 - Pelo menos um dos três números: " + numero_1 + ", " + numero_2 + ", " + numero_3 + " é impar!");
 }
 else {
-    console.log("EXERCICIO 9 - Pelo menos um dos três números: " + numero1 + ", " +numero2 + ", " + numero3 + " é par!")
+    console.log("EXERCICIO 9 - Um dos três números é impar? " + resultadoTresNumeros + " : " + numero_1 + ", " + numero_2 + ", " + numero_3 + ".");
 }
