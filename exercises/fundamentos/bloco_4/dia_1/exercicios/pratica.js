@@ -216,17 +216,24 @@ let salarioLiquido = 0.00;
 let valorINSS = 0.00;
 let valorIR = 0.00;
 let faixaIR = 0.00;
+let aliquotaINSS_8 = 0.08;
+let aliquotaINSS_9 = 0.09;
+let aliquotaINSS_11 = 0.11;
+let aliquotaIR_75 = 0.075;
+let aliquotaIR_15 = 0.15;
+let aliquotaIR_75 = 0.225;
+let aliquotaIR_275 = 0.275;
 //INSS
-if (salarioBruto <= 1556.94) { valorINSS = (salarioBruto * 0.08) }   
-else if (salarioBruto > 1556.94 && salarioBruto <= 2594.92) { valorINSS = (salarioBruto * 0.09) }
-else if (salarioBruto > 2594.93 && salarioBruto <= 5189.82) { valorINSS = (salarioBruto * 0.11) }
+if (salarioBruto <= 1556.94) { valorINSS = (salarioBruto * aliquotaINSS_8) }   
+else if (salarioBruto > 1556.94 && salarioBruto <= 2594.92) { valorINSS = (salarioBruto * aliquotaINSS_9) }
+else if (salarioBruto > 2594.93 && salarioBruto <= 5189.82) { valorINSS = (salarioBruto * aliquotaINSS_11) }
 else { valorINSS = "570.88" }
 //IR
 salarioLiquido = salarioBruto - valorINSS
 if (salarioLiquido <= 1903.98) { valorIR = 0 }   
-else if (salarioLiquido >= 1903.99 && salarioLiquido <= 2826.65) { valorIR = (salarioLiquido * 0.075) - 142.80 }
-else if (salarioLiquido >= 2826.66 && salarioLiquido <= 3751.05) { valorIR = (salarioLiquido * 0.15) - 354.80 }
-else if (salarioLiquido >= 3751.06 && salarioLiquido <= 4664.68) { valorIR = (salarioLiquido * 0.225) - 636.13 }
-else { valorIR = (salarioLiquido * 0.275)- 869.36 }
+else if (salarioLiquido >= 1903.99 && salarioLiquido <= 2826.65) { valorIR = (salarioLiquido * aliquotaIR_75) - 142.80 }
+else if (salarioLiquido >= 2826.66 && salarioLiquido <= 3751.05) { valorIR = (salarioLiquido * aliquotaIR_15) - 354.80 }
+else if (salarioLiquido >= 3751.06 && salarioLiquido <= 4664.68) { valorIR = (salarioLiquido * aliquotaIR_225) - 636.13 }
+else { valorIR = (salarioLiquido * aliquotaIR_275)- 869.36 }
 salarioLiquido = salarioLiquido - valorIR //pois INSS já foi deduzido
 console.log("EXERCICIO 11 - O salário Bruto da pessoa é R$ " + salarioBruto.toFixed(2) + ". O valor de INSS retido é de R$ " + valorINSS.toFixed(2) + " e o valor de IR retido é de R$ " + valorIR.toFixed(2) + ". O salário Líquido da pessoa é de R$ " + salarioLiquido.toFixed(2) + ".")
