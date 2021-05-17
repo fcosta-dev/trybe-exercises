@@ -221,7 +221,7 @@ let aliquotaINSS_9 = 0.09;
 let aliquotaINSS_11 = 0.11;
 let aliquotaIR_75 = 0.075;
 let aliquotaIR_15 = 0.15;
-let aliquotaIR_75 = 0.225;
+let aliquotaIR_225 = 0.225;
 let aliquotaIR_275 = 0.275;
 //INSS
 if (salarioBruto <= 1556.94) { valorINSS = (salarioBruto * aliquotaINSS_8) }   
