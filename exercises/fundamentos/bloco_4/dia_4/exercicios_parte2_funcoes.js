@@ -43,7 +43,7 @@ console.log(retornaIndice(teste))
 //Valor esperado no retorno da função: 6 .
 let arrayDeTeste = [2, 4, 6, 7, 10, 0, -3];
 
-function retornaIndice(array) {
+function retornaIndice2(array) {
   let menorNumero = array[0];
   let menorIndice = 0;
   for (let index = 0; index <= array.length; index += 1) {
@@ -54,7 +54,7 @@ function retornaIndice(array) {
   }
   return "EXERCICIO 03 - O menor indice é o " + menorIndice + ". E o menor número é o " + menorNumero + ".";
 }
-console.log(retornaIndice(arrayDeTeste))
+console.log(retornaIndice2(arrayDeTeste))
 
 // 4 - Crie uma função que receba um array de nomes e retorne o nome com a maior quantidade de caracteres.
 //Array de teste: ['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana']; .
