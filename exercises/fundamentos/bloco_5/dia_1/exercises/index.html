@@ -87,7 +87,14 @@
       }
       alteraTexto();
 
-      
+      //Exercicio 06
+      function mostraTags() {
+        let mostraTagsP = document.getElementsByTagName("p");
+        for (index = 0; index < mostraTagsP.length; index +=1) {
+          console.log(mostraTagsP[index].innerHTML)
+        }
+      }
+      mostraTags();
     </script>
   </body>
 </html>
