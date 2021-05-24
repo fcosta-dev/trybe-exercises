@@ -53,11 +53,19 @@
         */
 
       //Exercicio 01
-      function alteraTextoP () {
-        let textoParagrafo = document.getElementsByTagName("p")[1]
-        textoParagrafo.innerText = "Eu me vejo como um excelente desenvolvedor daqui a 2 anos."
+      function alteraTextoP() {
+        let textoParagrafo = document.getElementsByTagName("p")
+        textoParagrafo[1].innerText = "Eu me vejo como um excelente desenvolvedor daqui a 2 anos."
       }
       alteraTextoP()
+
+      //Exercicio 02
+      function mudaCor() {
+        let mudaCorDoQuadrado = document.getElementsByClassName("main-content")
+          mudaCorDoQuadrado[0].style.background = "rgb(76,164,109)";
+      }
+      mudaCor()
+
       
     </script>
   </body>
