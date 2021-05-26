@@ -57,6 +57,7 @@
   </head>
   <body>
     <script>
+      // PARTE 01
       // 01 - Adicione a tag h1 com o texto Exercício 5.2 - JavaScript DOM como filho da tag body ;
       const elementH1 = document.createElement('h1');
       elementH1.innerHTML = 'Exercício 5.2 - JavaScript DOM';
@@ -105,6 +106,14 @@
         elementUl.appendChild(elementLi);
       }
 
+      // 09 - Adicione 3 tags h3 , todas sendo filhas do div criado no passo 2.
+      for (let index = 1; index <= 3; index += 1) {
+        const elementH3 = document.createElement('h3');
+        elementH3.innerHTML = `Este é um h3 de número ${index}`
+        elementDivMain.appendChild(elementH3);
+      }
+
+      // PARTE 02
     </script>
   </body>
 </html>
