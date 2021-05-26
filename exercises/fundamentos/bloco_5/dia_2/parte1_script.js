@@ -1,5 +1,5 @@
 // 01 - Acesse o elemento elementoOndeVoceEsta
-const elementoOndeVoceEsta = document.getElementById('elementoOndeVoceEsta');
+let elementoOndeVoceEsta = document.getElementById('elementoOndeVoceEsta');
 console.log(elementoOndeVoceEsta);
 
 // 02 - Acesse pai a partir de elementoOndeVoceEsta e adicione uma color a ele.
