@@ -94,9 +94,17 @@
       elementDivLeft.appendChild(elementImg);
 
       // 08 - Adicione uma lista não ordenada com os valores de 1 a 10 por extenso como valores da lista. Essa lista deve ser filha do div criado no passo 6;
-
-
+      const elementUl = document.createElement('ul');
+      elementDivRight.appendChild(elementUl);
       
+      const arrayNumeros = ['um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez'];
+      
+      for (let index in arrayNumeros) {
+        const elementLi = document.createElement('li');
+        elementLi.innerHTML = arrayNumeros[index];
+        elementUl.appendChild(elementLi);
+      }
+
     </script>
   </body>
 </html>
