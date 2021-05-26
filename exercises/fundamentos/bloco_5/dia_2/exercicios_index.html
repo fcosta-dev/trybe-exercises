@@ -85,7 +85,7 @@
 
       // 06 - Adicione a tag div com a classe right-content como filho da tag div criada no passo 2;
       const elementDivRight = document.createElement('div');
-      elementDivRight.classname = 'right-content';
+      elementDivRight.className = 'right-content';
       elementDivMain.appendChild(elementDivRight); // O DivMain vai ter o filho DivRight
 
       // 07 - Adicione uma imagem com src configurado para o valor https://picsum.photos/200 e classe small-image . Esse elemento deve ser filho do div criado no passo 5;
@@ -114,6 +114,29 @@
       }
 
       // PARTE 02
+      // 01 - Adicione a classe title na tag h1 criada;
+      elementH1.className = 'title';
+
+      // 02 - Adicione a classe description nas 3 tags h3 criadas;
+      const elementH3 = document.getElementsByTagName('h3');
+      for (let index = 0; index < 3; index += 1) {
+        elementH3[index].className = 'description';
+      }
+
+      // 03 - Remova o div criado no passo 5 (aquele que possui a classe left-content ). Utilize a função .removeChild() ;
+      const divLeftContent = document.getElementsByClassName('left-content')[0];
+      elementDivMain.removeChild(divLeftContent);
+
+      // 04 - Centralize o div criado no passo 6 (aquele que possui a classe right-content ). Dica: para centralizar, basta configurar o margin-right: auto do div ;
+      elementDivRight.style.marginRight = 'auto'
+
+      // 05 - Troque a cor de fundo do elemento pai da div criada no passo 3 (aquela que possui a classe center-content ) para a cor verde;
+      let elementPaidaDiv = document.getElementsByClassName('center-content')
+      elementPaidaDiv[0].parentElement.style.backgroundColor = 'green';
+
+      // 06 - Remova os dois últimos elementos ( nove e dez ) da lista criada no passo 8.
+      elementUl.lastChild.remove();
+      elementUl.lastChild.remove();
     </script>
   </body>
 </html>
