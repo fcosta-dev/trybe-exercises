@@ -149,6 +149,15 @@ adicionaTarefa('Cozinhar');
 //O parâmetro cor deverá ser utilizado como cor de fundo da <div> criada.
 //O elemento criado deverá ser adicionado como filho/filha da tag <div> que possui a classe "my-tasks" .
 
+function mudaCorTask(cor) {
+  const elementDivTasks = document.querySelector('.my-tasks');
+  const elementDivTask = document.createElement('div');
+  elementDivTask.className = 'task';
+  elementDivTask.style.backgroundColor = cor;
+  elementDivTasks.appendChild(elementDivTask);
+}
+
+mudaCorTask('green');
 
 //Exercício 9:
 //Implemente uma função que adiciona um evento que, ao clicar no elemento com a tag <div> referente a cor da sua tarefa, atribua a este elemento a classe task selected , ou seja, quando sua tarefa possuir a classe task selected , ela estará selecionada.
