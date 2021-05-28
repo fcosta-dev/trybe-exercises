@@ -118,3 +118,16 @@ function updateText() {
 //Implemente duas funções que criem um efeito de "zoom". Ao passar o ponteiro do mouse em um dia do mês no calendário, o texto desse dia deve aumentar e, quando o ponteiro do mouse sair do dia, o texto deve retornar ao tamanho original.
 //Dica - Propriedade: event.target .
 
+const daysCalendar = document.querySelector('#days');
+daysCalendar.addEventListener('mouseover', upperText);
+daysCalendar.addEventListener('mouseout', lowerText);
+
+function upperText(event){
+  event.target.style.fontSize = '30px'
+  event.target.style.fontWeight = '600';
+}
+function lowerText(event){
+  event.target.style.fontSize = '20px'
+  event.target.style.fontWeight = '200';
+}
+
