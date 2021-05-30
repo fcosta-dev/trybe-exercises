@@ -1,0 +1,16 @@
+div {
+  display: inline-block;
+}
+
+body {
+  /* Cor de fundo da tela; */
+  background-color: aquamarine;
+  /* Cor do texto; */
+  color:brown;
+  /* Tamanho da fonte; */
+  font-size: 18px;
+  /* Espaçamento entre as linhas do texto; */
+
+}
+
+
