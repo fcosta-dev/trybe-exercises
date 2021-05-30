@@ -1,7 +1,3 @@
-div {
-  display: inline-block;
-}
-
 body {
   /* Cor de fundo da tela; */
   background-color: aquamarine;
@@ -10,7 +6,37 @@ body {
   /* Tamanho da fonte; */
   font-size: 18px;
   /* Espaçamento entre as linhas do texto; */
+}
+
+.main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 
 }
 
+.tituloPrincipal {
+  text-align: center;
+}
+
+.tituloAjustes {
+  text-align: center;
+}
+
+.ajustesNaTela {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid green;
+}
+.opcoes {
+  display: flex;
+  flex-direction: column;
+}
+.ajustesNaTela div {
+  text-align: center;
+  background-color: rgb(166, 243, 166);
+}
 
