@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário</title>
+</head>
+<body>
+  <h1>FORMULÁRIO</h1>
+  <form action="" method="GET" enctype="multipart/form-data">
+    <label for="nome-completo">Nome Completo:
+      <input type="text" name="nome" id="nome-completo" placeholder="Digite seu nome" required>
+    </label>
+    <br>
+    <label for="input-email">E-mail:
+      <input type="email" name="email" id="input-email" placeholder="Digite seu e-email" required>
+    </label>
+    <br>
+    <label for="">Estado onde você mora:
+      <select name="estado" id="input-estado">
+        <option value="sp">São Paulo</option>
+        <option value="mg" selected>Minas Gerais</option>
+        <option value="ap">Amapá</option>
+        <option value="rs">Rio Grande do Sul</option>
+      </select>
+    </label>
+    <br>
+    <p>Selecione sua foto:</p>
+    <input type="file" name="foto" id="foto-perfil">
+    <br>
+    <p>Comidas favoritas:</p>
+    <label for="comida-1">
+      <input type="radio" name="comida-favorita" id="comida-1" value="pizza" checked>Pizza
+    </label>
+    <label for="comida-2">
+      <input type="radio" name="comida-favorita" id="comida-2" value="Sorvete">Sorvete
+    </label>
+    <label for="comida-3">
+      <input type="radio" name="comida-favorita" id="comida-3" value="Pao de Queijo">Pão de queijo
+    </label>
+    <label for="comida-4">
+      <input type="radio" name="comida-favorita" id="comida-4" value="outro">Outro
+    </label>
+    <br>
+    <p>Escreva algo sobre você</p>
+    <textarea name="sobre-mim" id="textarea-1" cols="30" rows="5"></textarea>
+    <br>
+    <p>Digite sua senha</p>
+    <label for="input-senha">
+      <input type="password" name="senha" id="input-senha" required>
+    </label>
+    <br>
+    <label for="checkbox-noticias">
+      <input type="checkbox" name="promocoes" id="checkbox-noticias">Deseja receber notícias e promoções incríveis??
+    </label>
+    <button type="submit">Enviar Formulário</button>
+  </form>
+</body>
+</html>
