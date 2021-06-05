@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 <body>
@@ -11,28 +12,29 @@
     <h1>Formulário de Currículo</h1>
   </header>
   <article>
+    <div id="div_apresenta"></div>
     <form action="">
       <fieldset>
         <label for="txt_nome">Nome Completo: 
-          <input type="text" name="" id="txt_nome" placeholder="Digite seu nome aqui" required maxlength="40" style="margin-top: 15px;">
+          <input type="text" name="" class="dados_pessoais" id="txt_nome" placeholder="Digite seu nome aqui" required maxlength="40" style="margin-top: 15px;">
         </label>
         <br>
         <label for="txt_email">E-mail: 
-          <input type="email" name="" id="txt_email" placeholder="Digite seu email" required maxlength="50" style="margin-top: 5px">
+          <input type="email" name="" class="dados_pessoais" id="txt_email" placeholder="Digite seu email" required maxlength="50" style="margin-top: 5px">
         </label>
         <label for="txt_cpf">CPF: 
-          <input type="text" name="" id="txt_cpf" placeholder="Digite seu CPF" required maxlength="11">
+          <input type="text" name="" class="dados_pessoais" id="txt_cpf" placeholder="Digite seu CPF" required maxlength="11">
         </label>
         <br>
         <label for="txt_endereco">Endereço: 
-          <input type="text" name="" id="txt_endereco" placeholder="Digite seu endereço" required maxlength="200" style="margin-top: 5px; width: 300px">
+          <input type="text" name="" class="dados_pessoais" id="txt_endereco" placeholder="Digite seu endereço" required maxlength="200" style="margin-top: 5px; width: 300px">
         </label>
         <br>
         <label for="txt_cidade">Cidade: 
-          <input type="text" name="" id="txt_cidade" placeholder="Digite sua cidade" required maxlength="28" style="margin-top: 5px;">
+          <input type="text" name="" class="dados_pessoais" id="txt_cidade" placeholder="Digite sua cidade" required maxlength="28" style="margin-top: 5px;">
         </label>
         <label for="drop_list">Estado:
-          <select name="" id="drop_estados_list">
+          <select name="" class="dados_pessoais" id="drop_estados_list">
           </select>
         </label>
         <br>
@@ -62,8 +64,8 @@
         </label>
       </fieldset>
       <br>
-      <button type="submit" id="envia_formulario">Enviar</button>
-      <button id="limpa_formulario">Limpar</button>
+      <button type="button" id="envia_formulario">Enviar</button>
+      <button type="button" id="limpa_formulario">Limpar</button>
     </form>
   </article>
   <script src="forms_script.js"></script>
