@@ -20,6 +20,7 @@ function montaEstados() {
 }
 montaEstados();
 
+/************** BOTÃO LIMPAR ***********/
 const elementButtonLimpa = document.querySelector('#limpa_formulario');
 elementButtonLimpa.addEventListener('click', acaoBotaoLimpa)
 function acaoBotaoLimpa() {
@@ -28,11 +29,9 @@ limpaCamposformulario();
 /* Limpa a div com meu currículo */
 limpaDivCurriculo();
 }
-
 function limpaCamposformulario() {
 
 }
-
 function limpaDivCurriculo() {
   const elementsCurriculo = document.getElementsByClassName('curriculo');
 
@@ -42,3 +41,5 @@ function limpaDivCurriculo() {
   const elementPrimario = document.getElementById('txt_nome');
   elementPrimario.focus;
 }
+
+/************** BOTÃO ENVIAR ***********/
