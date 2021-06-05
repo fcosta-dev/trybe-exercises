@@ -20,3 +20,25 @@ function montaEstados() {
 }
 montaEstados();
 
+const elementButtonLimpa = document.querySelector('#limpa_formulario');
+elementButtonLimpa.addEventListener('click', acaoBotaoLimpa)
+function acaoBotaoLimpa() {
+/* Limpa os campos do formulário */
+limpaCamposformulario();
+/* Limpa a div com meu currículo */
+limpaDivCurriculo();
+}
+
+function limpaCamposformulario() {
+
+}
+
+function limpaDivCurriculo() {
+  const elementsCurriculo = document.getElementsByClassName('curriculo');
+
+  for (let index = 0; index < elementsCurriculo.length; index += 1) {
+    elementsCurriculo[index].value = '';
+  }
+  const elementPrimario = document.getElementById('txt_nome');
+  elementPrimario.focus;
+}
