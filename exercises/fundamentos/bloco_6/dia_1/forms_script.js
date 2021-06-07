@@ -20,3 +20,72 @@ function montaEstados() {
 }
 montaEstados();
 
+/************** BOTÃO LIMPAR ***********/
+const elementButtonLimpa = document.querySelector('#limpa_formulario');
+elementButtonLimpa.addEventListener('click', acaoBotaoLimpa)
+function acaoBotaoLimpa() {
+/* Limpa os campos do formulário */
+limpaCamposFormulario();
+/* Limpa os campos com meu currículo */
+limpaCamposCurriculo();
+/* Limpa a Div criada */
+limpaDiv();
+/* Seta o focus no campo Nome Completo */
+  const elementPrimario = document.getElementById('txt_nome');
+  elementPrimario.focus;
+}
+function limpaCamposFormulario() {
+  const elementsDadosPessoais = document.getElementsByClassName('dados_pessoais');
+  for (let index = 0; index < elementsDadosPessoais.length; index += 1) {
+    elementsDadosPessoais[index].value = '';
+  }
+}
+function limpaCamposCurriculo() {
+  const elementsCurriculo = document.getElementsByClassName('curriculo');
+  for (let index = 0; index < elementsCurriculo.length; index += 1) {
+    elementsCurriculo[index].value = '';
+  }
+}
+function limpaDiv() {
+  let elementDivASerLimpada = document.getElementById('apresentacao');
+  elementDivASerLimpada.remove();
+}
+
+/************** BOTÃO ENVIAR ***********/
+const elementButtonEnvia = document.querySelector('#envia_formulario');
+elementButtonEnvia.addEventListener('click', acaoBotaoEnvia)
+function acaoBotaoEnvia(event) {
+  /* event.preventDefault(); */
+  montaDivApresentacao();
+}
+function adicionaElemento(elementoPai, elementoFilho) {
+  console.log('Passei aqui')
+  let maiusculo = false;
+  if (elementoFilho === 'txt_nome' || elementoFilho === 'drop_estados_list') {
+    maiusculo = true;
+  }
+  const elementoASerAdicionado = document.createElement('p');
+  const elementoFilhoInfo = document.getElementById(elementoFilho)
+  elementoASerAdicionado.innerText = (maiusculo) ? elementoFilhoInfo.value.toUpperCase() : elementoFilhoInfo.value
+  elementoPai.appendChild(elementoASerAdicionado);
+}
+function montaDivApresentacao() {
+  console.log('Passei aqui 2')
+  let elementDivApresentacao = document.getElementById('div_apresenta');
+  let elementFieldset = document.createElement('fieldset');
+  elementFieldset.id = 'apresentacao';
+  elementDivApresentacao.appendChild(elementFieldset);
+  elementFieldset = document.getElementById('apresentacao');
+
+  const elementBr = document.createElement('br');
+  elementFieldset.appendChild(elementBr);
+  
+  adicionaElemento(elementFieldset, 'txt_nome');
+  adicionaElemento(elementFieldset, 'txt_email');
+  adicionaElemento(elementFieldset, 'txt_cpf');
+  adicionaElemento(elementFieldset, 'txt_endereco');
+  adicionaElemento(elementFieldset, 'txt_cidade');
+  adicionaElemento(elementFieldset, 'drop_estados_list');
+
+
+}
