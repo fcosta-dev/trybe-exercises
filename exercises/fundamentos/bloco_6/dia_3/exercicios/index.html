@@ -10,8 +10,42 @@
       background-color: black;
       color: white;
       display: flex;
-      height: 100px;
-      
+      flex-direction: row;
+      justify-content: space-evenly;
+      height: 50px;
+      width: 100%;
+    }
+    .subtitulo {
+      text-align: center;  
+    }
+    .imagem_container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-content: center;
+    }
+    .imagens_principais_container {
+      text-align: center;
+      height: 150px;
+      width: 120px;
+      background-color: rgb(233, 233, 233);
+      border-radius: 10px;
+      box-shadow: 1px 1px 2px gray;
+      margin-left: 5px;
+      margin-top: 5px;
+    }
+    .imagens_principais {
+      text-align: center;
+      height: 90px;
+      width: 90px;
+      background-color: rgb(233, 233, 233);
+    }
+    .container_rodape {
+      text-align: center;
+    }
+    .imagens_rodape {
+      margin-left: 10px;
+      width: 25px;
     }
   </style>
 </head>
@@ -23,11 +57,39 @@
       <p>SIGN-UP</p>
     </div>
   </header>
-  <div>
-
-  </div>
-  <div>
-
-  </div>
+  <section class="subtitulo">
+    <p>Take a look at some of the technologies which you will learn in our fundamentals and front-end module</p>
+  </section>
+  <section class="imagem_container">
+    <div class="imagens_principais_container">
+      <p>HTML</p>
+      <img src="./imgs/html-logo.png" alt="HTML" class="imagens_principais">
+    </div>
+    <div class="imagens_principais_container">
+      <p>CSS</p>
+      <img src="./imgs/css-logo.png" alt="CSS" class="imagens_principais">
+    </div>  
+    <div class="imagens_principais_container">
+      <p>JS</p>
+      <img src="./imgs/javaScript-logo.png" alt="JS" class="imagens_principais">
+    </div>
+    <div class="imagens_principais_container">
+      <p>React</p>
+      <img src="./imgs/react-logo.png" alt=React"" class="imagens_principais">
+    </div>
+    <div class="imagens_principais_container">
+      <p>RTL</p>
+      <img src="./imgs/rtl-logo.png" alt="" class="imagens_principais">
+    </div>
+    <div class="imagens_principais_container">
+      <p>Redux</p>
+      <img src="./imgs/redux-logo.png" alt="" class="imagens_principais">
+    </div>
+  </section>
+  <hr>
+  <footer class="container_rodape">
+    <img src="./imgs/instagram-logo.png" alt="" class="imagens_rodape">
+    <img src="./imgs/linked-in-logo.png" alt="" class="imagens_rodape">
+  </footer>
 </body>
 </html>
