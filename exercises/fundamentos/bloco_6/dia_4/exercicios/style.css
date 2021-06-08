@@ -17,10 +17,13 @@ body {
 .logo-container {
   display: flex;
   justify-content: center;
+  flex-basis: 268px; /* 1- Adicione uma propriedade que defina o tamanho Flexbox base para o container da imagem 268px e para o container do menu 500px . */
 }
 
 .menu-container {
   display: flex;
+  flex-basis: 500px;/* 1- Adicione uma propriedade que defina o tamanho Flexbox base para o container da imagem 268px e para o container do menu 500px . */
+  order: 1; /* 2- Adicione uma propriedade Flexbox que modifique a ordem em que a logomarca e os itens do menu aparecem na tela. */
 }
 
 .menu-container ul {
