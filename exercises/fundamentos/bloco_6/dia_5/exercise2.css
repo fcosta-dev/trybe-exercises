@@ -1,6 +1,71 @@
+/* ESTILOS PADRÕES */
 html {
   box-sizing: border-box;
+  background-color: rgb(234, 237, 240);
+  font-family: sans-serif;
 }
 *, *:before, *:after {
   box-sizing: inherit;
+}
+p {
+  padding: 0 5px;
+  line-height: 1.1em;
+}
+
+/* PREPARANDO O MENU SUPERIOR */
+.header_container {
+  background-color: black;
+  display: flex;
+}
+.logotext_container {
+  display: flex;
+  justify-content: center;
+  flex-basis: 50%;
+  color: white;
+}
+.menu_container {
+  display: flex;
+  flex-basis: 500px;
+}
+.menu_container ul {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-self: center;
+}
+.menu_container li {
+  color: white;
+  font-weight: 500;
+  font-size: 1.1rem;
+  list-style: none;
+}
+
+/* SESSÕES APÓS O MENU */
+.aside-one, .aside-two, .main-content {
+  background-color: rgb(230, 230, 230)
+}
+
+/* PREPARANDO PARA OS TAMANHOS DESKTOP, MOBILE E TABLET */
+@media screen and (max-width: 600px) {
+  /* CASO TIVER ACIMA DE 600PX DE TAMANHO*/
+  p {
+    line-height: 1.3em;
+  }
+  body {
+    background-color: lightcoral;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  /* CASO TIVER ATÉ 600PX DE TAMANHO*/
+  /* MANTEM AS MESMAS CARACTERÍSTICAS */
+  body {
+    background-color: lightblue;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+    background-color: lightgreen;
+  }
 }
