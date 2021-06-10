@@ -80,3 +80,19 @@
   padding: 20px;
   height: 1%;
 }
+
+/* PARA IMPRESSÃO */
+@media print {
+  #header, #navigation, #footer {
+    display: none;
+  }
+  #content {
+    width: 100%;
+  }
+  #aside {
+    float: left;
+    margin-left: 0;
+  }
+}
+
+/* PARA TAMANHOS MENORES */
