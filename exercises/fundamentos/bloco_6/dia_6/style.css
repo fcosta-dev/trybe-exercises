@@ -1,0 +1,41 @@
+/*******************/
+/* BARRA DE TÍTULO */
+/*******************/
+.header {
+  display: flex;
+  background-color: rgb(50, 167, 145);
+  height: 100px;
+  justify-content: space-around;
+}
+.titulo{
+  color: white;
+  align-self: center;
+}
+.trybewarts-header-logo {
+  width: 70px;
+}
+.trybewarts-login {
+  align-self: center;
+}
+.form_login {
+  height: 30px;
+  width: 120px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+.botao_login {
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+}
+
+/*******************/
+/* BARRA DE TÍTULO */
+/*******************/
+
+
+/*******************/
+/*      RODAPÉ     */
+/*******************/
+
