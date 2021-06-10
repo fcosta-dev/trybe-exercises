@@ -10,15 +10,39 @@
 <body>
   <header class="header">
     <img class="trybewarts-header-logo" src="images/trybewarts-header-logo.svg" alt="Logotipo Trybewarts">
-    <h2 class="titulo">Trybewarts</h2>
+    <h1 id="trybewarts-header-title">Trybewarts</h1>
     <form class="trybewarts-login">
       <input class="form_login" type="email" name="login" id="txt_login" placeholder="Login">
       <input class="form_login" type="password" name="senha" id="txt_senha" placeholder="Senha">
-      <button class="form_login botao_login">Logar</button>
+      <button class="form_login" id="botao_login">Logar</button>
     </form>
   </header>
+  <main>
+     <form action="" id="evaluation-form">
+      <h1 class="texto_forms">Forms</h1>
+      <section class="primeiro_container"> 
+        <input class="campo_form" type="text" name="" id="input-name" placeholder="Nome">
+        <input class="campo_form" type="text" name="" id="input-lastname" placeholder="Sobrenome">
+      </section>   
+      <section class="segundo_container"> 
+        <input class="campo_form" type="email" name="" id="input-email" placeholder="Email">
+          <label for="house">Casa:</label>
+          <select class="campo_form" name="" id="house">
+            <option value="Gitnória" id="gitnoria-house">Gitnória</option>
+            <option value="Reactpuff" id="reactpuff-house">Reactpuff</option>
+            <option value="Corvinode" id="corvinode-house">Corvinode</option>
+            <option value="Pytherina" id="pytherina-house">Pytherina</option>
+          </select>
+      </section>
+      <section class="terceiro_container">
+      
+      </section>
+    </form>
+     <img src="images/trybewarts-colored.svg" alt="" id="trybewarts-forms-logo">
+  </main>
   <footer>
     Direitos reservados à Trybewarts
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
   height: 100px;
   justify-content: space-around;
 }
-.titulo{
+#trybewarts-header-title {
   color: white;
   align-self: center;
 }
@@ -15,6 +15,7 @@
   width: 70px;
 }
 .trybewarts-login {
+  display: flex;
   align-self: center;
 }
 .form_login {
@@ -31,11 +32,49 @@
 }
 
 /*******************/
-/* BARRA DE TÍTULO */
+/* CORPO DA PÁGINA */
 /*******************/
+main {
+  display: flex;
+  background-color: rgb(230, 230, 230);
+  justify-content: space-around;
+}
+/* Lado Esquerdo*/
+#evaluation-form {
+  display: flex;
+  width: 675px;
+  flex-direction: column;
+  align-items: center;
+}
+.primeiro_container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
 
+.primeiro_container input {
+  width: 50%;
+}
+
+.texto_forms {
+  align-self: center;
+}
+.campo_form {
+  border: 1px solid rgb(218, 215, 215);
+  border-radius: 5px;
+  height: 30px;
+}
+/* Lado Direito*/
+#trybewarts-forms-logo {
+  height: 500px;
+}
 
 /*******************/
 /*      RODAPÉ     */
 /*******************/
-
+footer {
+  background: rgb(32, 32, 32);
+  width: 100%;
+  color: white;
+  text-align: center;  
+}
