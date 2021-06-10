@@ -1,3 +1,17 @@
+body {
+  background-color: rgb(230, 230, 230);
+}
+
+.parte01 {
+  display: flex;
+  width: 50%;
+}
+
+.parte02 {
+  display: flex;
+  width: 50%;
+}
+
 /*******************/
 /* BARRA DE TÍTULO */
 /*******************/
@@ -134,9 +148,41 @@ margin-bottom: 10px;
   margin-right: 10px;
 }
 
+/* TERCEIRO CONTAINER */
+.terceiro_container {
+  width: 100%;
+}
+
+/* QUARTO CONTAINER */
+.quarto_container {
+  width: 100%;
+}
+.quarto_container textarea {
+  width: 100%;
+}
+
+/* QUINTO CONTAINER */
+.quinto_container {
+  width: 100%;
+}
+
+/* SEXTO CONTAINER */
+.sexto_container {
+  width: 100%;
+}
+#submit-btn {
+  width: 100%;
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  align-self: center;
+  border-radius: 4px;
+}
+
 /* Lado Direito*/
 #trybewarts-forms-logo {
   height: 500px;
+  /* width: 100% */ /* Responsivo */
 }
 
 /*******************/
@@ -146,5 +192,5 @@ footer {
   background: rgb(32, 32, 32);
   width: 100%;
   color: white;
-  text-align: center;  
+  text-align: center;
 }
