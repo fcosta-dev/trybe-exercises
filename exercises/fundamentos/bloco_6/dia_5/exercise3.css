@@ -96,3 +96,22 @@
 }
 
 /* PARA TAMANHOS MENORES */
+@media screen and (max-width: 600px) {
+  #aside {
+    display: none;
+  }
+  body {
+    padding: 0%;
+  }
+  #content {
+    width: 100%;
+  }
+  img {
+    max-width: 100%;
+  }
+  #navigation {
+    margin-top: 5px;
+  }
+  #navigation li a {
+    float: none;
+}
