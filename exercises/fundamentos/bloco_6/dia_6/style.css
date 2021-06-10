@@ -91,14 +91,12 @@ main {
 /* SEGUNDO CONTAINER - LADO ESQUERDO */
 .segundo_container {
   display: flex;
-  border: 1px solid blue;
   width: 100%;
 }
 .segCont_lado_esquerdo {
   display: flex;
   flex-direction: column;
   width: 35%;
-  border: 1px solid orange;
 }
 
 .segCont_lado_esquerdo label {
@@ -110,7 +108,6 @@ main {
   display: flex;
   flex-direction: column;
   width: 65%;
-  border: 1px solid orange;
 }
 .segCont_lado_direitoA {
   display: flex;
