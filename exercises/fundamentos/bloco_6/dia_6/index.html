@@ -18,27 +18,76 @@
     </form>
   </header>
   <main>
-     <form action="" id="evaluation-form">
+    <form action="" id="evaluation-form">
       <h1 class="texto_forms">Forms</h1>
-      <section class="primeiro_container"> 
-        <input class="campo_form" type="text" name="" id="input-name" placeholder="Nome">
-        <input class="campo_form" type="text" name="" id="input-lastname" placeholder="Sobrenome">
-      </section>   
-      <section class="segundo_container"> 
-        <input class="campo_form" type="email" name="" id="input-email" placeholder="Email">
-          <label for="house">Casa:</label>
-          <select class="campo_form" name="" id="house">
+      <div class="primeiro_container">
+        <div class="nomeSobrenome_container">
+          <input type="text" name="" id="input-name" placeholder="Nome">
+          <input type="text" name="" id="input-lastname" placeholder="Sobrenome">
+        </div>
+        <div class="emailCasa_container">
+          <input type="email" name="" id="input-email" placeholder="Email">
+          <label class="labelSelect" for="house">Casa:</label>
+          <select name="" id="house">
             <option value="Gitnória" id="gitnoria-house">Gitnória</option>
             <option value="Reactpuff" id="reactpuff-house">Reactpuff</option>
             <option value="Corvinode" id="corvinode-house">Corvinode</option>
             <option value="Pytherina" id="pytherina-house">Pytherina</option>
           </select>
-      </section>
-      <section class="terceiro_container">
-      
-      </section>
+        </div>
+      </div>
+      <br>
+      <hr class="linha">
+      <br>
+      <div class="segundo_container">
+        <div class="segCont_lado_esquerdo">
+          <p id="label-family">Qual sua família?</p>
+          <br>
+          <label for="frontend">
+            <input type="radio" name="family" id="frontend" value="Frontend">Família Frontend
+          </label>
+          <label for="backend">
+            <input type="radio" name="family" id="backend" value="Backend">Família Backend
+          </label>
+          <label for="fullstack">
+            <input type="radio" name="family" id="fullstack" value="FullStack">Família FullStack
+          </label>
+        </div>
+        <div class="segCont_lado_direito">
+          <div class="segCont_lado_direitoA">
+            <label id="label-content">Qual conteúdo você está com mais vontade de aprender?</label>
+            <br>
+            <div class="skills">
+              <div class="container_alinhamento">
+                <input type="checkbox" class="subject" id="hofs" value="HoFs">
+                <label for="hofs">HoFs</label>
+              </div>
+              <div class="container_alinhamento">
+                <input type="checkbox" class="subject" id="jest" value="Jest">
+                <label for="jest">Jest</label>
+              </div>
+              <div class="container_alinhamento">
+                <input type="checkbox" class="subject" id="promises" value="Promises">
+                <label for="promises">Promises</label>
+              </div>
+              <div class="container_alinhamento">
+                <input type="checkbox" class="subject" id="react" value="React">
+                <label for="react">React</label>
+              </div>
+              <div class="container_alinhamento">
+                <input type="checkbox" class="subject" id="sql" value="SQL">
+                <label for="sql">SQL</label>
+              </div>
+              <div class="container_alinhamento">
+                <input type="checkbox" class="subject" id="python" value="Python">
+                <label for="python">Python</label>
+              </div>
+            </div>          
+          </div>
+        </div>       
+      </div>
     </form>
-     <img src="images/trybewarts-colored.svg" alt="" id="trybewarts-forms-logo">
+    <img src="images/trybewarts-colored.svg" alt="" id="trybewarts-forms-logo">
   </main>
   <footer>
     Direitos reservados à Trybewarts
