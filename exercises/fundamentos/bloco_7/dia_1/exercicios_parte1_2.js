@@ -1,8 +1,8 @@
-// const oddsAndEvens = [13, 3, 4, 10, 7, 2];
+const oddsAndEvens = [13, 3, 4, 10, 7, 2];
 
-// // Seu código aqui.
+// Seu código aqui.
 
-// console.log(oddsAndEvens);
+console.log(oddsAndEvens);
 
 
 // Faça uma função que retorne o array oddsAndEvens em ordem crescente.
@@ -18,3 +18,4 @@ const sortArrayBonus = array => {
 
 const sortedArrayBonus = sortArrayBonus(oddsAndEvens);
 console.log(`Os números ${sortedArrayBonus} se encontram ordenados de forma crescente !`);
+
