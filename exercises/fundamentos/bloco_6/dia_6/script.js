@@ -35,6 +35,7 @@ function validaLogin() {
 function checaSubmit() {
   if (elementoAgreement.checked === true) {
     elementoEnviar.disabled = false;
+    preencheFormulario();
   } else {
     elementoEnviar.disabled = true;
   }
@@ -44,4 +45,8 @@ function contaString() {
   console.log('teste')
   let qtdString = elementoTextArea.value.length;
   elementoContador.innerText = (500-qtdString);
+}
+
+function preencheFormulario() {
+  
 }
