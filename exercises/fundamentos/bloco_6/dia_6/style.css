@@ -165,6 +165,10 @@ margin-bottom: 10px;
 .quinto_container {
   width: 100%;
 }
+#counter {
+  display: flex;
+  justify-content: flex-end;
+}
 
 /* SEXTO CONTAINER */
 .sexto_container {
