@@ -1,0 +1,200 @@
+body {
+  background-color: rgb(230, 230, 230);
+}
+
+.parte01 {
+  display: flex;
+  width: 50%;
+}
+
+.parte02 {
+  display: flex;
+  width: 50%;
+}
+
+/*******************/
+/* BARRA DE TÍTULO */
+/*******************/
+.header {
+  display: flex;
+  background-color: rgb(50, 167, 145);
+  height: 100px;
+  justify-content: space-around;
+}
+#trybewarts-header-title {
+  color: white;
+  align-self: center;
+}
+.trybewarts-header-logo {
+  width: 70px;
+}
+.trybewarts-login {
+  display: flex;
+  align-self: center;
+}
+.form_login {
+  height: 30px;
+  width: 120px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+#botao_login {
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  align-self: center; /* centraliza o botão verticalmente */
+}
+
+/*******************/
+/* CORPO DA PÁGINA */
+/*******************/
+main {
+  display: flex;
+  background-color: rgb(230, 230, 230);
+  justify-content: space-around;
+}
+/* Lado Esquerdo */
+#evaluation-form {
+  display: flex;
+  width: 675px;
+  flex-direction: column;
+  align-items: center;
+}
+/* PRIMEIRO CONTAINER - NOMES */
+.primeiro_container {
+  width: 100%;
+}
+.nomeSobrenome_container { /* CONTAINER PRIMÁRIO */
+  display: flex;
+  margin-bottom: 15px;
+}
+.nomeSobrenome_container input { /*  */
+  border: 1px solid rgb(218, 215, 215);
+  border-radius: 5px;
+  height: 30px;
+  width: 50%;
+}
+.emailCasa_container { /* CONTAINER SECUNDÁRIO */
+  display: flex;
+  margin-bottom: 15px;
+}
+.emailCasa_container input {
+  border: 1px solid rgb(218, 215, 215);
+  border-radius: 5px;
+  height: 30px;
+  width: 50%;
+}
+.emailCasa_container label {
+  width: 10%;
+  align-self: center;
+  text-align: center;
+}
+.emailCasa_container select {
+  border: 1px solid rgb(218, 215, 215);
+  border-radius: 5px;
+  height: 30px;
+  width: 40%;
+  background-color: white;
+
+}
+/* Separador de Containers */
+.linha {
+  width: 100%;
+}
+/* SEGUNDO CONTAINER - LADO ESQUERDO */
+.segundo_container {
+  display: flex;
+  width: 100%;
+}
+.segCont_lado_esquerdo {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+}
+
+.segCont_lado_esquerdo label {
+  margin-bottom: 10px;
+}
+
+/* SEGUNDO CONTAINER - LADO DIREITO */
+.segCont_lado_direito {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+.segCont_lado_direitoA {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+}
+.segCont_lado_direito p, .segCont_lado_esquerdo p {
+  margin-bottom: 10px;
+}
+
+.segCont_lado_direitoA label {
+margin-bottom: 10px;
+}
+.segCont_lado_direitoA input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.container_alinhamento, .skills {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-right: 10px;
+}
+
+/* TERCEIRO CONTAINER */
+.terceiro_container {
+  width: 100%;
+}
+
+/* QUARTO CONTAINER */
+.quarto_container {
+  width: 100%;
+}
+.quarto_container textarea {
+  width: 100%;
+}
+
+/* QUINTO CONTAINER */
+.quinto_container {
+  width: 100%;
+}
+#counter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* SEXTO CONTAINER */
+.sexto_container {
+  width: 100%;
+}
+#submit-btn {
+  width: 100%;
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  align-self: center;
+  border-radius: 4px;
+}
+
+/* Lado Direito*/
+#trybewarts-forms-logo {
+  height: 500px;
+  /* width: 100% */ /* Responsivo */
+}
+
+/*******************/
+/*      RODAPÉ     */
+/*******************/
+footer {
+  background: rgb(32, 32, 32);
+  width: 100%;
+  color: white;
+  text-align: center;
+}
