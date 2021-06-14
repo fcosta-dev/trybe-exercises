@@ -5,6 +5,8 @@ const student = {
   SoftSkill: 'Ótimo',
 };
 
+
+// Sem Object.values
 const listSkillsValuesWithFor = (student) => {
   const skills = [];
   for(skill in student) {
@@ -13,11 +15,9 @@ const listSkillsValuesWithFor = (student) => {
 
   return skills;
 };
-
-const listSkillsValuesWithValues = (student) => Object.values(student);
-
-// Sem Object.values
 console.log(listSkillsValuesWithFor(student));
 
 // Com Object.values
+const listSkillsValuesWithValues = (student) => Object.values(student);
 console.log(listSkillsValuesWithValues(student));
+
