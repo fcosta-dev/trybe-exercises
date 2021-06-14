@@ -22,19 +22,19 @@ const lesson3 = {
 const modificaChave = (licao, chave, valor) => {
   licao[chave] = valor;
 }
-modificaChave(lesson2, 'turno', 'manha')
+modificaChave(lesson2, 'turno', 'manha');
 
 // 2 - Crie uma função para listar as keys de um objeto. Essa função deve receber um objeto como parâmetro.
-const listaChaves = (objeto) => {
-  console.log(objeto.keys)
-}
-listaChaves(lesson1);
+const listaChaves = (objeto) => Object.keys(objeto);
+console.log(listaChaves(lesson1));
 
 // 3 - Crie uma função para mostrar o tamanho de um objeto.
-
+const mostraTamanho = (objeto) => Object.keys(objeto).length
+console.log(mostraTamanho(lesson1));
 
 // 4 - Crie uma função para listar os valores de um objeto. Essa função deve receber um objeto como parâmetro.
-
+const listaValores = (objeto) = Object.values(objeto)
+console.log(listaValores(lesson1));
 
 // 5 - Crie um objeto de nome allLessons , que deve agrupar todas as aulas através do Object.assign . Cada chave desse novo objeto será uma aula, sendo essas chaves: lesson1 , lesson2 e lesson3 . Ao executar o comando console.log(allLessons) , a saída deverá ser a seguinte:
 // console.log(allLessons);
