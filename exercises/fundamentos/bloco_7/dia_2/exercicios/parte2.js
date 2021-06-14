@@ -55,8 +55,8 @@ console.log("EXERCICIO 06 - " + pegaNumeroTotaldeEstudantes(allLessons))
 // 7 - Crie uma função que obtenha o valor da chave de acordo com a sua posição no objeto. Por exemplo:
 // console.log(getValueByNumber(lesson1, 0));
 // Output: 'Matématica'
-
-
+const pegaDadoPosicao = (objeto, posicao) =>  Object.values(objeto)[posicao];
+console.log("EXERCICIO 07 - " + pegaDadoPosicao(lesson1, 0))
 
 
 // 8 - Crie uma função que verifique se o par (chave / valor) existe na função. Essa função deve possuir três parâmetros, sendo eles: o objeto, o nome da chave e o valor da chave. Exemplo:
@@ -64,3 +64,13 @@ console.log("EXERCICIO 06 - " + pegaNumeroTotaldeEstudantes(allLessons))
 // Output: true,
 // console.log(verifyPair(lesson3, 'materia', 'Maria Clara'));
 // Output: false
+const checaParChaveValor = (objeto, chave, valor) => {
+  const array = Object.entries(objeto);
+  let ehIgual = false
+  for (let index in array) {
+    if (array[index][0] === chave && array[index][1] === valor) ehIgual = true;
+  }
+  return ehIgual;
+}
+console.log("EXERCICIO 08 - " + checaParChaveValor(lesson3, 'turno', 'noite'));
+console.log("EXERCICIO 08 - " + checaParChaveValor(lesson3, 'materia', 'Maria Clara'));
