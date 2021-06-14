@@ -74,3 +74,41 @@ const checaParChaveValor = (objeto, chave, valor) => {
 }
 console.log("EXERCICIO 08 - " + checaParChaveValor(lesson3, 'turno', 'noite'));
 console.log("EXERCICIO 08 - " + checaParChaveValor(lesson3, 'materia', 'Maria Clara'));
+
+
+// Crie uma função para contar quantos estudantes assistiram às aulas de Matemática. Use o objeto criado no exercício 5.
+allLessons
+const qtdAlunos = (objeto, materia) => {
+  const array = Object.keys(objeto);
+  let somaAlunos = 0;
+  for(let index in array) {
+    if (objeto[array[index]].materia === materia) {
+      somaAlunos += objeto[array[index]].numeroEstudantes;
+    }
+  }
+  return somaAlunos
+}
+console.log("BONUS 01 - " + qtdAlunos(allLessons, "Matemática"))
+
+// Crie uma função que deverá retornar um objeto que representa o relatório do professor ou professora, as aulas que ele ou ela ministrou e o número total de estudantes. Use o objeto criado no exercício 5:
+const pegaInformacao = (objeto, nome) => {
+  const allLessons = [];
+  let todosEstudantes = 0;
+  const array = Object.values(objeto);
+  for (index in array) {
+    if (array[index].professor === nome) {
+      allLessons.push(array[index].materia)
+      todosEstudantes += array[index].numeroEstudantes;
+    }
+  }
+  return { lessons: allLessons, estudantes: todosEstudantes };
+}
+
+const criaRelatorio = (objeto, nome) => {
+  const relatorio = {};
+  relatorio.professor = nome;
+  Object.assign(relatorio, pegaInformacao(objeto, nome));
+  return relatorio;
+}
+console.log("BONUS 02")
+console.log(criaRelatorio(allLessons, 'Maria Clara'));
