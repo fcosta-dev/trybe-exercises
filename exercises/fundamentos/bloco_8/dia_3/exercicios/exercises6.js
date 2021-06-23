@@ -64,37 +64,17 @@ const books = [
 ];
 
 const expectedResult = [
-  {
-    id: 6,
-    name: 'O Chamado de Cthulhu',
-    genre: 'Terror',
-    author: { name: 'H. P. Lovecraft', birthYear: 1890 },
-    releaseYear: 1928,
-  },
-  {
-    id: 3,
-    name: 'Fundação',
-    genre: 'Ficção Científica',
-    author: { name: 'Isaac Asimov', birthYear: 1920 },
-    releaseYear: 1951,
-  },
-  {
-    id: 2,
-    name: 'O Senhor dos Anéis',
-    genre: 'Fantasia',
-    author: { name: 'J. R. R. Tolkien', birthYear: 1892 },
-    releaseYear: 1954,
-  },
+  'O Senhor dos Anéis',
+  'Fundação',
+  'O Chamado de Cthulhu',
 ];
 
-// 4 - Crie um array ordenado pelos livros com mais de 60 anos de publicação e ordene-o pelo livro mais velho.
-// Dica: use as funções filter e sort
-
-function oldBooksOrdered() {
+// 6 - Crie um array com o nome de todos os livros com mais de 60 anos de publicação.
+function oldBooks() {
   // escreva seu código aqui
-  return books.filter((elemento) => (
-    (2021 - elemento.releaseYear) > 60
-  )).sort((a, b) => a.releaseYear - b.releaseYear)
+  return books
+  .filter((elemento) => (2021 - elemento.releaseYear) > 60)
+  .map((elemento) => elemento.name)
 }
-console.log(oldBooksOrdered())
-assert.deepStrictEqual(oldBooksOrdered(), expectedResult);
+console.log(oldBooks())
+assert.deepStrictEqual(oldBooks(), expectedResult);
