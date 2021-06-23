@@ -76,5 +76,5 @@ function oldBooks() {
   .filter((elemento) => (2021 - elemento.releaseYear) > 60)
   .map((elemento) => elemento.name)
 }
-console.log(oldBooks())
+console.log(oldBooks()) 
 assert.deepStrictEqual(oldBooks(), expectedResult);
