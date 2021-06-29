@@ -10,24 +10,24 @@ eslint no-unused-vars: [
 */
 
 const { species } = require('./data');
+const { employees } = require('./data');
 const data = require('./data');
 
 function getSpeciesByIds(...ids) {
-  
-  return ids
-    
-    .forEach((elemento) => elemento)
-    .filter((elemento2) => elemento2.id === ids);
+  return species
+    .filter((elemento) => ids.includes(elemento.id));
 }
 
-console.log(getSpeciesByIds('0938aa23-f153-4937-9f88-4858b24d6bce', 'e8481c1d-42ea-4610-8e11-1752cfc05a46'));
-
 function getAnimalsOlderThan(animal, age) {
-  // seu código aqui
+  return species
+    .find((elemento) => elemento.name === animal).residents
+    .every((elemento) => elemento.age >= age);
 }
 
 function getEmployeeByName(employeeName) {
-  // seu código aqui
+  if (!employeeName) return {};
+  return employees
+    .find((elemento) => elemento.firstName === employeeName || elemento.lastName === employeeName);
 }
 
 function createEmployee(personalInfo, associatedWith) {
