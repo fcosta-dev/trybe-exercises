@@ -13,30 +13,35 @@ const { species } = require('./data');
 const { employees } = require('./data');
 const data = require('./data');
 
-function getSpeciesByIds(...ids) {
+function getSpeciesByIds(...ids) { // EXERCICIO 01
   return species
     .filter((elemento) => ids.includes(elemento.id));
 }
 
-function getAnimalsOlderThan(animal, age) {
+function getAnimalsOlderThan(animal, age) { // EXERCICIO 02
   return species
     .find((elemento) => elemento.name === animal).residents
     .every((elemento) => elemento.age >= age);
 }
 
-function getEmployeeByName(employeeName) {
+function getEmployeeByName(employeeName) { // EXERCICIO 03
   if (!employeeName) return {};
   return employees
     .find((elemento) => elemento.firstName === employeeName || elemento.lastName === employeeName);
 }
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+function createEmployee(personalInfo, associatedWith) { // EXERCICIO 04
+  return { ...personalInfo, ...associatedWith };
 }
 
-function isManager(id) {
-  // seu código aqui
+function isManager(id) { // EXERCICIO 05
+  return employees
+    .forEach((elemento) => { // Percorre todos os ids
+      elemento.managers
+        .find((elemento2) => elemento2 === id);
+    });
 }
+console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
@@ -69,19 +74,3 @@ function increasePrices(percentage) {
 function getEmployeeCoverage(idOrName) {
   // seu código aqui
 }
-
-module.exports = {
-  calculateEntry,
-  getSchedule,
-  countAnimals,
-  getAnimalMap,
-  getSpeciesByIds,
-  getEmployeeByName,
-  getEmployeeCoverage,
-  addEmployee,
-  isManager,
-  getAnimalsOlderThan,
-  getOldestFromFirstSpecies,
-  increasePrices,
-  createEmployee,
-};
