@@ -183,6 +183,7 @@ function esvaziaCarrinho() {
 // ***********************************************************
 
 
+// 
 window.onload = function onload() {
   elementOlCarrinho = document.querySelector('.cart__items'); // Seleciona a OL de lista de carrinho
 
