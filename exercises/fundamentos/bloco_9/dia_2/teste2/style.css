@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  color: #f0f0f0;
+  background-color: #303030;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 60vw;
+}
+
+ul {
+  list-style-type: none;
+}
+
+span {
+  margin-left: 10px;
+} 
