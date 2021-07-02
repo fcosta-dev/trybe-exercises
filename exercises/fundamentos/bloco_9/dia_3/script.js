@@ -1,3 +1,8 @@
+// INFORMAÇÕES INICIAIS
+let arrayDeRetorno = []; // Variável que guarda arrays de retorno
+let elementOlCarrinho
+
+
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -67,7 +72,6 @@ const getProdutos = async () => { // requisito 01
 // *********************************************************
 // Requisito 02 - POSSIBILITA ADICIONAR PRODUTOS NO CARRINHO
 // *********************************************************
-let arrayDeRetorno = []; // Variável que guarda arrays de retorno
 const addItemNoCarrinho = () => { // Identifica que está sendo clicado no 'Adicionar ao carrinho'
   const botaoAddItemNoCarrinho = document.querySelector('.items');
   botaoAddItemNoCarrinho.addEventListener('click', (evento) => {
@@ -80,7 +84,6 @@ const addItemNoCarrinho = () => { // Identifica que está sendo clicado no 'Adic
 const requisicaoAddItem = (evento) => {
   const buscaClasseItem = evento.target.parentElement.querySelector('span.item__sku') // busca a classe que tem o item dentro através do parentElement que retorna o elemento pai
   const idItem = buscaClasseItem.innerText // mostra o texto da classe encontrada
-  const elementOlCarrinho = document.querySelector('.cart__items'); // Seleciona a OL de lista de carrinho
   fetch(`https://api.mercadolibre.com/items/${idItem}`)
     .then((response) => response.json())
     .then((objeto) => {
@@ -98,19 +101,71 @@ const requisicaoAddItem = (evento) => {
 // ******************************************************************
 // Requisito 03 - REMOVE O ITEM DO CARRINHO DE COMPRAS AO CLICAR NELE
 // ******************************************************************
-function cartItemClickListener(event) {
-  event.target.remove()
+function cartItemClickListener(event) { // requisito 03
+  const removeItemLocalStorage = event.target.innerText.substring(5, 18);
+  console.log("removeItemLocalStorage: " + removeItemLocalStorage)
+  removeCarrinho(removeItemLocalStorage) // Chama a função e remove item do carrinho
+  console.log("event.target: " + event.target)
+  elementOlCarrinho.removeChild(event.target)
 }
+
+const removeCarrinho = (itemRemover) => { // requisito 03
+  const excluir = arrayDeRetorno
+    .find((elemento) => elemento.sku === itemRemover);
+  console.log("arrayDeRetorno: " + arrayDeRetorno)
+  arrayDeRetorno // Percorre o arrayDeRetorno
+    .forEach((elemento, index) => {
+      if (elemento === excluir) {
+        arrayDeRetorno.splice(index, 1); // Splice altera conteudos de uma lista
+        localStorage.removeItem(itemRemover); // Remove item do LocalStorage
+      }
+    });
+  // return sumCart();
+};
 
 // *****************************************************
 // Requisito 04 - CARREGUE O CARRINHO PELO LOCAL STORAGE
 // *****************************************************
+const addStorageCarrinho = () => { // Armazena no Local Storage o HTML do carrinho
+  localStorage.setItem('carrinho', elementOlCarrinho.innerHTML)
+}
+
+const pegaValoresLS = () => {
+  const valoresLocalStorage = Object.values(localStorage);
+  if (valoresLocalStorage.length > 0) {
+    valoresLocalStorage
+      .forEach((item) => {
+        const elemento = JSON.parse(item); // constroi o elemento com dados do JSON
+        elementOlCarrinho.appendChild(createCartItemElement(elemento))
+        arrayDeRetorno.push({ sku: elemento.sku, salePrice: elemento.salePrice });
+        // somaCarrinho() 
+      })
+  }
+}
+
+// *******************************************************
+// Requisito 05 - SOME O VALOR TOTAL DOS ITENS DO CARRINHO
+// *******************************************************
+// total-price
+const somaCarrinho = () => {
+  const total = document.querySelector('.total-price') // Pega a classe onde vai jogar o total
+  let resultado
+  let soma = 0
+  if (elementOlCarrinho.childNodes.length >= 1) { // ChildNodes retorna o HTML Collection com todos os nós filhos
+    for(let index = 0; index < arrayDeRetorno.length; index += 1) {
+      soma += arrayDeRetorno[index].salePrice;
+    }
+    resultado = Math.round(soma * 100) / 100 // Math.round retorna o valor de um número arredondado para o inteiro mais proximo
+    
+  }
+}
 
 
+window.onload = function onload() {
+  elementOlCarrinho = document.querySelector('.cart__items'); // Seleciona a OL de lista de carrinho
 
-window.onload = () => {
   getProdutos() // requisito 01
   addItemNoCarrinho() // requisito 02
-
+  pegaValoresLS() // requisito 04
 }
 
