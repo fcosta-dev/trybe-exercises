@@ -178,11 +178,12 @@ function esvaziaCarrinho() {
   })
 }
 
-// ***********************************************************
-// Requisito 07 - 
-// ***********************************************************
+// ****************************************************************
+// Requisito 07 - ADICIONAR TEXTO DE LOADING DURANTE REQUISIÇÃO API
+// ****************************************************************
 
 
+// 
 window.onload = function onload() {
   elementOlCarrinho = document.querySelector('.cart__items'); // Seleciona a OL de lista de carrinho
 
