@@ -45,6 +45,7 @@ function createCartItemElement({ sku, name, salePrice }) {
 // *********************************************
 const fetchProdutos = (QUERY) => { // Conecta na API e busca o item QUERY
   //Posiciona o elemento dentro do .items (que é o noome do grupo onde vai estar todos itens)
+  const loadingId = document.querySelector('#loading')
   const itemsSection = document.querySelector('.items');
   fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${QUERY}`) // chama a API
     .then((response) => response.json())
@@ -58,6 +59,7 @@ const fetchProdutos = (QUERY) => { // Conecta na API e busca o item QUERY
           })
         )
       })
+      loadingId.remove() // requisito 07
     })
 }
 
@@ -181,8 +183,7 @@ function esvaziaCarrinho() {
 // ****************************************************************
 // Requisito 07 - ADICIONAR TEXTO DE LOADING DURANTE REQUISIÇÃO API
 // ****************************************************************
-
-
+// Adicionado resolução dentro do requisito 01 onde automaticamente é colocado um loading dentro do index.html e é retirado na resposta do fetch da API
 // 
 window.onload = function onload() {
   elementOlCarrinho = document.querySelector('.cart__items'); // Seleciona a OL de lista de carrinho
