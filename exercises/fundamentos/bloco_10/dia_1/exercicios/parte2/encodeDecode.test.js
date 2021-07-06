@@ -51,3 +51,4 @@ describe('Testa a função encode e decode', () => {
     expect(decode('trybe').length).toEqual(5);
   });
 });
+
