@@ -27,7 +27,7 @@ describe('Testagem da função getUsername', () => {
 
   it('Testando erro quando o usuario não existe', () => {
     expect.assertions(1)
-    return getUserName(2).catch(error => expect(error).toEqual({ error: 'User with 2 not found.' }))
+    return getUserName(2).catch(error => expect(error).toEqual({ error: 'User with ' + 2 + ' not found.' }))
   })
 })
 
