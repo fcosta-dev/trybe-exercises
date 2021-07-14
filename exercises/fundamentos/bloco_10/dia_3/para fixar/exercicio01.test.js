@@ -48,9 +48,26 @@ describe('Exercicio 03 - Faça o mock da função somar e implemente uma funçã
 
 // 4 - Faça o mock da função dividir e implemente um retorno padrão com o valor '15'. Implemente também os seguintes valores para a primeira e segunda chamadas: '2' e '5'. Teste a chamada, o retorno, os parâmetros e quantas vezes a função foi chamada.
 describe('4 - Faça o mock da função dividir e implemente um retorno padrão com o valor 15. Implemente também os seguintes valores para a primeira e segunda chamadas: 2 e 5. Teste a chamada, o retorno, os parâmetros e quantas vezes a função foi chamada.', () => {
-  test('mock da funcao dividir e retorno de 15', () => {
+  test('Testa chamada, retorno e parâmetros da função dividir', () => {
+    const mockDividir = jest.spyOn(math, "dividir");
     mockDividir.mockReturnValue(15);
     mockDividir.mockReturnValueOnce(2);
     mockDividir.mockReturnValueOnce(5);
-  })
-}
+  
+    expect(mockDividir(4, 2)).toBe(2);
+    expect(mockDividir).toHaveBeenCalled();
+    expect(mockDividir).toHaveBeenCalledTimes(1);
+    expect(mockDividir).toHaveBeenCalledWith(4, 2);
+  
+    expect(mockDividir(10, 2)).toBe(5);
+    expect(mockDividir).toHaveBeenCalled();
+    expect(mockDividir).toHaveBeenCalledTimes(2);
+    expect(mockDividir).toHaveBeenCalledWith(10, 2);
+  
+    expect(mockDividir(30, 2)).toBe(15);
+    expect(mockDividir).toHaveBeenCalled();
+    expect(mockDividir).toHaveBeenCalledTimes(3);
+    expect(mockDividir).toHaveBeenCalledWith(30, 2);
+  });
+});
+
