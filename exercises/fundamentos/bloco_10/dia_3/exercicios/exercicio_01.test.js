@@ -10,12 +10,14 @@ describe('Teste do exercício 01', () => {
 
   test('testando o retorno da função com retorno padrão de 10', () => {
     // exercicio_01.numeroRandomico = jest.fn().mockReturnValue(10)
+    // não adicionei essa função acima pois ela já é chamada no primeiro teste
     expect.assertions(1)
     expect(exercicio_01.numeroRandomico).toHaveBeenCalled()
   })
 
   test('testando quantas vezes a função foi chamada com retorno padrão de 10', () => {
     // exercicio_01.numeroRandomico = jest.fn().mockReturnValue(10)
+    // não adicionei essa função acima pois ela já é chamada no primeiro teste
     expect.assertions(1)
     expect(exercicio_01.numeroRandomico).toHaveBeenCalledTimes(1)
   })
