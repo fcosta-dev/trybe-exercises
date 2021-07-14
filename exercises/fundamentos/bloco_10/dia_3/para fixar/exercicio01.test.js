@@ -43,5 +43,14 @@ describe('Exercicio 03 - Faça o mock da função somar e implemente uma funçã
     expect(mockSomar).toHaveBeenCalledWith(2, 3);
     expect(mockSomar(2, 3)).resolves.toBe(5);
   })
-
 })
+
+
+// 4 - Faça o mock da função dividir e implemente um retorno padrão com o valor '15'. Implemente também os seguintes valores para a primeira e segunda chamadas: '2' e '5'. Teste a chamada, o retorno, os parâmetros e quantas vezes a função foi chamada.
+describe('4 - Faça o mock da função dividir e implemente um retorno padrão com o valor 15. Implemente também os seguintes valores para a primeira e segunda chamadas: 2 e 5. Teste a chamada, o retorno, os parâmetros e quantas vezes a função foi chamada.', () => {
+  test('mock da funcao dividir e retorno de 15', () => {
+    mockDividir.mockReturnValue(15);
+    mockDividir.mockReturnValueOnce(2);
+    mockDividir.mockReturnValueOnce(5);
+  })
+}
