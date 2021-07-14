@@ -28,3 +28,20 @@ describe('Exercicio 02 - Faça o mock da função multiplicar e implemente como 
 })
 
 // 3 - Faça o mock da função somar e implemente uma função que recebe dois valores e retorna sua soma. Teste a chamada, o retorno e os parâmetros passados.
+describe('Exercicio 03 - Faça o mock da função somar e implemente uma função que recebe dois valores e retorna sua soma. Teste a chamada, o retorno e os parâmetros passados.', () => {
+  test('testar a chamada da funcao que recebe dois valores', () => {
+    const mockSomar = jest.spyOn(math, "somar")
+    mockSomar.mockResolvedValue(5)
+    mockSomar(2, 3)
+    expect.assertions(1)
+    expect(mockSomar).toHaveBeenCalled()
+  })
+
+  test('testar a chamada da funcao que retorna sua soma', () => {
+    const mockSomar = jest.spyOn(math, "somar")
+    expect.assertions(2)
+    expect(mockSomar).toHaveBeenCalledWith(2, 3);
+    expect(mockSomar(2, 3)).resolves.toBe(5);
+  })
+
+})
