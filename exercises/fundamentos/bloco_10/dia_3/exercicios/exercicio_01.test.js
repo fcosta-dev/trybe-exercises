@@ -1,0 +1,22 @@
+// Crie uma função que gere um número aleatório entre 0 e 100. Você irá criar também os testes para essa função. Utilizando o mock, defina o retorno padrão como 10. Teste se a função foi chamada, qual seu retorno e quantas vezes foi chamada.
+const numeroRandomico = () => Math.floor(Math.random() * 100)
+
+describe('Teste do exercício 01', () => {
+  // test('testando se a função foi chamada com retorno de 10', () => {
+  //   numeroRandomico = jest.fn().mockReturnValue(10)
+  //   expect.assertions(1)
+  //   expect(numeroRandomico()).toBe(10)
+  // })
+
+  test('testando o retorno da função com retorno padrão de 10', () => {
+    numeroRandomico = jest.fn().mockReturnValue(10)
+    expect(numeroRandomico).toHaveBeenCalled()
+  })
+
+  // test('testando quantas vezes a função foi chamada com retorno padrão de 10', () => {
+  //   numeroRandomico = jest.fn().mockReturnValue(10)
+  //   expect.assertions(1)
+  //   expect(numeroRandomico).toHaveBeenCalledTimes(1)
+  // })
+})
+
