@@ -5,6 +5,7 @@ describe('Exercício 03', () => {
   test('recebe 3 parametros e retorna sua multiplicação', () => {
     exercicio_01.numeroRandomico = jest.fn().mockImplementation((a, b, c) => a * b * c);
     expect.assertions(4)
+    
     expect(exercicio_01.numeroRandomico(2, 3, 4)).toBe(24)
     expect(exercicio_01.numeroRandomico).toHaveBeenCalled(); // checa se está sendo chamada
     expect(exercicio_01.numeroRandomico).toHaveBeenCalledTimes(1); // se está sendo chamada 1 vez

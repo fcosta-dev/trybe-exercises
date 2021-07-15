@@ -4,7 +4,7 @@ jest.mock("./exercicio_04"); // Faça o mock do arquivo
 
 describe('Exercício 03', () => {
   test('Primeira: recebe uma string e retorna em caixa alta, depois retorna em caixa baixa', () => {
-    exercicio_04.executaMaiuscula = jest.fn().mockImplementation(x => x.toLowerCase()); // nova implementação, mas agora ela deve retornar a string em caixa baixa
+    exercicio_04.executaMaiuscula.mockImplementation(x => x.toLowerCase()); // nova implementação, mas agora ela deve retornar a string em caixa baixa
     // expect.assertions(4)
     expect(exercicio_04.executaMaiuscula('FERNANDO')).toBe('fernando');
     expect(exercicio_04.executaMaiuscula).toHaveBeenCalled();
