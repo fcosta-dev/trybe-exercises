@@ -1,0 +1,36 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  eslint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1.4.4
+        with:
+          node-version: '12'
+      - name: ESLint
+        uses: betrybe/eslint-linter-action@v2.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  evaluator_job:
+    runs-on: ubuntu-18.04
+    name: Evaluator job
+    needs: eslint
+    steps:
+      - uses: actions/checkout@v2
+      - name: Jest evaluator step
+        id: jest
+        uses: betrybe/jest-evaluator-action@v7
+        with:
+          repository-test-name: 'betrybe/sd-0x-project-jest-tests'
+          repository-test-branch: 'improve/describes'
+
+      - name: Store evaluation step
+        uses: betrybe/store-evaluation-action@v2
+        with:
+          evaluation-data: ${{ steps.jest.outputs.result }}
+          environment: production
+          pr-number: ${{ github.event.number }}
