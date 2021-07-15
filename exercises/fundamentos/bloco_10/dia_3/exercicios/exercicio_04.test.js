@@ -4,17 +4,17 @@ jest.mock("./exercicio_04"); // Faça o mock do arquivo
 
 describe('Exercício 03', () => {
   test('Primeira: recebe uma string e retorna em caixa alta, depois retorna em caixa baixa', () => {
-    exercicio_04.executaMaiuscula = jest.fn().mockImplementation(x => x.toLowerCase()); // nova implementação, mas agora ela deve retornar a string em caixa baixa
-    expect.assertions(4)
-    expect(exercicio_04.executaMaiuscula('UPPERCASE')).toBe('uppercase');
+    exercicio_04.executaMaiuscula.mockImplementation(x => x.toLowerCase()); // nova implementação, mas agora ela deve retornar a string em caixa baixa
+    // expect.assertions(4)
+    expect(exercicio_04.executaMaiuscula('FERNANDO')).toBe('fernando');
     expect(exercicio_04.executaMaiuscula).toHaveBeenCalled();
     expect(exercicio_04.executaMaiuscula).toHaveBeenCalledTimes(1);
-    expect(exercicio_04.executaMaiuscula).toHaveBeenCalledWith('UPPERCASE');
+    expect(exercicio_04.executaMaiuscula).toHaveBeenCalledWith('FERNANDO');
   })
 
   test('Segunda: recebe uma string e retornar só a primeira letra, depois recebe a última', () => {
-    exercicio_04.primeiraLetra = jest.fn().mockImplementation(x => x.charAt(x.length - 1));
-    expect.assertions(4)
+    exercicio_04.primeiraLetra.mockImplementation(x => x.charAt(x.length - 1));
+    // expect.assertions(3)
     expect(exercicio_04.primeiraLetra('fernando')).toBe('o')
     expect(exercicio_04.primeiraLetra).toHaveBeenCalled();
     expect(exercicio_04.primeiraLetra).toHaveBeenCalledTimes(1);
@@ -23,7 +23,7 @@ describe('Exercício 03', () => {
   
   test('Terceira: recebe duas strings e concatena elas, depois recebe três strings', () => {
     exercicio_04.concatenaStrings = jest.fn().mockImplementation((x, y, z) => x.concat(y, z))
-    expect.assertions(4)
+    // expect.assertions(3)
     expect(exercicio_04.concatenaStrings('fernando', 'da', 'costa')).toBe('fernandodacosta')
     expect(exercicio_04.concatenaStrings).toHaveBeenCalled();
     expect(exercicio_04.concatenaStrings).toHaveBeenCalledTimes(1)
