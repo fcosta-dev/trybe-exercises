@@ -4,8 +4,9 @@ const exercicio_01 = require('./exercicio_01')
 describe('Teste do exercício 02', () => {
   test('testando ao receber dois parametros retornando a divisao do primeiro pelo segundo, ocorrendo apenas uma vez', () => {
     exercicio_01.numeroRandomico = jest.fn().mockImplementationOnce((a, b) => a / b);
-    // expect.assertions(2)
-    expect(exercicio_01.randomNumber).toHaveBeenCalledWith(4, 2);
+    expect.assertions(3)
+    expect(exercicio_01.numeroRandomico(4, 2)).toBe(2)
+    expect(exercicio_01.numeroRandomico).toHaveBeenCalledWith(4, 2);
     expect(exercicio_01.numeroRandomico).toHaveBeenCalledTimes(1); // quantidade de chamadas
   })
 })
