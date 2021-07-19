@@ -1,7 +1,7 @@
 import SobreMim from './Component';
 
 function App() {
-  return (SobreMim);
+  return (<SobreMim />);
 }
 
 export default App;
