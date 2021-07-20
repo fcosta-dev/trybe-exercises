@@ -1,7 +1,7 @@
 // arquivo App.js, criado pelo create-react-app, modificado
 import React from 'react';
 import './App.css';
-import Order from './Order';
+import Order from './components/Order';
 
 class App extends React.Component {
   render() {
@@ -28,7 +28,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1> Orders recently created </h1>
-         {/*  adicione os componentes aqui */}
+         <Order order={headphone}/>
+         <Order order={energyDrink}/>
       </div>
     );
   }
