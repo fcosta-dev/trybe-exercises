@@ -13,7 +13,10 @@ class Pokedex extends React.Component { // Criando a classe Pokedex com herança
       <div className="pokedex">
         <p>Teste</p> {/* Este H1 só repete uma vez pois não está em um MAP */}
         <p>Exibindo a listagem dos pokemons para fins estudantis:</p>
-        {/* {listagemDosPokemons.id[0]} */}
+        <p>
+          {listagemDosPokemons[0].name + " e "}
+          {listagemDosPokemons[1].name}
+        </p>
         <p>Fim da Listagem</p>
         {listagemDosPokemons.map(elemento => <Pokemon key={elemento.id} pokemon={elemento} />)} {/* Toda vez que é feita um map, é necessário colocar um key, usado internamente para identificar cada item.
         Se caso não fosse criado o componente Pokemon, era possível fazer somente com o Pokedex e App, onde a linha 10 que está recebendo o props estaria fazendo a desestruturação 
