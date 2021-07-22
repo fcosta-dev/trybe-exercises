@@ -2,19 +2,20 @@ import './App.css';
 import React from 'react';
 
 class App extends React.Component {
-  constructor() {
-    super() // É chamada para garantir que a lógica interna do React rode **antes** da sua. Se não for assim, o código não funcionará
+  constructor(props) { // Recebe a props e o construtor é a primeira coisa a ser executada
+    super(props) // Recebe a props do construtor. É chamada para garantir que a lógica interna do React rode **antes** da sua. Se não for assim, o código não funcionará
     /* Para definir um estado inicial ao componente, a ser definido
     no momento em que o componente for colocado na tela, faça uma atribuição
     de um objeto à chave `state` do `this`, ou seja, ao `this.state`*/
-    this.state = {
+    this.state = { // Construindo o estado da aplicação, e sempre vai ser um objeto
       numeroDeCliquesB01: 0, // Contador de cliques do Botão 01
       numeroDeCliquesB02: 0, // Contador de cliques do Botão 02
       numeroDeCliquesB03: 0  // Contador de cliques do Botão 03
     }
-    this.handleClick = this.handleClickB01.bind(this) // Essa função vincula "manualmente" o `this` à nossa função.
-    this.handleClick = this.handleClickB02.bind(this)
-    this.handleClick = this.handleClickB03.bind(this)
+    // Sempre que eu usar o this eu preciso fazer o Bind
+    this.handleClickB01 = this.handleClickB01.bind(this) // Essa função vincula "manualmente" o `this` à nossa função.
+    this.handleClickB02 = this.handleClickB02.bind(this)
+    this.handleClickB03 = this.handleClickB03.bind(this)
   }
 
   handleClickB01 = () => {
@@ -25,21 +26,25 @@ class App extends React.Component {
     do estado acontecerão uma depois da outra! */
     this.setState((estadoAnterior, _props) => ({
       numeroDeCliquesB01: estadoAnterior.numeroDeCliquesB01 + 1
-    }))
-    // Para o console log abaixo precisamos simular o passe de informações da contagem de números para que a função gere a checagem e retorne o nome da cor.
-    console.log(`Botão 01: ${this.mudaCorDoBotao(this.state.numeroDeCliquesB01)}`)
+    }), () => {
+      // Para o console log abaixo precisamos simular o passe de informações da contagem de números para que a função gere a checagem e retorne o nome da cor. E precisa ser como callback do setState senão passa dados anteriores do que atual.
+      console.log(`Botão 01: Contador em: ${this.state.numeroDeCliquesB01} da Cor: ${this.mudaCorDoBotao(this.state.numeroDeCliquesB01)}`) // O .this é para referenciar uma função de dentro da classe
+    })
+    
   }
   handleClickB02 = () => {
     this.setState((estadoAnterior, _props) => ({
       numeroDeCliquesB02: estadoAnterior.numeroDeCliquesB02 + 1
-    }))
-    console.log(`Botão 02: ${this.mudaCorDoBotao(this.state.numeroDeCliquesB02)}`)
+    }), () => {
+      console.log(`Botão 02: Contador em: ${this.state.numeroDeCliquesB02} da Cor: ${this.mudaCorDoBotao(this.state.numeroDeCliquesB02)}`)
+    })
   }
   handleClickB03 = () => {
     this.setState((estadoAnterior, _props) => ({
       numeroDeCliquesB03: estadoAnterior.numeroDeCliquesB03 + 1
-    }))
-    console.log(`Botão 03: ${this.mudaCorDoBotao(this.state.numeroDeCliquesB03)}`)
+    }), () => {
+      console.log(`Botão 03: Contador em: ${this.state.numeroDeCliquesB03} da Cor: ${this.mudaCorDoBotao(this.state.numeroDeCliquesB03)}`)
+    })
   }
 
   mudaCorDoBotao(qtdDeClicks) { // Essa função recebe a Quantidade de Clicks que foi feita, através do state.numerodeCliques de cada botão
