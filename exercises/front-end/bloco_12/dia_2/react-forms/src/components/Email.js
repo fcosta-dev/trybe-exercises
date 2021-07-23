@@ -3,11 +3,20 @@ import PropTypes from 'prop-types';
 
 class Email extends Component {
   render() {
-    const { handleChange, value } = this.props;
+    const { handleChange, emailValue } = this.props;
 
     return (
       <label htmlFor="email">Email:
-        <input type="email" name="email" id="email" onChange={ handleChange } value={ value }/>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          onChange={ handleChange }
+          value={ emailValue }
+        />
+        <p> {/* Tratativa de erro fica em um parárafo */}
+          { !emailValue.match(/^\S+@\S+$/i) ? 'Email inválido' : '' }
+        </p>
       </label>
     )
   }
