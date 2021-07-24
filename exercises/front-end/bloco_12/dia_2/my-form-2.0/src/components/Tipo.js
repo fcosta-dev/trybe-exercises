@@ -12,6 +12,7 @@ class Tipo extends Component {
           name="tipo" 
           id="casa"
           value="Casa"
+          checked
           onChange={ handleChange } 
         />Casa
         <input 
