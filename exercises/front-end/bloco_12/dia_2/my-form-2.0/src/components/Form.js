@@ -35,10 +35,11 @@ class Form extends Component {
   }
 
   handleMouseEnter () {
+    // É feito de uma forma onde o alerta será exibido apenas uma vez
     if (this.state.alertaCargoTextArea === false) {
       alert('Preencha com cuidado esta informação.')
 
-      this.setState({ // altera o state
+      this.setState({ // altera o state para true e indicando que o alerta foi exibido
         alertaCargoTextArea: true
       })
     }
@@ -47,10 +48,14 @@ class Form extends Component {
   handleBlur (event) {
     let { name, value } = event.target;
 
-    if (name === 'cidade') value = value.match(/^\d/) ? '' : value;
+    if (name === 'cidade') {
+      if (value.match(/^\d/)) {
+        value = ''
+      }
+    }
 
     this.setState({
-      [name]: value
+      [name]: value //[name] é o nome do campo e value é o valor que será alterado
     })
   }
 
@@ -61,6 +66,9 @@ class Form extends Component {
     let value = target.type === 'checkbox' ? target.checked : target.value;
 
     if (name === 'name') value = value.toUpperCase();
+    if (name === 'endereco') {
+      value = value.replace(/[^\w\s]/gi, '')
+    }
 
     this.setState({
       [name]: value
@@ -81,7 +89,7 @@ class Form extends Component {
           <br/>
           <Endereco enderecoValue={ endereco } handleChange={ this.handleChange }/>
           <br/>
-          <Cidade cidadeValue={ cidade } handleChange={ this.handleChange }/>
+          <Cidade cidadeValue={ cidade } handleChange={ this.handleChange } handleBlur={ this.handleBlur }/>
           <Estado estadoValue={ estado } handleChange={ this.handleChange }/>
           <br/>
           <Tipo tipoValue={ tipo } handleChange={ this.handleChange }/>
