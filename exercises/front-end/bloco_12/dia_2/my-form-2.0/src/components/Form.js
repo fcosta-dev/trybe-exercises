@@ -25,18 +25,33 @@ class Form extends Component {
       estado: '',
       tipo: '',
       textarea: '',
-      cargo: ''
+      cargo: '',
+      alertaCargoTextArea: false
     }
 
     this.handleChange = this.handleChange.bind(this) // Em resumo, eu falo pra função handleChange, o this que ela vai usar, é o this desta aplicação.
+    this.handleMouseEnter = this.handleMouseEnter.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
   }
 
   handleMouseEnter () {
+    if (this.state.alertaCargoTextArea === false) {
+      alert('Preencha com cuidado esta informação.')
 
+      this.setState({ // altera o state
+        alertaCargoTextArea: true
+      })
+    }
   }
 
-  handleBlur () {
+  handleBlur (event) {
+    let { name, value } = event.target;
 
+    if (name === 'cidade') value = value.match(/^\d/) ? '' : value;
+
+    this.setState({
+      [name]: value
+    })
   }
 
   handleChange ({ target }) {
@@ -53,7 +68,7 @@ class Form extends Component {
   }
   
   render() {
-    const { name, email, cpf, endereco, cidade, estado, tipo, resumo, cargo } = this.state
+    const { name, email, cpf, endereco, cidade, estado, tipo, resumo, cargo, descricao } = this.state
     return (
       <form action="">
         <h2>Formulário de Currículo</h2>
@@ -76,6 +91,7 @@ class Form extends Component {
           <legend>Dados do seu Último Emprego</legend>
           <Resumo resumoValue={ resumo } handleChange={ this.handleChange }/>
           <Cargo cargoValue={ cargo } handleMouseEnter={ this.handleMouseEnter }handleChange={ this.handleChange }/>
+          <br/>
           <Descricao descricaoValue={ descricao } handleChange={ this.handleChange }/>
         </fieldset>
         <br/>

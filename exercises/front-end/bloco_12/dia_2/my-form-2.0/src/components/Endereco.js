@@ -10,7 +10,7 @@ class Endereco extends Component {
         type="text" 
         name="endereco" 
         id="endereco"
-        maxlength="200"
+        maxLength="200"
         required
         value={ enderecoValue } // Uso o valor da props do Form.js
         onChange={ handleChange }

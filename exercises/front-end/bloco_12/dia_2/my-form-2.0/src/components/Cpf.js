@@ -10,7 +10,7 @@ class Cpf extends Component {
         type="text" 
         name="cpf" 
         id="cpf"
-        maxlength="11"
+        maxLength="11"
         required
         value={ cpfValue } // Uso o valor da props do Form.js
         onChange={ handleChange }

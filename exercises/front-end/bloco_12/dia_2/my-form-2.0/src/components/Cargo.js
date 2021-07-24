@@ -10,7 +10,7 @@ class Cargo extends Component {
         type="text" 
         name="cargo" 
         id="cargo"
-        maxlength="40"
+        maxLength="40"
         required
         value={ cargoValue } // Uso o valor da props do Form.js
         onChange={ handleChange }

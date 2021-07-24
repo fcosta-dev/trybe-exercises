@@ -10,7 +10,7 @@ class Email extends Component {
         type="email" 
         name="email" 
         id="email"
-        maxlength="50"
+        maxLength="50"
         required
         value={ emailValue } // Uso o valor da props do Form.js
         onChange={ handleChange }

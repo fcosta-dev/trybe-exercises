@@ -5,12 +5,12 @@ class Descricao extends Component {
     const { descricaoValue, handleChange } = this.props; // Recebo a props do Form.js
 
     return (
-      <label htmlFor="descricao">Resumo do currículo: 
+      <label htmlFor="descricao">Descrição do Cargo: 
       <textarea 
         name="descricao" 
         id="descricao" 
         cols="100" 
-        rows="50"
+        rows="10"
         maxLength="500"
         required
         value={ descricaoValue } // Uso o valor da props do Form.js

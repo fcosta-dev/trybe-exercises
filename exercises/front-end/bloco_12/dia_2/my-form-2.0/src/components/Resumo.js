@@ -17,7 +17,6 @@ class Resumo extends Component {
         onChange={ handleChange }
       />
     </label>
-
     )
   }
 }

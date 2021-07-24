@@ -10,7 +10,7 @@ class Nome extends Component {
         type="text" 
         name="name" 
         id="name"
-        maxlength="40"
+        maxLength="40"
         required
         value={ nameValue } // Uso o valor da props do Form.js
         onChange={ handleChange }
