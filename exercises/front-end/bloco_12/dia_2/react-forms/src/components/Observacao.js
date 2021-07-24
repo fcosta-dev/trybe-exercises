@@ -3,11 +3,19 @@ import PropTypes from 'prop-types';
 
 class Observacao extends Component {
   render() {
-    const { handleChange, value } = this.props
+    const { handleChange, observacaoValue } = this.props
 
     return (
-      <label htmlFor="observacao">Anedota:
-        <textarea name="observacao" id="observacao" onChange={ handleChange } value={ value }/>
+      <label htmlFor="observacao">Observação:
+        <textarea 
+          name="observacao"
+          id="observacao"
+          onChange={ handleChange }
+          value={ observacaoValue }
+        />
+        <p>
+          { !observacaoValue.length ? 'Falta adicionar observações' : '' }
+        </p>
       </label>
     )
   }

@@ -20,17 +20,36 @@ class Form extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  handleError() {
+    const { name, email, age, observacao, terms } = this.state
+
+    const errorCases = [
+      !name.length, // Se o tamanho do conteúdo do campo Nome não tiver tamanho
+      !age.length, // Se não tiver informação no campo Age
+      !observacao.length, // Se não tiver informação no campo Observação
+      !terms, // Se o Terms não tiver sido aceito pelo usuário
+      !email.match(/^\S+@\S+$/i)
+    ]
+
+    const formularioPreenchido = errorCases
+      .every((error) => error !== true);
+
+    this.setState({
+      formularioComErros: !formularioPreenchido
+    })
+  }
+
   handleChange ({ target }) { // desconstruo o target
-    const { name } = target // pego o name  o value do target por desconstrução
+    const { name } = target // pego o name, o value do target por desconstrução
     const value = target.type === 'checkbox' ? target.checked : target.value
 
     this.setState({
       [name]: value,
-    })
+    }, () => { this.handleError() })
   }
   
   render() {
-    const { name, email, age, observacao, terms } = this.state
+    const { name, email, age, observacao, terms, formularioComErros } = this.state
     
     return (
       <div>
@@ -39,24 +58,28 @@ class Form extends React.Component {
 
           <fieldset>
             <legend>Informações Pessoais</legend>
-            <Nome value={ name } handleChange={ this.handleChange } /> {/* Estou fazendo um componente Nome filho */}
-            <Email value={ email } handleChange={this.handleChange} /> {/* Estou fazendo um componente Email filho */}
-            <Idade value={ age } handleChange={ this.handleChange }/> {/* Estou fazendo um componente Idade filho */}
+            <Nome nameValue={ name } handleChange={ this.handleChange } /> {/* Estou fazendo um componente Nome filho */}
+            <Email emailValue={ email } handleChange={this.handleChange} /> {/* Estou fazendo um componente Email filho */}
+            <Idade ageValue={ age } handleChange={ this.handleChange }/> {/* Estou fazendo um componente Idade filho */}
           </fieldset>
 
           <fieldset>
             <legend>Texto e arquivos</legend>
-            <Observacao value={ observacao } handleChange={ this.handleChange } /> {/* Estou fazendo um componente Observacao filho */}
+            <Observacao observacaoValue={ observacao } handleChange={ this.handleChange } /> {/* Estou fazendo um componente Observacao filho */}
             <input type="file"/>
           </fieldset>
 
-          <Terms value={ terms } handleChange={ this.handleChange } /> {/* Estou fazendo um componente Terms filho */}
+          <Terms termsValue={ terms } handleChange={ this.handleChange } /> {/* Estou fazendo um componente Terms filho */}
 
-          <label htmlFor="checkError">
-            <input type="checkbox" name="checkError" id="checkError"/>
+          <label htmlFor="formularioComErros">
+            <input type="checkbox" name="formularioComErros" id="formularioComErros"/>
             Há erro em um desses componentes
           </label>
         </form>
+        { formularioComErros
+          ? <span style={ { color: 'ref' } }>Preencha todos os campos</span>
+          : <span style={ { color: 'green' } }> Todos campos foram preenchidos</span>
+        }
       </div>
     )
   }
