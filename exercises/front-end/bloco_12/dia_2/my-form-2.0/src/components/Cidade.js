@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Cidade extends Component {
   render() {
-    const { nameValue, handleChange, handleBlur } = this.props; // Recebo a props do Form.js
+    const { cidadeValue, handleChange, handleBlur } = this.props; // Recebo a props do Form.js
 
     return (
       <label htmlFor="cidade">Cidade: 
@@ -12,7 +12,7 @@ class Cidade extends Component {
         id="cidade"
         maxLength="28"
         required
-        value={ nameValue } // Uso o valor da props do Form.js
+        value={ cidadeValue } // Uso o valor da props do Form.js
         onChange={ handleChange }
         onBlur={ handleBlur }
       />

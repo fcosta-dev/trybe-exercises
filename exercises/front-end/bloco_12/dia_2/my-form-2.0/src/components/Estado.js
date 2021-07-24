@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
+
 const states = ['Rio de Janeiro', 'Minas Gerais', 'Amapá', 'Amazonas', 'São Paulo', 'Ceará', 'Distrito Federal'];
 
 class Estado extends Component {
+
   render() {
     const { estadoValue, handleChange } = this.props; // Recebo a props do Form.js
 
@@ -15,8 +17,7 @@ class Estado extends Component {
           value={ estadoValue }
           onChange={ handleChange }
           >
-          { 
-            states.map((value, key) => (
+          { states.map((value, key) => (
               <option key={ key }>{ value }</option>
             ))
           }
@@ -27,3 +28,7 @@ class Estado extends Component {
 }
 
 export default Estado;
+
+            //     states.map((value, key) => (
+            //   <option key={ key }>{ value }</option>
+            // ))
