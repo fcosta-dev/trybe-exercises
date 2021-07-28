@@ -1,0 +1,48 @@
+body {
+  text-align: center;
+}
+
+.Header {
+  align-items: center;
+  color: rgb(74, 85, 104);
+  display: flex;
+  height: 50px;
+  padding: 0 30px;
+}
+
+.Header a {
+  color: rgb(74, 85, 104);
+  font-size: 0.875rem;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.Header a:hover {
+  color: rgb(15, 163, 107);
+}
+
+.Header h4 {
+  border-right: 1px solid rgb(222, 224, 226);
+  margin-right: 30px;
+  padding-right: 40px;
+}
+
+.Header img {
+  margin-right: 30px;
+}
+
+main {
+  margin-top: 80px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.Content {
+  height: 700px;
+}
+
+body {
+  padding: 10px;
+}
