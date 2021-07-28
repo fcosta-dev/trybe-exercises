@@ -11,9 +11,9 @@ class Content extends React.Component {
     super();
 
     this.state = {
-      solutions: [
-        { id: 'componentes-react', name: 'Componentes React' },
-        { id: 'rotas-react', name: 'Rotas React' },
+      solutions: [ // Um array solutions com dois objetos
+        { id: 'componentes-react', name: '13.1 - Componentes React' },
+        { id: 'rotas-react', name: '13.2 - Rotas React' },
       ],
     };
   }
@@ -24,18 +24,19 @@ class Content extends React.Component {
     return (
       <main className="Content">
         <Switch> {/* Funciona como um switch do JS, são opções de rotas conforme for clicado, vai ser renderizado */}
-          <Route path="/calendar" component={ Calendar } />
+          <Route path="/calendar" component={ Calendar } /> {/* Quando a rota for /calendar então renderizo o componente Calendar */}
           <Route path="/trybe-talks" component={ TrybeTalks } />
           <Route path="/live-lectures" component={ LiveLectures } />
           <Route
             exact
             path="/solutions"
-            render={ (routerProps) => (<Solutions
-              { ...routerProps }
-              solutions={ solutions }
-            />) }
+            // Render e component é a mesma coisa, porém quando é necessário passar props precisa ser usado o render, como abaixo
+            // O routerProps são props internas do ReactRouter(match, history, location), e no termo abaixo eu recebo essas props, e na linha 36 eu passo a props para o componente
+            render={ (routerProps) => (
+              <Solutions { ...routerProps } solutions={ solutions } />
+            ) }
           />
-          <Route path="/solutions/:solutionId" component={ Solution } />
+          <Route path="/solutions/:solutionId" component={ Solution } /> {/* Os : indica que é variável */}
         </Switch>
       </main>
     );
