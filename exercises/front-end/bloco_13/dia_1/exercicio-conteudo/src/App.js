@@ -1,7 +1,6 @@
 // App.js
 import React, { Component }from 'react';
 import './App.css';
-import Loading from './Loading';
 import PersonDetails from './PersonDetails';
 
 class App extends Component {
