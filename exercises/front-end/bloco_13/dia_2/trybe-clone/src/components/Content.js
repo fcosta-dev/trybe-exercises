@@ -23,7 +23,7 @@ class Content extends React.Component {
 
     return (
       <main className="Content">
-        <Switch>
+        <Switch> {/* Funciona como um switch do JS, são opções de rotas conforme for clicado, vai ser renderizado */}
           <Route path="/calendar" component={ Calendar } />
           <Route path="/trybe-talks" component={ TrybeTalks } />
           <Route path="/live-lectures" component={ LiveLectures } />

@@ -7,7 +7,7 @@ import Header from './components/Header';
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter> {/* Serve apenas para acessar as funcionalidades do Router. Não renderiza nenhum HTML. */}
         <Header />
         <Content />
       </BrowserRouter>
