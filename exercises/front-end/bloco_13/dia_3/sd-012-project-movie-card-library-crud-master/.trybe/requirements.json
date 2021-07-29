@@ -1,0 +1,32 @@
+{
+  "requirements": [
+    {
+      "description": "1 - Renderize `BrowserRouter` no componente `App` usando rotas",
+      "bonus": false
+    },
+    {
+      "description": "2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado",
+      "bonus": false
+    },
+    {
+      "description": "3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`",
+      "bonus": false
+    },
+    {
+      "description": "4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`",
+      "bonus": false
+    },
+    {
+      "description": "5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`",
+      "bonus": false
+    },
+    {
+      "description": "6 - Insira um link na página inicial para `NewMovie` para criar novos cartões",
+      "bonus": false
+    },
+    {
+      "description": "7 - Adicione um link para deletar um cartão em `MovieDetails`",
+      "bonus": true
+    }
+  ]
+}
