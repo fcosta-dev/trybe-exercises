@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
+import { Link } from 'react-router-dom';
+import { MovieCard, Loading } from '../components';
 
 import * as movieAPI from '../services/movieAPI';
-import Loading from '../components/Loading';
 
 class MovieList extends Component {
   constructor() {
@@ -28,14 +28,20 @@ class MovieList extends Component {
   render() {
     const { movies, loading } = this.state;
 
-    // Se o state do Loading estiver true, ou seja que não carregou, então será renderizado o componente Loading conforme abaixo.
-    if (loading) return <Loading />;
+    // Se o state do Loading estiver true, ou seja que não carregou, então será renderizado o componente Loading, conforme abaixo.
 
     return (
       <div data-testid="movie-list">
+        {/* Se o state do Loading estiver true, ou seja que não carregou, então será renderizado
+         o componente Loading, conforme abaixo. */}
+        {/* É a mesma coisa de: if (loading) return <Loading />; */}
+        {loading && <Loading />}
         {/* Abaixo eu vou percorrer os filmes com MAP, adicionar o title como key e passar
          os filmes como props para o MovieCard */}
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {/* O Link abaixo na página inicial(MovieList) contém um link "ADICIONAR CARTÃO". Esse
+         link deve redirecionar para a página de criação de filmes */}
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }
