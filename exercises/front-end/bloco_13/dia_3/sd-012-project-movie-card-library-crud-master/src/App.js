@@ -21,6 +21,10 @@ class App extends Component {
             {/* Abaixo são opções de rotas a serem renderizadas conforme escolha do
              usuário, com seus caminhos no path */}
             <Route exact path="/" component={ MovieList } />
+            { /* Essa rota abaixo prepara o MovieDetails para ser chamado quando o
+             Link to={`movies/${id}`} for acionado dentro de algum componente.
+             Neste caso foi dentro do MovieCard na opção VER DETALHES.
+             Exemplo: <Link to={ `movies/${id}` }>VER DETALHES</Link>  */}
             <Route path="/movies/:id" component={ MovieDetails } />
             <Route path="/movies/new" component={ NewMovie } />
             <Route path="/movies/:id/edit" component={ EditMovie } />
