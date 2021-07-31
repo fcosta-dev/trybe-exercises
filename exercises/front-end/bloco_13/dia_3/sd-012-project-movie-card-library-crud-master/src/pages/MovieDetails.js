@@ -28,7 +28,7 @@ class MovieDetails extends Component {
   deleteMovie() {
     const { match: { params: { id } } } = this.props; // Há uma props padrão com nome de "match", dentro dela tem o params, e nesse params fica informações do id.
     const { deleteMovie } = movieAPI; // Desestrutura a função deleteMovie que está na movieAPI
-    deleteMovie(id);
+    deleteMovie(id); // Executa a função deleteMovie com o parametro id
   }
 
   render() {
