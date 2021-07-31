@@ -29,7 +29,8 @@ class EditMovie extends Component {
 
   // Ao clicar no botão de submit, uma requisição para API é feita e o filme selecionado é atualizado. Após a conclusão da atualização a pessoa usuária deve ser redirecionada para a página inicial
   handleSubmit(updatedMovie) {
-    movieAPI.updateMovie(updatedMovie) // Através da função updateMovie dentro de MovieAPI fazemos a alteração
+    const { updateMovie } = movieAPI;
+    updateMovie(updatedMovie) // Através da função updateMovie dentro de MovieAPI fazemos a alteração
       .then(() => { // Quando for ok essa requisição de alteração...
         this.setState({ shouldRedirect: true }); // Apontamos para a variável no state que pode ser redirecionado a tela.
       });
