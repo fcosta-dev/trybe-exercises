@@ -66,7 +66,7 @@ describe('4 - Faça uma requisição para buscar o filme que deverá ser renderi
   });
 });
 
-describe('7 - Adicione um link para deletar um cartão em `MovieDetails`', () => {
+describe.skip('7 - Adicione um link para deletar um cartão em `MovieDetails`', () => {
 
   it('Será validado se `MovieDetails` contém um link com o texto "DELETAR"', async () => {
     for (const movie of readMovies()) {
