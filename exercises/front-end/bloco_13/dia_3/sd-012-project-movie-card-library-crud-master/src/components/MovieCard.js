@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class MovieCard extends Component {
   render() {
-    const { movie: { id, subtitle, title, storyline, imagePath } } = this.props; // Recebo a props vinda do MovieList
+    const { movie: { id, subtitle, title, storyline } } = this.props; // Recebo a props vinda do MovieList
     return (
       <div data-testid="movie-card">
         Movie Card

@@ -32,11 +32,11 @@ class Content extends React.Component {
             path="/solutions"
             // Render e component é a mesma coisa, porém quando é necessário passar props precisa ser usado o render, como abaixo
             // O routerProps são props internas do ReactRouter(match, history, location), e no termo abaixo eu recebo essas props, e na linha 36 eu passo a props para o componente
-            render={ (routerProps) => (
+            render={ (routerProps) => ( // O render é passado como callback porque eu quero receber as props do ReactRouter(match, path, history) e passa-las para dentro do componente Solutions como { ...routerProps }
               <Solutions { ...routerProps } solutions={ solutions } />
             ) }
           />
-          <Route path="/solutions/:solutionId" component={ Solution } /> {/* Os : indica que é variável */}
+          <Route path="/solutions/:solutionId" component={ Solution } /> {/* Os : indica que é variável ou seja é a sintaxe de variável no React, e o { Solution } é da state */}
         </Switch>
       </main>
     );
