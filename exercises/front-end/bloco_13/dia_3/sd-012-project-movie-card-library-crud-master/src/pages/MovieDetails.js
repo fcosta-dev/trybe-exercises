@@ -12,14 +12,23 @@ class MovieDetails extends Component {
       loading: true,
       movie: {},
     };
+
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   // Para renderizar os dados dos filmes eu tenho que acionar a função que pega os filmes, como não é uma API, é uma função que está na movieAPI. E ela tem que ser executada quando toda a pagina por renderizada.
   componentDidMount() {
     const { match: { params: { id } } } = this.props; // Há uma props padrão com nome de "match", dentro dela tem o params, e nesse params fica informações do id. Que foram passadas pelo <Link to={ `/movies/${id}` }>VER DETALHES</Link>
-    movieAPI.getMovie(id) // busca o filme conforme id;
+    const { getMovie } = movieAPI; // Desestrutura a função deleteMovie que está na movieAPI
+    getMovie(id) // busca o filme conforme id;
       .then((movie) => this // O elemento será o movie
         .setState({ movie, loading: false })); // E com o setState eu subo o movie para State e altero o Loading para false
+  }
+
+  deleteMovie() {
+    const { match: { params: { id } } } = this.props; // Há uma props padrão com nome de "match", dentro dela tem o params, e nesse params fica informações do id.
+    const { deleteMovie } = movieAPI; // Desestrutura a função deleteMovie que está na movieAPI
+    deleteMovie(id);
   }
 
   render() {
@@ -38,6 +47,8 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        {/* Criado um link com o texto Deletar */}
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
         {/* Link apontando para a rota raiz (/) com o texto "VOLTAR" */}
         <Link to="/">VOLTAR</Link>
       </div>
@@ -48,8 +59,8 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }).isRequired,
+      id: PropTypes.string,
+    }),
   }).isRequired,
 };
 
