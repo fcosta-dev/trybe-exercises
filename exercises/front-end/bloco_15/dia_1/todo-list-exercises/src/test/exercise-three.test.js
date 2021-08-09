@@ -33,12 +33,17 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
     fireEvent.click(btnAdd);
     // Coloco na variável selectTask o elemento com o texto "Exercitar"
     const selectTask = getByText('Exercitar');
-    // Verifico se o texto "Exercitar" está no documento
+    // Verifico se o texto "Exercitar" da variável selectTask está no documento
     expect(selectTask).toBeInTheDocument();
+    // Simulo um click na Task "Exercitar"
     fireEvent.click(selectTask);
+    // Verifico se o botão de Remover está desativado
     expect(btnRemove.disabled).toBe(false);
+    // Simulo um click no botão Remover
     fireEvent.click(btnRemove);
+    // Verifico se o botão Remover está ativado
     expect(btnRemove.disabled).toBe(true);
+    // Verifico se o texto "Exercitar" não está no documento, já que acima ele foi excluído com a simulação 
     expect(queryByText('Exercitar')).not.toBeInTheDocument();
   })
 });
