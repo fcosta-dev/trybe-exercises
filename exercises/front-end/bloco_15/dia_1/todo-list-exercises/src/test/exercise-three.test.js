@@ -31,7 +31,7 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
     fireEvent.change(inputTask, { target: { value: 'Estudar' } })
     // Simulo um click no botão Add após edição do campo acima com "Estudar"
     fireEvent.click(btnAdd);
-    // Coloco na variável selectTask 
+    // Coloco na variável selectTask o elemento com o texto "Exercitar"
     const selectTask = getByText('Exercitar');
     expect(selectTask).toBeInTheDocument();
     fireEvent.click(selectTask);
