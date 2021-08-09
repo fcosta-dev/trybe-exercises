@@ -7,13 +7,16 @@ class App extends Component {
     super(props)
 
     this.state = {
+      // Inicia o State com um array vazio
       listTodo: [],
     };
 
+    // Ativa as funções criadas com o bind para serem lidas em todo o componente com o this
     this.addTodo = this.addTodo.bind(this);
     this.onClickFunc = this.onClickFunc.bind(this);
     this.removeFunc = this.removeFunc.bind(this);
   }
+
 
   addTodo(todo) {
     this.setState((state) => ({ listTodo: [...state.listTodo, {text: todo, select: false}] }));
@@ -36,7 +39,9 @@ class App extends Component {
     this.setState((state) => ({ listTodo: [...state.listTodo.reduce(reduceFunc, [])] }));
   }
 
+  // Inicia a renderização
   render() {
+    // Desconstrói o listTodo do State
     const { listTodo } = this.state;
     const disable = !listTodo.find((element) => element.select);
     return (
