@@ -12,15 +12,26 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
   });
 
   test('Testando a seleção de elemento', () => {
+    // PRIMEIRA PARTE -> ACESSAR OS ELEMENTOS NA TELA
     // Desconstruindo o getByLabelText, getByText, queryByText do componente App
     const { getByLabelText, getByText, queryByText } = render(<App />);
+    // Busco algum elemento input text com o Label/Rótulo de "Tarefa:" 
     const inputTask = getByLabelText('Tarefa:');
+    // Coloca na variável btnAdd o elemento com o texto "Adicionar"
     const btnAdd = getByText('Adicionar');
+    // Coloca na variável btnRemove o elemento com o texto "Adicionar"
     const btnRemove = getByText('Remover');
+
+    // SEGUNDA PARTE -> INTERAGIR COM OS ELEMENTOS NA TELA
+    // Simulo no inputTask digitar a tarefa "Exercitar"
     fireEvent.change(inputTask, { target: { value: 'Exercitar' } })
+    // Simulo um click no botão Add após edição do campo acima com "Exercitar"
     fireEvent.click(btnAdd);
+    // Simulo no inputTask digitar a tarefa "Estudar"
     fireEvent.change(inputTask, { target: { value: 'Estudar' } })
+    // Simulo um click no botão Add após edição do campo acima com "Estudar"
     fireEvent.click(btnAdd);
+    // Coloco na variável selectTask 
     const selectTask = getByText('Exercitar');
     expect(selectTask).toBeInTheDocument();
     fireEvent.click(selectTask);
