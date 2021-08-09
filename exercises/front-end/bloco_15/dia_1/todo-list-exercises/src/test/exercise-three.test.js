@@ -12,6 +12,7 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
   });
 
   test('Testando a seleção de elemento', () => {
+    // Desconstruindo o getByLabelText, getByText, queryByText do componente App
     const { getByLabelText, getByText, queryByText } = render(<App />);
     const inputTask = getByLabelText('Tarefa:');
     const btnAdd = getByText('Adicionar');
