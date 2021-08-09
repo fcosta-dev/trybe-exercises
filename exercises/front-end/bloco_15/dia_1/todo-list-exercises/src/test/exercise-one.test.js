@@ -2,6 +2,9 @@ import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import App from '../App'
 
+// Limpa renderizações que foram montadas para os testes
+afterEach(cleanup)
+
 describe('Teste da aplicação, testando o botão e sua funcionalidade', () => {
   test('Verificando se o botão está na tela e se o elemento contém o texto "Adicionar"', () => {
     // PRIMEIRA PARTE -> ACESSAR OS ELEMENTOS NA TELA
