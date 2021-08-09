@@ -38,17 +38,19 @@ class App extends Component {
 
   render() {
     const { listTodo } = this.state;
+    const disable = !listTodo.find((element) => element.select);
     return (
       <div className="App">
         <InputTodo addTodo={(todo) => this.addTodo(todo)} />
+        <button value="Remover" data-testid="id-remove" disabled={ disable } onClick={ this.removeFunc }>Remover</button>
         {listTodo &&
           <ul>
             {
-              listTodo.map((todo, index) => (
-                <li key={index + 1}>
-                  <Item content={todo} />
+              listTodo.map(({ text, select }, index) => (
+                <li key={index + 1} onClick={ () => this.onClickFunc(text) }>
+                  <Item content={ text } select={ select }/>
                 </li>
-              ))
+              ))            
             }
           </ul>
         }
