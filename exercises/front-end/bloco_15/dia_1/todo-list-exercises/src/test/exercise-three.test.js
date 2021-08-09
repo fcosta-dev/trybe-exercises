@@ -4,8 +4,11 @@ import App from '../App';
 
 describe('Testando funcionalidade de apagar item selecionado', () => {
   test('Necessário ter um botão, com o texto Remover, e ele precisa estar desabilitado caso não exista nenhum item selecionado', () => {
+    // Desconstruo o getByTestId do componente App
     const { getByTestId } = render(<App />);
+    // Guardo na variável btnRemove o elemento que contem o id de teste id-remove
     const btnRemove = getByTestId('id-remove');
+    // Verifico se o elemento buscado acima foi renderizado no documento
     expect(btnRemove).toBeInTheDocument();
     expect(btnRemove.value).toBe('Remover');
     expect(btnRemove.disabled).toBe(true);
