@@ -13,7 +13,7 @@ describe('Teste do campo input', () => {
   test('Testando a adição de vários itens à aplicação', () => {
     // PRIMEIRA PARTE -> ACESSAR OS ELEMENTOS NA TELA
     const listTodo
-  })
+  });
 })
 
 describe('Teste do componente Item', () => {
