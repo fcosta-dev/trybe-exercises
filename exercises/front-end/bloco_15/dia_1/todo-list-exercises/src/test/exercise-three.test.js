@@ -10,7 +10,9 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
     const btnRemove = getByTestId('id-remove');
     // Verifico se o elemento buscado acima foi renderizado no documento
     expect(btnRemove).toBeInTheDocument();
+    // Verifico se o texto do elemento botão encontrado é "Remover"
     expect(btnRemove.value).toBe('Remover');
+    // Verifica se o botão "Remover" está desativado
     expect(btnRemove.disabled).toBe(true);
   });
 
@@ -25,7 +27,6 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
     // Coloca na variável btnRemove o elemento com o texto "Adicionar"
     const btnRemove = getByText('Remover');
 
-    // SEGUNDA PARTE -> INTERAGIR COM OS ELEMENTOS NA TELA
     // Simulo no inputTask digitar a tarefa "Exercitar"
     fireEvent.change(inputTask, { target: { value: 'Exercitar' } })
     // Simulo um click no botão Add após edição do campo acima com "Exercitar"
