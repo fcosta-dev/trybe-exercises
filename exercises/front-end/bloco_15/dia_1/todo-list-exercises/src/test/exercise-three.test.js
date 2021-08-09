@@ -33,6 +33,7 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
     fireEvent.click(btnAdd);
     // Coloco na variável selectTask o elemento com o texto "Exercitar"
     const selectTask = getByText('Exercitar');
+    // Verifico se o texto "Exercitar" está no documento
     expect(selectTask).toBeInTheDocument();
     fireEvent.click(selectTask);
     expect(btnRemove.disabled).toBe(false);
