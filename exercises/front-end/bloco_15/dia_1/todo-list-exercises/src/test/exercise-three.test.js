@@ -43,7 +43,7 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
     fireEvent.click(btnRemove);
     // Verifico se o botão Remover está ativado
     expect(btnRemove.disabled).toBe(true);
-    // Verifico se o texto "Exercitar" não está no documento, já que acima ele foi excluído com a simulação 
+    // Verifico se o texto "Exercitar" não está no documento, já que acima ele foi excluído com a simulação de clicar na Task e depois clicar no botão Remover 
     expect(queryByText('Exercitar')).not.toBeInTheDocument();
   })
 });
