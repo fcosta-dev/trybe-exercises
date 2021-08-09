@@ -11,10 +11,29 @@ class App extends Component {
     };
 
     this.addTodo = this.addTodo.bind(this);
+    this.onClickFunc = this.onClickFunc.bind(this);
+    this.removeFunc = this.removeFunc.bind(this);
   }
 
   addTodo(todo) {
-    this.setState((state) => ({ listTodo: [...state.listTodo, todo] }));
+    this.setState((state) => ({ listTodo: [...state.listTodo, {text: todo, select: false}] }));
+  }
+
+  onClickFunc(text) {
+    const mapFunc = (element) => {
+      element.select = false;
+      if (element.text === text) element.select = true;
+      return element
+    }
+    this.setState((state) => ({ listTodo: [...state.listTodo.map(mapFunc)] }));
+  }
+
+  removeFunc() {
+    const reduceFunc = (cur, acc) => {
+      if (acc.select) return cur
+      return [...cur, acc]
+    }
+    this.setState((state) => ({ listTodo: [...state.listTodo.reduce(reduceFunc, [])] }));
   }
 
   render() {
