@@ -82,7 +82,7 @@ describe('Requisito 01 - Teste do componente .js', () => {
       history.push('/pagina/que-nao-existe');
       // getByText: pode ser usado para localizar elementos não interativos (como divs, spans e parágrafos).
       // Cria a variável notFound para localizar texto na tela
-      const notFound = screen.getByText(/Página não encontrada/i);
+      const notFound = screen.getByText(/Page requested not found/i);
       // Testa se a variável notFound está no documento
       expect(notFound).toBeInTheDocument();
     });
