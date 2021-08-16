@@ -49,8 +49,9 @@ describe('Requisito 02 - Testa o componente About.js', () => {
     renderWithRouter(<About />);
     // Guarda o link da imagem que tem que ser verificada no teste - retirada do README
     const expectedURL = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
-    
+    // Guarda na variável img, se foi localizado no elemento img o src com o link acima
     const img = screen.getByRole('img', { src: expectedURL });
+    // Testo se no img.src é a página esperada que está guardanda na expectedURL
     expect(img.src).toBe(expectedURL);
   });
 });
