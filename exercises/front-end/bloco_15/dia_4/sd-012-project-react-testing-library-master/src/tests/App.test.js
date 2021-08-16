@@ -3,7 +3,7 @@
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 import App from '../App';
-import renderWithRouter from './renderWithRouter'
+import renderWithRouter from './renderWithRouter';
 
 describe('Requisito 01 - Teste do componente .js', () => {
   test('O primeiro link deve possuir o texto Home', () => {
