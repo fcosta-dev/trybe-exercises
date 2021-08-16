@@ -104,7 +104,7 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
           fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
           // Simula click no elemento que tem o data-test-id de id next-pokemon
           fireEvent.click(screen.getByTestId('next-pokemon'));
-          // Testo na tela com o data-test-id tem o texto
+          // Testo na tela com o data-test-id tem o texto do elemento atual
           expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
         });
       });
@@ -115,7 +115,9 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
         renderWithRouter(<App />);
         // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
         uniquePokemonTypes.forEach((pokemonType, index) => {
+          // Simula um click no elemento encontrado conforme item index do data-test-id
           fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
+          // Testo na tela com o data-test-id tem o texto do elemento atual
           expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
         });
       });
@@ -125,6 +127,7 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
       renderWithRouter(<App />);
       // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
       uniquePokemonTypes.forEach((pokemonType, index) => {
+        // Simula um click no elemento encontrado conforme item index do data-test-id
         fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
         // Simula o click em um elemento com o data-test-id 'next-pokemon'
         fireEvent.click(screen.getByTestId('next-pokemon'));
