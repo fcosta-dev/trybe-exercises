@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 99.1 158.05247"
+   class="logo-rocket"
+   version="1.1"
+   id="svg10"
+   sodipodi:docname="logo.svg"
+   width="99.099998"
+   height="158.05247"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     id="namedview12"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.45747869"
+     inkscape:cx="-204.92216"
+     inkscape:cy="57.3"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg10" />
+  <defs
+     id="defs3">
+    <path
+       id="a"
+       d="M 0,0 H 867.8 V 285 H 0 Z"
+       inkscape:connector-curvature="0" />
+  </defs>
+  <clipPath
+     id="b">
+    <use
+       xlink:href="#a"
+       overflow="visible"
+       id="use5"
+       style="overflow:visible"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+  </clipPath>
+  <path
+     stroke-miterlimit="10"
+     d="m 50.6,153.65247 c 15.8,0 22.2,-5.9 22.2,-5.9 v -4.6 H 97.6 V 99.752474 l -17.5,-14.5 v 30.499996 c 0,0 -7.2,-2.1 -7.1,-9.6 0.1,-6 0.1,-11.999996 0,-17.999996 -0.1,-7.1 0.2,-14.1 -0.2,-21.2 -1.1,-18.6 -4.2,-37.5 -12.9,-54.1 -2.5,-4.7999997 -9.5,-16.5999997 -15.6,-8.6999997 -4.1,5.3 -6.6,11.7999997 -9,17.9999997 -2.6,6.9 -4.7,14 -6.3,21.1 l -0.3,1.5 c -4.3,19.8 -3,39.2 -3,39.2 L 1.5,107.45247 v 26.1 l 23.9,3.2 v 19.8 h 5.2 l 12.2,-9.5 V 98.952474 l -4.1,-1.4 -9.9,23.699996"
+     id="path8"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+</svg>
