@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-import renderWithRouter from './renderWithRouter';
 import App from '../App';
+import renderWithRouter from './renderWithRouter'
 
 describe('Requisito 01 - Teste do componente .js', () => {
   test('O primeiro link deve possuir o texto Home', () => {
@@ -27,6 +27,11 @@ describe('Requisito 01 - Teste do componente .js', () => {
   });
 
   test('O terceiro link deve possuir o texto Favorite Pokémons', () => {
-
+    // Renderizo na tela as rotas do componente App
+    renderWithRouter(<App />);
+    // Verifico na tela, se há um elemento do tipo link com o name "favorite pokémons", e se tiver coloca o elemento na variável about.
+    const favPokemons = screen.getByRole('link', { name: /favorite pokémons/i });
+    // Testo que espero que a variável favPokemons esteja no documento
+    expect(favPokemons).toBeInTheDocument();
   });
 });
