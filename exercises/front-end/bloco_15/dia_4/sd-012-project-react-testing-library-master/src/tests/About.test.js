@@ -11,7 +11,7 @@ import About from '../components/About';
 import renderWithRouter from '../helper/renderWithRouter';
 
 describe('Requisito 02 - Testa o componente About.js', () => {
-  test('Testando se a página contém as informações sobre a Pokédex', () => {
+  test('Teste se a página contém as informações sobre a Pokédex', () => {
     // Renderizo na tela as rotas do componente About
     renderWithRouter(<About />);
     // Adiciona à variável pokedexInfo01 se foi encontrado o texto "digital encyclopedia" no documento /about
@@ -24,7 +24,7 @@ describe('Requisito 02 - Testa o componente About.js', () => {
     expect(pokedexInfo02).toBeInTheDocument();
   });
 
-  test('Testando se a página contém um heading h2 com o texto About Pokédex', () => {
+  test('Teste se a página contém um heading h2 com o texto About Pokédex', () => {
     // Renderizo na tela as rotas do componente About
     renderWithRouter(<About />);
     // getByRole: usado para consultar todos os elementos expostos na árvore de acessibilidade. Com a name opção, você pode filtrar os elementos retornados por seus nomes acessíveis 
@@ -33,18 +33,23 @@ describe('Requisito 02 - Testa o componente About.js', () => {
     expect(h2).toBeInTheDocument();
   });
   
-  test('Testando se a página contém dois parágrafos com texto sobre a Pokédex', () => {
+  test('Teste se a página contém dois parágrafos com texto sobre a Pokédex', () => {
     // Renderizo na tela as rotas do componente About
     renderWithRouter(<About />);
+    // Guarda no regExp quais paragrafos estão sendo procurados
     const regExp = /digital encyclopedia|filter pokémons by type/i;
+    // Guarda no paragraphs os elementos de texto procurados acima
     const paragraphs = screen.getAllByText(regExp);
+    // Testa se a variável paragraphs achou os dois paragrafos, comparando tamanho(2)
     expect(paragraphs).toHaveLength(2);
   });
-  
+
   test('Testando se a página contém uma imagem específica de uma Pokédex', () => {
     // Renderizo na tela as rotas do componente About
     renderWithRouter(<About />);
+    // Guarda o link da imagem que tem que ser verificada no teste - retirada do README
     const expectedURL = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
+    
     const img = screen.getByRole('img', { src: expectedURL });
     expect(img.src).toBe(expectedURL);
   });
