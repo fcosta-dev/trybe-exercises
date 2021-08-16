@@ -104,6 +104,7 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
           fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
           // Simula click no elemento que tem o data-test-id de id next-pokemon
           fireEvent.click(screen.getByTestId('next-pokemon'));
+          // Testo na tela com o data-test-id tem o texto
           expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
         });
       });
@@ -125,6 +126,7 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
       // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
       uniquePokemonTypes.forEach((pokemonType, index) => {
         fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
+        // Simula o click em um elemento com o data-test-id 'next-pokemon'
         fireEvent.click(screen.getByTestId('next-pokemon'));
         // Testa se há um elemento botão de name all no documento
         expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument();
@@ -136,7 +138,7 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
     test('O texto do botão deve ser All', () => {
       // Renderizo na tela as rotas do componente App.
       renderWithRouter(<App />);
-      // Testo se na tela há um elemento button com name com conteúdo "All"
+      // Testo se na tela há um elemento button com name com conteúdo "All". As barras com i são cases insensitives, podendo ser maiuscula ou nao
       expect(screen.getByRole('button', { name: /all/i })).toHaveTextContent('All');
     });
 
@@ -148,7 +150,7 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
         // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
         uniquePokemonTypes.forEach((pokemonType, index) => {
           fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
-          // Simula um click no elemento buttom que tem o name all
+          // Simula um click no elemento buttom que tem o name all. As barras com i são cases insensitives, podendo ser maiuscula ou nao
           fireEvent.click(screen.getByRole('button', { name: /all/i }));
           // Através da importação de dados de pokemons na "pokemons" faço um foreach para ler cada um dos pokemons, testando se mostra todos os pokemons
           getAllPokemons(nextPkmBtn);
