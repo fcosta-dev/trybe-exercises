@@ -55,16 +55,36 @@ describe('Requisito 01 - Teste do componente .js', () => {
       const { history } = renderWithRouter(<App />);
       // Será verificado se há um elemento do tipo link com o nome de "/about", e joga na variável about.
       const about = screen.getByRole('link', { name: /about/i });
-      // Simula um click na variável home que contém o elemento link
+      // Simula um click na variável about que contém o elemento link
       fireEvent.click(about);
       // history.location.pathname pega o endereço da página.
-      // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/".
+      // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/about".
       expect(history.location.pathname).toEqual('/about');
     });
 
     test('a URL /favorites, ao clicar no link Favorite Pokémons.', () => {
-    
+      // Desconstroi o history do renderWithRouter do componente App
+      const { history } = renderWithRouter(<App />);
+      // Será verificado se há um elemento do tipo link com o nome de "/favorite pokémons", e joga na variável favoritePokemons.
+      const favoritePokemons = screen.getByRole('link',
+        { name: /favorite pokémons/i });
+      // Simula um click na variável favoritePokemons que contém o elemento link
+      fireEvent.click(favoritePokemons);
+      // history.location.pathname pega o endereço da página.
+      // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/favorites".
+      expect(history.location.pathname).toEqual('/favorites');
+    });
+
+    test('a página Not Found ao entrar em uma URL desconhecida.', () => {
+      // Desconstroi o history do renderWithRouter do componente App
+      const { history } = renderWithRouter(<App />);
+      // Passo como argumento um link que não existe dentro de nossa aplicação
+      history.push('/pagina/que-nao-existe');
+      // getByText: pode ser usado para localizar elementos não interativos (como divs, spans e parágrafos).
+      // Cria a variável notFound para localizar texto na tela
+      const notFound = screen.getByText(/Página não encontrada/i);
+      // Testa se a variável notFound está no documento
+      expect(notFound).toBeInTheDocument();
     });
   });
-
 });
