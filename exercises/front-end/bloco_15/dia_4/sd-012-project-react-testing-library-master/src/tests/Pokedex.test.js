@@ -92,28 +92,34 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
           .toHaveTextContent(pokemonType);
       });
     });
+
     test('Se selecionado Tipo, a Pokédex deve circular apenas por pokémons daquele tipo',
       () => {
         // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
+        // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
         uniquePokemonTypes.forEach((pokemonType, index) => {
           fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
           fireEvent.click(screen.getByTestId('next-pokemon'));
           expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
         });
       });
+
     test('O texto do botão deve corresponder ao nome do tipo, ex. Psychic',
       () => {
         // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
+        // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
         uniquePokemonTypes.forEach((pokemonType, index) => {
           fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
           expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
         });
       });
+
     test('O botão All precisa estar sempre visível', () => {
       // Renderizo na tela as rotas do componente App.
       renderWithRouter(<App />);
+      // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
       uniquePokemonTypes.forEach((pokemonType, index) => {
         fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
         fireEvent.click(screen.getByTestId('next-pokemon'));
@@ -121,21 +127,33 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
       });
     });
   });
+
   describe('Testa se a Pokédex contém um botão para resetar o filtro', () => {
     test('O texto do botão deve ser All', () => {
       // Renderizo na tela as rotas do componente App.
       renderWithRouter(<App />);
+      // Testo se na tela há um elemento button com name com conteúdo "All"
       expect(screen.getByRole('button', { name: /all/i })).toHaveTextContent('All');
     });
+
     test('A Pokedéx deverá mostrar os Pokémons sem filtros quando All for clicado',
       () => {
         // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
         const nextPkmBtn = screen.getByRole('button', { name: /Próximo pokémon/i });
+        // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
         uniquePokemonTypes.forEach((pokemonType, index) => {
           fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
           fireEvent.click(screen.getByRole('button', { name: /all/i }));
-          checkAllPokemons(nextPkmBtn);
+          // Através da importação de dados de pokemons na "pokemons" faço um foreach para ler cada um dos pokemons
+          pokemons.forEach((pokemon) => {
+            // através do data-test-id verifica se há um elemento pokemon-name
+            const pokemonName = screen.getByTestId(nameTestId);
+            // Testa se o elemento que está na variável acima tem o name do elemento pokemon do foreach. Ou seja, verifica se é o mesmo pokemon.
+            expect(pokemonName).toHaveTextContent(pokemon.name);
+            // Simula o click no botão de próximo pokemon
+            fireEvent.click(nextPkmBtn);
+          });
         });
       });
   });
