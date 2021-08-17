@@ -97,7 +97,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
           expect(screen.getAllByRole('img')[index + 1]).toHaveAttribute('src', map);
           // Guarda na variável altText o name/texto com o texto location
           const altText = `${firstPokemon.name} location`;
-
+          // Busca todos os alt text, com o texto que está na variável altText, no index de referência do forEach, se está no documento
           expect(screen.getAllByAltText(altText)[index]).toBeInTheDocument();
         });
       });
