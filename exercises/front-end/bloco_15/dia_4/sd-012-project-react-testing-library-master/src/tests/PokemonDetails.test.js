@@ -81,8 +81,11 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         renderWithRouter(<App />);
         // Simulo um click no elemento link com name/texto "more details".
         fireEvent.click(screen.getByRole('link', { name: /more details/i }));
+        // Guarda na variável locations o texto abaixo com o name/texto do primeiro pokemon
         const locations = `Game Locations of ${firstPokemon.name}`;
+        // Guarda na variável locationHeading o heading(h1,h2,h3..) com o name/texto do locations
         const locationHeading = screen.getByRole('heading', { name: locations });
+        // Testa se o heading acima foi encontrado e está no documento
         expect(locationHeading).toBeInTheDocument();
         // o foundAt é desconstruído abaixo pois nele tem um array das localizações onde este pokemon é encontrado
         const { foundAt } = firstPokemon;
