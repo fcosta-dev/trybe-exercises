@@ -93,8 +93,11 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         foundAt.forEach(({ location, map }, index) => {
           // Testo se o elemento que possui o location deste pokemon está no documento
           expect(screen.getByText(location)).toBeInTheDocument();
+          // Testa img por img, conforme index do array, se tem o atributo src com link do "map" que possui o endereço do pokemon 
           expect(screen.getAllByRole('img')[index + 1]).toHaveAttribute('src', map);
+          // Guarda na variável altText o name/texto com o texto location
           const altText = `${firstPokemon.name} location`;
+          // Testa se todos 
           expect(screen.getAllByAltText(altText)[index]).toBeInTheDocument();
         });
       });
