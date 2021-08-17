@@ -1,6 +1,6 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
-
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
@@ -16,7 +16,7 @@ const getAllPokemons = (nextPkmBtn) => {
   pokemons.forEach((pokemon) => {
     const pokemonName = screen.getByTestId(nameTestId);
     expect(pokemonName).toHaveTextContent(pokemon.name);
-    fireEvent.click(nextPkmBtn);
+    userEvent.click(nextPkmBtn);
   });
 };
 
@@ -66,7 +66,7 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
         // Percorro a lista de pokemons
         pokemons.forEach(() => {
           // Simulo o click no botão de próximo pokemon
-          fireEvent.click(nextPkmBtn);
+          userEvent.click(nextPkmBtn);
         });
         // através do data-test-id pega o elemento com o name abaixo
         const firstPokemon = screen.getByTestId(nameTestId);
@@ -104,9 +104,9 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
         renderWithRouter(<App />);
         // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
         uniquePokemonTypes.forEach((pokemonType, index) => {
-          fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
+          userEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
           // Simula click no elemento que tem o data-test-id de id next-pokemon
-          fireEvent.click(screen.getByTestId('next-pokemon'));
+          userEvent.click(screen.getByTestId('next-pokemon'));
           // Testo na tela com o data-test-id tem o texto do elemento atual
           expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
         });
@@ -119,7 +119,7 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
         // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
         uniquePokemonTypes.forEach((pokemonType, index) => {
           // Simula um click no elemento encontrado conforme item index do data-test-id
-          fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
+          userEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
           // Testo na tela com o data-test-id tem o texto do elemento atual
           expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
         });
@@ -131,9 +131,9 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
       // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
       uniquePokemonTypes.forEach((pokemonType, index) => {
         // Simula um click no elemento encontrado conforme item index do data-test-id
-        fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
+        userEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
         // Simula o click em um elemento com o data-test-id 'next-pokemon'
-        fireEvent.click(screen.getByTestId('next-pokemon'));
+        userEvent.click(screen.getByTestId('next-pokemon'));
         // Testa se há um elemento botão de name all no documento
         expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument();
       });
@@ -155,9 +155,9 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
         const nextPkmBtn = screen.getByRole('button', { name: /Próximo pokémon/i });
         // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
         uniquePokemonTypes.forEach((pokemonType, index) => {
-          fireEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
+          userEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
           // Simula um click no elemento buttom que tem o name all. As barras com i são cases insensitives, podendo ser maiuscula ou nao
-          fireEvent.click(screen.getByRole('button', { name: /all/i }));
+          userEvent.click(screen.getByRole('button', { name: /all/i }));
           // Através da importação de dados de pokemons na "pokemons" faço um foreach para ler cada um dos pokemons, testando se mostra todos os pokemons
           getAllPokemons(nextPkmBtn);
         });

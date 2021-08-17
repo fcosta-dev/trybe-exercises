@@ -4,6 +4,7 @@ import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
+import userEvent from '@testing-library/user-event';
 
 describe('Requisito 01 - Teste do componente .js', () => {
   describe('Testando se a aplicação possui determinados links de navegação.', () => {
@@ -44,7 +45,7 @@ describe('Requisito 01 - Teste do componente .js', () => {
       // Será verificado se há um elemento do tipo link com o nome de "/home", e joga na variável home.
       const home = screen.getByRole('link', { name: /home/i });
       // Simula um click na variável home que contém o elemento link
-      fireEvent.click(home);
+      userEvent.click(home);
       // history.location.pathname pega o endereço da página.
       // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/".
       expect(history.location.pathname).toEqual('/');
@@ -56,7 +57,7 @@ describe('Requisito 01 - Teste do componente .js', () => {
       // Será verificado se há um elemento do tipo link com o nome de "/about", e joga na variável about.
       const about = screen.getByRole('link', { name: /about/i });
       // Simula um click na variável about que contém o elemento link
-      fireEvent.click(about);
+      userEvent.click(about);
       // history.location.pathname pega o endereço da página.
       // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/about".
       expect(history.location.pathname).toEqual('/about');
@@ -69,7 +70,7 @@ describe('Requisito 01 - Teste do componente .js', () => {
       const favoritePokemons = screen.getByRole('link',
         { name: /favorite pokémons/i });
       // Simula um click na variável favoritePokemons que contém o elemento link
-      fireEvent.click(favoritePokemons);
+      userEvent.click(favoritePokemons);
       // history.location.pathname pega o endereço da página.
       // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/favorites".
       expect(history.location.pathname).toEqual('/favorites');

@@ -1,6 +1,6 @@
 import React from 'react';
-import { fireEvent, screen } from '@testing-library/react';
-
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
@@ -12,8 +12,8 @@ describe('Requisito 03 - Teste o componente <FavoritePokemons.js />', () => {
       // Busca um elemento link com o endereço "/favorite pokémons" e guarda na variável favoritePokemons
       const favoritePokemons = screen.getByRole('link',
         { name: /favorite pokémons/i });
-        // Simula o click no elemento que está na variável favoritePokemons
-      fireEvent.click(favoritePokemons);
+      // Simula o click no elemento que está na variável favoritePokemons
+      userEvent.click(favoritePokemons);
       // history.location.pathname pega o endereço da página.
       // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/favorites".
       expect(history.location.pathname).toEqual('/favorites');
@@ -30,14 +30,14 @@ describe('Requisito 03 - Teste o componente <FavoritePokemons.js />', () => {
       // Busca um elemento link com o endereço "/more details" e guarda na variável moreDetails
       const moreDetails = screen.getByRole('link', { name: /more details/i });
       // Simula o click no elemento que está na variável moreDetails
-      fireEvent.click(moreDetails);
+      userEvent.click(moreDetails);
       // history.location.pathname pega o endereço da página.
       // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/pokemons/25".
       expect(history.location.pathname).toEqual('/pokemons/25');
       // Consulta na árvore de acessibilidade se há um elemento checkbox e guarda esse elemento na variável checkbox
       const checkbox = screen.getByRole('checkbox');
       // Simula o click no elemento que está na variável checkbox
-      fireEvent.click(checkbox);
+      userEvent.click(checkbox);
       // getByAltText: Se o seu elemento é aquele que suporta alttexto ( img, areae input), então você pode usar isso para encontrar esse elemento.
       // Verificando através do getByAltText se o texto "Pikachu is marked as favorite" e guarda o elemento na variável pikachuStar
       const pikachuStar = screen.getByAltText(/Pikachu is marked as favorite/i);
@@ -47,7 +47,7 @@ describe('Requisito 03 - Teste o componente <FavoritePokemons.js />', () => {
       const favoritePokemons = screen.getByRole('link',
         { name: /favorite pokémons/i });
         // Simula o click no elemento que está na variável favoritePokemons
-      fireEvent.click(favoritePokemons);
+      userEvent.click(favoritePokemons);
       // history.location.pathname pega o endereço da página.
       // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/favorites".
       expect(history.location.pathname).toEqual('/favorites');
