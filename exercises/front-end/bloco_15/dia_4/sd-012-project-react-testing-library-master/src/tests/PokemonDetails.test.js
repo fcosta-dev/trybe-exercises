@@ -8,7 +8,7 @@ import pokemons from '../data';
 
 const firstPokemon = pokemons[0];
 
-describe('[ 7 ] Teste o componente PokemonDetails.js', () => {
+describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
   describe('Testa se as informações detalhadas do Pokémon selecionado são mostradas',
     () => {
       test('A página deve conter um texto <name> Details', () => {

@@ -13,7 +13,7 @@ const typeTestId = 'pokemon-type';
 const weightTestId = 'pokemon-weight';
 const firstPokemon = pokemons[0]; // Pega o primeiro pokemon
 
-describe('Requisito 06 - Testa o componente Pokemon.js', () => {
+describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
   describe('Teste se é renderizado um card com as informações de determinado pokémon',
     () => {
       test('O nome correto do Pokémon deve ser mostrado na tela', () => {
