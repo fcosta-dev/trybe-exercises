@@ -20,6 +20,9 @@ const getAllPokemons = (nextPkmBtn) => {
   });
 };
 
+// Guarda na variável os types do pokemons percorrendo pelo map
+const pokemonTypes = pokemons.map((pokemon) => pokemon.type);
+
 // Cria na constante uniquePokemonTypes um array de tipos de pokemon, tirando os valores repetidos.
 const uniquePokemonTypes = [...new Set(pokemonTypes)];
 
