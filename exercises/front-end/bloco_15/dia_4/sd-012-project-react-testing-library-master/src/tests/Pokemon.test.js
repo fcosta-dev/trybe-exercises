@@ -7,7 +7,7 @@ import renderWithRouter from './renderWithRouter';
 // Busca a lista de pokemons
 import pokemons from '../data';
 
-// Para corrigir erros de link foi criado as constantes abaixo
+// Para corrigir erros de lint foi criado as constantes abaixo apenas com nomes que campos do App para serem chamados no teste
 const nameTestId = 'pokemon-name';
 const typeTestId = 'pokemon-type';
 const weightTestId = 'pokemon-weight';
@@ -36,10 +36,15 @@ describe('Requisito 06 - Testa o componente Pokemon.js', () => {
         () => {
           // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
+          // Guarda na variável abaixo o elemento que possui o datatestId 'pokemon-weight'
           const pokemonWeight = screen.getByTestId(weightTestId);
+          // Testa se o elemento pego acima possui o conteúdo de "Average weight". O "/" é como se fosse uma procura com "%" e o "i" é case sensitive
           expect(pokemonWeight).toHaveTextContent(/Average weight:/i);
+          // Desconstroi os dois itens do objeto averageWeight do data.js
           const { value, measurementUnit } = firstPokemon.averageWeight;
+          // Testa se o elemento encontrado acima tem o conteúdo do "value" desconstruído acima
           expect(pokemonWeight).toHaveTextContent(value);
+          // Testa se o elemento encontrado acima tem o conteúdo do "measurementUnit" desconstruído acima
           expect(pokemonWeight).toHaveTextContent(measurementUnit);
         });
 
@@ -47,7 +52,7 @@ describe('Requisito 06 - Testa o componente Pokemon.js', () => {
         // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
         const imageName = `${firstPokemon.name} sprite`;
-        // Guarda na variável pokemonImage um elemento image com o name da variável imageName
+        // Guarda na variável pokemonImage um elemento image com o name/texto da variável imageName
         const pokemonImage = screen.getByRole('img', { name: imageName });
         // Testa se o elemento da variável pokemonImage está no documento
         expect(pokemonImage).toBeInTheDocument();
