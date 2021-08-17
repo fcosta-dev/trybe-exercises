@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 
 import App from '../App';
-import renderWithRouter from '../helper/renderWithRouter';
+import renderWithRouter from './renderWithRouter';
 
 import pokemons from '../data';
 
