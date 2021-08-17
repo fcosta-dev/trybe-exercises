@@ -9,46 +9,60 @@ import pokemons from '../data';
 const firstPokemon = pokemons[0];
 
 describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
-  describe('Testa se as informações detalhadas do Pokémon selecionado são mostradas',
+  describe('Teste se as informações detalhadas do Pokémon selecionado são mostradas',
     () => {
       test('A página deve conter um texto <name> Details', () => {
+        // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
+        // Simulo um click no elemento link com name/texto "more details".
         fireEvent.click(screen.getByRole('link', { name: /more details/i }));
+        // Procura um heading(h1,h2,h3...) com name/texto do primeiro pokemon pego pela variável que possui o primeiro pokemon do data.js
         const h2 = screen.getByRole('heading', { name: `${firstPokemon.name} Details` });
+        // Testo se o elemento heading está no documento
         expect(h2).toBeInTheDocument();
       });
+
       test('Não deve existir link de navegação para detalhes do Pokémon selecionado',
         () => {
+          // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
           const moreDetails = screen.getByRole('link', { name: /more details/i });
           fireEvent.click(moreDetails);
           expect(moreDetails).not.toBeInTheDocument();
         });
+
       test('A seção de detalhes deve conter um heading h2 com o texto Summary',
         () => {
+          // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
           fireEvent.click(screen.getByRole('link', { name: /more details/i }));
           const h2 = screen.getByRole('heading', { name: /summary/i });
           expect(h2).toBeInTheDocument();
         });
+
       test('A seção de detalhes deve conter parágrafo com resumo do Pokémon visualizado',
         () => {
+          // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
           fireEvent.click(screen.getByRole('link', { name: /more details/i }));
           const summary = screen.getByText(firstPokemon.summary);
           expect(summary).toBeInTheDocument();
         });
     });
+
   describe('Testa se há na página seção com mapas contendo as localizações do pokémon',
     () => {
       test('Deverá existir um h2 com o texto Game Locations of <name>', () => {
+        // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
         fireEvent.click(screen.getByRole('link', { name: /more details/i }));
         const locations = `Game Locations of ${firstPokemon.name}`;
         const locationHeading = screen.getByRole('heading', { name: locations });
         expect(locationHeading).toBeInTheDocument();
       });
+
       test('Devem ser exibidos o nome da localização e uma imagem do mapa', () => {
+        // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
         fireEvent.click(screen.getByRole('link', { name: /more details/i }));
         const locations = `Game Locations of ${firstPokemon.name}`;
@@ -67,6 +81,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
     () => {
       test('A página deve exibir um checkbox que permite favoritar o Pokémon',
         () => {
+          // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
           fireEvent.click(screen.getByRole('link', { name: /more details/i }));
           const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
