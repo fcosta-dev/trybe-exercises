@@ -13,7 +13,7 @@ const typeTestId = 'pokemon-type';
 const weightTestId = 'pokemon-weight';
 const firstPokemon = pokemons[0]; // Pega o primeiro pokemon
 
-describe('Requisito 06 - Testa o componente Pokemon.js', () => {
+describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
   describe('Teste se é renderizado um card com as informações de determinado pokémon',
     () => {
       test('O nome correto do Pokémon deve ser mostrado na tela', () => {
@@ -28,7 +28,9 @@ describe('Requisito 06 - Testa o componente Pokemon.js', () => {
       test('O tipo correto do pokémon deve ser mostrado na tela', () => {
         // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
+        // Guarda na variável pokemonType o elemento datatestId com 'pokemon-type'
         const pokemonType = screen.getByTestId(typeTestId);
+        // Testo se o elemento que está na variável pokemonType possui o texto do primeiro pokemon
         expect(pokemonType).toHaveTextContent(firstPokemon.type);
       });
 
@@ -51,6 +53,7 @@ describe('Requisito 06 - Testa o componente Pokemon.js', () => {
       test('A imagem do Pokémon deve ser exibida', () => {
         // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
+        // Guarda na variável abaixo o name da função primeiropokemon com o texto sprite
         const imageName = `${firstPokemon.name} sprite`;
         // Guarda na variável pokemonImage um elemento image com o name/texto da variável imageName
         const pokemonImage = screen.getByRole('img', { name: imageName });
@@ -98,6 +101,21 @@ describe('Requisito 06 - Testa o componente Pokemon.js', () => {
     });
 
   describe('Testa se existe um ícone de estrela nos Pokémons favoritados', () => {
+    test('A img tem alt="<pokemon> is marked as favorite"', () => {
+      renderWithRouter(<App />);
+      // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
+      const moreDetails = screen.getByRole('link', { name: /more details/i });
+      // Simula um clock no elemento que está na variável moreDetails
+      fireEvent.click(moreDetails);
+      // Busca um elemento label com o text "Pokémon favoritado?"
+      const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
+      // Simula um clock no elemento que está na variável favorite
+      fireEvent.click(favorite);
+      const starIcon = screen.getByAltText(`${firstPokemon.name} is marked as favorite`);
+      // Verifica se o elemento que está na variável starIcon está no documento
+      expect(starIcon).toBeInTheDocument();
+    });
+
     test('A img tem src = "/star-icon.svg"', () => {
       renderWithRouter(<App />);
       // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
@@ -112,22 +130,8 @@ describe('Requisito 06 - Testa o componente Pokemon.js', () => {
       fireEvent.click(favorite);
       // Pega todos os elementos img e guarda na variável fireEvent
       const images = screen.getAllByRole('img');
+      // testo se o segundo elemento do array criado acima com as img possuem o atributo scr = "/star-icon.svg"
       expect(images[1]).toHaveAttribute('src', '/star-icon.svg');
-    });
-
-    test('A img tem alt="<pokemon> is marked as favorite"', () => {
-      renderWithRouter(<App />);
-      // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
-      const moreDetails = screen.getByRole('link', { name: /more details/i });
-      // Simula um clock no elemento que está na variável moreDetails
-      fireEvent.click(moreDetails);
-      // Busca um elemento label com o text "Pokémon favoritado?"
-      const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
-      // Simula um clock no elemento que está na variável favorite
-      fireEvent.click(favorite);
-      const starIcon = screen.getByAltText(`${firstPokemon.name} is marked as favorite`);
-      // Verifica se o elemento que está na variável starIcon está no documento
-      expect(starIcon).toBeInTheDocument();
     });
   });
 });
