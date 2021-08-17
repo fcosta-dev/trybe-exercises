@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
@@ -17,7 +17,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
         // Simulo um click no elemento link com name/texto "more details".
-        fireEvent.click(screen.getByRole('link', { name: /more details/i }));
+        userEvent.click(screen.getByRole('link', { name: /more details/i }));
         // Procura um heading(h1,h2,h3...) com name/texto do primeiro pokemon pego pela variável que possui o primeiro pokemon do data.js
         const h2 = screen.getByRole('heading', { name: `${firstPokemon.name} Details` });
         // Testo se o elemento heading está no documento
@@ -31,7 +31,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
           // Busca um elemento do tipo link com name/texto "more details"
           const moreDetails = screen.getByRole('link', { name: /more details/i });
           // Simula um click neste elemento encontrado acima
-          fireEvent.click(moreDetails);
+          userEvent.click(moreDetails);
           // Testo se o elemento "more details" não está renderizado no documento
           expect(moreDetails).not.toBeInTheDocument();
         });
@@ -41,7 +41,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
           // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
           // Simulo um click no elemento link com name/texto "more details".
-          fireEvent.click(screen.getByRole('link', { name: /more details/i }));
+          userEvent.click(screen.getByRole('link', { name: /more details/i }));
           // Procura um heading(h1,h2,h3...) com name/texto do primeiro pokemon pego pela variável que possui o primeiro pokemon do data.js
           const h2 = screen.getByRole('heading', { name: /summary/i });
           // Testo se o elemento heading está no documento
@@ -53,7 +53,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
           // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
           // Simulo um click no elemento link com name/texto "more details".
-          fireEvent.click(screen.getByRole('link', { name: /more details/i }));
+          userEvent.click(screen.getByRole('link', { name: /more details/i }));
           // Guarda na variável summary o summary do primeiro pokemon
           const summary = screen.getByText(firstPokemon.summary);
           // Testa se o summary está no documento
@@ -67,7 +67,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
         // Simulo um click no elemento link com name/texto "more details".
-        fireEvent.click(screen.getByRole('link', { name: /more details/i }));
+        userEvent.click(screen.getByRole('link', { name: /more details/i }));
         // Guarda na variável locations o texto abaixo com o name/texto do primeiro pokemon
         const locations = `Game Locations of ${firstPokemon.name}`;
         // Guarda na variável locationHeading o heading(h1,h2,h3..) com o name/texto do locations
@@ -80,7 +80,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         // Renderizo na tela as rotas do componente App.
         renderWithRouter(<App />);
         // Simulo um click no elemento link com name/texto "more details".
-        fireEvent.click(screen.getByRole('link', { name: /more details/i }));
+        userEvent.click(screen.getByRole('link', { name: /more details/i }));
         // Guarda na variável locations o texto abaixo com o name/texto do primeiro pokemon
         const locations = `Game Locations of ${firstPokemon.name}`;
         // Guarda na variável locationHeading o heading(h1,h2,h3..) com o name/texto do locations
@@ -93,11 +93,11 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         foundAt.forEach(({ location, map }, index) => {
           // Testo se o elemento que possui o location deste pokemon está no documento
           expect(screen.getByText(location)).toBeInTheDocument();
-          // Testa img por img, conforme index do array, se tem o atributo src com link do "map" que possui o endereço do pokemon 
+          // Testa img por img, conforme index do array, se tem o atributo src com link do "map" que possui o endereço do pokemon
           expect(screen.getAllByRole('img')[index + 1]).toHaveAttribute('src', map);
           // Guarda na variável altText o name/texto com o texto location
           const altText = `${firstPokemon.name} location`;
-          // Testa se todos 
+
           expect(screen.getAllByAltText(altText)[index]).toBeInTheDocument();
         });
       });
@@ -109,15 +109,15 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
           // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
           // Simulo um click no elemento link com name/texto "more details".
-          fireEvent.click(screen.getByRole('link', { name: /more details/i }));
+          userEvent.click(screen.getByRole('link', { name: /more details/i }));
           const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
           const checkbox = screen.getByRole('checkbox', { name: /Pokémon favoritado?/i });
           expect(checkbox).toBeInTheDocument();
           expect(favorite).toBeInTheDocument();
-          fireEvent.click(checkbox);
+          userEvent.click(checkbox);
           const starIcon = screen.getAllByRole('img')[1];
           expect(starIcon).toBeInTheDocument();
-          fireEvent.click(favorite);
+          userEvent.click(favorite);
           expect(starIcon).not.toBeInTheDocument();
         });
     });

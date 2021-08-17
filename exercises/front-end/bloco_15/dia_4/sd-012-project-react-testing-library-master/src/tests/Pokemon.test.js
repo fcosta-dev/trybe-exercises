@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
@@ -87,7 +87,7 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
           // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
           const moreDetails = screen.getByRole('link', { name: /more details/i });
           // Simula o click no elemento que está na variável moreDetails
-          fireEvent.click(moreDetails);
+          userEvent.click(moreDetails);
           // Desconstroi o name e o id da função firstPokemon
           const { name, id } = firstPokemon;
           // Pega o elemento heading(h2) com o name "$name Details"
@@ -106,11 +106,11 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
       // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
       const moreDetails = screen.getByRole('link', { name: /more details/i });
       // Simula um clock no elemento que está na variável moreDetails
-      fireEvent.click(moreDetails);
+      userEvent.click(moreDetails);
       // Busca um elemento label com o text "Pokémon favoritado?"
       const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
       // Simula um clock no elemento que está na variável favorite
-      fireEvent.click(favorite);
+      userEvent.click(favorite);
       const starIcon = screen.getByAltText(`${firstPokemon.name} is marked as favorite`);
       // Verifica se o elemento que está na variável starIcon está no documento
       expect(starIcon).toBeInTheDocument();
@@ -121,13 +121,13 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
       // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
       const moreDetails = screen.getByRole('link', { name: /more details/i });
       // Simula um click no elemento que está na variável moreDetails
-      fireEvent.click(moreDetails);
+      userEvent.click(moreDetails);
       // Busca um elemento label com o text "Pokémon favoritado?"
       const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
       // Simula um click no elemento da variável favorite
-      fireEvent.click(favorite);
+      userEvent.click(favorite);
       // Simula mais um click no elemento da variável favorite
-      fireEvent.click(favorite);
+      userEvent.click(favorite);
       // Pega todos os elementos img e guarda na variável fireEvent
       const images = screen.getAllByRole('img');
       // testo se o segundo elemento do array criado acima com as img possuem o atributo scr = "/star-icon.svg"
