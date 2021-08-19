@@ -90,6 +90,14 @@
         }, 2000);
       };
 
+      store.subscribe(() => {
+      const { meuPrimeiroReducer, meuSegundoReducer } = store.getState();
+      document.getElementById('nome-1').innerHTML = meuPrimeiroReducer.nome;
+      document.getElementById('sobrenome-1').innerHTML = meuPrimeiroReducer.sobrenome;
+
+      document.getElementById('nome-2').innerHTML = meuSegundoReducer.nome;
+      document.getElementById('sobrenome-2').innerHTML = meuSegundoReducer.sobrenome;
+    });      
     </script>
   </body>
 </html>
