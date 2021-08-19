@@ -42,9 +42,11 @@
       // Criando a função randomica de cores
       function criarCor() {
         const oneChar = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+        // Primeiro caracter é # para iniciar a cor
         let cor = '#';
         const aleatorio = () => Math.floor(Math.random() * oneChar.length);
         for (let i = 0; i < 6; i += 1) {
+          // primeiro caracter já está gravado na variável cor, e os 6 demais são gerados aleatoriamente
           cor += oneChar[aleatorio()];
         }
         return cor;
