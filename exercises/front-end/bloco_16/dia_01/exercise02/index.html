@@ -90,7 +90,8 @@
         }, 2000);
       };
 
-      // Atualiza as informações na página de acordo com o que temos armazenado na store, ou seja, quando a página carregar o nome renderizado deve ser alterado após alguns segundos
+      // A função do subscribe é pegar o que foi realizado de alteração na state e trazer para renderizar.
+      // Atualiza as informações na página de acordo com o que temos armazenado na store, ou seja, quando a página carregar o nome renderizado deve ser alterado após alguns segundos.
       store.subscribe(() => {
         // Desconstroi o getState() para pegar os reducers
         const { meuPrimeiroReducer, meuSegundoReducer } = store.getState();
