@@ -90,14 +90,20 @@
         }, 2000);
       };
 
+      // Atualiza as informações na página de acordo com o que temos armazenado na store, ou seja, quando a página carregar o nome renderizado deve ser alterado após alguns segundos
       store.subscribe(() => {
-      const { meuPrimeiroReducer, meuSegundoReducer } = store.getState();
-      document.getElementById('nome-1').innerHTML = meuPrimeiroReducer.nome;
-      document.getElementById('sobrenome-1').innerHTML = meuPrimeiroReducer.sobrenome;
+        // Desconstroi o getState() para pegar os reducers
+        const { meuPrimeiroReducer, meuSegundoReducer } = store.getState();
+        // Busca o elemento id 'nome-1', pega o innerHTML dele e substitui pelo Reducer.nome
+        document.getElementById('nome-1').innerHTML = meuPrimeiroReducer.nome;
+        // Busca o elemento id 'sobrenome-1', pega o innerHTML dele e substitui pelo Reducer.sobrenome
+        document.getElementById('sobrenome-1').innerHTML = meuPrimeiroReducer.sobrenome;
 
-      document.getElementById('nome-2').innerHTML = meuSegundoReducer.nome;
-      document.getElementById('sobrenome-2').innerHTML = meuSegundoReducer.sobrenome;
-    });      
+        // Busca o elemento id 'nome-2', pega o innerHTML dele e substitui pelo Reducer.nome
+        document.getElementById('nome-2').innerHTML = meuSegundoReducer.nome;
+        // Busca o elemento id 'sobrenome-2', pega o innerHTML dele e substitui pelo Reducer.sobrenome
+        document.getElementById('sobrenome-2').innerHTML = meuSegundoReducer.sobrenome;
+      });      
     </script>
   </body>
 </html>
