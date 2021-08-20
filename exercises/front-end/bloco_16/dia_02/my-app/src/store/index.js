@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineducers } from 'redux';
 import rootReducer from '../reducers';
 
 // A função createStore sempre receberá como parâmetro um rootReducer. Portanto, deve-se criar um rootReducer no arquivo src/reducers/index.js.
