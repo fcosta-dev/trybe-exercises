@@ -2,6 +2,7 @@ import { createStore, combineReducers } from 'redux';
 import carReducer from './carReducer';
 import trafficReducer from './trafficReducer';
 
+// Combinando os dois reducers
 const reducer = combineReducers({
   carReducer,
   trafficReducer});

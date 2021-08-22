@@ -48,9 +48,9 @@ Cars.propTypes = {
 // Passa os 3 estados para o componente Cars.
 // O objeto é o parametro do componente funcional com o que está colocado no initialState da redux/index.js
 const mapStateToProps = (state) => ({
-  redCar: state.cars.red,
-  blueCar: state.cars.blue,
-  yellowCar: state.cars.yellow
+  redCar: state.carReducer.cars.red,
+  blueCar: state.carReducer.cars.blue,
+  yellowCar: state.carReducer.cars.yellow
 });
 
 // Aqui eu despacho a action para o componente moveCar
