@@ -1,6 +1,7 @@
 import { createStore } from 'redux';
 import { MOVE_CAR } from './actionCreators';
 
+// O reducer deve ter 3 estados, e os 3 devem ser booleanos
 const initialState = {
   cars: {
     red: false,
