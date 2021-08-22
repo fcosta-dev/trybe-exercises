@@ -1,24 +1,14 @@
-import { createStore } from 'redux';
-import { MOVE_CAR } from './actionCreators';
+import { createStore, combineReducers } from 'redux';
+import carReducer from './carReducer';
+import trafficReducer from './trafficReducer';
 
-// O reducer deve ter 3 estados, e os 3 devem ser booleanos
-const initialState = {
-  cars: {
-    red: false,
-    blue: false,
-    yellow: false,
-  },
-};
+const reducer = combineReducers({
+  carReducer,
+  trafficReducer});
 
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case MOVE_CAR:
-      return { ...state, cars: { ...state.cars, [action.car]: action.side } };
-    default:
-      return state;
-  }
-}
-
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store;

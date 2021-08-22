@@ -50,21 +50,11 @@ const mapStateToProps = (state) => ({
   // As chaves do objeto serão os estados que serão passados como props para o nosso componente.
   // Usamos o parametro que passamos state, e ele vai estar recebendo o que passamos no nosso reducer, que no caso é o initialState(redux/index.js) por enquanto, já que não disparamos nenhuma action inicialmente.
   // redux/index.js -> const initialState = { signal: { color: 'red', },}
-  signalColor: state.signal.color
+  signalColor: state.trafficReducer.signal.color
 });
 
 // Utilizaremos a mapDispatchToProps para despachar/disparar nossa action para o componente
-// Passo o dispatch como parametro da função, e ela também retorna um objeto.
-const mapDispatchToProps = (dispatch) => ({
-  // A chave do objeto vai ser passado para a Props na linha 27
-  // Para a chave passamos uma arrow function, recebendo um parametro que pode ser qualquer nome, geralmente usa-se o que foi colocado na action(redux/actionCreators.js linha 3), no caso o payload.
-  // Esse dispatch é o nome que foi passado como parametro da função
-  // Como importamos nossa action na linha 8, dentro de dispatch colocanos nossa action e como parametro passamos o payload
-  changeSignal: (payload) => dispatch(changeSignal(payload))
-});
-
-// Os comandos acima podem ser trocados pela linha abaixo:
-// const mapDispatchToProps = { changeSignal }
+const mapDispatchToProps = { changeSignal }
 
 
 TrafficSignal.propTypes = {
