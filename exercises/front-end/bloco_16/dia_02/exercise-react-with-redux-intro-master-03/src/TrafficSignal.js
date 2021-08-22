@@ -56,7 +56,6 @@ const mapStateToProps = (state) => ({
 // Utilizaremos a mapDispatchToProps para despachar/disparar nossa action para o componente
 const mapDispatchToProps = { changeSignal }
 
-
 TrafficSignal.propTypes = {
   changeSignal: PropTypes.func.isRequired,
   signalColor: PropTypes.string.isRequired,
