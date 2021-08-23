@@ -6,6 +6,7 @@ export const setPersonalValue = (payload) => (
     type: SET_PERSONAL_VALUE, payload,
   });
 
-export const setProfessionalValue = (payload) => ({
-  type: SET_PROFESSIONAL_VALUE, payload,
-});
+export const setProfessionalValue = (payload) => (
+  {
+    type: SET_PROFESSIONAL_VALUE, payload,
+  });
