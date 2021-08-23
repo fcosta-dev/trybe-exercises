@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+// Importo o connect para conectar o estado global com o componente
 import { connect } from 'react-redux';
 
 import { setProfessionalValue } from '../redux/action/action';
+
+// Importando os componentes do formulário
 import Input from '../components/Input';
 import TextArea from '../components/TextArea';
 import Button from '../components/Button';
 
 class ProfessionalForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
       curriculo: '',
       cargo: '',
       descricao: '',
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
@@ -64,12 +70,15 @@ class ProfessionalForm extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatchSetValue: (valueAndName) => dispatch(setProfessionalValue(valueAndName)),
-});
-
+// Passa os 3 estados para o componente Cars.
+// O objeto é o parametro do componente funcional com o que está colocado no initialState da redux/index.js
 const mapStateToProps = (state) => ({
   professionalInputs: state.reducer.professionalInputs,
+});
+
+// Aqui eu despacho a action para o componente
+const mapDispatchToProps = (dispatch) => ({
+  dispatchSetValue: (valueAndName) => dispatch(setProfessionalValue(valueAndName)),
 });
 
 ProfessionalForm.propTypes = {
@@ -79,4 +88,5 @@ ProfessionalForm.propTypes = {
   }).isRequired,
 };
 
+// Exporta o connect
 export default connect(mapStateToProps, mapDispatchToProps)(ProfessionalForm);
