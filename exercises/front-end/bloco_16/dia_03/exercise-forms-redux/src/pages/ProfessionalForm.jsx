@@ -21,23 +21,29 @@ class ProfessionalForm extends Component {
       descricao: '',
     };
 
+    // Estrutura as funções para serem usados com o this em todo o componente
     this.handleChange = this.handleChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
   handleChange({ target }) {
+    // Desconstroi o target para pegar o name e o value
     const { name, value } = target;
+    // O name é qual o campo a ser alterado, e o value é o valor
     this.setState({ [name]: value });
   }
 
   onSubmitForm() {
+    // Desconstrói a props pegando o history e o dispatchSetValue
     const { history, dispatchSetValue } = this.props;
     dispatchSetValue(this.state);
     history.push('/formdisplay');
   }
 
   render() {
+    // Desconstrói o state
     const { curriculo, cargo, descricao } = this.state;
+
     return (
       <fieldset>
         <TextArea
@@ -70,7 +76,7 @@ class ProfessionalForm extends Component {
   }
 }
 
-// Passa os 3 estados para o componente Cars.
+// Passa os estados para o componente.
 // O objeto é o parametro do componente funcional com o que está colocado no initialState da redux/index.js
 const mapStateToProps = (state) => ({
   professionalInputs: state.reducer.professionalInputs,

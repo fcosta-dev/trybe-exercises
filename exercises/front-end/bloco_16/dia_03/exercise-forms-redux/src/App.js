@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+// Importa as pages para criação das Routes
 import PersonalForms from './pages/PersonalForms';
 import ProfessionalForm from './pages/ProfessionalForm';
 import FormDataDisplay from './pages/FormDataDisplay';
