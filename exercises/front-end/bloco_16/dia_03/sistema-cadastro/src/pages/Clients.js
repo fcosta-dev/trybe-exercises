@@ -12,7 +12,8 @@ class Clients extends React.Component {
     };
   }
 
-  generateRegisters = array =>
+  // Cria os registros com o map
+  generateRegisters = (array) =>
     array.map(register => (
       <div key={register.email}>
         <p>Nome: {register.name}</p>
@@ -22,6 +23,7 @@ class Clients extends React.Component {
       </div>
     ));
 
+  // Executa ordenação de registros
   orderRegisters = () => {
     const ordened = [...this.props.registers];
     ordened.sort((a, b) => {
@@ -51,6 +53,7 @@ class Clients extends React.Component {
           <Link to="/register">Cadastre agora!</Link>
         </div>
       );
+    
     return (
       <div>
         <Link to="/register">Cadastre outros!</Link>
@@ -66,11 +69,12 @@ class Clients extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   registers: state.registerReducer,
-  userLogin: state.loginReducer});
+  userLogin: state.loginReducer
+});
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   delete: event => dispatch(deleteRegister(event))});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Clients);
