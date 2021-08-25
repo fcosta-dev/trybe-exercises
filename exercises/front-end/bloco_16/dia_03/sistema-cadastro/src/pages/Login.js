@@ -35,12 +35,14 @@ class Login extends React.Component {
             placeholder="senha"
             style={ { height:'25px' } }
           />
+          <br />
+          <Link
+            to="/clients"
+            // Chamo o login que está na props e disparo os panametros email e password
+            onClick={() => this.props.login({ email, password })}>
+            Entre
+          </Link>
         </div>
-        <Link
-          to="/clients"
-          onClick={() => this.props.login({ email, password })}>
-          Entre
-        </Link>
       </div>
     );
   }
