@@ -69,11 +69,12 @@ class Clients extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   registers: state.registerReducer,
-  userLogin: state.loginReducer});
+  userLogin: state.loginReducer
+});
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   delete: event => dispatch(deleteRegister(event))});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Clients);
