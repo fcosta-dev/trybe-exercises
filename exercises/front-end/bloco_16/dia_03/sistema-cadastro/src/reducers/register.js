@@ -1,8 +1,12 @@
-const Initial_State = {
+// É um array pois o retorno do state é um array, pois usa-se map
+const INITIAL_STATE = [
+  // id,
+  // name = '',
+  // age = '',
+  // email = '',
+]
 
-}
-
-function registerReducer(state = Initial_State, action) {
+function registerReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     // Action de adicionar registro
     case 'ADD_REGISTER':

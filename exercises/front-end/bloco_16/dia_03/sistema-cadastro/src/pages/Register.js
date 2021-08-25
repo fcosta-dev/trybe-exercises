@@ -15,8 +15,13 @@ class Register extends React.Component {
 
   validateRegister = () => {
     const { name, age, email } = this.state;
-    this.props.addRegister({ name, age, email });
+
+    // Necessário criar aqui abaixo um critério para pegar 
+
+    
+    this.props.addRegister({ id, name, age, email });
     this.setState({
+      id: '',
       name: '',
       age: '',
       email: '',
@@ -30,6 +35,7 @@ class Register extends React.Component {
     return (
       <div>
         <div>
+
           <input
             type="text"
             placeholder="Nome"
