@@ -15,8 +15,7 @@ class Clients extends React.Component {
   // Cria os registros com o map
   generateRegisters = (array) =>
     array.map(register => (
-      <div key={ register.id }>
-        <p>Id: { register.id } </p>
+      <div key={ register.email }>
         <p>Nome: { register.name }</p>
         <p>Idade: { register.age }</p>
         <p>Email: { register.email }</p>

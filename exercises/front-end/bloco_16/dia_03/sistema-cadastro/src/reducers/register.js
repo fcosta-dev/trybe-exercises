@@ -1,9 +1,8 @@
 // É um array pois o retorno do state é um array, pois usa-se map
 const INITIAL_STATE = [
-  // id,
-  // name = '',
-  // age = '',
-  // email = '',
+  // name: '',
+  // age: '',
+  // email: '',
 ]
 
 function registerReducer(state = INITIAL_STATE, action) {

@@ -8,32 +8,19 @@ class Register extends React.Component {
     super(props);
 
     this.state = {
-      id: '',
       name: '',
       age: '',
       email: '',
     };
   }
 
-  // Pega último numero de id do registro
-  // registers pegou da props lida do mapStateToProps
-  lastIDRegister = (registers) => {
-    // O apply funciona como se você tivesse passado os valores do array como parâmetros da função max, e equivaleria a se digitar Math.max(0,12,13,2.... O primeiro parâmetro equivale ao escopo a ser usado na função, e neste caso, como é indiferente, passamos null, que representa o escopo global.
-    return Math.max.apply(null, registers.id)
-  }
-
-
   validateRegister = () => {
-    let { id } = this.state
     const { name, age, email } = this.state;
 
-    // Necessário criar aqui abaixo um critério para pegar Id mais alto
-    (!id ? this.lastIDRegister() : id)
-
     // Adiciona registro
-    this.props.addRegister({ id , name, age, email });
+    this.props.addRegister({ name, age, email });
+
     this.setState({
-      id: '',
       name: '',
       age: '',
       email: '',
@@ -43,11 +30,12 @@ class Register extends React.Component {
   render() {
     const { name, age, email } = this.state;
     const { userLogin } = this.props;
+
     if (!userLogin.email) return <div>Login não efetuado!</div>;
+
     return (
       <div>
         <div>
-
           <input
             type="text"
             placeholder="Nome"
