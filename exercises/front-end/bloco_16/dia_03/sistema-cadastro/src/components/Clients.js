@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteRegister } from './actions';
+import { deleteRegister } from '../actions';
 
 class Clients extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       ordened: false,
     };
@@ -37,6 +38,7 @@ class Clients extends React.Component {
     });
     return ordened;
   };
+
   render() {
     const { registers, userLogin } = this.props;
     const { ordened } = this.state;
@@ -69,6 +71,6 @@ const mapStateToProps = state => ({
   userLogin: state.loginReducer});
 
 const mapDispatchToProps = dispatch => ({
-  delete: e => dispatch(deleteRegister(e))});
+  delete: event => dispatch(deleteRegister(event))});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Clients);
