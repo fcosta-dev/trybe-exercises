@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 class Register extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name: '',
       age: '',
@@ -15,7 +16,10 @@ class Register extends React.Component {
 
   validateRegister = () => {
     const { name, age, email } = this.state;
+
+    // Adiciona registro
     this.props.addRegister({ name, age, email });
+
     this.setState({
       name: '',
       age: '',
@@ -26,7 +30,9 @@ class Register extends React.Component {
   render() {
     const { name, age, email } = this.state;
     const { userLogin } = this.props;
+
     if (!userLogin.email) return <div>Login não efetuado!</div>;
+
     return (
       <div>
         <div>
@@ -56,7 +62,8 @@ class Register extends React.Component {
   }
 }
 const mapStateToProps = (state) => ({
-  userLogin: state.loginReducer
+  userLogin: state.loginReducer,
+  registers: state.registerReducer
 });
 
 const mapDispatchToProps = (dispatch) => ({

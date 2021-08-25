@@ -15,10 +15,10 @@ class Clients extends React.Component {
   // Cria os registros com o map
   generateRegisters = (array) =>
     array.map(register => (
-      <div key={register.email}>
-        <p>Nome: {register.name}</p>
-        <p>Idade: {register.age}</p>
-        <p>Email: {register.email}</p>
+      <div key={ register.email }>
+        <p>Nome: { register.name }</p>
+        <p>Idade: { register.age }</p>
+        <p>Email: { register.email }</p>
         <button onClick={() => this.props.delete(register)}>X</button>
       </div>
     ));

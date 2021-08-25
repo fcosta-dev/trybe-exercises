@@ -5,10 +5,10 @@ class Home extends Component {
   render() {
     return (
       <>
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '30vh'}}>
+        <div style={{display: 'flex', justifyContent:'center', alignItems:'center', height: '30vh'}}>
           Bem-vindo ao sistema de cadastramento de clientes
         </div>
-        <div  style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+        <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
           <br />
           <br />
           <br />

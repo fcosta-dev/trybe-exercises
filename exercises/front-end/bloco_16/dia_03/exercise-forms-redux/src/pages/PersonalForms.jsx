@@ -128,5 +128,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({ personalInputs: state.reducer.personalInputs });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonalForm);
 // a função connect conversa com o Provider, um avisa o outro quando há alterações.
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalForm);
