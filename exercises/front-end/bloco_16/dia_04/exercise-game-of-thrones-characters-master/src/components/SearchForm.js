@@ -55,9 +55,14 @@ render() {
 };
 
 // mapeie as ações despachadas como propriedade do componente
-
+const mapDispatchToProps = (dispatch) => ({
+  importedThunk: (name) => dispatch(thunkCharacter(name))
+});
 
 // conecte as ações despachadas ao redux
+export default connect(null, mapDispatchToProps)(SearchForm);
 
 //faça as proptypes da ação oriunda do thunk
-
+SearchForm.propTypes = {
+  importedThunk: propTypes.func.isRequired,
+};
