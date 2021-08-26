@@ -24,7 +24,7 @@ export function thunkPersonagem(name) {
     dispatch(searchBegin(name));
     return charAPI(name)
       .then(
-        (character) => dispatch(searchSuccess(character)),
+        (personagem) => dispatch(searchSuccess(personagem)),
         (error) => dispatch(searchFailure(error.message)),
       );
   };

@@ -1,9 +1,9 @@
 // src/reducers/index.js
 import { combineReducers } from 'redux';
-import characterReducer from './characterReducer';
+import personagemReducer from './personagemReducer';
 
 const rootReducer = combineReducers({
-  characterReducer
+  personagemReducer
 });
 
 export default rootReducer;

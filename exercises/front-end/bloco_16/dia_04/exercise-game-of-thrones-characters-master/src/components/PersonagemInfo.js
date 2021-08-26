@@ -35,5 +35,12 @@ export default connect(mapStateToProps)(PersonagemInfo);
 
 //faça as propTypes
 PersonagemInfo.propTypes = {
-  importedThunk: propTypes.func.isRequired,
+  loading: propTypes.bool.isRequired,
+  personagem: propTypes.arrayOf(propTypes.object),
+  error: propTypes.string,
+};
+
+PersonagemInfo.defaultProps = {
+  personagem: null,
+  error: null,
 };
