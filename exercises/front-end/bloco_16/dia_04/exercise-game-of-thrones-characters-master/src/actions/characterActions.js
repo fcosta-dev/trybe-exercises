@@ -8,10 +8,12 @@ export const searchBegin = (characterSearched) => (
   { type: SEARCH_BEGIN, loading: true, characterSearched }
 );
 
+// Action referente ao retorno com sucesso
 export const searchSuccess = (character) => (
   { type: SEARCH_SUCCESS, loading: false, character }
 );
 
+// Action referente ao retorno com falha
 export const searchFailure = (error) => (
   { type: SEARCH_ERROR, loading: false, error }
 );
