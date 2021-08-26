@@ -1,4 +1,3 @@
-// src/actions/characterActions.js
 import charAPI from '../services/charAPI';
 export const SEARCH_BEGIN = 'SEARCH_BEGIN';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
