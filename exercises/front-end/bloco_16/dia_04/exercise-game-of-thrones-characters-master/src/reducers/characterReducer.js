@@ -1,5 +1,5 @@
 // src/reducers/characterReducer.js
-import { SEARCH_BEGIN, SEARCH_SUCCESS, SEARCH_ERROR } from '../actions/characterActions';
+import { SEARCH_BEGIN, SEARCH_SUCCESS, SEARCH_ERROR } from '../actions/personagemActions';
 
 const initialState = {
   isLoading: false,

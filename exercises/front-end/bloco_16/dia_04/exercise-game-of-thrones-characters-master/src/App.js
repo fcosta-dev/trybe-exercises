@@ -1,12 +1,12 @@
 import React from 'react';
 import SearchForm from './components/SearchForm';
-import CharacterInfo from './components/CharacterInfo';
+import PersonagemInfo from './components/PersonagemInfo';
 
 function App() {
   return (
     <div className="App">
       <SearchForm />
-      <CharacterInfo />
+      <PersonagemInfo />
     </div>
   );
 }
