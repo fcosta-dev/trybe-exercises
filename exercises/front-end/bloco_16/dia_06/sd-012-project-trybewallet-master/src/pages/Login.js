@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-
-import { actionAutenticacao, actionLogin } from '../actions'
+// Importa as actions
+import { actionAutenticacao, actionLogin } from '../actions';
 
 // Importa a imagem da carteira/wallet
 import wallet from '../images/wallet.jpg';
 
-class Login extends React.Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -20,16 +19,17 @@ class Login extends React.Component {
     };
 
     // Libera as funções abaixo com o this para serem usadas em toda a classe
+    this.handleChange = this.handleChange.bind(this);
     // Essas funções são para renderizar a page
     this.emailRender = this.emailRender.bind(this);
     this.passwordRender = this.passwordRender.bind(this);
   }
 
   // Cada movimento ele guarda na state o elemento e o valor e executa o autenticador
-  handleChange({ target }) {
+  handleChange({ target: { name, value } }) {
     this.setState({
-      [target.name]: target.value,
-    }, () => this.autenticador())
+      [name]: value,
+    }, () => this.autenticador());
   }
 
   autenticador() {
@@ -41,16 +41,17 @@ class Login extends React.Component {
     const emailReg = /^[a-z0-9_.]+@[a-z0-9]+\.[a-z]{2,3}(?:\.[a-z]{2})?$/;
     const tamanhoMinimo = 6;
     // Use test() sempre que você quiser saber se um padrão está dentro de uma string
-    dispatchAutenticacao(emailReg.test(email) && password.length >= tamanhoMinimo);    
+    dispatchAutenticacao(emailReg.test(email) && password.length >= tamanhoMinimo);
   }
 
   // Renderiza o campo email e o configura
   emailRender() {
+    // Pega na state o email
     const { email } = this.state;
 
     return (
       <label htmlFor="email-input">
-        <h3 style={ { display: 'flex', justifyContent: 'center' } } >
+        <h3 style={ { display: 'flex', justifyContent: 'center' } }>
           Login
         </h3>
         <input
@@ -58,16 +59,17 @@ class Login extends React.Component {
           type="email"
           name="email"
           id="email-input"
-          value={ email }
-          onChange={ (event) => this.setState({ email: event.target.value }) }
           placeholder="email"
           style={ { height: '25px' } }
+          onChange={ this.handleChange }
+          value={ email }
         />
       </label>
     );
   }
 
   passwordRender() {
+    // Pega na state o password
     const { password } = this.state;
 
     return (
@@ -77,16 +79,17 @@ class Login extends React.Component {
           type="password"
           name="password"
           id="password-input"
-          value={ password }
-          onChange={ (event) => this.setState({ password: event.target.value }) }
           placeholder="senha"
           style={ { height: '25px' } }
+          onChange={ this.handleChange }
+          value={ password }
         />
       </label>
     );
   }
 
   render() {
+    const { email } = this.state;
     // A desconstrução abaixo da props foi criada pelos Maps
     // o stateAutenticado foi criado pelo MapStateToProps
     // o dispatchLogin foi criado pelo MapDispatchToProps
@@ -119,8 +122,8 @@ class Login extends React.Component {
             <Link to="/carteira">
               <button
                 type="button"
-                onClick={ () => console.log('Clicou') }
-                {/* Ao entrar na página o botão vai constar como desabilitado */}
+                onClick={ () => dispatchLogin(email) }
+                // Faz a leitura na state se o usuário está ou não autenticado
                 disabled={ !stateAutenticado }
               >
                 Entrar
@@ -133,16 +136,21 @@ class Login extends React.Component {
   }
 }
 
-// Faz a leitura 
+// Faz a props validation
+Login.propTypes = {
+  stateAutenticado: PropTypes.bool.isRequired,
+  dispatchAutenticacao: PropTypes.func.isRequired,
+  dispatchLogin: PropTypes.func.isRequired,
+};
+
+// Faz a leitura
 const mapStateToProps = ({ user }) => ({
   stateAutenticado: user.stateAutenticado,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchAutenticacao: (okAutenticado) => dispatch(actionAutenticacao(okAutenticado)),
-  dispatchLogin: (email) => dispatch(actionLogin(email))
-})
+  dispatchLogin: (email) => dispatch(actionLogin(email)),
+});
 
-// Por não ter necessidade de leitura da Store, temos apenas o Disparo para gravar algo na Store
-// export default connect(null, null)(Login);
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
