@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
+// npm install --save redux-form
+import { Field } from 'redux-form';
 import Messages from '../components/Messages';
 import Grid from '../components/Grid';
 import Row from '../components/Row';
