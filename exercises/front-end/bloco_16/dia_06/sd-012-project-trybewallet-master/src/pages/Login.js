@@ -25,6 +25,12 @@ class Login extends React.Component {
     this.passwordRender = this.passwordRender.bind(this);
   }
 
+  // Cada movimento ele guarda na state o elemento e o valor e executa o autenticador
+  handleChange({ target }) {
+    this.setState({
+      [target.name]: target.value,
+    }, () => this.autenticador())
+  }
 
   autenticador() {
     // Pega do state
@@ -115,7 +121,7 @@ class Login extends React.Component {
                 type="button"
                 onClick={ () => console.log('Clicou') }
                 {/* Ao entrar na página o botão vai constar como desabilitado */}
-                disabled="true"
+                disabled={ !stateAutenticado }
               >
                 Entrar
               </button>
@@ -127,7 +133,7 @@ class Login extends React.Component {
   }
 }
 
-
+// Faz a leitura 
 const mapStateToProps = ({ user }) => ({
   stateAutenticado: user.stateAutenticado,
 })
