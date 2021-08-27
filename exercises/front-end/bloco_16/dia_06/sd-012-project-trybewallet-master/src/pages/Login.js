@@ -25,6 +25,19 @@ class Login extends React.Component {
     this.passwordRender = this.passwordRender.bind(this);
   }
 
+
+  autenticador() {
+    // Pega do state
+    const { email, password } = this.state;
+    // Chave criada pelo mapDispatchToProps que recebe uma função
+    // dispatchAutenticacao: (okAutenticado) => dispatch(actionAutenticacao(okAutenticado))
+    const { dispatchAutenticacao } = this.props;
+    const emailReg = /^[a-z0-9_.]+@[a-z0-9]+\.[a-z]{2,3}(?:\.[a-z]{2})?$/;
+    const tamanhoMinimo = 6;
+    // Use test() sempre que você quiser saber se um padrão está dentro de uma string
+    dispatchAutenticacao(emailReg.test(email) && password.length >= tamanhoMinimo);    
+  }
+
   // Renderiza o campo email e o configura
   emailRender() {
     const { email } = this.state;
@@ -68,6 +81,11 @@ class Login extends React.Component {
   }
 
   render() {
+    // A desconstrução abaixo da props foi criada pelos Maps
+    // o stateAutenticado foi criado pelo MapStateToProps
+    // o dispatchLogin foi criado pelo MapDispatchToProps
+    const { stateAutenticado, dispatchLogin } = this.props;
+
     return (
       <div className="login">
         <form className="forms-div">
@@ -111,10 +129,13 @@ class Login extends React.Component {
 
 
 const mapStateToProps = ({ user }) => ({
-  .
+  stateAutenticado: user.stateAutenticado,
 })
-// const mapDispatchToProps = (dispatch) => ({
-//   login: event => dispatch(login(event))});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchAutenticacao: (okAutenticado) => dispatch(actionAutenticacao(okAutenticado)),
+  dispatchLogin: (email) => dispatch(actionLogin(email))
+})
 
 // Por não ter necessidade de leitura da Store, temos apenas o Disparo para gravar algo na Store
 // export default connect(null, null)(Login);
