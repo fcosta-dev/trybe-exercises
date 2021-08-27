@@ -143,7 +143,7 @@ Login.propTypes = {
   dispatchLogin: PropTypes.func.isRequired,
 };
 
-// Faz a leitura
+// Vai la no reducer User, do User.js, e busca o stateAutenticado e joga esse valor para a chave stateAutenticado
 const mapStateToProps = ({ user }) => ({
   stateAutenticado: user.stateAutenticado,
 });

@@ -14,7 +14,7 @@ const INITIAL_STATE = {
 // Esse abaixo é o reducer user, onde ele tem uma switch para verificar qual action a ser disparada, no caso abaixo serão duas opções.
 const user = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  // Action para realizar a ação de autenticação
+  // Action para realizar a ação de autenticação, ou seja, depois do check realizado é feito a alteração do state para true e o botão Enviar é liberado
   case ACTION_AUTENTICACAO:
     return ({
       // Através do spread operator vai ser retornado todo o state, com a alteração da linha autenticado
