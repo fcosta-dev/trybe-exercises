@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
+
+import { loginAutenticacao } from '../actions'
 
 // Importa a imagem da carteira/wallet
 import wallet from '../images/wallet.jpg';
@@ -27,12 +30,7 @@ class Login extends React.Component {
 
     return (
       <label htmlFor="email-input">
-        <h3
-          style={ {
-            display: 'flex',
-            justifyContent: 'center',
-          } }
-        >
+        <h3 style={ { display: 'flex', justifyContent: 'center' } } >
           Login
         </h3>
         <input
