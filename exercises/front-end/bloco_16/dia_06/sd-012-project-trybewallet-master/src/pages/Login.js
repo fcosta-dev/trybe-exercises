@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
-import { loginAutenticacao } from '../actions'
+import { actionAutenticacao, actionLogin } from '../actions'
 
 // Importa a imagem da carteira/wallet
 import wallet from '../images/wallet.jpg';
@@ -20,6 +20,7 @@ class Login extends React.Component {
     };
 
     // Libera as funções abaixo com o this para serem usadas em toda a classe
+    // Essas funções são para renderizar a page
     this.emailRender = this.emailRender.bind(this);
     this.passwordRender = this.passwordRender.bind(this);
   }
@@ -108,6 +109,10 @@ class Login extends React.Component {
   }
 }
 
+
+const mapStateToProps = ({ user }) => ({
+  .
+})
 // const mapDispatchToProps = (dispatch) => ({
 //   login: event => dispatch(login(event))});
 
