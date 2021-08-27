@@ -1,7 +1,7 @@
 // Esse reducer será responsável por tratar as informações da pessoa usuária
 
 // Importo as duas actions para serem estruturadas neste reducer
-import { ACTION_AUTENTICACAO, ACTION_LOGIN } from '../actions';
+import { ACTION_AUTENTICACAO, ACTION_LOGIN } from '../actions/actionTypes';
 
 // Estou dando início ao meu state com duas chaves:
 // email que vai ter o email do usuário
@@ -19,7 +19,7 @@ const user = (state = INITIAL_STATE, action) => {
     return ({
       // Através do spread operator vai ser retornado todo o state, com a alteração da linha autenticado
       ...state,
-      autenticado: action.payload,
+      stateAutenticado: action.payload,
     });
     // Action para realizar a ação de login
   case ACTION_LOGIN:

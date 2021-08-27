@@ -148,6 +148,7 @@ const mapStateToProps = ({ user }) => ({
   stateAutenticado: user.stateAutenticado,
 });
 
+// Dispara as actions fazendo a gravação na store
 const mapDispatchToProps = (dispatch) => ({
   dispatchAutenticacao: (okAutenticado) => dispatch(actionAutenticacao(okAutenticado)),
   dispatchLogin: (email) => dispatch(actionLogin(email)),
