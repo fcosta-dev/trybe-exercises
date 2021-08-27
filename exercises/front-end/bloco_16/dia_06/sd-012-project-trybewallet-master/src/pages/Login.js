@@ -16,6 +16,7 @@ class Login extends React.Component {
       password: '',
     };
 
+    // Libera as funções abaixo com o this para serem usadas em toda a classe
     this.emailRender = this.emailRender.bind(this);
     this.passwordRender = this.passwordRender.bind(this);
   }
@@ -26,7 +27,14 @@ class Login extends React.Component {
 
     return (
       <label htmlFor="email-input">
-        <h3>Login</h3>
+        <h3
+          style={ {
+            display: 'flex',
+            justifyContent: 'center',
+          } }
+        >
+          Login
+        </h3>
         <input
           data-testid="email-input"
           type="email"
@@ -63,30 +71,37 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login">
-        {/* Abre imagem de wallet */}
-        <div className="logo-div">
-          <img src={ wallet } alt="wallet" />
-        </div>
         <form className="forms-div">
           <div
             className="div_inputs"
+            // Style abaixo é para deixar a tela de login visualmente mais bonita
+            // Era possível colocar em um CSS, mas achei mais prático colocar aqui
             style={ {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              height: '30vh',
+              height: '40vh',
               flexDirection: 'column',
             } }
           >
+            {/* Div criada para mostrar imagem de carteira/wallet */}
+            <div className="logo-div">
+              <img src={ wallet } alt="wallet" />
+            </div>
+            {/* Funções criadas com HTML fora do render devido eslist */}
             { this.emailRender() }
             { this.passwordRender() }
             <br />
-            <Link
-              to="/clients"
-              // Chamo o login que está na props e disparo os panametros email e password
-              onClick={ () => console.log('Clicou') }
-            >
-              Entre
+            { /* Quando ok, redireciona o link para /carteira */}
+            <Link to="/carteira">
+              <button
+                type="button"
+                onClick={ () => console.log('Clicou') }
+                {/* Ao entrar na página o botão vai constar como desabilitado */}
+                disabled="true"
+              >
+                Entrar
+              </button>
             </Link>
           </div>
         </form>

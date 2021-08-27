@@ -1,5 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+
+// Importa as páginas oficiais do projeto, Login e Wallet
 import Login from './pages/Login';
 import Wallet from './pages/Wallet';
 
