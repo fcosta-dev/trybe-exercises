@@ -1,0 +1,1 @@
+LESS, SASS e SCSS são extensões do CSS, ou seja, de uma maneira bem simples, adicionam funcionalidades ao CSS. 
