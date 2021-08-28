@@ -8,7 +8,7 @@ import {
   ACTION_REMOVE_EXPENSE,
   ACTION_SELECT_EXPENSE,
   ACTION_EDIT_EXPENSE,
-} from '../actions';
+} from '../actions/actionTypes';
 
 // Estado inicial
 const INITIAL_STATE = {
@@ -50,7 +50,7 @@ const wallet = (state = INITIAL_STATE, action) => {
   case ACTION_REMOVE_EXPENSE: // Action de remover despesas
     return ({
       ...state,
-      expenses: state.expenses.filter((exp) => exp.id !== action.payload),
+      expenses: state.expenses.filter((expense) => expense.id !== action.payload),
     });
   case ACTION_SELECT_EXPENSE: // Action de selecionar despesas
     return ({

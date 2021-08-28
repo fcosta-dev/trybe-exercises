@@ -16,8 +16,8 @@ class Wallet extends React.Component {
     return (
       <div>
         <Header />
-        {/* {status === 'add' && <ExpensesForm />}
-        {status === 'edit' && <EditForm />}
+        {status === 'add' && <ExpensesForm />}
+        {/* {status === 'edit' && <EditForm />} */}
         <ExpensesTable /> */}
       </div>
     );

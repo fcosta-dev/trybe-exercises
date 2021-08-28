@@ -1,0 +1,98 @@
+.forms-div {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.forms-div a {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: 3%;
+  text-decoration: none;
+}
+
+.forms-div a button {
+  background-color: #2fc18c;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  height: 50px;
+  transition: 0.5s;
+  width: auto;
+}
+
+.forms-div a button:disabled {
+  background-color: lightgray;
+  color: black;
+  cursor: not-allowed;
+  transition: 0.5s;
+}
+
+.login {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.logo-div , .forms-div {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+.forms-div input {
+  background-color: transparent;
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-bottom: 2px solid #41197f;
+  height: 40px;
+  transition: 0.5s;
+  width: 500px;
+}
+
+.forms-div input:focus {
+  border: 2px solid #2fc18c;
+  outline: none;
+  transition: 0.5s;
+}
+
+.logo-div {
+  background-color: #023031;
+  border-right: 4px solid #2fc18c;
+  height: 100vh;
+  width: 50vw;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('../fonts/Roboto/Roboto-Regular.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body , html , main {
+  font-family: Roboto, sans-serif;
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
+}
+
+label {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: 3%;
+  text-align: left;
+}

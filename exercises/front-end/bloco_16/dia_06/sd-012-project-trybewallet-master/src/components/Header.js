@@ -10,14 +10,14 @@ class Header extends React.Component {
     this.sumTotal = this.sumTotal.bind(this);
   }
 
-  // sumTotal() {
-  //   const { expenses } = this.props;
-  //   let soma = 0;
-  //   expenses.forEach(({ value, currency, exchangeRates }) => {
-  //     soma += exchangeRates[currency].ask * value;
-  //   });
-  //   return soma.toFixed(2);
-  // }
+  sumTotal() {
+    const { expenses } = this.props;
+    let soma = 0;
+    expenses.forEach(({ value, currency, exchangeRates }) => {
+      soma += exchangeRates[currency].ask * value;
+    });
+    return soma.toFixed(2);
+  }
 
   render() {
     // Pega o email do estado global da aplicação
@@ -42,7 +42,7 @@ Header.defaultProps = {
 Header.propTypes = {
   email: PropTypes.string.isRequired,
   currency: PropTypes.string,
-  // total: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.object),
 };
 
