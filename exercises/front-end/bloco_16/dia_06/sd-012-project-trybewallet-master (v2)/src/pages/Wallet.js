@@ -2,40 +2,44 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-// Importa os componentes que irão abrir a página /carteira
-import Header from '../components/Header';
-import ExpensesForm from '../components/ExpensesForm';
-import ExpensesTable from '../components/ExpensesTable';
-import EditForm from '../components/EditForm';
+import { fetchCurrencies as getCurrencies } from '../actions';
+import { ExpensesTable, Header, NewExpenseForm, EditExpenseForm } from '../components';
+
+import '../styles/Wallet.css';
 
 class Wallet extends React.Component {
-  render() {
-    // Pega o status da state global da aplicação
-    const { status } = this.props;
+  componentDidMount() {
+    const { fetchCurrencies } = this.props;
+    fetchCurrencies();
+  }
 
+  render() {
+    const { isEditing } = this.props;
     return (
-      <div>
+      <main className="wallet-main">
         <Header />
-        {status === 'add' && <ExpensesForm />}
-        {/* {status === 'edit' && <EditForm />} */}
-        <ExpensesTable /> */}
-      </div>
+        { isEditing ? <EditExpenseForm /> : <NewExpenseForm />}
+        <ExpensesTable />
+      </main>
     );
   }
 }
 
-// Busca as informações do estado global da aplicação, com base em seus reducers(user ou wallet)
-// Chave status recebe o dado como props conforme reducer
-const mapStateToProps = ({ wallet }) => ({
-  status: wallet.status,
+const mapStateToProps = (state) => ({
+  isEditing: state.wallet.isEditing,
 });
 
-Wallet.defaultProps = ({
-  status: undefined,
+const mapDispatchToProps = (dispatch) => ({
+  fetchCurrencies: () => dispatch(getCurrencies()),
 });
 
-Wallet.propTypes = ({
-  status: PropTypes.string,
-});
+export default connect(mapStateToProps, mapDispatchToProps)(Wallet);
 
-export default connect(mapStateToProps, null)(Wallet);
+Wallet.propTypes = {
+  isEditing: PropTypes.bool,
+  fetchCurrencies: PropTypes.func.isRequired,
+};
+
+Wallet.defaultProps = {
+  isEditing: false,
+};

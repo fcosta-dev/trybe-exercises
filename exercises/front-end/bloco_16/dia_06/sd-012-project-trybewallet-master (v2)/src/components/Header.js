@@ -3,57 +3,51 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
-    // Libera a função abaixo para
-    this.sumTotal = this.sumTotal.bind(this);
+    this.getTotalExpenses = this.getTotalExpenses.bind(this);
   }
 
-  sumTotal() {
+  getTotalExpenses() {
     const { expenses } = this.props;
-    let soma = 0;
-    expenses.forEach(({ value, currency, exchangeRates }) => {
-      soma += exchangeRates[currency].ask * value;
-    });
-    return soma.toFixed(2);
+    const totalExpenses = expenses.reduce((total, each) => {
+      const { value, currency, exchangeRates } = each;
+      const rate = parseFloat(exchangeRates[currency].ask);
+      return total + parseFloat(value) * rate;
+    }, 0);
+    return totalExpenses.toFixed(2);
   }
 
   render() {
-    // Pega o email do estado global da aplicação
-    // Pega qual câmbio está sendo utilizado
-    const { email, currency } = this.props;
-
+    const { email } = this.props;
     return (
-      <header id="page-header">
-        <h4 data-testid="email-field">{ email }</h4>
-        <p data-testid="total-field">{ this.sumTotal() }</p>
-        <p data-testid="header-currency-field">{ currency }</p>
+      <header className="wallet-header">
+        <h1>Trybe Wallet</h1>
+        <p data-testid="email-field" className="wallet-email">{`E-mail: ${email}`}</p>
+        <div className="wallet-total-value">
+          <span data-testid="total-field">
+            {`Despesa Total: R$ ${this.getTotalExpenses()} `}
+          </span>
+          <span data-testid="header-currency-field">BRL</span>
+        </div>
       </header>
     );
   }
 }
 
-Header.defaultProps = {
-  expenses: undefined,
-  currency: undefined,
-};
+const mapStateToProps = (state) => ({
+  email: state.user.email,
+  expenses: state.wallet.expenses,
+});
+
+export default connect(mapStateToProps)(Header);
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-  currency: PropTypes.string,
-  total: PropTypes.number.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.object),
 };
 
-// Busca as informações do estado global da aplicação, com base em seus reducers(user ou wallet)
-// 4 novas chaves receberão estes dados como props
-const mapStateToProps = ({ user, wallet }) => ({
-  email: user.email,
-  currency: wallet.currency,
-  total: wallet.total,
-  expenses: wallet.expenses,
-});
-
-// Efetua a conexão do mapStateToProps com a store
-export default connect(mapStateToProps, null)(Header);
+Header.defaultProps = {
+  expenses: [],
+};

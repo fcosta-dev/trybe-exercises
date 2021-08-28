@@ -1,157 +1,106 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// Importa as actions
-import { actionAutenticacao, actionLogin } from '../actions';
+import { Redirect } from 'react-router-dom';
 
-// Importa a imagem da carteira/wallet
-import wallet from '../images/wallet.jpg';
+import { emailChange } from '../actions';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
+import '../styles/Login.css';
 
-    // State inicial
+class Login extends React.Component {
+  constructor() {
+    super();
+
     this.state = {
       email: '',
       password: '',
+      disabled: true,
+      login: false,
     };
 
-    // Libera as funções abaixo com o this para serem usadas em toda a classe
     this.handleChange = this.handleChange.bind(this);
-    // Essas funções são para renderizar a page
-    this.emailRender = this.emailRender.bind(this);
-    this.passwordRender = this.passwordRender.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.loginValidation = this.loginValidation.bind(this);
   }
 
-  // Cada movimento ele guarda na state o elemento e o valor e executa o autenticador
-  handleChange({ target: { name, value } }) {
-    this.setState({
-      [name]: value,
-    }, () => this.autenticador());
-  }
+  handleClick(e) {
+    e.preventDefault();
 
-  autenticador() {
-    // Pega do state
-    const { email, password } = this.state;
-    // Chave criada pelo mapDispatchToProps que recebe uma função
-    // dispatchAutenticacao: (okAutenticado) => dispatch(actionAutenticacao(okAutenticado))
-    const { dispatchAutenticacao } = this.props;
-    const emailReg = /^[a-z0-9_.]+@[a-z0-9]+\.[a-z]{2,3}(?:\.[a-z]{2})?$/;
-    const tamanhoMinimo = 6;
-    // Use test() sempre que você quiser saber se um padrão está dentro de uma string
-    dispatchAutenticacao(emailReg.test(email) && password.length >= tamanhoMinimo);
-  }
-
-  // Renderiza o campo email e o configura
-  emailRender() {
-    // Pega na state o email
+    const { handleEmail } = this.props;
     const { email } = this.state;
 
-    return (
-      <label htmlFor="email-input">
-        <h3 style={ { display: 'flex', justifyContent: 'center' } }>
-          Login
-        </h3>
-        <input
-          data-testid="email-input"
-          type="email"
-          name="email"
-          id="email-input"
-          placeholder="email"
-          style={ { height: '25px' } }
-          onChange={ this.handleChange }
-          value={ email }
-        />
-      </label>
+    this.setState({ login: true });
+
+    handleEmail(email);
+  }
+
+  handleChange({ target }) {
+    this.setState(
+      {
+        [target.name]: target.value,
+      },
+      () => {
+        this.loginValidation();
+      },
     );
   }
 
-  passwordRender() {
-    // Pega na state o password
-    const { password } = this.state;
-
-    return (
-      <label htmlFor="password-input">
-        <input
-          data-testid="password-input"
-          type="password"
-          name="password"
-          id="password-input"
-          placeholder="senha"
-          style={ { height: '25px' } }
-          onChange={ this.handleChange }
-          value={ password }
-        />
-      </label>
-    );
+  loginValidation() {
+    const { email, password } = this.state;
+    let disabled = false;
+    const EMAIL_VALIDATION = /^[\w]+@([\w]+\.)+[\w]{2,4}$/gi;
+    const MIN_PASSWORD_LENGTH = 6;
+    disabled = !(EMAIL_VALIDATION.test(email) && password.length >= MIN_PASSWORD_LENGTH);
+    this.setState({ disabled });
   }
 
   render() {
-    const { email } = this.state;
-    // A desconstrução abaixo da props foi criada pelos Maps
-    // o stateAutenticado foi criado pelo MapStateToProps
-    // o dispatchLogin foi criado pelo MapDispatchToProps
-    const { stateAutenticado, dispatchLogin } = this.props;
-
+    const { email, password, disabled, login } = this.state;
     return (
-      <div className="login">
-        <form className="forms-div">
-          <div
-            className="div_inputs"
-            // Style abaixo é para deixar a tela de login visualmente mais bonita
-            // Era possível colocar em um CSS, mas achei mais prático colocar aqui
-            style={ {
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '40vh',
-              flexDirection: 'column',
-            } }
+      <main className="login-main">
+        <header className="login-header">
+          <h1>Trybe Wallet</h1>
+        </header>
+        <form className="login-form">
+          <input
+            type="text"
+            name="email"
+            value={ email }
+            onChange={ this.handleChange }
+            data-testid="email-input"
+            placeholder="user@email.com"
+            className="login-input"
+          />
+          <input
+            type="password"
+            name="password"
+            value={ password }
+            onChange={ this.handleChange }
+            data-testid="password-input"
+            placeholder="******"
+            className="login-input"
+          />
+          <button
+            type="submit"
+            disabled={ disabled }
+            onClick={ this.handleClick }
+            className="login-btn"
           >
-            {/* Div criada para mostrar imagem de carteira/wallet */}
-            <div className="logo-div">
-              <img src={ wallet } alt="wallet" />
-            </div>
-            {/* Funções criadas com HTML fora do render devido eslist */}
-            { this.emailRender() }
-            { this.passwordRender() }
-            <br />
-            { /* Quando ok, redireciona o link para /carteira */}
-            <Link to="/carteira">
-              <button
-                type="button"
-                onClick={ () => dispatchLogin(email) }
-                // Faz a leitura na state se o usuário está ou não autenticado
-                disabled={ !stateAutenticado }
-              >
-                Entrar
-              </button>
-            </Link>
-          </div>
+            Entrar
+          </button>
         </form>
-      </div>
+        {login ? <Redirect to="/carteira" /> : ''}
+      </main>
     );
   }
 }
 
-// Faz a props validation
-Login.propTypes = {
-  stateAutenticado: PropTypes.bool.isRequired,
-  dispatchAutenticacao: PropTypes.func.isRequired,
-  dispatchLogin: PropTypes.func.isRequired,
-};
-
-// Vai la no reducer User, do User.js, e busca o stateAutenticado e joga esse valor para a chave stateAutenticado
-const mapStateToProps = ({ user }) => ({
-  stateAutenticado: user.stateAutenticado,
-});
-
-// Dispara as actions fazendo a gravação na store
 const mapDispatchToProps = (dispatch) => ({
-  dispatchAutenticacao: (okAutenticado) => dispatch(actionAutenticacao(okAutenticado)),
-  dispatchLogin: (email) => dispatch(actionLogin(email)),
+  handleEmail: (payload) => dispatch(emailChange(payload)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);
+
+Login.propTypes = {
+  handleEmail: PropTypes.func.isRequired,
+};

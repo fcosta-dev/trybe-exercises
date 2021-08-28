@@ -1,95 +1,85 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
-// import { removeExpenseAction, selectExpense } from '../actions';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-// const heads = [
-//   'Descrição', 'Tag', 'Método de pagamento',
-//   'Valor', 'Moeda', 'Câmbio utilizado',
-//   'Valor convertido', 'Moeda de conversão', 'Editar/Excluir',
-// ];
+import { RiDeleteBinLine, RiEditLine } from 'react-icons/ri';
+import { deleteExpense as eraseExpense, editExpense as modifyExpense } from '../actions';
 
-// class ExpensesTable extends Component {
-//   constructor() {
-//     super();
-//     this.handleClick = this.handleClick.bind(this);
-//   }
+class ExpensesTable extends React.Component {
+  renderButton(name, expense, callback) {
+    return (
+      <button
+        type="button"
+        data-testid={ `${name}-btn` }
+        onClick={ () => callback(expense) }
+        className={ `${name}-btn expense-opt-btn` }
+      >
+        {name === 'edit' ? <RiEditLine /> : <RiDeleteBinLine />}
+      </button>
+    );
+  }
 
-//   handleClick(target, payload) {
-//     const { removeExpense, selectExpenseAct } = this.props;
-//     if (target.name === 'delete') {
-//       removeExpense(payload);
-//     }
-//     if (target.name === 'edit') {
-//       selectExpenseAct(payload);
-//     }
-//   }
+  render() {
+    const { expenses, deleteExpense, editExpense } = this.props;
+    return (
+      <table>
+        <thead className="table-header">
+          <tr>
+            <th>Moeda</th>
+            <th>Valor</th>
+            <th>Câmbio utilizado</th>
+            <th>Moeda de conversão</th>
+            <th>Valor convertido</th>
+            <th>Descrição</th>
+            <th>Tag</th>
+            <th>Método de pagamento</th>
+            <th>Editar/Excluir</th>
+          </tr>
+        </thead>
+        <tbody className="table-body">
+          {expenses.map((expense, index) => {
+            const { description, tag, method, value, currency, exchangeRates } = expense;
+            const { name, ask } = exchangeRates[currency];
+            return (
+              <tr key={ index }>
+                <td>{name}</td>
+                <td>{value}</td>
+                <td>{parseFloat(ask).toFixed(2)}</td>
+                <td>Real</td>
+                <td>{(ask * parseInt(value, 10)).toFixed(2)}</td>
+                <td>{description}</td>
+                <td>{tag}</td>
+                <td>{method}</td>
+                <td>
+                  {this.renderButton('edit', expense, editExpense)}
+                  {this.renderButton('delete', expense, deleteExpense)}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
+  }
+}
 
-//   render() {
-//     const { expenses } = this.props;
-//     return (
-//       <div>
-//         <table>
-//           <thead>
-//             <tr>
-//               {heads.map((head) => <th key={ head }>{head}</th>)}
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {expenses.map((expense) => {
-//               const { id, currency, description,
-//                 tag, method, value, exchangeRates } = expense;
-//               return (
-//                 <tr key={ id }>
-//                   <td>{description}</td>
-//                   <td>{tag}</td>
-//                   <td>{method}</td>
-//                   <td>{value}</td>
-//                   <td>{(exchangeRates[currency].name).split('/')[0]}</td>
-//                   <td>{Number(exchangeRates[currency].ask).toFixed(2)}</td>
-//                   <td>{Number(exchangeRates[currency].ask * value).toFixed(2)}</td>
-//                   <td>Real</td>
-//                   <td>
-//                     <button
-//                       type="button"
-//                       data-testid="edit-btn"
-//                       name="edit"
-//                       onClick={ ({ target }) => this.handleClick(target, expense) }
-//                     >
-//                       Editar
-//                     </button>
-//                     <button
-//                       type="button"
-//                       name="delete"
-//                       data-testid="delete-btn"
-//                       onClick={ ({ target }) => this.handleClick(target, id) }
-//                     >
-//                       Excluir
-//                     </button>
-//                   </td>
-//                 </tr>
-//               );
-//             })}
-//           </tbody>
-//         </table>
-//       </div>
-//     );
-//   }
-// }
+const mapStateToProps = (state) => ({
+  expenses: state.wallet.expenses,
+});
 
-// ExpensesTable.propTypes = {
-//   expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   removeExpense: PropTypes.func.isRequired,
-//   selectExpenseAct: PropTypes.func.isRequired,
-// };
+const mapDispatchToProps = (dispatch) => ({
+  deleteExpense: (expense) => dispatch(eraseExpense(expense)),
+  editExpense: (expense) => dispatch(modifyExpense(expense)),
+});
 
-// const mapStateToProps = ({ wallet }) => ({
-//   expenses: wallet.expenses,
-// });
+export default connect(mapStateToProps, mapDispatchToProps)(ExpensesTable);
 
-// const mapDispatchToProps = (dispatch) => ({
-//   removeExpense: (id) => dispatch(removeExpenseAction(id)),
-//   selectExpenseAct: (expense) => dispatch(selectExpense(expense)),
-// });
+ExpensesTable.propTypes = {
+  expenses: PropTypes.arrayOf(PropTypes.object),
+  deleteExpense: PropTypes.func.isRequired,
+  editExpense: PropTypes.func.isRequired,
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(ExpensesTable);
+ExpensesTable.defaultProps = {
+  expenses: [],
+};

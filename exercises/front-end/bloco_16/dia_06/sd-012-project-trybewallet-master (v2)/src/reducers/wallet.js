@@ -1,77 +1,63 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-
-// Importa as actions
 import {
-  ACTION_REQUEST,
-  ACTION_RECEIVE,
-  ACTION_ADD_EXPENSE,
-  ACTION_REMOVE_EXPENSE,
-  ACTION_SELECT_EXPENSE,
-  ACTION_EDIT_EXPENSE,
-} from '../actions/actionTypes';
+  REQUEST_START,
+  REQUEST_SUCCESS,
+  REQUEST_FAIL,
+  SAVE_EXPENSE,
+  DELETE_EXPENSE,
+  EDIT_EXPENSE_START,
+  EDIT_EXPENSE_END,
+} from '../actions';
 
-// Estado inicial
-const INITIAL_STATE = {
-  id: 0,
+const INITIAL_STATE_WALLET = {
   currencies: [],
-  currencieNames: [],
   expenses: [],
-  currency: 'BRL',
-  loading: false,
-  selected: null,
-  status: 'add',
 };
 
-// Esse abaixo é o reducer wallet, onde ele tem uma switch para verificar qual action a ser disparada, no caso abaixo serão duas opções.
-const wallet = (state = INITIAL_STATE, action) => {
+export default function wallet(state = INITIAL_STATE_WALLET, action) {
   switch (action.type) {
-  case ACTION_REQUEST:
-    return ({
+  case REQUEST_START:
+    return {
       ...state,
-      loading: true,
-    });
-  case ACTION_RECEIVE:
-    return ({
+      isFetching: true,
+    };
+  case REQUEST_SUCCESS:
+    return {
       ...state,
-      currencieNames: Object.keys(action.payload),
-      currencies: action.payload,
-      loading: false,
-    });
-  case ACTION_ADD_EXPENSE: // Action de adicionar despesas
-    return ({
+      isFetching: false,
+      currencies: [...Object.keys(action.currencies)],
+    };
+  case REQUEST_FAIL:
+    return { ...state, isFetching: false, error: action.error };
+  case SAVE_EXPENSE:
+    return {
       ...state,
-      id: state.id + 1,
-      expenses: [...state.expenses,
-        { id: action.payload.id,
-          ...action.payload.expense,
-          exchangeRates: state.currencies,
-        }],
-    });
-  case ACTION_REMOVE_EXPENSE: // Action de remover despesas
-    return ({
+      expenses: [...state.expenses, action.expenses],
+    };
+  case DELETE_EXPENSE:
+    return {
       ...state,
-      expenses: state.expenses.filter((expense) => expense.id !== action.payload),
-    });
-  case ACTION_SELECT_EXPENSE: // Action de selecionar despesas
-    return ({
+      expenses: [
+        ...state.expenses.filter((expense) => expense.id !== action.expense.id),
+      ],
+      isEditing: false,
+    };
+  case EDIT_EXPENSE_START:
+    return {
       ...state,
-      selected: action.payload,
-      status: 'edit',
-    });
-  case ACTION_EDIT_EXPENSE: { // Action de editar despesas
-    return ({
+      isEditing: true,
+      expenseId: action.expense.id,
+    };
+  case EDIT_EXPENSE_END:
+    return {
       ...state,
-      selected: null,
-      status: 'add',
-      expenses: [...state.expenses
-        .filter((expense) => expense.id !== action.payload.id), { id: action.payload.id,
-        ...action.payload.expense,
-        exchangeRates: state.currencies }].sort((a, b) => a.id - b.id),
-    });
-  }
+      expenses: state.expenses.map((item) => {
+        if (item.id === action.expense.id) return { ...item, ...action.expense };
+        return item;
+      }),
+      isEditing: false,
+    };
   default:
     return state;
   }
-};
-
-export default wallet;
+}
