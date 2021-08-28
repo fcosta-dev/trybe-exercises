@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -7,7 +7,7 @@ import { ExpensesTable, Header, NewExpenseForm, EditExpenseForm } from '../compo
 
 import '../styles/Wallet.css';
 
-class Wallet extends React.Component {
+class Wallet extends Component {
   componentDidMount() {
     const { fetchCurrencies } = this.props;
     fetchCurrencies();

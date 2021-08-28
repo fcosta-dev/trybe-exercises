@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
@@ -7,9 +7,9 @@ import { actionEmailChange } from '../actions';
 
 import '../styles/Login.css';
 
-class Login extends React.Component {
-  constructor() {
-    super();
+class Login extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       email: '',
@@ -61,6 +61,14 @@ class Login extends React.Component {
       <main className="login-main">
         <header className="login-header">
           <h1>Trybe Wallet</h1>
+          <h3
+            style={ {
+              display: 'flex',
+              justifyContent: 'center',
+            } }
+          >
+            Login
+          </h3>
         </header>
         <form className="login-form">
           <input
