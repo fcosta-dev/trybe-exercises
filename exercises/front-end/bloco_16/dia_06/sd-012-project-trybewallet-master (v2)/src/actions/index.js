@@ -34,32 +34,30 @@ const actionRequestCurrenciesFail = (error) => ({
 
 export const fetchCurrencies = () => async (dispatch) => {
   try {
-    dispatch(requestCurrenciesTry());
-
+    dispatch(actionRequestCurrenciesTry());
     const currencies = await currenciesAPI();
-
-    dispatch(requestCurrenciesSuccess(currencies));
+    dispatch(actionRequestCurrenciesSuccess(currencies));
   } catch (error) {
-    dispatch(requestCurrenciesFail(error));
+    dispatch(actionRequestCurrenciesFail(error));
   }
 };
 
-export const saveExpense = (expenses) => ({
-  type: SAVE_EXPENSE,
+export const actionSaveExpense = (expenses) => ({
+  type: ACTION_SAVE_EXPENSE,
   expenses,
 });
 
-export const deleteExpense = (expense) => ({
-  type: DELETE_EXPENSE,
+export const actionDeleteExpense = (expense) => ({
+  type: ACTION_DELETE_EXPENSE,
   expense,
 });
 
-export const editExpense = (expense) => ({
-  type: EDIT_EXPENSE_START,
+export const actionEditExpense = (expense) => ({
+  type: ACTION_EDIT_EXPENSE_START,
   expense,
 });
 
-export const endExpenseEdit = (expense) => ({
-  type: EDIT_EXPENSE_END,
+export const actionEndExpenseEdit = (expense) => ({
+  type: ACTION_EDIT_EXPENSE_END,
   expense,
 });
