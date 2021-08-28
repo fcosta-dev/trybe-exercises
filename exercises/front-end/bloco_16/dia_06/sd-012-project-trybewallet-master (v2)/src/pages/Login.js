@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-import { emailChange } from '../actions';
+import { actionEmailChange } from '../actions';
 
 import '../styles/Login.css';
 
@@ -23,8 +23,8 @@ class Login extends React.Component {
     this.loginValidation = this.loginValidation.bind(this);
   }
 
-  handleClick(e) {
-    e.preventDefault();
+  handleClick(event) {
+    event.preventDefault();
 
     const { handleEmail } = this.props;
     const { email } = this.state;
@@ -56,6 +56,7 @@ class Login extends React.Component {
 
   render() {
     const { email, password, disabled, login } = this.state;
+
     return (
       <main className="login-main">
         <header className="login-header">
@@ -96,7 +97,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  handleEmail: (payload) => dispatch(emailChange(payload)),
+  handleEmail: (payload) => dispatch(actionEmailChange(payload)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

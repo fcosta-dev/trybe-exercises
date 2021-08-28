@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { RiDeleteBinLine, RiEditLine } from 'react-icons/ri';
-import { deleteExpense as eraseExpense, editExpense as modifyExpense } from '../actions';
+import {
+  actionDeleteExpense as eraseExpense,
+  actionEditExpense as modifyExpense,
+} from '../actions';
 
 class ExpensesTable extends React.Component {
   renderButton(name, expense, callback) {

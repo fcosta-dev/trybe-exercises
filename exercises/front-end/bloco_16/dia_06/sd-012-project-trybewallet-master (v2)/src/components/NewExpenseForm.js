@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import currenciesAPI from '../services';
-import { fetchCurrencies as getCurrencies, saveExpense as addExpense } from '../actions';
+import { fetchCurrencies as getCurrencies, actionSaveExpense as addExpense } from '../actions';
 
 const INITIAL_STATE = {
   value: '0',

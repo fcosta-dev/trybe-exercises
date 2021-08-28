@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import {
   fetchCurrencies as getCurrencies,
-  endExpenseEdit as finishExpenseEdit,
+  actionEndExpenseEdit as finishExpenseEdit,
 } from '../actions';
 
 class EditExpenseForm extends React.Component {

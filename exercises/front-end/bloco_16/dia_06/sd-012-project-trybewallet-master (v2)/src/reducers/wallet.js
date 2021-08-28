@@ -1,13 +1,13 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 import {
-  REQUEST_START,
-  REQUEST_SUCCESS,
-  REQUEST_FAIL,
-  SAVE_EXPENSE,
-  DELETE_EXPENSE,
-  EDIT_EXPENSE_START,
-  EDIT_EXPENSE_END,
-} from '../actions';
+  ACTION_REQUEST_START,
+  ACTION_REQUEST_SUCCESS,
+  ACTION_REQUEST_FAIL,
+  ACTION_SAVE_EXPENSE,
+  ACTION_DELETE_EXPENSE,
+  ACTION_EDIT_EXPENSE_START,
+  ACTION_EDIT_EXPENSE_END,
+} from '../actions/actionTypes';
 
 const INITIAL_STATE_WALLET = {
   currencies: [],
@@ -16,25 +16,25 @@ const INITIAL_STATE_WALLET = {
 
 export default function wallet(state = INITIAL_STATE_WALLET, action) {
   switch (action.type) {
-  case REQUEST_START:
+  case ACTION_REQUEST_START:
     return {
       ...state,
       isFetching: true,
     };
-  case REQUEST_SUCCESS:
+  case ACTION_REQUEST_SUCCESS:
     return {
       ...state,
       isFetching: false,
       currencies: [...Object.keys(action.currencies)],
     };
-  case REQUEST_FAIL:
+  case ACTION_REQUEST_FAIL:
     return { ...state, isFetching: false, error: action.error };
-  case SAVE_EXPENSE:
+  case ACTION_SAVE_EXPENSE:
     return {
       ...state,
       expenses: [...state.expenses, action.expenses],
     };
-  case DELETE_EXPENSE:
+  case ACTION_DELETE_EXPENSE:
     return {
       ...state,
       expenses: [
@@ -42,13 +42,13 @@ export default function wallet(state = INITIAL_STATE_WALLET, action) {
       ],
       isEditing: false,
     };
-  case EDIT_EXPENSE_START:
+  case ACTION_EDIT_EXPENSE_START:
     return {
       ...state,
       isEditing: true,
       expenseId: action.expense.id,
     };
-  case EDIT_EXPENSE_END:
+  case ACTION_EDIT_EXPENSE_END:
     return {
       ...state,
       expenses: state.expenses.map((item) => {
