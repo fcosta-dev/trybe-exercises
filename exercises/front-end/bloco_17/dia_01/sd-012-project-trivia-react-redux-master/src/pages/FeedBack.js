@@ -6,6 +6,7 @@ class FeedBack extends Component {
   render() {
     const { player: { assertions, score } } = JSON.parse(localStorage.getItem('state'));
     const three = 3;
+
     return (
       <div>
         <Header />

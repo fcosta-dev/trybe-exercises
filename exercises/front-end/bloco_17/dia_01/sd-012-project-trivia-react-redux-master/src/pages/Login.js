@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { func, string } from 'prop-types';
+import PropTypes from 'prop-types';
 import InputCard from '../components/InputCard';
 import fetchToken from '../redux/fetchs/fetchToken';
 import { actionSaveDataUser } from '../redux/actions';
@@ -103,7 +103,13 @@ class Login extends Component {
   }
 }
 
+// A função do mapDispatchToProps é despachar action para a store, com a finalidade de alterar o state da aplicação
+// A função dispatch() serve para despachar uma action para o reducer
+// Recebe como parametro uma dispatch, e retorna um objeto com chave e valor
 const mapDipatchToProps = (dispatch) => ({
+// A chave getToken e saveUser são as props do componente que vão ser invocadas
+// E eu passo uma callback que vai ser o dispatch que vou realizar na action, no caso será a fetchToken
+// O data/payload vai conter o NOVO valor que vai ser passado e alterado na state da store
   getToken: (data) => dispatch(fetchToken(data)),
   saveUser: (data) => dispatch(actionSaveDataUser(data)),
 
@@ -113,10 +119,12 @@ const mapStateToProps = (state) => ({
   token: state.user.token,
 });
 
+// O connect é responsável por fazer a conexão do meu componente Login com o mapStateToProps e o mapDispatchToProps.
 export default connect(mapStateToProps, mapDipatchToProps)(Login);
 
+// Faço a validação se os dados que recebi são válidos
 Login.propTypes = {
-  getToken: func.isRequired,
-  saveUser: func.isRequired,
-  token: string.isRequired,
+  getToken: PropTypes.func.isRequired,
+  saveUser: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
 };

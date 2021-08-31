@@ -101,12 +101,16 @@ class Settings extends Component {
   }
 }
 
+// A função do mapDispatchToProps é despachar action para a store, com a finalidade de alterar o state da aplicação
+// A função dispatch() serve para despachar uma action para o reducer
+// Recebe como parametro uma dispatch, e retorna um objeto com chave e valor
 const mapDispatchToProps = (dispatch) => ({
   dispatchSetting: (data) => dispatch(actionAddSetting(data)),
 });
 
-export default connect(null, mapDispatchToProps)(Settings);
-
 Settings.propTypes = {
   dispatchSetting: func.isRequired,
 };
+
+// O connect é responsável por fazer a conexão do meu componente Login com o mapStateToProps e o mapDispatchToProps.
+export default connect(null, mapDispatchToProps)(Settings);
