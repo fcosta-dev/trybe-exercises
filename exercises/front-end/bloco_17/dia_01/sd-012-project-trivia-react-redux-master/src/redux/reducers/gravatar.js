@@ -1,4 +1,4 @@
-import { FETCH_SUCCESS } from '../actions';
+import { ACTION_FETCH_SUCCESS } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   gravatar: '',
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 const reducerGravatar = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case FETCH_SUCCESS:
+  case ACTION_FETCH_SUCCESS:
     return { ...state, ...action.payload };
   default: return state;
   }

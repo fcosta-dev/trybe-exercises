@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from './Button';
-import { timeoutFalse as actionTimeoutFalse } from '../redux/actions';
+import { timeoutFalse as actionTimeoutFalse } from '../redux/actions/actionTypes';
 
 class Question extends Component {
   constructor() {

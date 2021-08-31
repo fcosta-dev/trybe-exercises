@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import fetchGravatar from '../redux/fetchs/fetchGravatar';
-import { saveImgUrl } from '../redux/actions';
+import { saveImgUrl } from '../redux/actions/actionTypes';
 
 class Header extends React.Component {
   render() {
@@ -12,6 +12,7 @@ class Header extends React.Component {
     const IMG_URL = `https://www.gravatar.com/avatar/${hash}`;
     saveImg(IMG_URL);
     const { player: { score } } = JSON.parse(localStorage.getItem('state'));
+
     return (
       <header>
         <img src={ IMG_URL } alt="" data-testid="header-profile-picture" />

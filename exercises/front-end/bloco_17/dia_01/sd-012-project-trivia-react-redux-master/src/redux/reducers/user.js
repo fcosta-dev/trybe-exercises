@@ -1,10 +1,10 @@
 import {
-  ADD_SETTING,
-  GET_TOKEN_ERROR,
-  GET_TOKEN_SUCESS,
-  SAVE_DATA_USER,
-  SAVE_IMG_URL,
-} from '../actions';
+  ACTION_ADD_SETTING,
+  ACTION_GET_TOKEN_ERROR,
+  ACTION_GET_TOKEN_SUCESS,
+  ACTION_SAVE_DATA_USER,
+  ACTION_SAVE_IMG_URL,
+} from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   token: '',
@@ -20,19 +20,19 @@ const INITIAL_STATE = {
 
 const reducerUser = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case GET_TOKEN_SUCESS:
+  case ACTION_GET_TOKEN_SUCESS:
     return { ...state, ...action.state, errorToken: '' };
 
-  case GET_TOKEN_ERROR:
+  case ACTION_GET_TOKEN_ERROR:
     return { ...state, error: 'Ocorreu um erro com a requisição do token' };
 
-  case ADD_SETTING:
+  case ACTION_ADD_SETTING:
     return { ...state, ...action.state };
 
-  case SAVE_DATA_USER:
+  case ACTION_SAVE_DATA_USER:
     return { ...state, ...action.state };
 
-  case SAVE_IMG_URL:
+  case ACTION_SAVE_IMG_URL:
     return { ...state, picture: action.payload };
 
   default: return state;

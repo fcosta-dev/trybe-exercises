@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { func, bool, string, number, arrayOf, shape } from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Question, Header } from '../components/index';
-import { timeoutTrue as actionTimeoutTrue } from '../redux/actions';
+import { timeoutTrue as actionTimeoutTrue } from '../redux/actions/actionTypes';
 import fetchQuiz from '../redux/fetchs/fetchQuiz';
 import randomize from '../functions/randomize';
 
@@ -21,6 +21,7 @@ class Game extends Component {
       assertions: 0,
     };
 
+    // As funções abaixo serão habilitadas para serem usadas em todo o componente/page
     this.timer = this.timer.bind(this);
     this.startTimer = this.startTimer.bind(this);
     this.checkQuestion = this.checkQuestion.bind(this);

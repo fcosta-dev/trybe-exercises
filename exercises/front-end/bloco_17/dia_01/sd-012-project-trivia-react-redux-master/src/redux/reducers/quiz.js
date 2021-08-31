@@ -1,4 +1,9 @@
-import { FETCHING_QUIZ, GET_QUIZ, TIMEOUT_FALSE, TIMEOUT_TRUE } from '../actions/index';
+import {
+  ACTION_FETCHING_QUIZ,
+  ACTION_GET_QUIZ,
+  ACTION_TIMEOUT_FALSE,
+  ACTION_TIMEOUT_TRUE,
+} from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   questions: [],
@@ -8,13 +13,13 @@ const INITIAL_STATE = {
 
 const quizReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case FETCHING_QUIZ:
+  case ACTION_FETCHING_QUIZ:
     return { ...state, loading: true };
-  case GET_QUIZ:
+  case ACTION_GET_QUIZ:
     return { ...state, loading: false, questions: action.payload };
-  case TIMEOUT_FALSE:
+  case ACTION_TIMEOUT_FALSE:
     return { ...state, timeout: false };
-  case TIMEOUT_TRUE:
+  case ACTION_TIMEOUT_TRUE:
     return { ...state, timeout: true };
   default:
     return state;
