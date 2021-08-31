@@ -55,3 +55,13 @@
     transform: translate3d(4px, 0, 0);
   }
 }
+
+
+/* CSS para o Trivia */
+.correct {
+  border: 3px solid rgb(6, 240, 15);
+}
+
+.wrong {
+  border: 3px solid red;
+}
