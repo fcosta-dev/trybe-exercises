@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import InputCard from '../components/InputCard';
 import fetchToken from '../redux/fetchs/fetchToken';
-import { actionSaveDataUser } from '../redux/actions/actionTypes';
+import { actionSaveDataUser } from '../redux/actions/index';
 import '../styles/Login.css';
 
 class Login extends Component {
@@ -25,8 +25,12 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  // Assim que a tela de Login for renderizado, esta função será disparada
   componentDidMount() {
+    // Desconstrói a getToken que está na mapDipatchToProps
     const { getToken } = this.props;
+    // Dispara abaixo uma função '../redux/fetchs/fetchToken', que foi importada
+    // Finalidade de pegar o token de sessão da pessoa que está jogando
     getToken();
   }
 
@@ -83,32 +87,30 @@ class Login extends Component {
 
     if (redirect && token) { return <Redirect to="/game" />; }
 
+    // O componente InputCard foi criado para resolver problemas de lint na questão de tamanho de uma função
     return (
       <main className="login-main">
-        <h1 className="trybe-trivia">Trybe Trivia</h1>
+        {/* <h1 className="trybe-trivia">Trybe Trivia</h1> */}
+        <img className="logo-trivia1" src="trybe.png" alt="" />
+        <img className="logo-trivia2" src="trivia.png" alt="" />
+        <br />
         <form onSubmit={ this.onSubmit }>
-          <label htmlFor="input-player-name">
-            Nome
-            <input
-              id="input-player-name"
-              name="playerName"
-              type="text"
-              value={ playerName }
-              data-testid="input-player-name"
-              onChange={ this.onHandlerChange }
-            />
-          </label>
-          <label htmlFor="input-player-name">
-            Email
-            <input
-              id="input-gravatar-email"
-              name="email"
-              type="text"
-              value={ email }
-              data-testid="input-player-name"
-              onChange={ this.onHandlerChange }
-            />
-          </label>
+          <InputCard
+            labelText="Jogador"
+            id="input-player-name"
+            name="playerName"
+            type="text"
+            value={ playerName }
+            onChange={ this.onHandlerChange }
+          />
+          <InputCard
+            labelText="Email"
+            id="input-gravatar-email"
+            name="email"
+            type="texto"
+            value={ email }
+            onChange={ this.onHandlerChange }
+          />
           <br />
           <br />
           <button

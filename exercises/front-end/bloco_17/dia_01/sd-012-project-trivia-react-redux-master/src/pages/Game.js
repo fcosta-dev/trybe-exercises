@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { func, bool, string, number, arrayOf, shape } from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Question, Header } from '../components/index';
-import { timeoutTrue as actionTimeoutTrue } from '../redux/actions/actionTypes';
+import { timeoutTrue as actionTimeoutTrue } from '../redux/actions/index';
 import fetchQuiz from '../redux/fetchs/fetchQuiz';
 import randomize from '../functions/randomize';
 

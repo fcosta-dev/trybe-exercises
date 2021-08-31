@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import fetchGravatar from '../redux/fetchs/fetchGravatar';
-import { saveImgUrl } from '../redux/actions/actionTypes';
+import { saveImgUrl } from '../redux/actions/index';
 
 class Header extends React.Component {
   render() {
