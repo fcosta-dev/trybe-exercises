@@ -60,14 +60,20 @@ class Login extends Component {
 
   // Essa função vai ser executada quando clicar no botão "Jogar"
   onSubmit(event) {
+    // Basicamente evita o reaload de página quando der submit
     event.preventDefault();
-
+    // Desconstrói direto do state o email e o playerName gravado
     const { email, playerName } = this.state;
+    // Desconstrói o saveUser da props, criado pela mapDipatchToProps disparando a action actionSaveDataUser que vai basicamente salvar na state o email e o playerName
     const { saveUser } = this.props;
     saveUser({ email, playerName });
+    // Aponta que o redirect da state é true, ou seja, login realizado com sucesso e pagina redirecionada
     this.setState({ redirect: true });
 
+    // Busca no localStorage todas as informações que tem no state.
+    // Para não dar undefined eu coloquei || {} para retornar objeto vazio
     const state = JSON.parse(localStorage.getItem('state')) || {};
+    // Renova/Grava no localStorage as informações do state conforme abaixo, com zeramento de score/pontuação e assertions/acertos
     localStorage.setItem(
       'state',
       JSON.stringify({
@@ -76,7 +82,8 @@ class Login extends Component {
           name: playerName,
           gravatarEmail: email,
           score: 0,
-          assertions: 0 },
+          assertions: 0,
+        },
       }),
     );
   }
