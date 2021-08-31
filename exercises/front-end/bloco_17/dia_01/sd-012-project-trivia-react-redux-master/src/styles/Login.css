@@ -1,0 +1,34 @@
+.login-main {
+  display: flex;
+  align-items: center;
+  background-color: rgb(3, 107, 82);
+  border: 1px solid black;
+  border-radius: 2%;
+  box-sizing: border-box;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-evenly;
+  margin: 20vh auto;
+  max-width: 420px;
+  min-width: 240px;
+  padding: 20px;
+  width: 30vw;
+}
+
+#input-player-name, #input-gravatar-email {
+  height: 25px;
+}
+
+.trybe-trivia {
+  color: white
+}
+
+.logo-trivia1 {
+  height: 30%; 
+  width: 30%;
+}
+
+.logo-trivia2 {
+  height: 20%; 
+  width: 60%;
+}
