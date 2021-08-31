@@ -1,4 +1,7 @@
-import { fetchingQuiz, getQuiz } from '../actions/actionTypes';
+import {
+  fetchingQuiz,
+  getQuiz,
+} from '../actions/index';
 
 const decodeResults = (questions) => {
   const decoded = questions
