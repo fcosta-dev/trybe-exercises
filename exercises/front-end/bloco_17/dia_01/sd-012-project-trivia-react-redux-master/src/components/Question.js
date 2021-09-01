@@ -20,10 +20,10 @@ class Question extends Component {
     this.changeBorder = this.changeBorder.bind(this);
   }
 
-  handleClickButton({ target: { dataset } }) {
+  handleClickButton({ target }) {
     const { checkQuestion, stopTimer } = this.props;
-    const id = dataset.testid;
-
+    const id = target.dataset.testid; // retorna exatamente o data-testid do botão clicado
+    // Se o botão é a resposta correta, então 
     if (id === 'correct-answer') checkQuestion();
 
     this.setState({ button: true });
@@ -62,7 +62,7 @@ class Question extends Component {
       // Pega também a questão correta e joga ela dentro do alternatives também
       { correct: true, alt: question.correct_answer, isCorrect: 'correct' },
     ] : [];
-
+    console.log('alternatives: ', alternatives);
     return (
       <div className="question">
         {/* Mostra a categoria da Questão. Ex: General Knowledge */}
@@ -73,12 +73,14 @@ class Question extends Component {
         <div className="alternatives">
           {/* Percorre o array randomico para montar a questão e os botões */}
           {randomIndex.map((index) => {
-            if (!alternatives[index]) return null;
+            if (!alternatives[index]) return null; // Se é nulo é porque é a questão correta
+            // desconstruo as chaves dentro do array alternatives criado acima
+            // correct: recebe false ou true | alt: opção de resposta | index: index das  questões erradas | isCorrect: informa "correct" ou "wrong"
             const { correct, alt, index: i, isCorrect } = alternatives[index];
-
+            // Cria o botão da questão
             return (
               <button
-                disabled={ timeout }
+                disabled={ timeout } // Se o tempo tiver acabado é true, ou desativado
                 type="button"
                 key={ index }
                 data-testid={ correct ? 'correct-answer' : `wrong-answer${i}` }
