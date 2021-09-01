@@ -1,13 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap') ;
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Orbitron:wght@500&family=Staatliches&display=swap') ;
+
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system , Roboto , Ubuntu , Helvetica Neue , sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+header {
+  align-items: center;
+  background-color: #98d87f;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 50%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.centered-block {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 26px;
+  justify-content: space-between;
+  max-width: 960px;
+  width: 80%;
+}
+
+.img {
+  height: 200px;
+}
+
+/* button css code from: https://www.bestcssbuttongenerator.com/ */
+button {
+  background: linear-gradient(to bottom, white 5%, #f6f6f6 100%);
+  background-color: white;
+  border: 1px solid gainsboro;
+  border-radius: 6px;
+  box-shadow: inset 1px 1px 1px 1px white;
+  color: #666;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial , sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 10px;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px white;
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #f6f6f6 5%, white 100%);
+  background-color: #f6f6f6;
+}
+
+button:active {
+  position: relative;
+  top: 1px;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.3;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro , Menlo , Monaco , Consolas , monospace;
+}
+
+.main-login {
+  background-color: #023031;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: space-around;
+  overflow: hidden;
+  width: 100%;
+}
+
+.section-logo {
+  color: #2fc18c;
+  font-family: Cabin , sans-serif;
+  font-size: 150px;
+}
+
+.section-login, .section-logo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+.section-login {
+  padding: 30px;
+}
+
+.fieldset-login {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 76px;
+}
+
+.labelForm {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.section-game {
+  padding: 30px;
+}
+
+.fieldset-question {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.button-nextQuestion {
+  width: 200px;
 }

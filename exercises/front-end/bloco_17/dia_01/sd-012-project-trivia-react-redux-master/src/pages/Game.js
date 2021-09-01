@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { func, bool, string, number, arrayOf, shape } from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Question, Header } from '../components/index';
-import { timeoutTrue as actionTimeoutTrue } from '../redux/actions/index';
+import { actionTimeoutTrue } from '../redux/actions/index';
 import fetchQuiz from '../redux/fetchs/fetchQuiz';
 import randomize from '../functions/randomize';
 
@@ -11,8 +11,9 @@ class Game extends Component {
   constructor(props) {
     super(props);
 
+    // State inicial vai ser as chaves abaixo:
     this.state = {
-      timer: 30,
+      timer: 30, // Tempo de 30 segundos
       position: 0,
       question: { incorrect_answers: [] },
       score: 0,
@@ -32,15 +33,19 @@ class Game extends Component {
 
   componentDidMount() {
     const { getQuiz, token, amount, id, difficulty, type } = this.props;
+
     this.startTimer(0, true);
     getQuiz({ token, amount, id, difficulty, type });
     this.completeRandomIndex();
   }
 
+  // Chama a função para criar um array randomico
   completeRandomIndex() {
     const length = 4;
     const qty = 3;
     const randomIndex = randomize(length, qty);
+
+    // Guarda a informação do randomico no Index
     this.setState({ randomIndex });
   }
 
@@ -118,6 +123,7 @@ class Game extends Component {
     this.completeRandomIndex();
   }
 
+  // Função de criar um contador
   startTimer(sec = 0, start) {
     const maxTime = 30;
     this.setState({ timer: maxTime + sec });
@@ -131,11 +137,16 @@ class Game extends Component {
   render() {
     const { timer, gameOver, question, score, randomIndex } = this.state;
     const { questions } = this.props;
+
+    // Se o state gameOver for marcado como true, significa que o jogo acabou e redireciona para page de feedback
     if (gameOver) { return <Redirect to="/feedback" />; }
+
     return (
       <>
+        {/* Chama o componente Header passando a props de score/pontuação */}
         <Header score={ score } />
         <p>{timer}</p>
+        {/* Chama o componente de questão passando algumas props */}
         <Question
           stopTimer={ this.stopTimer }
           startTimer={ this.startTimer }
@@ -155,7 +166,7 @@ class Game extends Component {
 // Recebe como parametro uma dispatch, e retorna um objeto com chave e valor
 const mapDispatchToProps = (dispatch) => ({
   timeoutTrue: () => dispatch(actionTimeoutTrue()),
-  getQuiz: (data) => dispatch(fetchQuiz(data)),
+  getQuiz: (data) => dispatch(fetchQuiz(data)), // Função do /redux/fetchs/fetchQuiz.js
 });
 
 const mapStateToProps = (state) => ({
@@ -171,22 +182,23 @@ const mapStateToProps = (state) => ({
   name: state.user.playerName,
 });
 
+// Faço a validação se os dados que recebi são válidos
 Game.propTypes = {
-  timeoutTrue: func.isRequired,
-  loading: bool.isRequired,
-  getQuiz: func.isRequired,
-  token: string.isRequired,
-  name: string.isRequired,
-  picture: string.isRequired,
-  type: string.isRequired,
-  difficulty: string.isRequired,
-  amount: number.isRequired,
-  id: number.isRequired,
-  questions: arrayOf(shape({
-    category: string,
-    question: string,
-    correct_answer: string,
-    incorrect_answers: arrayOf(string),
+  timeoutTrue: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  getQuiz: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  difficulty: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  questions: PropTypes.arrayOf(PropTypes.shape({
+    category: PropTypes.string,
+    question: PropTypes.string,
+    correct_answer: PropTypes.string,
+    incorrect_answers: PropTypes.arrayOf(PropTypes.string),
   })).isRequired,
 };
 

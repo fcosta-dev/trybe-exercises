@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import fetchGravatar from '../redux/fetchs/fetchGravatar';
-import { saveImgUrl } from '../redux/actions/index';
+import { actionSaveImgUrl } from '../redux/actions/index';
 
 class Header extends React.Component {
   render() {
@@ -24,9 +24,12 @@ class Header extends React.Component {
   }
 }
 
+// A função do mapDispatchToProps é despachar action para a store, com a finalidade de alterar o state da aplicação
+// A função dispatch() serve para despachar uma action para o reducer
+// Recebe como parametro uma dispatch, e retorna um objeto com chave e valor
 const mapDispatchToProps = (dispatch) => ({
   pushFetch: (state) => dispatch(fetchGravatar(state)),
-  saveImg: (url) => dispatch(saveImgUrl(url)),
+  saveImg: (url) => dispatch(actionSaveImgUrl(url)),
 });
 
 const mapStateToProps = (state) => ({
@@ -34,10 +37,12 @@ const mapStateToProps = (state) => ({
   playerName: state.user.playerName,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
-
+// Faço a validação se os dados que recebi são válidos
 Header.propTypes = {
   email: PropTypes.string.isRequired,
   saveImg: PropTypes.func.isRequired,
   playerName: PropTypes.string.isRequired,
 };
+
+// O connect é responsável por fazer a conexão do meu componente Header com o mapStateToProps e o mapDispatchToProps.
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

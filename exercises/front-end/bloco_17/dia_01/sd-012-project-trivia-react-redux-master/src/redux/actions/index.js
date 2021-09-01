@@ -15,50 +15,17 @@ import {
 } from './actionTypes';
 
 // Actions do reducer Gravatar
-export const getGravatar = (payload) => ({
-  type: ACTION_FETCH_SUCCESS,
-  payload,
-});
+export const actionGetGravatar = (payload) => ({ type: ACTION_FETCH_SUCCESS, payload });
 
 // Actions do reducer Quiz
-export const fetchingQuiz = () => ({
-  type: ACTION_FETCHING_QUIZ,
-});
-
-export const getQuiz = (payload) => ({
-  type: ACTION_GET_QUIZ,
-  payload,
-});
-
-export const timeoutFalse = () => ({
-  type: ACTION_TIMEOUT_FALSE,
-});
-
-export const timeoutTrue = () => ({
-  type: ACTION_TIMEOUT_TRUE,
-});
+export const actionFetchingQuiz = () => ({ type: ACTION_FETCHING_QUIZ });
+export const actionGetQuiz = (payload) => ({ type: ACTION_GET_QUIZ, payload });
+export const actionTimeoutFalse = () => ({ type: ACTION_TIMEOUT_FALSE });
+export const actionTimeoutTrue = () => ({ type: ACTION_TIMEOUT_TRUE });
 
 // Actions do reducer User
-export const saveImgUrl = (payload) => ({
-  type: ACTION_SAVE_IMG_URL,
-  payload,
-});
-
-export const actionGetTokenSucess = (state) => ({
-  type: ACTION_GET_TOKEN_SUCESS,
-  state,
-});
-
-export const actionGetTokenError = () => ({
-  type: ACTION_GET_TOKEN_ERROR,
-});
-
-export const actionAddSetting = (state) => ({
-  type: ACTION_ADD_SETTING,
-  state,
-});
-
-export const actionSaveDataUser = (state) => ({
-  type: ACTION_SAVE_DATA_USER,
-  state,
-});
+export const actionSaveImgUrl = (payload) => ({ type: ACTION_SAVE_IMG_URL, payload });
+export const actionGetTokenSucess = (state) => ({ type: ACTION_GET_TOKEN_SUCESS, state });
+export const actionGetTokenError = () => ({ type: ACTION_GET_TOKEN_ERROR });
+export const actionAddSetting = (state) => ({ type: ACTION_ADD_SETTING, state });
+export const actionSaveDataUser = (state) => ({ type: ACTION_SAVE_DATA_USER, state });

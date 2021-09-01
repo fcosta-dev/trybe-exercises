@@ -1,5 +1,5 @@
 import md5 from 'crypto-js/md5';
-import { getGravatar } from '../actions/index';
+import { actionGetGravatar } from '../actions/index';
 
 const fetchGravatar = (hash) => {
   const fechamento = md5(hash.toLowerCase().trim()).toString();
@@ -7,7 +7,7 @@ const fetchGravatar = (hash) => {
   return (dispatch) => {
     fetch(`https://www.gravatar.com/avatar/${fechamento}`)
       .then((response) => response.json())
-      .then((resolve) => dispatch(getGravatar(resolve)))
+      .then((resolve) => dispatch(actionGetGravatar(resolve)))
       .catch((err) => err);
   };
 };
