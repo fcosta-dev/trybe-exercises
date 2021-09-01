@@ -1,5 +1,6 @@
 // Recebe como parametro um tamanho e uma quantidade
 const randomize = (length, qtd) => {
+  // Cria um array vazio
   const random = [];
 
   // Enquanto o o tamanho for menor que o tamanho que recebido de parametro faça...
