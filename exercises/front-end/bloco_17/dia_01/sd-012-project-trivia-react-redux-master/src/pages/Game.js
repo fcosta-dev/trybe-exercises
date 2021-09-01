@@ -11,8 +11,9 @@ class Game extends Component {
   constructor(props) {
     super(props);
 
+    // State inicial vai ser as chaves abaixo:
     this.state = {
-      timer: 30,
+      timer: 30, // Tempo de 30 segundos
       position: 0,
       question: { incorrect_answers: [] },
       score: 0,
@@ -32,12 +33,13 @@ class Game extends Component {
 
   componentDidMount() {
     const { getQuiz, token, amount, id, difficulty, type } = this.props;
+
     this.startTimer(0, true);
     getQuiz({ token, amount, id, difficulty, type });
     this.completeRandomIndex();
   }
 
-  // Chama a função para criar um 
+  // Chama a função para criar um
   completeRandomIndex() {
     const length = 4;
     const qty = 3;
@@ -121,6 +123,7 @@ class Game extends Component {
     this.completeRandomIndex();
   }
 
+  // Função de criar um contador
   startTimer(sec = 0, start) {
     const maxTime = 30;
     this.setState({ timer: maxTime + sec });
@@ -134,11 +137,16 @@ class Game extends Component {
   render() {
     const { timer, gameOver, question, score, randomIndex } = this.state;
     const { questions } = this.props;
+
+    // Se o state gameOver for marcado como true, significa que o jogo acabou e redireciona para page de feedback
     if (gameOver) { return <Redirect to="/feedback" />; }
+
     return (
       <>
+        {/* Chama o componente Header passando a props de score/pontuação */}
         <Header score={ score } />
         <p>{timer}</p>
+        {/* Chama a questão  */}
         <Question
           stopTimer={ this.stopTimer }
           startTimer={ this.startTimer }

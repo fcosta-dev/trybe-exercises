@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Button from './ForForms/Button';
+import Button from './Button';
 import { actionTimeoutFalse } from '../redux/actions/index';
 
 class Question extends Component {
