@@ -34,10 +34,10 @@ const mapStateToProps = (state) => ({
   playerName: state.user.playerName,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
-
 Header.propTypes = {
   email: PropTypes.string.isRequired,
   saveImg: PropTypes.func.isRequired,
   playerName: PropTypes.string.isRequired,
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

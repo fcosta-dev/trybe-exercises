@@ -1,32 +1,40 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Button from './Button';
+import Button from './ForForms/Button';
 import { timeoutFalse as actionTimeoutFalse } from '../redux/actions/index';
 
 class Question extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    // State inicial vai ser as chaves abaixo:
     this.state = {
       button: false,
       showCorrect: false,
     };
+
+    // As funções abaixo serão habilitadas para serem usadas em todo o componente/page
     this.handleClickButton = this.handleClickButton.bind(this);
     this.handleClickNext = this.handleClickNext.bind(this);
     this.changeBorder = this.changeBorder.bind(this);
   }
 
-  handleClickButton({ target }) {
+  handleClickButton({ target: { dataset } }) {
     const { checkQuestion, stopTimer } = this.props;
-    const id = target.dataset.testid;
+    const id = dataset.testid;
+
     if (id === 'correct-answer') checkQuestion();
+
     this.setState({ button: true });
     this.changeBorder();
+
     stopTimer();
   }
 
   handleClickNext() {
     const { timeoutFalse, startTimer, timeout, nextQuestion } = this.props;
+
     if (timeout) {
       startTimer(1, true);
     } else { startTimer(0, false); }
@@ -44,7 +52,9 @@ class Question extends Component {
   render() {
     const { button, showCorrect } = this.state;
     const { loading, timeout, question, randomIndex } = this.props;
+
     if (loading) { return <p>Loading...</p>; }
+
     const alternatives = question.correct_answer ? [
       ...question.incorrect_answers
         .map((alt, index) => ({ correct: false,
@@ -54,6 +64,7 @@ class Question extends Component {
       { correct: true,
         alt: question.correct_answer,
         isCorrect: 'correct' }] : [];
+
     return (
       <div className="question">
 
@@ -95,8 +106,6 @@ const mapDispatchToProps = (dispatch) => ({
   timeoutFalse: () => dispatch(actionTimeoutFalse()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Question);
-
 Question.propTypes = {
   timeoutFalse: PropTypes.func.isRequired,
   startTimer: PropTypes.func.isRequired,
@@ -113,3 +122,6 @@ Question.propTypes = {
     incorrect_answers: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
+
+// O connect é responsável por fazer a conexão do meu componente Question com o mapStateToProps e o mapDispatchToProps.
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

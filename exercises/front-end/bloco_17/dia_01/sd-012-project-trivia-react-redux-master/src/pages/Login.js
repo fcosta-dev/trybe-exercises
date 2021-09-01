@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import InputCard from '../components/InputCard';
+import InputCard from '../components/ForForms/InputCard';
 import fetchToken from '../redux/fetchs/fetchToken';
 import { actionSaveDataUser } from '../redux/actions/index';
 import '../styles/Login.css';
@@ -92,6 +92,7 @@ class Login extends Component {
     const { token } = this.props;
     const { email, playerName, validation, redirect } = this.state;
 
+    // Se o redirect da state for true e também tiver o token então redireciona para a página /game
     if (redirect && token) { return <Redirect to="/game" />; }
 
     // O componente InputCard foi criado para resolver problemas de lint na questão de tamanho de uma função
