@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import fetchGravatar from '../redux/fetchs/fetchGravatar';
-import { saveImgUrl } from '../redux/actions/index';
+import { actionSaveImgUrl } from '../redux/actions/index';
 
 class Header extends React.Component {
   render() {
@@ -26,7 +26,7 @@ class Header extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   pushFetch: (state) => dispatch(fetchGravatar(state)),
-  saveImg: (url) => dispatch(saveImgUrl(url)),
+  saveImg: (url) => dispatch(actionSaveImgUrl(url)),
 });
 
 const mapStateToProps = (state) => ({
@@ -34,10 +34,12 @@ const mapStateToProps = (state) => ({
   playerName: state.user.playerName,
 });
 
+// Faço a validação se os dados que recebi são válidos
 Header.propTypes = {
   email: PropTypes.string.isRequired,
   saveImg: PropTypes.func.isRequired,
   playerName: PropTypes.string.isRequired,
 };
 
+// O connect é responsável por fazer a conexão do meu componente Header com o mapStateToProps e o mapDispatchToProps.
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

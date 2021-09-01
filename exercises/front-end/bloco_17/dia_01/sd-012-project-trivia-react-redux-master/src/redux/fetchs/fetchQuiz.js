@@ -1,6 +1,6 @@
 import {
-  fetchingQuiz,
-  getQuiz,
+  actionFetchingQuiz,
+  actionGetQuiz,
 } from '../actions/index';
 
 const decodeResults = (questions) => {
@@ -30,12 +30,13 @@ const fetchQuiz = ({ token, amount, id, difficulty, type }) => {
   console.log(amount);
   const URL = `https://opentdb.com/api.php?category=${id}${diffSelected}${typeSelected}&amount=${amount}&token=${token}&encode=base64`;
   console.log(URL);
+  
   return async (dispatch) => {
-    dispatch(fetchingQuiz());
+    dispatch(actionFetchingQuiz());
     const response = await fetch(URL);
     const { results } = await response.json();
     console.log(results);
-    dispatch(getQuiz(decodeResults(results)));
+    dispatch(actionGetQuiz(decodeResults(results)));
   };
 };
 

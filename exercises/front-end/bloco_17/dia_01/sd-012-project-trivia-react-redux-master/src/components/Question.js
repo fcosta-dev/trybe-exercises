@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from './ForForms/Button';
-import { timeoutFalse as actionTimeoutFalse } from '../redux/actions/index';
+import { actionTimeoutFalse } from '../redux/actions/index';
 
 class Question extends Component {
   constructor(props) {
@@ -38,8 +38,10 @@ class Question extends Component {
     if (timeout) {
       startTimer(1, true);
     } else { startTimer(0, false); }
+
     timeoutFalse();
     nextQuestion();
+
     this.setState({ button: false, showCorrect: false });
   }
 
@@ -106,6 +108,7 @@ const mapDispatchToProps = (dispatch) => ({
   timeoutFalse: () => dispatch(actionTimeoutFalse()),
 });
 
+// Faço a validação se os dados que recebi são válidos
 Question.propTypes = {
   timeoutFalse: PropTypes.func.isRequired,
   startTimer: PropTypes.func.isRequired,

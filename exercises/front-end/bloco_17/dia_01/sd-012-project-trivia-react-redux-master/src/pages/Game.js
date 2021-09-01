@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { func, bool, string, number, arrayOf, shape } from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Question, Header } from '../components/index';
-import { timeoutTrue as actionTimeoutTrue } from '../redux/actions/index';
+import { actionTimeoutTrue } from '../redux/actions/index';
 import fetchQuiz from '../redux/fetchs/fetchQuiz';
 import randomize from '../functions/randomize';
 
@@ -37,10 +37,13 @@ class Game extends Component {
     this.completeRandomIndex();
   }
 
+  // Chama a função para criar um 
   completeRandomIndex() {
     const length = 4;
     const qty = 3;
     const randomIndex = randomize(length, qty);
+
+    // Guarda a informação do randomico no Index
     this.setState({ randomIndex });
   }
 
@@ -155,7 +158,7 @@ class Game extends Component {
 // Recebe como parametro uma dispatch, e retorna um objeto com chave e valor
 const mapDispatchToProps = (dispatch) => ({
   timeoutTrue: () => dispatch(actionTimeoutTrue()),
-  getQuiz: (data) => dispatch(fetchQuiz(data)),
+  getQuiz: (data) => dispatch(fetchQuiz(data)), // Função do /redux/fetchs/fetchQuiz.js
 });
 
 const mapStateToProps = (state) => ({
@@ -171,6 +174,7 @@ const mapStateToProps = (state) => ({
   name: state.user.playerName,
 });
 
+// Faço a validação se os dados que recebi são válidos
 Game.propTypes = {
   timeoutTrue: func.isRequired,
   loading: bool.isRequired,
