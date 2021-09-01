@@ -51,31 +51,31 @@ class Question extends Component {
   render() {
     const { button, showCorrect } = this.state;
     const { loading, timeout, question, randomIndex } = this.props;
-
     // Mostragem da mensagem de Loading conforme atributo loading(true/false)
     if (loading) { return <p>Loading...</p>; }
-
+    // Grava na variável alternatives analisando o question, qual é a correta e quais são as incorretas
     const alternatives = question.correct_answer ? [
-      ...question.incorrect_answers
-        .map((alt, index) => ({ correct: false,
-          alt,
-          index,
-          isCorrect: 'wrong' })),
-      { correct: true,
-        alt: question.correct_answer,
-        isCorrect: 'correct' }] : [];
+      // Faz um .map neste spreac operator para colocar no alternatives essas questões incorretas
+      ...question.incorrect_answers.map((alt, index) => ({
+        correct: false, alt, index, isCorrect: 'wrong',
+      })),
+      // Pega também a questão correta e joga ela dentro do alternatives também
+      { correct: true, alt: question.correct_answer, isCorrect: 'correct' },
+    ] : [];
 
     return (
       <div className="question">
-
+        {/* Mostra a categoria da Questão. Ex: General Knowledge */}
         <h1 data-testid="question-category">{question.category}</h1>
+        {/* Mostra a questão a ser perguntada, recebida pela props */}
         { question.question
         && <p data-testid="question-text">{question.question}</p> }
-
         <div className="alternatives">
+          {/* Percorre o array randomico para montar a questão e os botões */}
           {randomIndex.map((index) => {
             if (!alternatives[index]) return null;
             const { correct, alt, index: i, isCorrect } = alternatives[index];
+
             return (
               <button
                 disabled={ timeout }
@@ -89,7 +89,7 @@ class Question extends Component {
               </button>
             );
           })}
-          {/* Se o button ou o timeout for true, então  */}
+          {/* Se o button ou o timeout for true, então renderiza o botão de Próxima */}
           { (button || timeout) && <Button onClick={ this.handleClickNext } /> }
         </div>
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Question, Header } from '../components/index';
@@ -197,7 +198,7 @@ Game.propTypes = {
     category: PropTypes.string,
     question: PropTypes.string,
     correct_answer: PropTypes.string,
-    incorrect_answers: PropTypes.arrayOf(string),
+    incorrect_answers: PropTypes.arrayOf(PropTypes.string),
   })).isRequired,
 };
 
