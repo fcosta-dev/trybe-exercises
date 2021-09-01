@@ -34,14 +34,11 @@ class Question extends Component {
 
   handleClickNext() {
     const { timeoutFalse, startTimer, timeout, nextQuestion } = this.props;
-
     if (timeout) {
       startTimer(1, true);
     } else { startTimer(0, false); }
-
     timeoutFalse();
     nextQuestion();
-
     this.setState({ button: false, showCorrect: false });
   }
 
@@ -55,6 +52,7 @@ class Question extends Component {
     const { button, showCorrect } = this.state;
     const { loading, timeout, question, randomIndex } = this.props;
 
+    // Mostragem da mensagem de Loading conforme atributo loading(true/false)
     if (loading) { return <p>Loading...</p>; }
 
     const alternatives = question.correct_answer ? [
@@ -91,6 +89,7 @@ class Question extends Component {
               </button>
             );
           })}
+          {/* Se o button ou o timeout for true, então  */}
           { (button || timeout) && <Button onClick={ this.handleClickNext } /> }
         </div>
 
@@ -99,11 +98,16 @@ class Question extends Component {
   }
 }
 
+// A função mapStateToProps mapeia as states armazenadas na store para uma props
+// Ou seja, caso eu quiser acessar os dados providos pelo reducer user, como o caso abaixo, eu devo acessar o caminho do state com o reducer desejado e nomear a prop que o receberá, que no caso abaixo é a token.
 const mapStateToProps = (state) => ({
   loading: state.quiz.loading,
   timeout: state.quiz.timeout,
 });
 
+// A função do mapDispatchToProps é despachar action para a store, com a finalidade de alterar o state da aplicação
+// A função dispatch() serve para despachar uma action para o reducer
+// Recebe como parametro uma dispatch, e retorna um objeto com chave e valor
 const mapDispatchToProps = (dispatch) => ({
   timeoutFalse: () => dispatch(actionTimeoutFalse()),
 });

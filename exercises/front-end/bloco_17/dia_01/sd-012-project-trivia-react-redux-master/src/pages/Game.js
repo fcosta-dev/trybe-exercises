@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { func, bool, string, number, arrayOf, shape } from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Question, Header } from '../components/index';
 import { actionTimeoutTrue } from '../redux/actions/index';
@@ -39,7 +38,7 @@ class Game extends Component {
     this.completeRandomIndex();
   }
 
-  // Chama a função para criar um
+  // Chama a função para criar um array randomico
   completeRandomIndex() {
     const length = 4;
     const qty = 3;
@@ -146,7 +145,7 @@ class Game extends Component {
         {/* Chama o componente Header passando a props de score/pontuação */}
         <Header score={ score } />
         <p>{timer}</p>
-        {/* Chama a questão  */}
+        {/* Chama o componente de questão passando algumas props */}
         <Question
           stopTimer={ this.stopTimer }
           startTimer={ this.startTimer }
@@ -184,21 +183,21 @@ const mapStateToProps = (state) => ({
 
 // Faço a validação se os dados que recebi são válidos
 Game.propTypes = {
-  timeoutTrue: func.isRequired,
-  loading: bool.isRequired,
-  getQuiz: func.isRequired,
-  token: string.isRequired,
-  name: string.isRequired,
-  picture: string.isRequired,
-  type: string.isRequired,
-  difficulty: string.isRequired,
-  amount: number.isRequired,
-  id: number.isRequired,
-  questions: arrayOf(shape({
-    category: string,
-    question: string,
-    correct_answer: string,
-    incorrect_answers: arrayOf(string),
+  timeoutTrue: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  getQuiz: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  difficulty: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  questions: PropTypes.arrayOf(PropTypes.shape({
+    category: PropTypes.string,
+    question: PropTypes.string,
+    correct_answer: PropTypes.string,
+    incorrect_answers: PropTypes.arrayOf(string),
   })).isRequired,
 };
 

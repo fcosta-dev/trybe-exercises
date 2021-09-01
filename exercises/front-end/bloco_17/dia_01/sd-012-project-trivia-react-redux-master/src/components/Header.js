@@ -24,6 +24,9 @@ class Header extends React.Component {
   }
 }
 
+// A função do mapDispatchToProps é despachar action para a store, com a finalidade de alterar o state da aplicação
+// A função dispatch() serve para despachar uma action para o reducer
+// Recebe como parametro uma dispatch, e retorna um objeto com chave e valor
 const mapDispatchToProps = (dispatch) => ({
   pushFetch: (state) => dispatch(fetchGravatar(state)),
   saveImg: (url) => dispatch(actionSaveImgUrl(url)),
