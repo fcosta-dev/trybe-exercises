@@ -9,6 +9,7 @@ class Cars extends Component {
   render() {
     const { redCar, blueCar, yellowCar } = this.context.cars;
     const { moveCar } = this.context;
+    
     return (
       <div>
         <div>
