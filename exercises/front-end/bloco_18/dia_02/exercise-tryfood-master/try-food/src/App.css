@@ -1,0 +1,178 @@
+.bottom {
+  background-color: rgba(255, 254, 254, 0.9);
+  border-radius: 5px;
+  color: black;
+  padding: 15px;
+  text-align: center;
+  width: 100vw;
+}
+
+.cart-wall {
+  height: 100vh;
+  padding: 15px;
+}
+
+.dishes-column {
+  background-color: rgba(255, 254, 254, 0.1);
+  border-radius: 5px;
+  margin: 5px;
+  width: 30vw;
+  flex-basis: 70%;
+  flex-wrap: wrap;
+}
+
+.drinks-column {
+  background-color: rgba(255, 254, 254, 0.1);
+  border-radius: 5px;
+  margin: 5px;
+  width: 30vw;
+  flex-wrap: wrap;
+}
+
+.desserts-column {
+  background-color: rgba(255, 254, 254, 0.1);
+  border-radius: 5px;
+  margin: 5px;
+  min-width: 250px !important;
+  width: 30vw;
+  flex-wrap: wrap !important;
+}
+
+h1 {
+  margin: 15px 0 !important;
+}
+
+.header {
+  background-color: rgba(255, 254, 254, 0.4);
+  height: 100px;
+  margin-bottom: 5px;
+  width: 100vw;
+}
+
+.header-price {
+  font-weight: 700;
+  margin: 5px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 960px) {
+  .header-price {
+    font-size: xx-large;
+  }
+
+  .header-img {
+    width: 150px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .header-price {
+    font-size: x-large;
+  }
+
+  .header-img {
+    width: 120px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .header-price {
+    font-size: medium;
+  }
+
+  .header-img {
+    width: 100px;
+  }
+}
+
+.img-option {
+  border-radius: 5px;
+  margin: 5px;
+}
+
+input {
+  margin-bottom: 10px !important;
+}
+
+.input-option {
+  border: 2px solid white;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+}
+
+.list-items {
+  background-color:  rgba(255, 254, 254, 0.8);
+  border-radius: 5px;
+  width: 50vw;
+}
+
+.list-title {
+  color: white;
+  font-weight: 500;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.login {
+  height: 100vh;
+}
+
+.order main {
+  display: flex;
+}
+
+.opt {
+  background-color: rgba(255, 254, 254, 0.2);
+  border-radius: 5px;
+  box-sizing: border-box !important;
+  margin: 5px;
+  width: 250px;
+}
+
+.opt-wall {
+  height: 100%;
+  width: 100vw;
+}
+
+.order {
+  color: white;
+  height: 100%;
+  width: 100vw;
+}
+
+p {
+  color: black;
+  font-size: x-large;
+  font-weight: 600;
+  margin: 5px 10px !important;
+}
+
+.slogan {
+  color: white;
+  font-size: medium;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.title {
+  background-color: rgba(255, 254, 254, 0.9);
+  border-radius: 5px;
+  color: black;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.total {
+  font-size: x-large;
+  font-weight: 700;
+  margin: 10px;
+}
+
+.tryfood {
+  background-color: rgb(199,27,34);
+  background: linear-gradient(0deg, rgb(36, 1, 0) 0%, rgb(199,27,34) 95%);
+  background-size: cover;
+  width: 100vw;
+}
