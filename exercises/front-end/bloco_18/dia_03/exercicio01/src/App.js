@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from 'react';
 
-function App() {
+import LastUpdate from './components/LastUpdate';
+import Posts from './components/Posts';
+import RefreshButton from './components/RefreshButton';
+import Selector from './components/Selector';
+import { Context } from './context/RedditContext';
+
+const App = () => {
+  const {
+    fetchPosts,
+    selectedSubreddit,
+    postsBySubreddit,
+    isFetching,
+  } = useContext(Context);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const { items: posts = [] } = postsBySubreddit[selectedSubreddit];
+  const isEmpty = posts.length === 0;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Selector />
+      <div>
+        <LastUpdate />
+        <RefreshButton />
+      </div>
+      {isFetching && <h2>Loading...</h2>}
+      {!isFetching && isEmpty && <h2>Empty.</h2>}
+      {!isFetching && !isEmpty && <Posts />}
     </div>
   );
-}
+};
 
 export default App;
+
