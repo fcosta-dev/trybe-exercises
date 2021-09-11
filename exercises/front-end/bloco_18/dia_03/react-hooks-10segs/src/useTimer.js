@@ -63,12 +63,14 @@ const useTimer = () => {
   useEffect(() => {
     if (isMultiple) {
       setTimeout(() => {
+        // Zera o RandomNumber
         setRandomNumber(null);
-      // setTimeout rodando a cada 4 segundos
+      // setTimeout rodando a cada 4 segundos, zerando a mensagem e o randomNumber
       }, FOUR_SECONDS);
     }
   }, [randomNumber, isMultiple]);
 
+  // Retorna para quem chamar o timer, randomNumber e isMultiple
   return {
     timer,
     randomNumber,
