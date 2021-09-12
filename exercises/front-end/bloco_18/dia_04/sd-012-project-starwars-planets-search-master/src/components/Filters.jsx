@@ -3,19 +3,27 @@ import StarWarsContext from '../contexts/StarWarsContext';
 
 // Criando o componente funcional Filters - solicitado Requisito 03
 const Filters = () => {
-  const { filters: { filterByName: { name } },
-    setName,
-    setColumn, // Valor inicial definido no useState de "population"
-    setComparison, // Valor inicial definido no useState de "maior que"
-    setValue,
+  const { filters: {
+    filterByName: { name },
+    filterByNumericValues,
+  },
+  setName,
+  setFiltersByNumericValues,
   } = useContext(StarWarsContext);
 
+  // Cria um array com as opções do ComboList
+  const columns = ['population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
+  // Cria um array com as comparações do ComboList
+  const comparisons = ['maior que', 'menor que', 'igual a'];
+
   // Criando o getter e o setter do localColumn e dando o valor inicial de "population"
-  const [localColumn, setLocalColumn] = useState('population');
+  const [column, setColumn] = useState(columns[0]);
   // Criando o getter e o setter do localComparison e dando o valor inicial de "maior que"
-  const [localComparison, setLocalComparison] = useState('maior que');
+  const [comparison, setComparison] = useState(comparisons[0]);
   // Criando o getter e o setter do localValue e dando o valor inicial de vazio ""
-  const [localValue, setLocalValue] = useState('');
+  const [value, setValue] = useState('');
+  // Criando o getter e o setter de unavailableFilters e dando o valor inicial de vazio "". Ele será usado para avaliar os Filtros se ok ou não
+  const [unavailableFilters, setUnavailableFilters] = useState([]);
 
   return (
     <div>
@@ -27,7 +35,7 @@ const Filters = () => {
           name="name"
           value={ name }
           data-testid="name-filter"
-          onChange={ ({ target: { value } }) => setName(value) }
+          onChange={ ({ target: { value: valor } }) => setName(valor) }
         />
       </label>
       <p />
@@ -39,13 +47,20 @@ const Filters = () => {
         <select
           name="column-filter"
           data-testid="column-filter"
-          onChange={ ({ target: { value } }) => setLocalColumn(value) }
+          onChange={ ({ target: { value: valor } }) => setColumn(valor) }
         >
-          <option value="population">population</option>
-          <option value="orbital_period">orbital_period</option>
-          <option value="diameter">diameter</option>
-          <option value="rotation_period">rotation_period</option>
-          <option value="surface_water">surface_water</option>
+          {/* Como há a exclusão de dados que estão participando de filtros, então foi
+          realizado um filters e map para montagem da ComboList */}
+          {/* Faz um filtro se o elemento não está incluso nos Filtros,
+           controlado pelo unavailableFilters */}
+          {
+            columns
+              .filter((coluna) => !unavailableFilters.includes(coluna))
+              .filter((coluna) => !unavailableFilters.includes(coluna))
+              .map((coluna, index) => (
+                <option value={ coluna } key={ index }>{ coluna }</option>
+              ))
+          }
         </select>
       </label>
       <p />
@@ -56,11 +71,16 @@ const Filters = () => {
         <select
           name="comparison-filter"
           data-testid="comparison-filter"
-          onChange={ ({ target: { value } }) => setLocalComparison(value) }
+          onChange={ ({ target: { value: valor } }) => setComparison(valor) }
         >
-          <option value="maior que">maior que</option>
-          <option value="menor que">menor que</option>
-          <option value="igual a">igual a</option>
+          {/* Como há a exclusão de dados que estão participando de filtros, então foi
+          realizado um filters e map para montagem da ComboList */}
+          {
+            comparisons
+              .map((comparacao, index) => (
+                <option value={ comparacao } key={ index }>{comparacao}</option>
+              ))
+          }
         </select>
       </label>
       <p />
@@ -71,7 +91,7 @@ const Filters = () => {
         <input
           name="value-filter"
           data-testid="value-filter"
-          onChange={ ({ target: { value } }) => setLocalValue(value) }
+          onChange={ ({ target: { value: valor } }) => setValue(valor) }
         />
       </label>
 
@@ -79,10 +99,18 @@ const Filters = () => {
       <button
         type="button"
         data-testid="button-filter"
+        disabled={ !value }
         onClick={ () => {
-          setColumn(localColumn);
-          setComparison(localComparison);
-          setValue(localValue);
+          // Atualiza o FiltersByNumericValues com os valores do novo filtro
+          setFiltersByNumericValues(
+            [...filterByNumericValues, { column, comparison, value }],
+          );
+          // Adiciona no array unavailableFilters a coluna que não pode ser usada
+          unavailableFilters.push(column);
+          // Adiciona ao state esse dado citado acima
+          setUnavailableFilters([...unavailableFilters]);
+
+          setColumn(columns.filter((c) => !unavailableFilters.includes(c))[0]);
         } }
       >
         Filtrar

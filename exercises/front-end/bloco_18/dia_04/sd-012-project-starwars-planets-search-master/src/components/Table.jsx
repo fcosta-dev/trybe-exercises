@@ -14,9 +14,6 @@ const Table = () => {
     },
   } = useContext(StarWarsContext);
 
-  // Desconstrói o filterByNumericValues na posição 0
-  const { column, comparison, value } = filterByNumericValues[0];
-
   // Essa variável headers vai receber a primeira linha do planets(conforme [0]) e se não tiver nada, ela traz um array vazio, evitando undefined.
   const headers = planets[0] || [];
 
@@ -63,15 +60,11 @@ const Table = () => {
       {/* Aqui vai montar o CORPO da tabela com os dados dos planetas */}
       <tbody>
         {
-          planets
-            // Realiza o filtro conforme "name" que é o valor digitado analisado no FilterInput.jsx
-            .filter((planet) => (name ? (planet.name).includes(name) : true))
-            // Realizo o segundo filtro conforme dados setados no Input, em sequência do filtro do name
-            // Aciono o filtro conforme planet[column](combolist population, etc), value(valor a ser informado conforme combolist), comparison(maior que, menor que, etc)
-            .filter((planet) => (value
-              ? evaluate(planet[column], value, comparison)
-              : true
-            ))
+          filterByNumericValues
+            .reduce((acumulador, { column, value, comparison }) => acumulador
+              // Aciono o filtro conforme planet[column](combolist population, etc), value(valor a ser informado conforme combolist), comparison(maior que, menor que, etc)
+              .filter((planet) => evaluate(planet[column], value, comparison)), planets)
+            .filter((planet) => (planet.name).includes(name))
           // Percorre a variável planets com o array recebido, montando cada linha da tabela(ou <tr>) pegando somente os values, pois as keys/chaves não são necessárias
             .map((planet, index) => (
               <tr key={ index }>
