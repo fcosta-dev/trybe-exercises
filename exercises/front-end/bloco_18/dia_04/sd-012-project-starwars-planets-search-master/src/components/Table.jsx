@@ -6,7 +6,7 @@ import StarWarsContext from '../contexts/StarWarsContext';
 // Criando o componente funcional
 const Table = () => {
   // Salva na variável planets os planetas vindo da API em /services
-  const planets = useContext(StarWarsContext);
+  const { planets, filters: { filtersByName: { name } } } = useContext(StarWarsContext);
   // Essa variável headers vai receber a primeira linha do planets(conforme [0]) e se não tiver nada, ela traz um array vazio, evitando undefined.
   const headers = planets[0] || [];
 
@@ -28,8 +28,10 @@ const Table = () => {
       {/* Aqui vai montar o CORPO da tabela com os dados dos planetas */}
       <tbody>
         {
-          // Percorre a variável planets com o array recebido, montando cada linha da tabela(ou <tr>) pegando somente os values, pois as keys/chaves não são necessárias
           planets
+            // Realiza o filtro conforme "name" que é o valor digitado analisado no FilterInput.jsx
+            .filter((planet) => (name ? (planet.name).includes(name) : true))
+          // Percorre a variável planets com o array recebido, montando cada linha da tabela(ou <tr>) pegando somente os values, pois as keys/chaves não são necessárias
             .map((planet, index) => (
               <tr key={ index }>
                 {/* Pega somente os valores para montar a coluna correspondente */}

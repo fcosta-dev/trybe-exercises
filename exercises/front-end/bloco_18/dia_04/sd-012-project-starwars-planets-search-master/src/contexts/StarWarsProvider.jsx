@@ -1,5 +1,5 @@
 // Importa o element de PropTypes.element
-import { element } from 'prop-types';
+import { oneOfType, arrayOf, node } from 'prop-types';
 // Importa os hooks useEffect e useState
 import React, { useEffect, useState } from 'react';
 // Importa a função que vai conexão a API de Planetas
@@ -10,6 +10,8 @@ import StarWarsContext from './StarWarsContext';
 const StarWarsProvider = ({ children }) => {
   // Cria o getter e o setter do planets, passando um array vazio como estado inicial
   const [planets, setPlanets] = useState([]);
+  // Cria o getter e o setter do Name(filtro a ser realizado), passando um valor vazio como estado inicial
+  const [name, setName] = useState('');
 
   // Equivalente ao componentDidMount, pois recebe um array vazio []
   useEffect(() => {
@@ -26,15 +28,33 @@ const StarWarsProvider = ({ children }) => {
   // Recebendo um array vazio, informando que é o mesmo comportamento do componentDidMount, ou seja, executa quando a página for renderizada.
   }, []);
 
+  // Estrutura do name solicitada pelo Requisito 02
+  const filters = {
+    filters: {
+      filtersByName: {
+        name,
+      },
+    },
+  };
+
   return (
-    // Chama o contexto, como Provider, para prover ao componente as informações necessárias, e passa a ele o valor de planetas
-    <StarWarsContext.Provider value={ planets }>{ children }</StarWarsContext.Provider>
+    // Chama o contexto, como Provider, para prover ao componente as informações necessárias, e passa a ele o value, com os planetas, filtros e filtro definido
+    <StarWarsContext.Provider
+      value={
+        { planets, ...filters, setName }
+      }
+    >
+      { children }
+    </StarWarsContext.Provider>
   );
 };
 
-// Faz a checagem de tipos, exigida pelo lint, se o children é um elemento
+// Faz a checagem de tipos, exigida pelo lint
 StarWarsProvider.propTypes = {
-  children: element.isRequired,
+  children: oneOfType([
+    arrayOf(node),
+    node,
+  ]).isRequired,
 };
 
 export default StarWarsProvider;
