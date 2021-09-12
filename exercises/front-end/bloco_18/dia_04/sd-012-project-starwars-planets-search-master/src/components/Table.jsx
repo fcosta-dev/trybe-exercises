@@ -6,9 +6,44 @@ import StarWarsContext from '../contexts/StarWarsContext';
 // Criando o componente funcional
 const Table = () => {
   // Salva na variável planets os planetas vindo da API em /services
-  const { planets, filters: { filtersByName: { name } } } = useContext(StarWarsContext);
+  const {
+    planets,
+    filters: {
+      filterByName: { name },
+      filterByNumericValues,
+    },
+  } = useContext(StarWarsContext);
+
+  // Desconstrói o filterByNumericValues na posição 0
+  const { column, comparison, value } = filterByNumericValues[0];
+
   // Essa variável headers vai receber a primeira linha do planets(conforme [0]) e se não tiver nada, ela traz um array vazio, evitando undefined.
   const headers = planets[0] || [];
+
+  // A função evaluate recebe 3 parametros
+  // Parametro 01: planetColumn(combolist population, etc)
+  // Parametro 02: eValue(valor a ser informado conforme combolist)
+  // Parametro 03: eComparison(maior que, menor que, etc)
+  const evaluate = (planetColumn, eValue, eComparison) => {
+    if (Number.isNaN(planetColumn) || Number.isNaN(eValue)) return false;
+
+    planetColumn = parseInt(planetColumn, 10);
+    eValue = parseInt(eValue, 10);
+
+    switch (eComparison) {
+    case 'maior que':
+      return planetColumn > eValue;
+
+    case 'menor que':
+      return planetColumn < eValue;
+
+    case 'igual a':
+      return planetColumn === eValue;
+
+    default:
+      return true;
+    }
+  };
 
   // Monta a tabela
   return (
@@ -31,6 +66,12 @@ const Table = () => {
           planets
             // Realiza o filtro conforme "name" que é o valor digitado analisado no FilterInput.jsx
             .filter((planet) => (name ? (planet.name).includes(name) : true))
+            // Realizo o segundo filtro conforme dados setados no Input, em sequência do filtro do name
+            // Aciono o filtro conforme planet[column](combolist population, etc), value(valor a ser informado conforme combolist), comparison(maior que, menor que, etc)
+            .filter((planet) => (value
+              ? evaluate(planet[column], value, comparison)
+              : true
+            ))
           // Percorre a variável planets com o array recebido, montando cada linha da tabela(ou <tr>) pegando somente os values, pois as keys/chaves não são necessárias
             .map((planet, index) => (
               <tr key={ index }>
