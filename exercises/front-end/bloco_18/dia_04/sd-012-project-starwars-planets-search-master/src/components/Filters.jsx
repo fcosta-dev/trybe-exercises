@@ -9,10 +9,13 @@ const Filters = () => {
   },
   setName,
   setFiltersByNumericValues,
+  setUnavailableFilters,
+  unavailableFilters,
   } = useContext(StarWarsContext);
 
   // Cria um array com as opções do ComboList
-  const columns = ['population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
+  const columns = ['population', 'orbital_period', 'diameter', 'rotation_period',
+    'surface_water'];
   // Cria um array com as comparações do ComboList
   const comparisons = ['maior que', 'menor que', 'igual a'];
 
@@ -22,8 +25,6 @@ const Filters = () => {
   const [comparison, setComparison] = useState(comparisons[0]);
   // Criando o getter e o setter do localValue e dando o valor inicial de vazio ""
   const [value, setValue] = useState('');
-  // Criando o getter e o setter de unavailableFilters e dando o valor inicial de vazio "". Ele será usado para avaliar os Filtros se ok ou não
-  const [unavailableFilters, setUnavailableFilters] = useState([]);
 
   return (
     <div>

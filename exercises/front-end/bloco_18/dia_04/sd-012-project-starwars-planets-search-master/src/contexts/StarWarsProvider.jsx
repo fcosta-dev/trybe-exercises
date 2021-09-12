@@ -12,6 +12,8 @@ const StarWarsProvider = ({ children }) => {
   const [planets, setPlanets] = useState([]);
   // Cria o getter e o setter do Name(filtro a ser realizado), passando um valor vazio como estado inicial
   const [name, setName] = useState('');
+  // Cria o getter e o setter do unavailableFilters, passando um valor vazio como estado inicial
+  const [unavailableFilters, setUnavailableFilters] = useState([]);
   // Cria o getter e o setter do filtersByNumericValues, passando o valor vazio '' como estado inicial
   const [filtersByNumericValues, setFiltersByNumericValues] = useState([]);
 
@@ -44,7 +46,7 @@ const StarWarsProvider = ({ children }) => {
     // Chama o contexto, como Provider, para prover ao componente as informações necessárias, e passa a ele o value, com os planetas, filtros e filtro definido
     <StarWarsContext.Provider
       value={
-        { planets, ...filters, setName, setFiltersByNumericValues }
+        { planets, ...filters, setName, setFiltersByNumericValues, setUnavailableFilters, unavailableFilters }
       }
     >
       { children }
