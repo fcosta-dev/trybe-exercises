@@ -1,4 +1,6 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -8,7 +10,9 @@ import Login from './pages/Login';
 function App() {
   return (
     <Provider>
-      <Login />
+      <Switch>
+        <Route path="/" component={ Login } />
+      </Switch>
     </Provider>
   );
 }
