@@ -11,7 +11,7 @@ function App() {
   return (
     <Provider>
       <Switch>
-        <Route path="/" component={ Login } />
+        <Route exact path="/" component={ Login } />
       </Switch>
     </Provider>
   );
