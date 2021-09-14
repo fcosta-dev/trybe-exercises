@@ -31,7 +31,7 @@ function Header({ title, search }) {
             src={ seachIcon }
             alt=""
           />)}
-      {renderSeachBar && <SearchBar />}
+      {renderSeachBar && <SearchBar title={ title } />}
     </header>
   );
 }

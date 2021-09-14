@@ -1,12 +1,28 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 
-function SearchBar() {
+import '../styles/SearchBar.css';
+
+function SearchBar(props) {
+  const { title } = props;
   const { setSearchType,
     setSearchInputValue,
     searchInputValue,
     searchType,
-    searchBarRequest } = useContext(RecipeContext);
+    searchBarRequestDrink,
+    searchBarRequestFood,
+  } = useContext(RecipeContext);
+
+  const requestAPI = (value) => {
+    if (value === 'Comidas') {
+      searchBarRequestFood(searchType, searchInputValue);
+    }
+    if (value === 'Bebidas') {
+      searchBarRequestDrink(searchType, searchInputValue);
+    }
+  };
+
   return (
     <div>
       <input
@@ -52,12 +68,18 @@ function SearchBar() {
       <button
         type="button"
         data-testid="exec-search-btn"
-        onClick={ () => searchBarRequest(searchType, searchInputValue) }
+        onClick={ () => requestAPI(title) }
       >
         Buscar
       </button>
+      {console.log(props)}
+      ;
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default SearchBar;

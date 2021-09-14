@@ -6,7 +6,7 @@ function Provider({ children }) {
   const [searchType, setSearchType] = useState('ingrediente');
   const [searchInputValue, setSearchInputValue] = useState('');
 
-  const searchBarRequest = async (type, inputvalue) => {
+  const searchBarRequestFood = async (type, inputvalue) => {
     let response = '';
     if (type === 'ingrediente') {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${inputvalue}`);
@@ -25,12 +25,32 @@ function Provider({ children }) {
     return responseJson;
   };
 
+  const searchBarRequestDrink = async (type, inputvalue) => {
+    let response = '';
+    if (type === 'ingrediente') {
+      response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${inputvalue}`);
+    }
+    if (type === 'nome') {
+      response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputvalue}`);
+    }
+    if (type === 'primeira letra') {
+      if (inputvalue.length !== 1) {
+        return alert('Sua busca deve conter somente 1 (um) caracter');
+      }
+      response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${inputvalue}`);
+    }
+    const responseJson = await response.json();
+    console.log(responseJson);
+    return responseJson;
+  };
+
   const context = {
     setSearchType,
     searchType,
     setSearchInputValue,
     searchInputValue,
-    searchBarRequest,
+    searchBarRequestDrink,
+    searchBarRequestFood,
   };
 
   return (
