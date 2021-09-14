@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 import Context from './Context';
 
 // A function Provider já recebe a props como padrão, e aqui abaixo estamos recebendo ela e desconstruindo pegando o children
