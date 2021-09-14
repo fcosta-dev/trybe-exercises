@@ -11,6 +11,11 @@ function Login() {
     return true;
   };
 
+  const saveToken = () => {
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
+  };
+
   return (
     <form>
       <label htmlFor="email">
@@ -39,6 +44,7 @@ function Login() {
         type="button"
         data-testid="login-submit-btn"
         disabled={ !checkValidity() }
+        onClick={ saveToken }
       >
         Entrar
       </button>
