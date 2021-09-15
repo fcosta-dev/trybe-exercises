@@ -2,22 +2,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
-function ButtonIniciar({ id, objDetail }) {
+function ButtonIniciar({ id }) {
   const history = useHistory();
 
   const iniciarReceita = 'Iniciar Receita';
 
   const [buttonName, setButtonName] = useState(iniciarReceita);
-
-  const Ingredients = () => {
-    const ingredientes = Object.entries(objDetail[0]);
-
-    const filtering = ingredientes.filter((element) => (
-      element[0].includes('strIngredient') && element[1] !== null && element[1] !== ''));
-
-    const results = filtering.map((elem) => elem[1]);
-    return results;
-  };
 
   const value = history.location.pathname;
 
@@ -30,7 +20,7 @@ function ButtonIniciar({ id, objDetail }) {
           ...inProgress,
           meals: {
             ...inProgress.meals,
-            [id]: Ingredients(),
+            [id]: [],
           },
         }));
       }
@@ -39,7 +29,7 @@ function ButtonIniciar({ id, objDetail }) {
           ...inProgress,
           cocktails: {
             ...inProgress.cocktails,
-            [id]: Ingredients(),
+            [id]: [],
           },
         }));
       }
@@ -47,7 +37,7 @@ function ButtonIniciar({ id, objDetail }) {
       if (value.includes('comidas')) {
         localStorage.setItem('inProgressRecipes', JSON.stringify({
           meals: {
-            [id]: Ingredients(),
+            [id]: [],
           },
           cocktails: {},
         }));
@@ -55,7 +45,7 @@ function ButtonIniciar({ id, objDetail }) {
       if (value.includes('bebidas')) {
         localStorage.setItem('inProgressRecipes', JSON.stringify({
           cocktails: {
-            [id]: Ingredients(),
+            [id]: [],
           },
           meals: {},
         }));
@@ -116,9 +106,6 @@ function ButtonIniciar({ id, objDetail }) {
 
 ButtonIniciar.propTypes = {
   id: PropTypes.string.isRequired,
-  objDetail: PropTypes.shape(
-    PropTypes.any,
-  ).isRequired,
 };
 
 export default ButtonIniciar;

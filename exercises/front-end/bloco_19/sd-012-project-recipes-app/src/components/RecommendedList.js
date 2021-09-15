@@ -11,7 +11,6 @@ function RecommendedList({ value }) {
   };
 
   const MAX_RECIPES = 6;
-
   return (
     <Carousel activeIndex={ index } onSelect={ handleSelect }>
       {value.map((elem, i) => {

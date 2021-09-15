@@ -1,16 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-// npm install --save react-copy-to-clipboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import RecipeContext from '../context/RecipeContext';
 import '../styles/Detalhes.css';
 import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import Loading from '../components/Loading';
 import RecommendedList from '../components/RecommendedList';
 import ButtonIniciar from '../components/ButtonIniciar';
 import HandleYoutube from '../services/HandleYoutube';
 import LinkCopiado from '../components/LinkCopiado';
+import FavoriteBtn from '../components/FavoriteBtn';
 
 function Detalhes() {
   const history = useHistory();
@@ -116,12 +115,7 @@ function Detalhes() {
           />
         </CopyToClipboard>
         <LinkCopiado />
-        <input
-          type="image"
-          data-testid="favorite-btn"
-          src={ whiteHeartIcon }
-          alt={ objDetail[0].strDrink }
-        />
+        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       <ol className="ingredient-list">
         { getIngredients() }
@@ -160,12 +154,7 @@ function Detalhes() {
           />
         </CopyToClipboard>
         <LinkCopiado />
-        <input
-          type="image"
-          data-testid="favorite-btn"
-          src={ whiteHeartIcon }
-          alt={ objDetail[0].strMeal }
-        />
+        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       <ol className="ingredient-list">
         { getIngredients() }
@@ -189,6 +178,7 @@ function Detalhes() {
 
   const render = () => {
     const value = history.location.pathname;
+    console.log(Object.keys(objDetail[0]));
     if (value.includes('comidas')) {
       return renderFood();
     }

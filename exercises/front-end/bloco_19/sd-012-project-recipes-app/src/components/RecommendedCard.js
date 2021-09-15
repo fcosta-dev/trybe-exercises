@@ -1,5 +1,5 @@
 import React from 'react';
-import { shape, number, string } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 
 import '../styles/RecommendedCard.css';
@@ -9,7 +9,6 @@ function RecommendedCard({ index, card }) {
 
   const renderDrink = () => {
     const { strDrink, strDrinkThumb, idDrink } = card;
-
     return (
       <Link to={ `/bebidas/${idDrink}` }>
         <div
@@ -56,10 +55,10 @@ function RecommendedCard({ index, card }) {
   const render = () => {
     const value = history.location.pathname;
     if (value.includes('comidas')) {
-      return renderFood();
+      return renderDrink();
     }
     if (value.includes('bebidas')) {
-      return renderDrink();
+      return renderFood();
     }
   };
 
@@ -71,14 +70,14 @@ function RecommendedCard({ index, card }) {
 }
 
 RecommendedCard.propTypes = {
-  index: number.isRequired,
-  card: shape({
-    strDrink: string,
-    strDrinkThumb: string,
-    strMeal: string,
-    strMealThumb: string,
-    idMeal: string,
-    idDrink: string,
+  index: PropTypes.number.isRequired,
+  card: PropTypes.shape({
+    strDrink: PropTypes.string,
+    strDrinkThumb: PropTypes.string,
+    strMeal: PropTypes.string,
+    strMealThumb: PropTypes.string,
+    idMeal: PropTypes.string,
+    idDrink: PropTypes.string,
   }).isRequired,
 };
 
