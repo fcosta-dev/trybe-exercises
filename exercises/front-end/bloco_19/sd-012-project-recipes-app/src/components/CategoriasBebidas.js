@@ -4,7 +4,6 @@ import RecipeContext from '../context/RecipeContext';
 function CategoriasFood() {
   const { drinkCategory, setMeals,
     setIsDrinkLoading, directRequestDrink } = useContext(RecipeContext);
-  console.log(setMeals);
 
   const MIN_ELEMN = 5;
 
