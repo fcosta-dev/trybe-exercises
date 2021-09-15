@@ -6,6 +6,8 @@ function Provider({ children }) {
   const [meals, setMeals] = useState([]);
   const [isDrinkLoading, setIsDrinkLoading] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [foodCategory, setFoodCategory] = useState([]);
+  const [drinkCategory, setDrinkCategory] = useState([]);
   const [searchType, setSearchType] = useState('ingrediente');
   const [searchInputValue, setSearchInputValue] = useState('');
 
@@ -79,11 +81,32 @@ function Provider({ children }) {
     setIsDrinkLoading(false);
   };
 
+  // Requisito 27
+  const requestFoodCategory = async () => {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
+    const result = await response.json();
+    setFoodCategory(result.meals);
+  };
+
+  const requestDrinkCategory = async () => {
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
+    const result = await response.json();
+    setDrinkCategory(result.drinks);
+  };
+
   useEffect(() => {
     setShouldRedirect(true);
   }, [meals]);
 
+  // Requisito 27
+  useEffect(() => {
+    requestDrinkCategory();
+    requestFoodCategory();
+  }, []);
+
   const context = {
+    foodCategory,
+    drinkCategory,
     directRequestFood,
     isDrinkLoading,
     setShouldRedirect,

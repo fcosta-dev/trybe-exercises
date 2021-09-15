@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesList from '../components/RecipesList';
 import RecipeContext from '../context/RecipeContext';
+import CategoriasBebidas from '../components/CategoriasBebidas';
 
 function Bebidas() {
   const { directRequestDrink, isDrinkLoading } = useContext(RecipeContext);
@@ -14,7 +15,13 @@ function Bebidas() {
   return (
     <div>
       <Header title="Bebidas" />
-      { !isDrinkLoading ? <RecipesList /> : <p>Carregando</p> }
+      {
+        !isDrinkLoading ? (
+          <div>
+            <CategoriasBebidas />
+            <RecipesList />
+          </div>) : <p>Carregando</p>
+      }
       <Footer />
     </div>
   );

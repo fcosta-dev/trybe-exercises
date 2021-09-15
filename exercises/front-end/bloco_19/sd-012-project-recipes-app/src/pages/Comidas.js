@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import CategoriasFood from '../components/CategoriasFood';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesList from '../components/RecipesList';
@@ -13,7 +14,13 @@ function Comidas() {
   return (
     <div>
       <Header title="Comidas" />
-      {!isDrinkLoading ? <RecipesList /> : <p>Carregando</p>}
+      {
+        !isDrinkLoading ? (
+          <div>
+            <CategoriasFood />
+            <RecipesList />
+          </div>) : <p>Carregando</p>
+      }
       <Footer />
     </div>
   );
