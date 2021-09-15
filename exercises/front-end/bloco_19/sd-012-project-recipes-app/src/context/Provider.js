@@ -9,45 +9,60 @@ function Provider({ children }) {
   const [searchInputValue, setSearchInputValue] = useState('');
 
   const searchBarRequestFood = async (type, inputvalue) => {
-    let response = '';
-    if (type === 'ingrediente') {
-      response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${inputvalue}`);
-    }
-    if (type === 'nome') {
-      response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputvalue}`);
-    }
-    if (type === 'primeira letra') {
-      if (inputvalue.length !== 1) {
-        return alert('Sua busca deve conter somente 1 (um) caracter');
+    try {
+      let response = '';
+      if (type === 'ingrediente') {
+        response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${inputvalue}`);
       }
-      response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputvalue}`);
+      if (type === 'nome') {
+        response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputvalue}`);
+      }
+      if (type === 'primeira letra') {
+        if (inputvalue.length !== 1) {
+          return alert('Sua busca deve conter somente 1 (um) caracter');
+        }
+        response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputvalue}`);
+      }
+      const responseJson = await response.json();
+      console.log(responseJson);
+      if (responseJson.meals === null) {
+        throw new Error('Nao existem receitas');
+      }
+      setMeals(responseJson.meals);
+    } catch (error) {
+      console.log(error.message);
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      return error;
     }
-    const responseJson = await response.json();
-    console.log(responseJson.meals);
-    setMeals(responseJson.meals);
   };
 
   const searchBarRequestDrink = async (type, inputvalue) => {
-    let response = '';
-    if (type === 'ingrediente') {
-      response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${inputvalue}`);
-    }
-    if (type === 'nome') {
-      response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputvalue}`);
-    }
-    if (type === 'primeira letra') {
-      if (inputvalue.length !== 1) {
-        return alert('Sua busca deve conter somente 1 (um) caracter');
+    try {
+      let response = '';
+      if (type === 'ingrediente') {
+        response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${inputvalue}`);
       }
-      response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${inputvalue}`);
+      if (type === 'nome') {
+        response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputvalue}`);
+      }
+      if (type === 'primeira letra') {
+        if (inputvalue.length !== 1) {
+          return alert('Sua busca deve conter somente 1 (um) caracter');
+        }
+        response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${inputvalue}`);
+      }
+      const responseJson = await response.json();
+      if (responseJson.drinks === null) {
+        throw new Error('Nao existem receitas');
+      }
+      setMeals(responseJson.drinks);
+    } catch (error) {
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      return error;
     }
-    const responseJson = await response.json();
-    console.log(responseJson);
-    setMeals(responseJson.drinks);
   };
 
   useEffect(() => {
-    console.log('ok');
     setShouldRedirect(true);
   }, [meals]);
 

@@ -22,7 +22,6 @@ function SearchBar(props) {
   const requestAPI = async (value) => {
     if (value === 'Comidas') {
       await searchBarRequestFood(searchType, searchInputValue);
-      console.log(meals);
     }
     if (value === 'Bebidas') {
       await searchBarRequestDrink(searchType, searchInputValue);
