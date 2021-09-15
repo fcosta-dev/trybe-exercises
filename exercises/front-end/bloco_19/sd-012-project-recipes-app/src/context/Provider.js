@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from './RecipeContext';
 
 function Provider({ children }) {
+  const [meals, setMeals] = useState([]);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
   const [searchType, setSearchType] = useState('ingrediente');
   const [searchInputValue, setSearchInputValue] = useState('');
 
@@ -21,8 +23,8 @@ function Provider({ children }) {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputvalue}`);
     }
     const responseJson = await response.json();
-    console.log(responseJson);
-    return responseJson;
+    console.log(responseJson.meals);
+    setMeals(responseJson.meals);
   };
 
   const searchBarRequestDrink = async (type, inputvalue) => {
@@ -41,8 +43,13 @@ function Provider({ children }) {
     }
     const responseJson = await response.json();
     console.log(responseJson);
-    return responseJson;
+    setMeals(responseJson.drinks);
   };
+
+  useEffect(() => {
+    console.log('ok');
+    setShouldRedirect(true);
+  }, [meals]);
 
   const context = {
     setSearchType,
@@ -51,6 +58,8 @@ function Provider({ children }) {
     searchInputValue,
     searchBarRequestDrink,
     searchBarRequestFood,
+    meals,
+    shouldRedirect,
   };
 
   return (

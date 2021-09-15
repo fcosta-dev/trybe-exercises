@@ -9,6 +9,7 @@ import Provider from './context/Provider';
 // Importação de pages
 import Bebidas from './pages/Bebidas';
 import Comidas from './pages/Comidas';
+import Detalhes from './pages/Detalhes';
 import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 
@@ -18,6 +19,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={ Login } />
         <Route exact path="/comidas" component={ Comidas } />
+        <Route exact path="/comidas/:id" component={ Detalhes } />
+        <Route exact path="/bebidas/:id" component={ Detalhes } />
         <Route exact path="/bebidas" component={ Bebidas } />
         <Route exact path="/perfil" component={ Perfil } />
       </Switch>
