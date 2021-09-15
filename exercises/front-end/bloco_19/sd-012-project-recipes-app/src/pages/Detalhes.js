@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import RecipeContext from '../context/RecipeContext';
 
 function Detalhes() {
+  const { setShouldRedirect } = useContext(RecipeContext);
   const [objDetail, setObjDetail] = useState([]);
   const [loading, setLoading] = useState(true);
   const history = useHistory();
@@ -25,6 +27,7 @@ function Detalhes() {
 
   useEffect(() => {
     requestByID();
+    setShouldRedirect(false);
   }, []);
 
   const renderDrink = () => (

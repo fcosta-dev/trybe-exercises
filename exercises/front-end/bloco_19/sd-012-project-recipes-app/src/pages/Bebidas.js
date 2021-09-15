@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesList from '../components/RecipesList';
+import RecipeContext from '../context/RecipeContext';
 
 function Bebidas() {
+  const { directRequestDrink, isDrinkLoading } = useContext(RecipeContext);
+
+  useEffect(() => {
+    directRequestDrink();
+  }, []);
+
   return (
     <div>
       <Header title="Bebidas" />
-      <RecipesList />
+      { !isDrinkLoading ? <RecipesList /> : <p>Carregando</p> }
       <Footer />
     </div>
   );

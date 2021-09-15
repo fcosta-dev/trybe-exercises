@@ -4,6 +4,7 @@ import RecipeContext from './RecipeContext';
 
 function Provider({ children }) {
   const [meals, setMeals] = useState([]);
+  const [isDrinkLoading, setIsDrinkLoading] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [searchType, setSearchType] = useState('ingrediente');
   const [searchInputValue, setSearchInputValue] = useState('');
@@ -62,11 +63,31 @@ function Provider({ children }) {
     }
   };
 
+  const directRequestFood = async () => {
+    setIsDrinkLoading(true);
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+    const result = await response.json();
+    setMeals(result.meals);
+    setIsDrinkLoading(false);
+  };
+
+  const directRequestDrink = async () => {
+    setIsDrinkLoading(true);
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+    const result = await response.json();
+    setMeals(result.drinks);
+    setIsDrinkLoading(false);
+  };
+
   useEffect(() => {
     setShouldRedirect(true);
   }, [meals]);
 
   const context = {
+    directRequestFood,
+    isDrinkLoading,
+    setShouldRedirect,
+    directRequestDrink,
     setSearchType,
     searchType,
     setSearchInputValue,

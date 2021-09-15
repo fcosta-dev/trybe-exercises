@@ -1,6 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import ExplorarBebidas from './components/ExplorarBebidas';
+import ExplorarComidas from './components/ExplorarComidas';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,6 +13,7 @@ import Provider from './context/Provider';
 import Bebidas from './pages/Bebidas';
 import Comidas from './pages/Comidas';
 import Detalhes from './pages/Detalhes';
+import Explorar from './pages/Explorar';
 import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 
@@ -23,6 +27,9 @@ function App() {
         <Route exact path="/bebidas/:id" component={ Detalhes } />
         <Route exact path="/bebidas" component={ Bebidas } />
         <Route exact path="/perfil" component={ Perfil } />
+        <Route exact path="/explorar" component={ Explorar } />
+        <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
+        <Route exact path="/explorar/bebidas" component={ ExplorarBebidas } />        
       </Switch>
     </Provider>
   );
