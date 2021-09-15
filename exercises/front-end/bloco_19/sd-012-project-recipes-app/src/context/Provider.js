@@ -105,6 +105,8 @@ function Provider({ children }) {
   }, []);
 
   const context = {
+    setIsDrinkLoading,
+    setMeals,
     foodCategory,
     drinkCategory,
     directRequestFood,
