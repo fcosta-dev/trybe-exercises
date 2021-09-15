@@ -12,6 +12,7 @@ function Provider({ children }) {
   const [searchInputValue, setSearchInputValue] = useState('');
   const [recommendedFood, setRecommendedFood] = useState([]);
   const [recommendedDrink, setRecommendedDrink] = useState([]);
+  const [copied, setCopied] = useState(false);
 
   const searchBarRequestFood = async (type, inputvalue) => {
     try {
@@ -107,6 +108,8 @@ function Provider({ children }) {
   }, []);
 
   const context = {
+    copied,
+    setCopied,
     recommendedFood,
     recommendedDrink,
     setRecommendedFood,

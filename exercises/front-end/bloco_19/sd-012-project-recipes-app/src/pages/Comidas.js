@@ -7,6 +7,7 @@ import RecipeContext from '../context/RecipeContext';
 
 function Comidas() {
   const { isDrinkLoading, directRequestFood } = useContext(RecipeContext);
+
   useEffect(() => {
     directRequestFood();
   }, []);
@@ -19,7 +20,8 @@ function Comidas() {
         !isDrinkLoading ? (
           <div>
             <RecipesList />
-          </div>) : <p>Carregando</p>
+          </div>
+        ) : <p>Carregando</p>
       }
       <Footer />
     </div>

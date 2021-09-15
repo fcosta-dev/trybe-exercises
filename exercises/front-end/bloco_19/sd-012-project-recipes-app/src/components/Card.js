@@ -67,7 +67,7 @@ Card.propTypes = {
     strMeal: string,
     strMealThumb: string,
     idMeal: string,
-    idDrink: string,    
+    idDrink: string,
   }).isRequired,
 };
 

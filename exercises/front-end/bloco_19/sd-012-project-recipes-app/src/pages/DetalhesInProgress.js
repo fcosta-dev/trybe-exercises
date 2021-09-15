@@ -1,41 +1,24 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import '../styles/Detalhes.css';
 // npm install --save react-copy-to-clipboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import RecipeContext from '../context/RecipeContext';
-import '../styles/Detalhes.css';
+
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import Loading from '../components/Loading';
-import RecommendedList from '../components/RecommendedList';
-import ButtonIniciar from '../components/ButtonIniciar';
-import HandleYoutube from '../services/HandleYoutube';
+import RecipeContext from '../context/RecipeContext';
 import LinkCopiado from '../components/LinkCopiado';
 
-function Detalhes() {
+function DetalhesInProgress() {
+  const TWO_SECONDS = 2000;
   const history = useHistory();
   const urlText = history.location.pathname;
-  const id = urlText.split('s/')[1];
-  const TWO_SECONDS = 2000;
-
-  const { setShouldRedirect, addStartedRecipes,
-    recommendedFood, recommendedDrink, setRecommendedFood,
-    setRecommendedDrink, setCopied } = useContext(RecipeContext);
-
+  const id = urlText.split('/')[2];
   const [objDetail, setObjDetail] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const requestRecommendedFood = async () => {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-    const result = await response.json();
-    setRecommendedFood(result.meals);
-  };
-
-  const requestRecommendedDrink = async () => {
-    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
-    const result = await response.json();
-    setRecommendedDrink(result.drinks);
-  };
+  const { setCopied } = useContext(RecipeContext);
 
   const requestByID = async () => {
     let response = [];
@@ -43,23 +26,14 @@ function Detalhes() {
       response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
       await setObjDetail(responseJson.drinks);
-      requestRecommendedFood();
     }
     if (urlText.includes('comidas')) {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
       await setObjDetail(responseJson.meals);
-      requestRecommendedDrink();
     }
     setTimeout(() => {
       setLoading(false);
-    }, TWO_SECONDS);
-  };
-
-  const handleCopied = () => {
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
     }, TWO_SECONDS);
   };
 
@@ -77,17 +51,26 @@ function Detalhes() {
         key={ elem[1] }
         data-testid={ `${index}-ingredient-name-and-measure` }
       >
-        {elem[1]}
-        <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
+        <label htmlFor={ elem[1] }>
+          <input type="checkbox" id={ elem[1] } />
+          {elem[1]}
+          <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
+        </label>
       </li>));
 
     return results;
   };
 
+  const handleCopied = () => {
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, TWO_SECONDS);
+  };
+
   useEffect(() => {
     requestByID();
-    setShouldRedirect(false);
-  }, [history.location.pathname]);
+  }, []);
 
   const renderDrink = () => (
     <div className="details">
@@ -106,7 +89,9 @@ function Detalhes() {
       <div>
         <CopyToClipboard
           text={ `http://localhost:3000${urlText}` }
-          onCopy={ handleCopied }
+          onCopy={ () => {
+            handleCopied();
+          } }
         >
           <input
             type="image"
@@ -127,12 +112,6 @@ function Detalhes() {
         { getIngredients() }
       </ol>
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
-      <RecommendedList value={ recommendedFood } />
-      <ButtonIniciar
-        onClick={ () => addStartedRecipes(id) }
-        id={ id }
-        objDetail={ objDetail }
-      />
     </div>
   );
 
@@ -170,20 +149,7 @@ function Detalhes() {
       <ol className="ingredient-list">
         { getIngredients() }
       </ol>
-      <iframe
-        data-testid="video"
-        width="300px"
-        height="200px"
-        src={ HandleYoutube(objDetail[0]) }
-        title="YouTube video player"
-      />
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
-      <RecommendedList value={ recommendedDrink } />
-      <ButtonIniciar
-        onClick={ () => addStartedRecipes(id) }
-        id={ id }
-        objDetail={ objDetail }
-      />
     </div>
   );
 
@@ -204,4 +170,4 @@ function Detalhes() {
   );
 }
 
-export default Detalhes;
+export default DetalhesInProgress;
