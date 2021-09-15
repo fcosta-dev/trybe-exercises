@@ -34,7 +34,7 @@ export default App;
 // Requisitos 02-08 => login_spec.js
 // Requisitos 09-12 => header_spec.js
 // Requisitos 13-18 => header_search_bar_spec.js
-
+// Requisitos 19-24 => footer_spec.js
 // Requisitos 25-32 => recipes_list_spec.js
 // Requisitos 33-46 => recipe_detail_spec.js
 // Requisitos 47-53 => recipe_in_progress_spec.js
