@@ -15,10 +15,10 @@ function Bebidas() {
   return (
     <div>
       <Header title="Bebidas" />
+      <CategoriasBebidas />
       {
         !isDrinkLoading ? (
           <div>
-            <CategoriasBebidas />
             <RecipesList />
           </div>) : <p>Carregando</p>
       }

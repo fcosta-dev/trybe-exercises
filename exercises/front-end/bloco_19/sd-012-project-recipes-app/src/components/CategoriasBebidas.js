@@ -19,8 +19,9 @@ function CategoriasFood() {
   return (
     <div>
       <button
-        type="button"
         onClick={ () => directRequestDrink() }
+        data-testid="All-category-filter"
+        type="button"
       >
         All
       </button>
@@ -32,11 +33,18 @@ function CategoriasFood() {
                 type="button"
                 data-testid={ `${elem.strCategory}-category-filter` }
                 value={ elem.strCategory }
-                onClick={ ({ target }) => fetchCategory(target.value) }
+                onClick={ ({ target }) => {
+                  target.firstChild.checked = !target.firstChild.checked;
+                  return (
+                    target.firstChild.checked
+                      ? fetchCategory(target.value) : directRequestDrink());
+                } }
                 key={ elem.strCategory }
               >
+                <input style={ { display: 'none' } } type="checkbox" />
                 {elem.strCategory}
-              </button>);
+              </button>
+            );
           }
           return '';
         })
