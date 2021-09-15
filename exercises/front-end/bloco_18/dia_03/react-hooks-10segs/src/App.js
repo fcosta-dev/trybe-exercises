@@ -4,8 +4,10 @@ import React from 'react';
 import useTimer from './useTimer';
 
 const App = () => {
+  // Desconstrói o useTimer com as funções que o componente funcional deu de retorno: timer, randomNumber e isMultiple
   const { timer, randomNumber, isMultiple } = useTimer();
 
+  // Monta na tela
   return (
     <div className="App">
       {timer}

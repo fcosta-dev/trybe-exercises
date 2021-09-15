@@ -1,0 +1,17 @@
+.footer {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+}
+
+.footer-content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+}
