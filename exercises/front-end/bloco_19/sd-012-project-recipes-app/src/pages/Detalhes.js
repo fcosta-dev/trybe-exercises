@@ -54,13 +54,26 @@ function Detalhes() {
 
   const getIngredients = () => {
     const ingredientes = Object.entries(objDetail[0]);
-    const filtering = ingredientes.filter((element) => (
-      element[0].includes('strIngredient') && element[1] !== null && element[1] !== ''));
-    const results = filtering.map((elem, index) => (
-      <li key={ elem[1] } data-testid={ `${index}-ingredient-name-and-measure` }>
-        {elem[1]}
-      </li>));
 
+    const measure = ingredientes.filter((elem) => (
+      elem[0].includes('strMeasure') && elem[1] !== null && elem[1] !== ''
+    ));
+
+    const filtering = ingredientes.filter((element) => (
+      element[0].includes('strIngredient') && element[1] !== null && element[1] !== ''
+    ));
+
+    const results = filtering.map((elem, index) => (
+      <li
+        key={ elem[1] }
+        data-testid={ `${index}-ingredient-name-and-measure` }
+      >
+        {elem[1]}
+        <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
+      </li>
+    ));
+
+    console.log(ingredientes);
     return results;
   };
 
@@ -77,7 +90,11 @@ function Detalhes() {
 
   const renderDrink = () => (
     <div className="details">
-      <h1 data-testid="recipe-category">{objDetail[0].strCategory}</h1>
+      <h1
+        data-testid="recipe-category"
+      >
+        {`${objDetail[0].strCategory} (${objDetail[0].strAlcoholic})`}
+      </h1>
       <h2 data-testid="recipe-title">{objDetail[0].strDrink}</h2>
       <img
         data-testid="recipe-photo"
@@ -99,7 +116,7 @@ function Detalhes() {
           alt={ objDetail[0].strDrink }
         />
       </div>
-      <ol>
+      <ol className="ingredient-list">
         { getIngredients() }
       </ol>
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
@@ -137,7 +154,7 @@ function Detalhes() {
           alt={ objDetail[0].strMeal }
         />
       </div>
-      <ol>
+      <ol className="ingredient-list">
         { getIngredients() }
       </ol>
       <iframe

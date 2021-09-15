@@ -21,3 +21,10 @@
   padding: 10px;
   width: 100%;
 }
+
+.ingredient-list li {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+}

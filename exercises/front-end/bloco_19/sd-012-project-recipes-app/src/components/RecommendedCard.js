@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { shape, number, string } from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 
 import '../styles/RecommendedCard.css';
@@ -9,13 +9,14 @@ function RecommendedCard({ index, card }) {
 
   const renderDrink = () => {
     const { strDrink, strDrinkThumb, idDrink } = card;
+
     return (
       <Link to={ `/bebidas/${idDrink}` }>
         <div
           className="recommended-card"
           data-testid={ `${index}-recomendation-card` }
         >
-          <h1 data-testid={ `${index}-card-name` }>{strDrink}</h1>
+          <h1 data-testid={ `${index}-recomendation-title` }>{strDrink}</h1>
           <img
             className="recommended-image"
             data-testid={ `${index}-card-img` }
@@ -35,7 +36,12 @@ function RecommendedCard({ index, card }) {
           className="recommended-card"
           data-testid={ `${index}-recomendation-card` }
         >
-          <h1 className="food-title" data-testid={ `${index}-card-name` }>{strMeal}</h1>
+          <h1
+            data-testid={ `${index}-recomendation-title` }
+            className="food-title"
+          >
+            {strMeal}
+          </h1>
           <img
             className="recommended-image"
             data-testid={ `${index}-card-img` }
@@ -65,14 +71,14 @@ function RecommendedCard({ index, card }) {
 }
 
 RecommendedCard.propTypes = {
-  index: PropTypes.number.isRequired,
-  card: PropTypes.shape({
-    strDrink: PropTypes.string,
-    strDrinkThumb: PropTypes.string,
-    strMeal: PropTypes.string,
-    strMealThumb: PropTypes.string,
-    idMeal: PropTypes.string,
-    idDrink: PropTypes.string,
+  index: number.isRequired,
+  card: shape({
+    strDrink: string,
+    strDrinkThumb: string,
+    strMeal: string,
+    strMealThumb: string,
+    idMeal: string,
+    idDrink: string,
   }).isRequired,
 };
 
