@@ -1,0 +1,13 @@
+.categorias {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.categorias button {
+  font-size: 14px;
+  margin-top: 5px;
+  padding: 5px 10px;
+  width: 30%;
+}

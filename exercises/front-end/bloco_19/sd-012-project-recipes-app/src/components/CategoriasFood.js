@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import RecipeContext from '../context/RecipeContext';
 
+import '../styles/Categorias.css';
+
 function CategoriasFood() {
   const { foodCategory, directRequestFood,
     setIsDrinkLoading, setMeals } = useContext(RecipeContext);
@@ -15,7 +17,7 @@ function CategoriasFood() {
   };
 
   return (
-    <div>
+    <div className="categorias">
       <button
         type="button"
         onClick={ () => directRequestFood() }
