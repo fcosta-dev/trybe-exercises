@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { Link } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import shareIcon from '../images/shareIcon.svg';
 import LinkCopiado from './LinkCopiado';
+
+import '../styles/CardFeitas.css';
 
 function CardFeitas({ objDetail, index }) {
   const { setCopied } = useContext(RecipeContext);
@@ -14,6 +17,7 @@ function CardFeitas({ objDetail, index }) {
         if (i < 2) {
           return (
             <span
+              className="tags"
               key={ e }
               data-testid={ `${index}-${e}-horizontal-tag` }
             >
@@ -35,51 +39,64 @@ function CardFeitas({ objDetail, index }) {
   };
 
   const render = () => (
-    <div>
-      <img
-        src={ objDetail.image }
-        alt={ objDetail.name }
-        data-testid={ `${index}-horizontal-image` }
-      />
-      <h2
-        data-testid={ `${index}-horizontal-top-text` }
-      >
-        <span>
-          <p>
-            {objDetail.area}
-            {objDetail.area && ' - '}
-            {objDetail.category}
+    <div className="done-card-body">
+      <Link to={ `/${objDetail.type}s/${objDetail.id}` }>
+        <h1
+          data-testid={ `${index}-horizontal-name` }
+        >
+          {objDetail.name}
+        </h1>
+      </Link>
+
+      <div className="card-content">
+        <Link to={ `/${objDetail.type}s/${objDetail.id}` }>
+          <img
+            src={ objDetail.image }
+            alt={ objDetail.name }
+            data-testid={ `${index}-horizontal-image` }
+          />
+        </Link>
+
+        <section>
+          <h3
+            data-testid={ `${index}-horizontal-top-text` }
+          >
+
+            <p>
+              {objDetail.area}
+              {objDetail.area && ' - '}
+              {objDetail.category}
+            </p>
+            <p>
+              {objDetail.alcoholicOrNot}
+            </p>
+
+          </h3>
+
+          {gettingTags()}
+          <CopyToClipboard
+            text={ `http://localhost:3000/${objDetail.type}s/${objDetail.id}` }
+            onCopy={ () => {
+              handleCopied();
+            } }
+          >
+            <input
+              className="share-btn"
+              type="image"
+              data-testid={ `${index}-horizontal-share-btn` }
+              src={ shareIcon }
+              alt={ objDetail.id }
+            />
+          </CopyToClipboard>
+          <LinkCopiado />
+          <p
+            className="finish-date"
+            data-testid={ `${index}-horizontal-done-date` }
+          >
+            {objDetail.doneDate}
           </p>
-          <p>
-            {objDetail.alcoholicOrNot}
-          </p>
-        </span>
-      </h2>
-      <h3
-        data-testid={ `${index}-horizontal-name` }
-      >
-        {objDetail.name}
-      </h3>
-      <p
-        data-testid={ `${index}-horizontal-done-date` }
-      >
-        {objDetail.doneDate}
-      </p>
-      {gettingTags()}
-      <CopyToClipboard
-        text={ `http://localhost:3000/${objDetail.type}s/${objDetail.id}` }
-        onCopy={ () => {
-          handleCopied();
-        } }
-      >
-        <input
-          type="image"
-          data-testid={ `${index}-horizontal-share-btn` }
-          src={ shareIcon }
-          alt={ objDetail.id }
-        />
-      </CopyToClipboard>
-      <LinkCopiado />
+        </section>
+      </div>
     </div>
   );
 

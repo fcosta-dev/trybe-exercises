@@ -1,5 +1,5 @@
 .details {
-  padding: 20px 20px 50px;
+  padding: 30px 20px 50px;
 }
 
 .details p {
@@ -26,6 +26,33 @@
   z-index: 999;
 }
 
+.details .icons {
+  position: absolute;
+  right: 5px;
+  text-align: end;
+  top: 5px;
+  width: 100px;
+}
+
+.details .favorite-btn {
+  margin-left: 10px;
+}
+
+.details .copied-link {
+  background-color: white;
+  font-size: 16px;
+  position: absolute;
+  right: -5px;
+  text-align: center;
+  top: -5px;
+  width: 80px;
+}
+
+.ingredient-list li {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
 
 .ingredient-list li label {
   align-items: center;
@@ -33,6 +60,10 @@
   justify-content: space-between;
   padding-right: 30px;
   width: 100%;
+}
+
+.ingredient-list {
+  padding: 20px;
 }
 
 .selected-li {

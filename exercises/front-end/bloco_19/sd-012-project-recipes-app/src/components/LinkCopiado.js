@@ -3,8 +3,9 @@ import RecipeContext from '../context/RecipeContext';
 
 function LinkCopiado() {
   const { copied } = useContext(RecipeContext);
+  
   return (
-    <span>{copied && 'Link copiado!'}</span>
+    <span className="copied-link">{copied && 'Link copiado!'}</span>
   );
 }
 
