@@ -70,4 +70,7 @@ export default App;
 // Requisitos 54-59 => done_recipes_spec.js
 
 // Requisitos 67-69 => explore_spec.js
+// Requisitos 70-74 => explore_drinks_or_meals_spec.js
+// Requisitos 75-77 => explore_by_ingredient_spec.js
+// Requisitos 78-81 => explore_by_area_spec.js
 // Requisitos 82-87 =>profile_spec.js
