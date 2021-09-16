@@ -1,0 +1,42 @@
+.details {
+  padding: 20px 20px 50px;
+}
+
+.details p {
+  padding: 10px;
+  text-align: justify;
+}
+
+.details img {
+  height: 200px;
+  margin: auto;
+  width: 100%;
+}
+
+.details .start-recipe-btn {
+  background-color: green;
+  bottom: 0;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  left: 0;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
+.ingredient-list li {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+}
+
+.ingredient-list li label {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+  width: 100%;
+}

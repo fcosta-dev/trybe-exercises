@@ -10,27 +10,30 @@ import '../styles/Header.css';
 function Header({ title, search }) {
   const [renderSeachBar, setRenderSearchBar] = useState(false);
   return (
-    <header>
-      <Link to="/perfil">
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt=""
-        />
-      </Link>
-      <h1 data-testid="page-title">
-        {title}
-      </h1>
-      {search === false
-        ? ''
-        : (
-          <input
-            onClick={ () => setRenderSearchBar(!renderSeachBar) }
-            type="image"
-            data-testid="search-top-btn"
-            src={ seachIcon }
+    <header className="header">
+      <div className="header-content">
+        <Link to="/perfil">
+          <img
+            data-testid="profile-top-btn"
+            src={ profileIcon }
             alt=""
-          />)}
+          />
+        </Link>
+        <h1 data-testid="page-title">
+          {title}
+        </h1>
+        {search === false
+          ? ''
+          : (
+            <input
+              onClick={ () => setRenderSearchBar(!renderSeachBar) }
+              type="image"
+              data-testid="search-top-btn"
+              src={ seachIcon }
+              alt=""
+            />)}
+
+      </div>
       {renderSeachBar && <SearchBar title={ title } />}
     </header>
   );

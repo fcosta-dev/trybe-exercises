@@ -4,9 +4,15 @@ import RecipeContext from './RecipeContext';
 
 function Provider({ children }) {
   const [meals, setMeals] = useState([]);
+  const [isDrinkLoading, setIsDrinkLoading] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [foodCategory, setFoodCategory] = useState([]);
+  const [drinkCategory, setDrinkCategory] = useState([]);
   const [searchType, setSearchType] = useState('ingrediente');
   const [searchInputValue, setSearchInputValue] = useState('');
+  const [recommendedFood, setRecommendedFood] = useState([]);
+  const [recommendedDrink, setRecommendedDrink] = useState([]);
+  const [copied, setCopied] = useState(false);
 
   const searchBarRequestFood = async (type, inputvalue) => {
     try {
@@ -62,11 +68,60 @@ function Provider({ children }) {
     }
   };
 
+  const directRequestFood = async () => {
+    setIsDrinkLoading(true);
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+    const result = await response.json();
+    setMeals(result.meals);
+    setIsDrinkLoading(false);
+  };
+
+  const directRequestDrink = async () => {
+    setIsDrinkLoading(true);
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+    const result = await response.json();
+    setMeals(result.drinks);
+    setIsDrinkLoading(false);
+  };
+
+  // Requisito 27
+  const requestFoodCategory = async () => {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
+    const result = await response.json();
+    setFoodCategory(result.meals);
+  };
+
+  const requestDrinkCategory = async () => {
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
+    const result = await response.json();
+    setDrinkCategory(result.drinks);
+  };
+
   useEffect(() => {
     setShouldRedirect(true);
   }, [meals]);
 
+  // Requisito 27
+  useEffect(() => {
+    requestDrinkCategory();
+    requestFoodCategory();
+  }, []);
+
   const context = {
+    copied,
+    setCopied,
+    recommendedFood,
+    recommendedDrink,
+    setRecommendedFood,
+    setRecommendedDrink,
+    setIsDrinkLoading,
+    setMeals,
+    foodCategory,
+    drinkCategory,
+    directRequestFood,
+    isDrinkLoading,
+    setShouldRedirect,
+    directRequestDrink,
     setSearchType,
     searchType,
     setSearchInputValue,

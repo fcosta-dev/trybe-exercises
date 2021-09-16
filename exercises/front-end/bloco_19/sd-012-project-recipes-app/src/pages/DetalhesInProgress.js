@@ -1,40 +1,24 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import RecipeContext from '../context/RecipeContext';
 import '../styles/Detalhes.css';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import Loading from '../components/Loading';
-import RecommendedList from '../components/RecommendedList';
-import ButtonIniciar from '../components/ButtonIniciar';
-import HandleYoutube from '../services/HandleYoutube';
+import RecipeContext from '../context/RecipeContext';
 import LinkCopiado from '../components/LinkCopiado';
-import FavoriteBtn from '../components/FavoriteBtn';
+import ButtonFinish from '../components/ButtonFinish.js';
+import IngredientsCheckbox from '../components/IngredientsCheckbox';
 
-function Detalhes() {
+function DetalhesInProgress() {
+  const TWO_SECONDS = 2000;
   const history = useHistory();
   const urlText = history.location.pathname;
-  const id = urlText.split('s/')[1];
-  const TWO_SECONDS = 2000;
-
-  const { setShouldRedirect, addStartedRecipes,
-    recommendedFood, recommendedDrink, setRecommendedFood,
-    setRecommendedDrink, setCopied } = useContext(RecipeContext);
-
+  const id = urlText.split('/')[2];
   const [objDetail, setObjDetail] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const requestRecommendedFood = async () => {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-    const result = await response.json();
-    setRecommendedFood(result.meals);
-  };
-
-  const requestRecommendedDrink = async () => {
-    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
-    const result = await response.json();
-    setRecommendedDrink(result.drinks);
-  };
+  const { setCopied } = useContext(RecipeContext);
 
   const requestByID = async () => {
     let response = [];
@@ -42,13 +26,11 @@ function Detalhes() {
       response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
       await setObjDetail(responseJson.drinks);
-      requestRecommendedFood();
     }
     if (urlText.includes('comidas')) {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
       await setObjDetail(responseJson.meals);
-      requestRecommendedDrink();
     }
     setTimeout(() => {
       setLoading(false);
@@ -62,31 +44,9 @@ function Detalhes() {
     }, TWO_SECONDS);
   };
 
-  const getIngredients = () => {
-    const ingredientes = Object.entries(objDetail[0]);
-
-    const measure = ingredientes.filter((elem) => (
-      elem[0].includes('strMeasure') && elem[1] !== null && elem[1] !== ''
-    ));
-    const filtering = ingredientes.filter((element) => (
-      element[0].includes('strIngredient') && element[1] !== null && element[1] !== ''));
-
-    const results = filtering.map((elem, index) => (
-      <li
-        key={ elem[1] }
-        data-testid={ `${index}-ingredient-name-and-measure` }
-      >
-        {elem[1]}
-        <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
-      </li>));
-
-    return results;
-  };
-
   useEffect(() => {
     requestByID();
-    setShouldRedirect(false);
-  }, [history.location.pathname]);
+  }, []);
 
   const renderDrink = () => (
     <div className="details">
@@ -105,7 +65,9 @@ function Detalhes() {
       <div>
         <CopyToClipboard
           text={ `http://localhost:3000${urlText}` }
-          onCopy={ handleCopied }
+          onCopy={ () => {
+            handleCopied();
+          } }
         >
           <input
             type="image"
@@ -115,19 +77,18 @@ function Detalhes() {
           />
         </CopyToClipboard>
         <LinkCopiado />
-        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
+        <input
+          type="image"
+          data-testid="favorite-btn"
+          src={ whiteHeartIcon }
+          alt={ objDetail[0].strDrink }
+        />
       </div>
-      <ol className="ingredient-list">
-        { getIngredients() }
-      </ol>
+      <IngredientsCheckbox objDetail={ objDetail } id={ id } url={ urlText } />
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
-      <RecommendedList value={ recommendedFood } />
-      <ButtonIniciar
-        onClick={ () => addStartedRecipes(id) }
-        id={ id }
-        objDetail={ objDetail }
-      />
+      <ButtonFinish />
     </div>
+
   );
 
   const renderFood = () => (
@@ -154,31 +115,22 @@ function Detalhes() {
           />
         </CopyToClipboard>
         <LinkCopiado />
-        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
+        <input
+          type="image"
+          data-testid="favorite-btn"
+          src={ whiteHeartIcon }
+          alt={ objDetail[0].strMeal }
+        />
       </div>
-      <ol className="ingredient-list">
-        { getIngredients() }
-      </ol>
-      <iframe
-        data-testid="video"
-        width="300px"
-        height="200px"
-        src={ HandleYoutube(objDetail[0]) }
-        title="YouTube video player"
-      />
+      <IngredientsCheckbox objDetail={ objDetail } id={ id } url={ urlText } />
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
-      <RecommendedList value={ recommendedDrink } />
-      <ButtonIniciar
-        onClick={ () => addStartedRecipes(id) }
-        id={ id }
-        objDetail={ objDetail }
-      />
+      <ButtonFinish />
     </div>
+
   );
 
   const render = () => {
     const value = history.location.pathname;
-    console.log(Object.keys(objDetail[0]));
     if (value.includes('comidas')) {
       return renderFood();
     }
@@ -194,4 +146,4 @@ function Detalhes() {
   );
 }
 
-export default Detalhes;
+export default DetalhesInProgress;
