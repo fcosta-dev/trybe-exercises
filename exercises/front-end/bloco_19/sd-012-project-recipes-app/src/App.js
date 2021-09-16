@@ -18,6 +18,7 @@ import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import DetalhesInProgress from './pages/DetalhesInProgress';
 import ReceitasFeitas from './pages/ReceitasFeitas';
+import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ExplorarBebidasIngredientes from './pages/Explorar/ExplorarBebidasIngredientes';
 import ExplorarComidasIngredientes from './pages/Explorar/ExplorarComidasIngredientes';
 import NotFound from './pages/NotFound';
@@ -39,6 +40,7 @@ function App() {
         <Route exact path="/comidas/:id/in-progress" component={ DetalhesInProgress } />
         <Route exact path="/bebidas/:id/in-progress" component={ DetalhesInProgress } />
         <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
+        <Route exact path="/receitas-favoritas" component={ ReceitasFavoritas } />
         <Route
           exact
           path="/explorar/comidas/ingredientes"
@@ -65,5 +67,6 @@ export default App;
 // Requisitos 25-32 => recipes_list_spec.js
 // Requisitos 33-46 => recipe_detail_spec.js
 // Requisitos 47-53 => recipe_in_progress_spec.js
+// Requisitos 54-59 => done_recipes_spec.js
 
 // Requisitos 82-87 =>profile_spec.js

@@ -1,39 +1,37 @@
-import React, { useState } from 'react';
-import CardFeitas from '../components/CardFeitas';
+import React, { useContext, useEffect, useState } from 'react';
+import CardFavoritas from '../components/CardFavoritas';
+import RecipeContext from '../context/RecipeContext';
+import getInformation from '../services/getInformation';
 
-import '../styles/ReceitasFeitas.css';
-
-function ReceitasFeitas() {
+function ReceitasFavoritas() {
   const [filterType, setFilterType] = useState('All');
+  const { receitasFav, setReceitasFav } = useContext(RecipeContext);
 
   const verify = () => {
     let filtered = [];
-    if (localStorage.getItem('doneRecipes') !== null) {
-      const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-      if (filterType !== 'All') {
-        filtered = doneRecipes.filter((elem) => elem.type === filterType);
-      } else {
-        filtered = doneRecipes;
-      }
-      return (
-        filtered.map((elem, index) => (
-          <CardFeitas key={ index } objDetail={ elem } index={ index } />
-        ))
-      );
+    const favoriteRecipes = receitasFav;
+    if (filterType !== 'All') {
+      filtered = favoriteRecipes.filter((elem) => elem.type === filterType);
+    } else {
+      filtered = favoriteRecipes;
     }
-    return <span>Você não tem receitas feitas</span>;
+    return filtered;
   };
 
   const handleClick = (type) => {
     setFilterType(type);
   };
 
+  useEffect(() => {
+    getInformation(setReceitasFav);
+  }, []);
+
   return (
     <div className="done-recipes-body">
       <div className="background-color" />
       <div className="head">
 
-        <h1 className="title">Receitas Feitas</h1>
+        <h1 className="title">Receitas Favoritas</h1>
         <div className="done-button-content">
           <button
             type="button"
@@ -53,15 +51,17 @@ function ReceitasFeitas() {
             type="button"
             data-testid="filter-by-drink-btn"
             onClick={ () => handleClick('bebida') }
+
           >
             Drinks
           </button>
         </div>
       </div>
-      {verify()}
-
+      {verify().map((elem, index) => (
+        <CardFavoritas key={ index } objDetail={ elem } index={ index } />
+      ))}
     </div>
   );
 }
 
-export default ReceitasFeitas;
+export default ReceitasFavoritas;

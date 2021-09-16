@@ -4,38 +4,28 @@ import { Link } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import shareIcon from '../images/shareIcon.svg';
 import LinkCopiado from './LinkCopiado';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 import '../styles/CardFeitas.css';
 
-function CardFeitas({ objDetail, index }) {
-  const { setCopied } = useContext(RecipeContext);
+function CardFavoritas({ objDetail, index }) {
+  const { setCopied, setReceitasFav } = useContext(RecipeContext);
   const TWO_SECONDS = 2000;
-
-  const gettingTags = () => {
-    if (objDetail.type === 'comida') {
-      return objDetail.tags.map((e, i) => {
-        if (i < 2) {
-          return (
-            <span
-              className="tags"
-              key={ e }
-              data-testid={ `${index}-${e}-horizontal-tag` }
-            >
-              {e}
-            </span>
-          );
-        }
-        return '';
-      });
-    }
-    return '';
-  };
 
   const handleCopied = () => {
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
     }, TWO_SECONDS);
+  };
+
+  const removeFavorite = () => {
+    if (localStorage.getItem('favoriteRecipes') !== null) {
+      const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      const updatedFavorites = favoriteRecipes.filter((elem) => elem.id !== objDetail.id);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFavorites));
+      setReceitasFav(updatedFavorites);
+    }
   };
 
   const render = () => (
@@ -72,8 +62,6 @@ function CardFeitas({ objDetail, index }) {
             </p>
 
           </h3>
-
-          {gettingTags()}
           <CopyToClipboard
             text={ `http://localhost:3000/${objDetail.type}s/${objDetail.id}` }
             onCopy={ () => {
@@ -89,12 +77,14 @@ function CardFeitas({ objDetail, index }) {
             />
           </CopyToClipboard>
           <LinkCopiado />
-          <p
-            className="finish-date"
-            data-testid={ `${index}-horizontal-done-date` }
-          >
-            {objDetail.doneDate}
-          </p>
+          <input
+            className="favorite-btn"
+            onClick={ () => removeFavorite() }
+            type="image"
+            data-testid={ `${index}-horizontal-favorite-btn` }
+            src={ blackHeartIcon }
+            alt="foto do item"
+          />
         </section>
       </div>
     </div>
@@ -103,4 +93,4 @@ function CardFeitas({ objDetail, index }) {
   return render();
 }
 
-export default CardFeitas;
+export default CardFavoritas;

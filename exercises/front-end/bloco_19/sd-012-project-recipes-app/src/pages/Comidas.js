@@ -13,8 +13,9 @@ function Comidas() {
   }, []);
 
   return (
-    <div>
+    <div className="comidas-body">
       <Header title="Comidas" />
+      <div className="recipes-background-color" />
       <CategoriasFood />
       {
         !isDrinkLoading ? (

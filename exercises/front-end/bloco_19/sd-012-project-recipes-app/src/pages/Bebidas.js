@@ -13,7 +13,8 @@ function Bebidas() {
   }, []);
 
   return (
-    <div>
+    <div className="bebidas-body">
+      <div className="recipes-background-color" />
       <Header title="Bebidas" />
       <CategoriasBebidas />
       {

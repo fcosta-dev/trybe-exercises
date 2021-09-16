@@ -31,7 +31,9 @@ const setDoneFood = (recipeObject) => {
     name: recipeObject.strMeal,
     image: recipeObject.strMealThumb,
     doneDate: getCurrentDate(),
-    tags: recipeObject.strTags.split(',').map((elem) => elem),
+    tags: recipeObject.strTags !== null
+      ? recipeObject.strTags.split(',').map((elem) => elem)
+      : '',
   };
 
   const updateDone = [

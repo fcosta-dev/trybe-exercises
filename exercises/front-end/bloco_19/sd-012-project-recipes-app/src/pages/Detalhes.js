@@ -23,11 +23,13 @@ function Detalhes() {
 
   const [objDetail, setObjDetail] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const requestRecommendedFood = async () => {
     const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
     const result = await response.json();
     setRecommendedFood(result.meals);
   };
+
   const requestRecommendedDrink = async () => {
     const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
     const result = await response.json();
@@ -48,7 +50,6 @@ function Detalhes() {
       await setObjDetail(responseJson.meals);
       requestRecommendedDrink();
     }
-
     setTimeout(() => {
       setLoading(false);
     }, TWO_SECONDS);
@@ -69,6 +70,7 @@ function Detalhes() {
     ));
     const filtering = ingredientes.filter((element) => (
       element[0].includes('strIngredient') && element[1] !== null && element[1] !== ''));
+
     const results = filtering.map((elem, index) => (
       <li
         key={ elem[1] }
@@ -85,6 +87,7 @@ function Detalhes() {
     requestByID();
     setShouldRedirect(false);
   }, [history.location.pathname]);
+
   const renderDrink = () => (
     <div className="details">
       <h1
@@ -99,19 +102,20 @@ function Detalhes() {
         src={ objDetail[0].strDrinkThumb }
         alt={ objDetail[0].strDrink }
       />
-      <div>
+      <div className="icons">
+        <LinkCopiado />
         <CopyToClipboard
           text={ `http://localhost:3000${urlText}` }
           onCopy={ handleCopied }
         >
           <input
+            className="share-btn"
             type="image"
             data-testid="share-btn"
             src={ shareIcon }
             alt={ objDetail[0].strDrink }
           />
         </CopyToClipboard>
-        <LinkCopiado />
         <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       <ol className="ingredient-list">
@@ -183,6 +187,7 @@ function Detalhes() {
       return renderDrink();
     }
   };
+
   return (
     <div>
       {loading ? <Loading /> : render()}

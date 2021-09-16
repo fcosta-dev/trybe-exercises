@@ -27,7 +27,8 @@ function FavoriteBtn({ objDetail, urlText, id }) {
 
   return (
     <input
-      onClick={ onClickFavorite }
+      className="favorite-btn"
+      onClick={ () => onClickFavorite() }
       type="image"
       data-testid="favorite-btn"
       src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
@@ -45,4 +46,3 @@ FavoriteBtn.propTypes = {
 };
 
 export default FavoriteBtn;
-
