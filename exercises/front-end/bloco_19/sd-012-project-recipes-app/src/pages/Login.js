@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { shape, func } from 'prop-types';
 
+import '../styles/Login.css';
+
 function Login({ history }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,36 +23,43 @@ function Login({ history }) {
 
   return (
     <form>
-      <label htmlFor="email">
-        Email:
-        <input
-          type="text"
-          data-testid="email-input"
-          name="email"
-          value={ email }
-          onChange={ (e) => setEmail(e.target.value) }
-          placeholder="Email"
-        />
-      </label>
-      <label htmlFor="password">
-        Senha:
-        <input
-          type="password"
-          data-testid="password-input"
-          name="password"
-          value={ password }
-          onChange={ (e) => setPassword(e.target.value) }
-          placeholder="Senha"
-        />
-      </label>
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ !checkValidity() }
-        onClick={ saveToken }
-      >
-        Entrar
-      </button>
+      <div className="login-body">
+        <div className="login-content">
+          <div className="title">
+            <h1>  React Gourmet   </h1>
+          </div>
+          <label htmlFor="email">
+            Email:
+            <input
+              type="text"
+              data-testid="email-input"
+              name="email"
+              value={ email }
+              onChange={ (e) => setEmail(e.target.value) }
+              placeholder="Email"
+            />
+          </label>
+          <label htmlFor="password">
+            Senha:
+            <input
+              type="password"
+              data-testid="password-input"
+              name="password"
+              value={ password }
+              onChange={ (e) => setPassword(e.target.value) }
+              placeholder="Senha"
+            />
+          </label>
+          <button
+            type="button"
+            data-testid="login-submit-btn"
+            disabled={ !checkValidity() }
+            onClick={ saveToken }
+          >
+            Entrar
+          </button>
+        </div>
+      </div>
     </form>
   );
 }

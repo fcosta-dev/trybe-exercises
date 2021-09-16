@@ -9,12 +9,13 @@ function RecipesList() {
   return (
     <div>
       {
-        meals.map((elem, index) => {
-          if (index < MAX_ITEMS) {
-            return <Card key={ index } card={ elem } index={ index } />;
-          }
-          return '';
-        })
+        meals
+          .map((elem, index) => {
+            if (index < MAX_ITEMS) {
+              return <Card key={ index } card={ elem } index={ index } />;
+            }
+            return '';
+          })
       }
     </div>
   );

@@ -6,10 +6,13 @@ import RecipeContext from '../context/RecipeContext';
 import CategoriasBebidas from '../components/CategoriasBebidas';
 
 function Bebidas() {
-  const { directRequestDrink, isDrinkLoading } = useContext(RecipeContext);
+  const {
+    directRequestDrink, isDrinkLoading, cameFromIngredients } = useContext(RecipeContext);
 
   useEffect(() => {
-    directRequestDrink();
+    if (!cameFromIngredients) {
+      directRequestDrink();
+    }
   }, []);
 
   return (
