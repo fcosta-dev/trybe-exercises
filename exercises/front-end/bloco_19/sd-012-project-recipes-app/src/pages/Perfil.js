@@ -5,8 +5,10 @@ import Header from '../components/Header';
 
 function Perfil() {
   const getEmail = () => {
-    const { email } = JSON.parse(localStorage.getItem('user'));
-    return email;
+    if (localStorage.getItem('user') !== null) {
+      const { email } = JSON.parse(localStorage.getItem('user'));
+      return email;
+    }
   };
 
   const clearLocalStorage = () => {

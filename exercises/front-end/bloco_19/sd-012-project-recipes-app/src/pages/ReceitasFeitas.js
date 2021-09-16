@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CardFeitas from '../components/CardFeitas';
+import Header from '../components/Header';
 
 import '../styles/ReceitasFeitas.css';
 
@@ -30,10 +31,9 @@ function ReceitasFeitas() {
 
   return (
     <div className="done-recipes-body">
+      <Header title="Receitas Feitas" search={ false } />
       <div className="background-color" />
       <div className="head">
-
-        <h1 className="title">Receitas Feitas</h1>
         <div className="done-button-content">
           <button
             type="button"

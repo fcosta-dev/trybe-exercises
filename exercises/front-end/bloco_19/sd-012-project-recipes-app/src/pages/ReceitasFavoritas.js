@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import CardFavoritas from '../components/CardFavoritas';
+import Header from '../components/Header';
 import RecipeContext from '../context/RecipeContext';
 import getInformation from '../services/getInformation';
 
@@ -28,10 +29,9 @@ function ReceitasFavoritas() {
 
   return (
     <div className="done-recipes-body">
+      <Header title="Receitas Favoritas" search={ false } />
       <div className="background-color" />
       <div className="head">
-
-        <h1 className="title">Receitas Favoritas</h1>
         <div className="done-button-content">
           <button
             type="button"
