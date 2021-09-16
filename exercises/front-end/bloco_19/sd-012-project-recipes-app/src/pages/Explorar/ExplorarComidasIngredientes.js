@@ -29,7 +29,7 @@ function ExplorarComidasIngredientes() {
           <h1 data-testid={ `${index}-card-name` }>
             {elem.strIngredient}
           </h1>
-          <img data-testid={ `${index}-card-img` } src={ `https://www.themealdb.com/images/ingredients/${elem.strIngredient}.png` } alt={ elem.strIngredient } />
+          <img data-testid={ `${index}-card-img` } src={ `https://www.themealdb.com/images/ingredients/${elem.strIngredient}-Small.png` } alt={ elem.strIngredient } />
         </div>
       ))}
       Olá ingredientes comidas

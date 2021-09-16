@@ -33,7 +33,7 @@ function ExplorarBebidasIngredientes() {
           <h1 data-testid={ `${index}-card-name` }>
             {elem.strIngredient1}
           </h1>
-          <img data-testid={ `${index}-card-img` } src={ `https://www.themealdb.com/images/ingredients/${elem.strIngredient1}.png` } alt={ elem.strIngredient1 } />
+          <img data-testid={ `${index}-card-img` } src={ `https://www.thecocktaildb.com/images/ingredients/${elem.strIngredient1}-Small.png` } alt={ elem.strIngredient1 } />
         </div>
       ))}
     </div>
