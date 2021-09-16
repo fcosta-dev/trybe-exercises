@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe.only('Favorite recipes screen', () => {
+describe.skip('Favorite recipes screen', () => {
   const favoriteRecipes = [
     {
       id: '52771',

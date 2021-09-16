@@ -2,7 +2,7 @@
 
 const fetchMock = require('../mocks/fetch');
 
-describe.skip('70 - Implemente os elementos da tela de explorar bebidas ou comidas respeitando os atributos descritos no protótipo', () => {
+describe('70 - Implemente os elementos da tela de explorar bebidas ou comidas respeitando os atributos descritos no protótipo', () => {
   it('Tem os data-testids corretos para a tela de explorar comidas', () => {
     cy.visit('http://localhost:3000/explorar/comidas');
 
@@ -20,7 +20,7 @@ describe.skip('70 - Implemente os elementos da tela de explorar bebidas ou comid
   });
 });
 
-describe.skip('71 - Desenvolva 3 botões: um para explorar por ingrediente, um para explorar por local de origem e um para pegar uma receita aleatória', () => {
+describe('71 - Desenvolva 3 botões: um para explorar por ingrediente, um para explorar por local de origem e um para pegar uma receita aleatória', () => {
   it('Tem os botões "Por Ingredientes", "Por Local de Origem" e "Me Surpreenda!" para a tela de explorar comidas', () => {
     cy.visit('http://localhost:3000/explorar/comidas');
 
@@ -38,7 +38,7 @@ describe.skip('71 - Desenvolva 3 botões: um para explorar por ingrediente, um p
   });
 });
 
-describe.skip('72 - Redirecione a pessoa usuária ao clicar em "Por Ingredientes", a rota deve mudar para a tela de explorar por ingredientes', () => {
+describe('72 - Redirecione a pessoa usuária ao clicar em "Por Ingredientes", a rota deve mudar para a tela de explorar por ingredientes', () => {
   it('Ao clicar no botão "Por Ingredientes" da tela de explorar comidas a rota muda para a página de explorar comidas por ingrediente', () => {
     cy.visit('http://localhost:3000/explorar/comidas');
 
@@ -54,7 +54,7 @@ describe.skip('72 - Redirecione a pessoa usuária ao clicar em "Por Ingredientes
   });
 });
 
-describe.skip('73 - Redirecione a pessoa usuária ao clicar em "Por Local de Origem", a rota deve mudar para tela de explorar por local de origem', () => {
+describe('73 - Redirecione a pessoa usuária ao clicar em "Por Local de Origem", a rota deve mudar para tela de explorar por local de origem', () => {
   it('A rota deve mudar para tela de explorar por local de origem', () => {
     cy.visit('http://localhost:3000/explorar/comidas');
 
@@ -63,7 +63,7 @@ describe.skip('73 - Redirecione a pessoa usuária ao clicar em "Por Local de Ori
   });
 });
 
-describe.skip('74 - Redirecione a pessoa usuária ao clicar em "Me Surpreenda!", a rota deve mudar para a tela de detalhes de uma receita, que deve ser escolhida de forma aleatória através da API', () => {
+describe('74 - Redirecione a pessoa usuária ao clicar em "Me Surpreenda!", a rota deve mudar para a tela de detalhes de uma receita, que deve ser escolhida de forma aleatória através da API', () => {
   it('Ao clicar no botão "Por Ingredientes" da tela de explorar comidas a rota muda para a página de detalhes de uma comida aleatória', () => {
     cy.visit('http://localhost:3000/explorar/comidas', {
       onBeforeLoad(win) {
