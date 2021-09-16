@@ -26,12 +26,6 @@
   z-index: 999;
 }
 
-.ingredient-list li {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding-right: 30px;
-}
 
 .ingredient-list li label {
   align-items: center;
@@ -39,4 +33,10 @@
   justify-content: space-between;
   padding-right: 30px;
   width: 100%;
+}
+
+.selected-li {
+  background-color: rgb(221, 221, 221);
+  border-radius: 6px;
+  text-decoration: line-through;
 }

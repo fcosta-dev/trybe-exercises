@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import seachIcon from '../images/searchIcon.svg';
+import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
 import SearchBar from './SearchBar';
 
@@ -9,6 +9,7 @@ import '../styles/Header.css';
 
 function Header({ title, search }) {
   const [renderSeachBar, setRenderSearchBar] = useState(false);
+
   return (
     <header className="header">
       <div className="header-content">
@@ -16,22 +17,22 @@ function Header({ title, search }) {
           <img
             data-testid="profile-top-btn"
             src={ profileIcon }
-            alt=""
+            alt="profile-top-btn"
           />
         </Link>
-        <h1 data-testid="page-title">
-          {title}
-        </h1>
-        {search === false
-          ? ''
-          : (
-            <input
-              onClick={ () => setRenderSearchBar(!renderSeachBar) }
-              type="image"
-              data-testid="search-top-btn"
-              src={ seachIcon }
-              alt=""
-            />)}
+        <h1 data-testid="page-title">{ title }</h1>
+        {
+          search === false
+            ? ''
+            : (
+              <input
+                onClick={ () => setRenderSearchBar(!renderSeachBar) }
+                type="image"
+                data-testid="search-top-btn"
+                src={ searchIcon }
+                alt="search-top-btn"
+              />)
+        }
 
       </div>
       {renderSeachBar && <SearchBar title={ title } />}

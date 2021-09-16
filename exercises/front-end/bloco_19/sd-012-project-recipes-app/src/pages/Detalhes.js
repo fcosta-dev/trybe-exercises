@@ -23,13 +23,11 @@ function Detalhes() {
 
   const [objDetail, setObjDetail] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const requestRecommendedFood = async () => {
     const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
     const result = await response.json();
     setRecommendedFood(result.meals);
   };
-
   const requestRecommendedDrink = async () => {
     const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
     const result = await response.json();
@@ -50,6 +48,7 @@ function Detalhes() {
       await setObjDetail(responseJson.meals);
       requestRecommendedDrink();
     }
+
     setTimeout(() => {
       setLoading(false);
     }, TWO_SECONDS);
@@ -70,7 +69,6 @@ function Detalhes() {
     ));
     const filtering = ingredientes.filter((element) => (
       element[0].includes('strIngredient') && element[1] !== null && element[1] !== ''));
-
     const results = filtering.map((elem, index) => (
       <li
         key={ elem[1] }
@@ -87,7 +85,6 @@ function Detalhes() {
     requestByID();
     setShouldRedirect(false);
   }, [history.location.pathname]);
-
   const renderDrink = () => (
     <div className="details">
       <h1
@@ -186,12 +183,10 @@ function Detalhes() {
       return renderDrink();
     }
   };
-
   return (
     <div>
       {loading ? <Loading /> : render()}
     </div>
   );
 }
-
 export default Detalhes;
