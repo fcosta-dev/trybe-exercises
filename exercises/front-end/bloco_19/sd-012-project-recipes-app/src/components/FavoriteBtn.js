@@ -45,3 +45,4 @@ FavoriteBtn.propTypes = {
 };
 
 export default FavoriteBtn;
+

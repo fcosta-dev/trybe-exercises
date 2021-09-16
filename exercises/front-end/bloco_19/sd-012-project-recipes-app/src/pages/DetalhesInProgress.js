@@ -3,12 +3,12 @@ import { useHistory } from 'react-router-dom';
 import '../styles/Detalhes.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import Loading from '../components/Loading';
 import RecipeContext from '../context/RecipeContext';
 import LinkCopiado from '../components/LinkCopiado';
-import ButtonFinish from '../components/ButtonFinish.js';
+import ButtonFinish from '../components/ButtonFinish';
 import IngredientsCheckbox from '../components/IngredientsCheckbox';
+import FavoriteBtn from '../components/FavoriteBtn';
 
 function DetalhesInProgress() {
   const TWO_SECONDS = 2000;
@@ -77,16 +77,11 @@ function DetalhesInProgress() {
           />
         </CopyToClipboard>
         <LinkCopiado />
-        <input
-          type="image"
-          data-testid="favorite-btn"
-          src={ whiteHeartIcon }
-          alt={ objDetail[0].strDrink }
-        />
+        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       <IngredientsCheckbox objDetail={ objDetail } id={ id } url={ urlText } />
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
-      <ButtonFinish />
+      <ButtonFinish objDetail={ objDetail } />
     </div>
 
   );
@@ -115,16 +110,11 @@ function DetalhesInProgress() {
           />
         </CopyToClipboard>
         <LinkCopiado />
-        <input
-          type="image"
-          data-testid="favorite-btn"
-          src={ whiteHeartIcon }
-          alt={ objDetail[0].strMeal }
-        />
+        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       <IngredientsCheckbox objDetail={ objDetail } id={ id } url={ urlText } />
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
-      <ButtonFinish />
+      <ButtonFinish objDetail={ objDetail } />
     </div>
 
   );
