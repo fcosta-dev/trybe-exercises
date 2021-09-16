@@ -13,7 +13,7 @@ import Provider from './context/Provider';
 import Bebidas from './pages/Bebidas';
 import Comidas from './pages/Comidas';
 import Detalhes from './pages/Detalhes';
-import Explorar from './pages/Explorar';
+import Explorar from './pages/Explorar/Explorar';
 import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import DetalhesInProgress from './pages/DetalhesInProgress';
@@ -69,4 +69,5 @@ export default App;
 // Requisitos 47-53 => recipe_in_progress_spec.js
 // Requisitos 54-59 => done_recipes_spec.js
 
+// Requisitos 67-69 => explore_spec.js
 // Requisitos 82-87 =>profile_spec.js
