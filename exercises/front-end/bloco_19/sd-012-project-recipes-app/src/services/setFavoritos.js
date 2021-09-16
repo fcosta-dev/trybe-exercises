@@ -127,17 +127,17 @@ const setFavoritos = (recipeObject, url, id, callback) => {
   if (localStorage.getItem('favoriteRecipes') !== null) {
     console.log('entrou no if');
 
-    if (url.includes('comidas')) {
+    if (url.includes('comida')) {
       setComidaFavorita(recipeObject);
     }
     if (url.includes('bebida')) {
       setBebidaFavorita(recipeObject);
     }
   } else {
-    if (url.includes('comidas')) {
+    if (url.includes('comida')) {
       setComidaFavoritaElse(recipeObject);
     }
-    if (url.includes('bebidas')) {
+    if (url.includes('bebida')) {
       setBebidaFavoritaElse(recipeObject);
     }
   }

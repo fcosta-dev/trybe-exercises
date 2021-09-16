@@ -14,6 +14,7 @@ function Provider({ children }) {
   const [recommendedDrink, setRecommendedDrink] = useState([]);
   const [copied, setCopied] = useState(false);
   const [verifyCheckbox, setVerifyCheckbox] = useState([false]);
+  const [receitasFav, setReceitasFav] = useState([]);
 
   const searchBarRequestFood = async (type, inputvalue) => {
     try {
@@ -133,6 +134,8 @@ function Provider({ children }) {
     shouldRedirect,
     verifyCheckbox,
     setVerifyCheckbox,
+    setReceitasFav,
+    receitasFav,
   };
 
   return (

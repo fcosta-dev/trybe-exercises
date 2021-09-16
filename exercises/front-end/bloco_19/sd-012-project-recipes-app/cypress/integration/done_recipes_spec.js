@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Done recipes screen', () => {
+describe.skip('Done recipes screen', () => {
   const doneRecipes = [
     {
       id: '52771',
