@@ -1,8 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import ExplorarBebidas from './components/ExplorarBebidas';
-import ExplorarComidas from './components/ExplorarComidas';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,12 +11,14 @@ import Provider from './context/Provider';
 import Bebidas from './pages/Bebidas';
 import Comidas from './pages/Comidas';
 import Detalhes from './pages/Detalhes';
-import Explorar from './pages/Explorar';
 import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import DetalhesInProgress from './pages/DetalhesInProgress';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
+import Explorar from './pages/Explorar/Explorar';
+import ExplorarBebidas from './pages/Explorar/ExplorarBebidas';
+import ExplorarComidas from './pages/Explorar/ExplorarComidas';
 import ExplorarBebidasIngredientes from './pages/Explorar/ExplorarBebidasIngredientes';
 import ExplorarComidasIngredientes from './pages/Explorar/ExplorarComidasIngredientes';
 import NotFound from './pages/NotFound';
@@ -69,4 +69,5 @@ export default App;
 // Requisitos 47-53 => recipe_in_progress_spec.js
 // Requisitos 54-59 => done_recipes_spec.js
 
+// Requisitos 67-69 => explore_spec.js
 // Requisitos 82-87 =>profile_spec.js
