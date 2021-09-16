@@ -40,6 +40,7 @@ function CardFeitas({ objDetail, index }) {
 
   const render = () => (
     <div className="done-card-body">
+      <div className="bg" />
       <Link to={ `/${objDetail.type}s/${objDetail.id}` }>
         <h1
           data-testid={ `${index}-horizontal-name` }
@@ -62,12 +63,12 @@ function CardFeitas({ objDetail, index }) {
             data-testid={ `${index}-horizontal-top-text` }
           >
 
-            <p>
+            <p className="text">
               {objDetail.area}
               {objDetail.area && ' - '}
               {objDetail.category}
             </p>
-            <p>
+            <p className="text">
               {objDetail.alcoholicOrNot}
             </p>
 

@@ -1,6 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 
-function ExplorarComidasIngredientes() {
+import RecipeContext from '../../context/RecipeContext';
+
+function ExplorarComidasIngredientes({ history }) {
+  const {
+    setCameFromIngredients, setMeals, setIsDrinkLoading } = useContext(RecipeContext);
+
   const [ingredientes, setIngredientes] = useState([]);
   const [loading, setLoading] = useState(true);
   const TWELVE_INGREDIENTS = 12;
@@ -18,6 +24,21 @@ function ExplorarComidasIngredientes() {
     setLoading(false);
   };
 
+  const fetchAndRedirect = async ({ target }) => {
+    setCameFromIngredients(true);
+    await setIsDrinkLoading(true);
+    const ingredientName = target.parentNode.firstChild.innerText;
+    console.log(ingredientName);
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredientName}`)
+      .then((response) => response.json())
+      .then((data) => setMeals(data.meals))
+      .then(() => history.push('/comidas'))
+      .then(() => {
+        setIsDrinkLoading(false);
+        setCameFromIngredients(true);
+      });
+  };
+
   useEffect(() => {
     fetchIngredients();
   }, []);
@@ -25,16 +46,38 @@ function ExplorarComidasIngredientes() {
   return (
     <div>
       {!loading && ingredientes.map((elem, index) => (
-        <div key={ elem.idIngredient } data-testid={ `${index}-ingredient-card` }>
-          <h1 data-testid={ `${index}-card-name` }>
-            {elem.strIngredient}
-          </h1>
-          <img data-testid={ `${index}-card-img` } src={ `https://www.themealdb.com/images/ingredients/${elem.strIngredient}-Small.png` } alt={ elem.strIngredient } />
-        </div>
+        <label
+          htmlFor={ `${index}-checkbox` }
+          key={ `${elem.idIngredient}, ${index} ` }
+        >
+          <div
+            key={ `${elem.idIngredient}, ${index} ` }
+            data-testid={ `${index}-ingredient-card` }
+          >
+            <h3 data-testid={ `${index}-card-name` }>
+              {elem.strIngredient}
+            </h3>
+            <img
+              data-testid={ `${index}-card-img` }
+              src={ `https://www.themealdb.com/images/ingredients/${elem.strIngredient}-Small.png` }
+              alt={ elem.strIngredient }
+            />
+          </div>
+          <input
+            type="checkbox"
+            id={ `${index}-checkbox` }
+            onChange={ fetchAndRedirect }
+          />
+        </label>
       ))}
-      Olá ingredientes comidas
     </div>
   );
 }
+
+ExplorarComidasIngredientes.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default ExplorarComidasIngredientes;

@@ -21,6 +21,7 @@ import ExplorarBebidas from './pages/Explorar/ExplorarBebidas';
 import ExplorarComidas from './pages/Explorar/ExplorarComidas';
 import ExplorarBebidasIngredientes from './pages/Explorar/ExplorarBebidasIngredientes';
 import ExplorarComidasIngredientes from './pages/Explorar/ExplorarComidasIngredientes';
+import ExpComidasArea from './pages/Explorar/ExpComidasArea';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/bebidas/:id/in-progress" component={ DetalhesInProgress } />
         <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
         <Route exact path="/receitas-favoritas" component={ ReceitasFavoritas } />
+        <Route exact path="/explorar/comidas/area" component={ ExpComidasArea } />
         <Route
           exact
           path="/explorar/comidas/ingredientes"

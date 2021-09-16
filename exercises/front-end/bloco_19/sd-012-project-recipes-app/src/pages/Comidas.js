@@ -6,10 +6,13 @@ import RecipesList from '../components/RecipesList';
 import RecipeContext from '../context/RecipeContext';
 
 function Comidas() {
-  const { isDrinkLoading, directRequestFood } = useContext(RecipeContext);
+  const {
+    directRequestFood, isDrinkLoading, cameFromIngredients } = useContext(RecipeContext);
 
   useEffect(() => {
-    directRequestFood();
+    if (!cameFromIngredients) {
+      directRequestFood();
+    }
   }, []);
 
   return (
@@ -20,6 +23,7 @@ function Comidas() {
       {
         !isDrinkLoading ? (
           <div>
+            {console.log(document.referrer)}
             <RecipesList />
           </div>
         ) : <p>Carregando</p>

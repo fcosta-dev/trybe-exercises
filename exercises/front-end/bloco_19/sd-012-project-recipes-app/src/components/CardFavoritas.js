@@ -6,7 +6,7 @@ import shareIcon from '../images/shareIcon.svg';
 import LinkCopiado from './LinkCopiado';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-import '../styles/CardFeitas.css';
+import '../styles/CardFavoritas.css';
 
 function CardFavoritas({ objDetail, index }) {
   const { setCopied, setReceitasFav } = useContext(RecipeContext);
@@ -29,14 +29,7 @@ function CardFavoritas({ objDetail, index }) {
   };
 
   const render = () => (
-    <div className="done-card-body">
-      <Link to={ `/${objDetail.type}s/${objDetail.id}` }>
-        <h1
-          data-testid={ `${index}-horizontal-name` }
-        >
-          {objDetail.name}
-        </h1>
-      </Link>
+    <div className="fav-card-body">
 
       <div className="card-content">
         <Link to={ `/${objDetail.type}s/${objDetail.id}` }>
@@ -48,6 +41,14 @@ function CardFavoritas({ objDetail, index }) {
         </Link>
 
         <section>
+          <Link to={ `/${objDetail.type}s/${objDetail.id}` }>
+            <p
+              className="title"
+              data-testid={ `${index}-horizontal-name` }
+            >
+              {objDetail.name}
+            </p>
+          </Link>
           <h3
             data-testid={ `${index}-horizontal-top-text` }
           >
@@ -62,12 +63,16 @@ function CardFavoritas({ objDetail, index }) {
             </p>
 
           </h3>
+        </section>
+        <div className="card-btn">
+
           <CopyToClipboard
             text={ `http://localhost:3000/${objDetail.type}s/${objDetail.id}` }
             onCopy={ () => {
               handleCopied();
             } }
           >
+
             <input
               className="share-btn"
               type="image"
@@ -85,7 +90,7 @@ function CardFavoritas({ objDetail, index }) {
             src={ blackHeartIcon }
             alt="foto do item"
           />
-        </section>
+        </div>
       </div>
     </div>
   );
