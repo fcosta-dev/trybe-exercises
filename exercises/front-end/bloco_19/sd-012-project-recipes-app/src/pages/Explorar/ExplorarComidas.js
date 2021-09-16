@@ -1,9 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { shape, func } from 'prop-types';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
-function ExplorarComidas() {
+function ExplorarComidas({ history }) {
+  const fetchSurpriseMeal = async () => {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+    const result = await response.json();
+    const id = result.meals[0].idMeal;
+    history.push(`/comidas/${id}`);
+  };
+
   return (
     <div>
       <Header title="Explorar Comidas" search={ false } />
@@ -18,13 +26,23 @@ function ExplorarComidas() {
             Por Local de Origem
           </span>
         </Link>
-        <span data-testid="explore-surprise">
+        <button
+          type="button"
+          onClick={ () => fetchSurpriseMeal() }
+          data-testid="explore-surprise"
+        >
           Me Surpreenda!
-        </span>
+        </button>
       </div>
       <Footer />
     </div>
   );
 }
+
+ExplorarComidas.propTypes = {
+  history: shape({
+    push: func,
+  }).isRequired,
+};
 
 export default ExplorarComidas;
