@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../../context/RecipeContext';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 function ExplorarBebidasIngredientes({ history }) {
   const {
@@ -43,6 +45,7 @@ function ExplorarBebidasIngredientes({ history }) {
 
   return (
     <div>
+      <Header title="Explorar Ingredientes" search={ false } />
       {!loading && ingredientes.map((elem, index) => (
         <label
           htmlFor={ `${index}-checkbox` }
@@ -68,6 +71,7 @@ function ExplorarBebidasIngredientes({ history }) {
           />
         </label>
       ))}
+      <Footer />
     </div>
   );
 }

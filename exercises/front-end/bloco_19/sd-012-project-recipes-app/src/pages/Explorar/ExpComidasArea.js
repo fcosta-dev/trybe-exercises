@@ -37,7 +37,7 @@ function ExpComidasArea() {
 
   return (
     <div className="comidas-body">
-      <Header title="Exp. Origem" />
+      <Header title="Explorar Origem" />
       <select
         value={ filterByArea }
         data-testid="explore-by-area-dropdown"
