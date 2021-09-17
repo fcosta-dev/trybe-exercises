@@ -1,5 +1,5 @@
 **Testes unitários**
-- [ ] 1 - Desenvolva os testes unitários de maneira que a seja de, no mínimo, 90%;
+- [ ] Requisito 01 - Desenvolva os testes unitários de maneira que a seja de, no mínimo, 90%;
  
 **Tela de Login**
 
