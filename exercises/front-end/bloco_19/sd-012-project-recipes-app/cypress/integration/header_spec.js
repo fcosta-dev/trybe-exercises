@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe.skip('9 - Implemente os elementos do header na tela principal de receitas, respeitando os atributos descritos no protótipo', () => {
+describe('9 - Implemente os elementos do header na tela principal de receitas, respeitando os atributos descritos no protótipo', () => {
   it('Tem os data-testids profile-top-btn, page-title e search-top-btn', () => {
     cy.visit('http://localhost:3000/comidas');
 
@@ -130,7 +130,7 @@ describe('10 - Implemente um ícone para a tela de perfil, um título e um ícon
   });
 });
 
-describe.skip('11 - Redirecione a pessoa usuária para a tela de perfil ao clicar no botão de perfil', () => {
+describe('11 - Redirecione a pessoa usuária para a tela de perfil ao clicar no botão de perfil', () => {
   it('A mudança de tela ocorre corretamente', () => {
     cy.visit('http://localhost:3000/comidas');
 
@@ -142,7 +142,7 @@ describe.skip('11 - Redirecione a pessoa usuária para a tela de perfil ao clica
   });
 });
 
-describe.skip('12 - Desenvolva o botão de busca que, ao ser clicado, a barra de busca deve aparecer. O mesmo serve para escondê-la', () => {
+describe('12 - Desenvolva o botão de busca que, ao ser clicado, a barra de busca deve aparecer. O mesmo serve para escondê-la', () => {
   it('Ao clicar no botão de busca pela primeira vez a barra de busca aparece', () => {
     cy.visit('http://localhost:3000/comidas');
 
