@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Login from './components/Login';
-import Comidas from './components/Comidas';
+import Login from './pages/Login';
+import Comidas from './pages/Comidas';
 
 function App() {
   return (
