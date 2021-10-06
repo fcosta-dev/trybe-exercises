@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// Importo proTypes para testar os tipos de informações do codigo
 import PropTypes from 'prop-types';
 import RecipeContext from './RecipeContext';
 
