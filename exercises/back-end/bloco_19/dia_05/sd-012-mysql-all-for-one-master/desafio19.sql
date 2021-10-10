@@ -2,4 +2,4 @@
 SELECT COUNt(id) AS `orders_count` FROM northwind.orders
 WHERE employee_id In (5,6)
 AND shipper_id = 2;
-SELECT * FROM orders;
+
