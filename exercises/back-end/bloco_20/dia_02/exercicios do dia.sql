@@ -70,3 +70,8 @@ select * from Movies;
 select * from BoxOffice;
 select * from Theater;
 
+select t.name, t.location
+from Theater as t
+where NOT exists (
+	select * from Movies where Movies.theater_id = t.id
+);
