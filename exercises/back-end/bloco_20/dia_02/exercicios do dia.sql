@@ -45,10 +45,23 @@ on b.movie_id = m.id
 where b.rating > 7.5;
 
 -- Exercício 7: Faça duas buscas, uma utilizando SUBQUERY e outra utilizando INNER JOIN , que retornem as avaliações dos filmes lançados depois de 2009.
+select rating
+from BoxOffice
+where movie_id in (
+	select id from Movies where year > 2009
+);
+
+select m.title, b.rating
+from Movies as m
+inner join BoxOffice as b
+on m.id = b.movie_id
+where m.year > 2009;
+
+
+-- Exercício 8: Utilizando o EXISTS , selecione o nome e localização dos cinemas que possuem filmes em cartaz.
 select * from Movies;
 select * from BoxOffice;
 select * from Theater;
 
 
--- Exercício 8: Utilizando o EXISTS , selecione o nome e localização dos cinemas que possuem filmes em cartaz.
 -- Exercício 9: Utilizando o EXISTS , selecione o nome e localização dos cinemas que não possuem filmes em cartaz.
