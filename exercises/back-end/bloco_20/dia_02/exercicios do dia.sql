@@ -59,9 +59,14 @@ where m.year > 2009;
 
 
 -- Exercício 8: Utilizando o EXISTS , selecione o nome e localização dos cinemas que possuem filmes em cartaz.
+select t.name, t.location
+from Theater as t
+where exists (
+	select * from Movies where Movies.theater_id = t.id
+);
+
+-- Exercício 9: Utilizando o EXISTS , selecione o nome e localização dos cinemas que não possuem filmes em cartaz.
 select * from Movies;
 select * from BoxOffice;
 select * from Theater;
 
-
--- Exercício 9: Utilizando o EXISTS , selecione o nome e localização dos cinemas que não possuem filmes em cartaz.
