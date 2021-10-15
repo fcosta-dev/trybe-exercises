@@ -6,6 +6,6 @@ BEGIN
     SELECT * FROM sakila.actor;
 END $$
 
-DELIMITER ;
+DELIMITER;
 
 CALL ShowAllActors();
