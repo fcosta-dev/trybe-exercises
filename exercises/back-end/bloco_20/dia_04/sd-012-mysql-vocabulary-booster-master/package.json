@@ -1,0 +1,36 @@
+{
+  "name": "sd-0x-mysql-vocabulary-booster",
+  "version": "1.0.0",
+  "description": "Project MySQL Vocabulary Booster",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand",
+    "test:watch": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betrybe/sd-0x-mysql-vocabulary-booster.git"
+  },
+  "keywords": [
+    "javascript",
+    "tests",
+    "assert",
+    "jest"
+  ],
+  "author": "Trybe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/betrybe/sd-0x-mysql-vocabulary-booster/issues"
+  },
+  "homepage": "https://github.com/betrybe/sd-0x-mysql-vocabulary-booster#readme",
+  "devDependencies": {
+    "acorn": ">=5.7.4",
+    "jest": "^24.9.0",
+    "minimist": ">=1.2.2",
+    "mysql-import": "^4.0.24"
+  },
+  "dependencies": {
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.2.0"
+  }
+}
