@@ -1,0 +1,44 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  evaluator_job:
+    name: Evaluator Job
+    runs-on: ubuntu-18.04
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - name: Wait for build to succeed
+        uses: betrybe/action-wait-for-check@v2
+        id: wait-for-build
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: codeclimate
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/checkout@v2
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+      - name: Evaluator Step
+        uses: betrybe/jest-evaluator-action@v5
+        id: evaluator
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+        with:
+          repository-test-name: 'betrybe/sd-0x-mysql-vocabulary-booster-tests'
+          repository-test-branch: 'master'
+        env:
+          MYSQL_USER: 'root'
+          MYSQL_PASSWORD: 'password'
+          HOSTNAME: 'mysql'
+      - name: Store evaluation step
+        uses: betrybe/store-evaluation-action@v2
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+        with:
+          evaluation-data: ${{ steps.evaluator.outputs.result }}
+          environment: production
+          pr-number: ${{ github.event.number }}
