@@ -1,0 +1,36 @@
+{
+  "name": "sd-0x-mysql-one-for-all",
+  "version": "1.0.0",
+  "description": "Project MySQL One For All",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand",
+    "test:watch": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betrybe/sd-0x-mysql-one-for-all.git"
+  },
+  "keywords": [
+    "javascript",
+    "tests",
+    "assert",
+    "jest"
+  ],
+  "author": "Trybe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/betrybe/sd-0x-mysql-one-for-all/issues"
+  },
+  "homepage": "https://github.com/betrybe/sd-0x-mysql-one-for-all#readme",
+  "devDependencies": {
+    "acorn": "5.7.4",
+    "jest": "24.9.0",
+    "minimist": "1.2.2",
+    "mysql-import": "4.0.24"
+  },
+  "dependencies": {
+    "mysql2": "2.1.0",
+    "sequelize": "6.2.0"
+  }
+}

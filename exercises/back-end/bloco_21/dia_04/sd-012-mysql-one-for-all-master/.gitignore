@@ -1,0 +1,5 @@
+node_modules/
+comando_para_teste.txt
+
+# VSCode repo settings
+.vscode
