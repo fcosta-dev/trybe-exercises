@@ -1,0 +1,1 @@
+CREATE TABLE Zoologico.clone_animal LIKE Zoologico.animal;
