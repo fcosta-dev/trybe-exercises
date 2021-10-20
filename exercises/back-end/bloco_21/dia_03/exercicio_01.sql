@@ -7,3 +7,4 @@ CREATE VIEW film_with_categories AS
   INNER JOIN sakila.category c
     ON fc.category_id = c.category_id
   ORDER BY f.title;
+  
