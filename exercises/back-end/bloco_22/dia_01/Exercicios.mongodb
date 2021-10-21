@@ -27,18 +27,21 @@ use('sample')
 db.bios.find().skip(5).limit(2)
 
 // Utilizando o mongoimport , importe o arquivo books.json para a sua instância local do MongoDB e utilize a coleção books para construir as seguintes consultas:
-mongoimport --db class --collection books
+// NO TERMINAL DO COMPUTADOR: mongoimport --db class --collection books books.json
 use('class')
 
 // Exercício 7 : Retorne a quantidade de documentos da coleção books .
+use('sample')
 db.books.count()
 
 // Exercício 8 : Conte quantos livros existem com o status = "PUBLISH" .
+use('sample')
 db.books.count(
     { status: "PUBLISH" }
 )
 
 // Exercício 9 : Exiba os atributos title , isbn e pageCount dos 3 primeiros livros. NÃO retorne o atributo _id .
+use('class')
 db.books.find(
     {},
     {
@@ -50,13 +53,11 @@ db.books.find(
 ).limit(3).pretty()
 
 // Exercício 10: Pule 5 documentos e exiba os atributos _id , title , authors e status dos livros com o status = "MEAP" , limitando-se a 10 documentos.
-use('sample');
-
 // listar filtrando
 // projetar saída
 // pular documentos
 // limitar lista
-
+use('class');
 db.books.find(
     {
         status: "MEAP"
@@ -70,4 +71,5 @@ db.books.find(
 
 // DIVERSOS TESTES
 show dbs;
+show collections;
 
