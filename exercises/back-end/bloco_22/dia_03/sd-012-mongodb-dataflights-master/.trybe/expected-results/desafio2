@@ -1,0 +1,572 @@
+{
+	"_id" : ObjectId("5e53b45ead9912102038c95e"),
+	"vooId" : 744454,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "KFLL",
+		"nome" : "FORT LAUDERDALE",
+		"pais" : "ESTADOS UNIDOS",
+		"continente" : "AMÉRICA DO NORTE"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBKP",
+		"nome" : "CAMPINAS",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Internacional",
+	"grupoVoo" : "Regular",
+	"passageiros" : {
+		"pagos" : 11652,
+		"gratis" : 197
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 245968,
+			"km" : 1601743616
+		},
+		"gratis" : {
+			"kg" : 11500,
+			"km" : 74888000
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 85951888,
+	"rpk" : 75877824,
+	"atk" : 15455105.42,
+	"rtk" : 9872237.58,
+	"litrosCombustivel" : 2788697,
+	"distanciaVoada" : 319088,
+	"decolagens" : 49,
+	"assentos" : 13199,
+	"payload" : 2373327,
+	"horasVoadas" : 402.27,
+	"pesoBagagem" : 396139
+}
+{
+	"_id" : ObjectId("5e53b45ead9912102038c960"),
+	"vooId" : 744455,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "KMCO",
+		"nome" : "ORLANDO",
+		"pais" : "ESTADOS UNIDOS",
+		"continente" : "AMÉRICA DO NORTE"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBCF",
+		"nome" : "BELO HORIZONTE - CONFINS",
+		"uf" : "MG",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Internacional",
+	"grupoVoo" : "Regular",
+	"passageiros" : {
+		"pagos" : 6249,
+		"gratis" : 51
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 40991,
+			"km" : 273860871
+		},
+		"gratis" : {
+			"kg" : 4292,
+			"km" : 28674852
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 46386183,
+	"rpk" : 41749569,
+	"atk" : 8384681.72,
+	"rtk" : 4769826.45,
+	"litrosCombustivel" : 1513537,
+	"distanciaVoada" : 173706,
+	"decolagens" : 26,
+	"assentos" : 6943,
+	"payload" : 1255004,
+	"horasVoadas" : 221.52,
+	"pesoBagagem" : 204273
+}
+{
+	"_id" : ObjectId("5e53b45ead9912102038c961"),
+	"vooId" : 744457,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "KMCO",
+		"nome" : "ORLANDO",
+		"pais" : "ESTADOS UNIDOS",
+		"continente" : "AMÉRICA DO NORTE"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBKP",
+		"nome" : "CAMPINAS",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Internacional",
+	"grupoVoo" : "Regular",
+	"passageiros" : {
+		"pagos" : 7695,
+		"gratis" : 80
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 84956,
+			"km" : 576936196
+		},
+		"gratis" : {
+			"kg" : 4922,
+			"km" : 33425302
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 56073287,
+	"rpk" : 52256745,
+	"atk" : 10134956.31,
+	"rtk" : 6217982.21,
+	"litrosCombustivel" : 1865506,
+	"distanciaVoada" : 210521,
+	"decolagens" : 31,
+	"assentos" : 8257,
+	"payload" : 1492410,
+	"horasVoadas" : 273.38,
+	"pesoBagagem" : 253540
+}
+{
+	"_id" : ObjectId("5e53b45ead9912102038c962"),
+	"vooId" : 744456,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "KMCO",
+		"nome" : "ORLANDO",
+		"pais" : "ESTADOS UNIDOS",
+		"continente" : "AMÉRICA DO NORTE"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBKP",
+		"nome" : "CAMPINAS",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Internacional",
+	"grupoVoo" : "Não-regular",
+	"passageiros" : {
+		"pagos" : 6007,
+		"gratis" : 69
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 55960,
+			"km" : 380024360
+		},
+		"gratis" : {
+			"kg" : 3973,
+			"km" : 26980643
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 45248433,
+	"rpk" : 40793537,
+	"atk" : 8210373.32,
+	"rtk" : 4803457.65,
+	"litrosCombustivel" : 1502641,
+	"distanciaVoada" : 169775,
+	"decolagens" : 25,
+	"assentos" : 6663,
+	"payload" : 1209008,
+	"horasVoadas" : 217.45,
+	"pesoBagagem" : 200842
+}
+{
+	"_id" : ObjectId("5e53b45ead9912102038c963"),
+	"vooId" : 744458,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "SBAE",
+		"nome" : "BAURU",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBCY",
+		"nome" : "CUIABÁ",
+		"uf" : "MT",
+		"regiao" : "CENTRO-OESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Doméstica",
+	"grupoVoo" : "Não-regular",
+	"passageiros" : {
+		"pagos" : 56,
+		"gratis" : 1
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 0,
+			"km" : 0
+		},
+		"gratis" : {
+			"kg" : 0,
+			"km" : 0
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 72450,
+	"rpk" : 57960,
+	"atk" : 7066.98,
+	"rtk" : 5367.51,
+	"litrosCombustivel" : 2174,
+	"distanciaVoada" : 1035,
+	"decolagens" : 1,
+	"assentos" : 70,
+	"payload" : 6828,
+	"horasVoadas" : 2.42,
+	"pesoBagagem" : 986
+}
+{
+	"_id" : ObjectId("5e53b45ead9912102038c964"),
+	"vooId" : 744460,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "SBAE",
+		"nome" : "BAURU",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBML",
+		"nome" : "MARÍLIA",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Doméstica",
+	"grupoVoo" : "Regular",
+	"passageiros" : {
+		"pagos" : 1,
+		"gratis" : 4
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 595,
+			"km" : 52360
+		},
+		"gratis" : {
+			"kg" : 65,
+			"km" : 5720
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 140976,
+	"rpk" : 71104,
+	"atk" : 13873.28,
+	"rtk" : 6236.12,
+	"litrosCombustivel" : 8144,
+	"distanciaVoada" : 2024,
+	"decolagens" : 23,
+	"assentos" : 1602,
+	"payload" : 157651,
+	"horasVoadas" : 15.69,
+	"pesoBagagem" : 14
+}
+{
+	"_id" : ObjectId("5e53b45ead9912102038c965"),
+	"vooId" : 744461,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "SBAE",
+		"nome" : "BAURU",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBRP",
+		"nome" : "RIBEIRÃO PRETO",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Doméstica",
+	"grupoVoo" : "Regular",
+	"passageiros" : {
+		"pagos" : 57,
+		"gratis" : 5
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 0,
+			"km" : 0
+		},
+		"gratis" : {
+			"kg" : 0,
+			"km" : 0
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 12250,
+	"rpk" : 9975,
+	"atk" : 1194.9,
+	"rtk" : 855.4,
+	"litrosCombustivel" : 1608,
+	"distanciaVoada" : 175,
+	"decolagens" : 1,
+	"assentos" : 70,
+	"payload" : 6828,
+	"horasVoadas" : 2.07,
+	"pesoBagagem" : 613
+}
+{
+	"_id" : ObjectId("5e53b45ead9912102038c966"),
+	"vooId" : 744459,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "SBAE",
+		"nome" : "BAURU",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBKP",
+		"nome" : "CAMPINAS",
+		"uf" : "SP",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Doméstica",
+	"grupoVoo" : "Regular",
+	"passageiros" : {
+		"pagos" : 1938,
+		"gratis" : 98
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 198,
+			"km" : 43362
+		},
+		"gratis" : {
+			"kg" : 39,
+			"km" : 8541
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 596118,
+	"rpk" : 415881,
+	"atk" : 58536.29,
+	"rtk" : 35633.27,
+	"litrosCombustivel" : 22987,
+	"distanciaVoada" : 8541,
+	"decolagens" : 39,
+	"assentos" : 2722,
+	"payload" : 267289,
+	"horasVoadas" : 35.18,
+	"pesoBagagem" : 21031
+}
+{
+	"_id" : ObjectId("5e53b45ead9912102038c967"),
+	"vooId" : 744462,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "SBAR",
+		"nome" : "ARACAJU",
+		"uf" : "SE",
+		"regiao" : "NORDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBCF",
+		"nome" : "BELO HORIZONTE - CONFINS",
+		"uf" : "MG",
+		"regiao" : "SUDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Doméstica",
+	"grupoVoo" : "Não-regular",
+	"passageiros" : {
+		"pagos" : 1597,
+		"gratis" : 19
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 249,
+			"km" : 301788
+		},
+		"gratis" : {
+			"kg" : 0,
+			"km" : 0
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 2421576,
+	"rpk" : 1935564,
+	"atk" : 289139.56,
+	"rtk" : 171540.42,
+	"litrosCombustivel" : 90703,
+	"distanciaVoada" : 21816,
+	"decolagens" : 18,
+	"assentos" : 1998,
+	"payload" : 238564,
+	"horasVoadas" : 36.51,
+	"pesoBagagem" : 21511
+}
+{
+	"_id" : ObjectId("5e53b45ead9912102038c968"),
+	"vooId" : 744463,
+	"empresa" : {
+		"sigla" : "AZU",
+		"nome" : "AZUL",
+		"nacionalidade" : "BRASILEIRA"
+	},
+	"ano" : 2016,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"sigla" : "SBAR",
+		"nome" : "ARACAJU",
+		"uf" : "SE",
+		"regiao" : "NORDESTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"aeroportoDestino" : {
+		"sigla" : "SBHT",
+		"nome" : "ALTAMIRA",
+		"uf" : "PA",
+		"regiao" : "NORTE",
+		"pais" : "BRASIL",
+		"continente" : "AMÉRICA DO SUL"
+	},
+	"natureza" : "Doméstica",
+	"grupoVoo" : "Não-regular",
+	"passageiros" : {
+		"pagos" : 301,
+		"gratis" : 0
+	},
+	"carga" : {
+		"paga" : {
+			"kg" : 0,
+			"km" : 0
+		},
+		"gratis" : {
+			"kg" : 0,
+			"km" : 0
+		},
+		"correio" : {
+			"kg" : 0,
+			"km" : 0
+		}
+	},
+	"ask" : 665874,
+	"rpk" : 566181,
+	"atk" : 76140.99,
+	"rtk" : 46677.01,
+	"litrosCombustivel" : 21259,
+	"distanciaVoada" : 5643,
+	"decolagens" : 3,
+	"assentos" : 354,
+	"payload" : 40479,
+	"horasVoadas" : 8.2,
+	"pesoBagagem" : 2240
+}

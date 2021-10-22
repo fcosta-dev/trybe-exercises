@@ -1,0 +1,140 @@
+{
+	"vooId" : 796816,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "PUNTA CANA"
+	},
+	"aeroportoDestino" : {
+		"nome" : "SÃO PAULO - GUARULHOS"
+	}
+}
+{
+	"vooId" : 796817,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "PUNTA CANA"
+	},
+	"aeroportoDestino" : {
+		"nome" : "SÃO PAULO - GUARULHOS"
+	}
+}
+{
+	"vooId" : 796818,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "ROSÁRIO"
+	},
+	"aeroportoDestino" : {
+		"nome" : "BUENOS AIRES"
+	}
+}
+{
+	"vooId" : 796820,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "BUENOS AIRES/AEROPARQUE"
+	},
+	"aeroportoDestino" : {
+		"nome" : "SÃO PAULO - GUARULHOS"
+	}
+}
+{
+	"vooId" : 796819,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "ROSÁRIO"
+	},
+	"aeroportoDestino" : {
+		"nome" : "RIO DE JANEIRO - GALEÃO"
+	}
+}
+{
+	"vooId" : 796821,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "CORDOBA"
+	},
+	"aeroportoDestino" : {
+		"nome" : "RIO DE JANEIRO - GALEÃO"
+	}
+}
+{
+	"vooId" : 796822,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "BUENOS AIRES"
+	},
+	"aeroportoDestino" : {
+		"nome" : "FLORIANÓPOLIS"
+	}
+}
+{
+	"vooId" : 796823,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "BUENOS AIRES"
+	},
+	"aeroportoDestino" : {
+		"nome" : "FLORIANÓPOLIS"
+	}
+}
+{
+	"vooId" : 796824,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "BUENOS AIRES"
+	},
+	"aeroportoDestino" : {
+		"nome" : "FORTALEZA"
+	}
+}
+{
+	"vooId" : 796825,
+	"empresa" : {
+		"nome" : "GOL"
+	},
+	"ano" : 2017,
+	"mes" : 1,
+	"aeroportoOrigem" : {
+		"nome" : "BUENOS AIRES"
+	},
+	"aeroportoDestino" : {
+		"nome" : "RIO DE JANEIRO - GALEÃO"
+	}
+}
