@@ -1,0 +1,8 @@
+// Faça os desafios 1 e 2 abaixo, sobre remoção de documentos utilizando a coleção restaurants criada anteriormente.
+// Remova o primeiro restaurante que possua culinária do tipo Ice Cream, Gelato, Yogurt, Ices .
+use('business')
+db.restaurants.deleteOne({ cuisine: "Ice Cream, Gelato, Yogurt, Ices" });
+
+// Remova todos os restaurantes que possuem culinária do tipo American .
+use('business')
+db.restaurants.deleteMany({ cuisine: "American" });
