@@ -69,3 +69,15 @@ db.voos.find(
     ano: 1
   }
 ).limit(10)
+
+// 11 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais não seja igual a ESTADOS UNIDOS.
+use('dataFlights')
+db.voos.find(
+  { "aeroportoDestino.pais": {$ne: "ESTADOS UNIDOS" } }
+).count();
+
+// 12 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais seja igual a BRASIL, ARGENTINA ou CHILE.
+use('dataFlights')
+db.voos.find(
+  { "aeroportoDestino.pais": {$in: ["BRASIL", "ARGENTINA", "CHILE"] } }
+).count();
