@@ -1,0 +1,10 @@
+{
+	"empresa" : {
+		"sigla" : "GLO",
+		"nome" : "GOL"
+	},
+	"passageiros" : {
+		"pagos" : 719,
+		"gratis" : 13
+	}
+}

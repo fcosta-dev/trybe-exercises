@@ -1,0 +1,3 @@
+./scripts/evaluate.sh
+
+./scripts/evaluate.sh desafioN

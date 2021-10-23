@@ -1,0 +1,44 @@
+// ## GERAR UM REGISTRO
+use('dataFlights')
+db.voos.findOne();
+
+// 1 - Retorne a quantidade de documentos inseridos na coleção voos.
+use('dataFlights')
+db.voos.find().count()
+
+// 2 - Retorne os 10 primeiros documentos com voos da empresa AZUL.
+use('dataFlights')
+db.voos.find(
+  { "empresa.nome": "AZUL" },
+).limit(10);
+
+// 3 - Retorne a quantidade de voos da empresa AZUL.
+use('dataFlights')
+db.voos.find(
+  { "empresa.nome": "AZUL" },
+).count();
+
+// 4 - Retorne a quantidade de voos da empresa GOL.
+use('dataFlights')
+db.voos.find(
+  { "empresa.nome": "GOL" },
+).count();
+
+// 5 - Retorne o vooId do décimo ao décimo segundo documento da coleção voos.
+use('dataFlights')
+db.voos.find(
+  null, { vooId: 1, _id: 0 }
+).limit(3).skip(9);
+
+// 6 - Retorne apenas os campos empresa.sigla, empresa.nome e passageiros do voo com o campo vooId igual a 756807.
+use('dataFlights')
+db.voos.find(
+  { vooId: 756807 },
+  { "empresa.sigla": 1, "empresa.nome": 1, passageiros: 1, _id: 0 }
+);
+
+// 7 - Retorne a quantidade de voos em que o ano seja menor do que 2017.
+use('dataFlights')
+db.voos.find(
+  { ano: { $lt: 2017 } }
+).count();

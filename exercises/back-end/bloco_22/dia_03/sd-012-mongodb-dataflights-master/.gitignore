@@ -1,0 +1,11 @@
+# MacOS X generated file
+.DS_STORE
+
+# VSCode repo settings
+.vscode
+
+# BSON data files
+assets/*/*.bson
+
+assets/*/dump.tar.gz
+node_modules
