@@ -42,3 +42,15 @@ use('dataFlights')
 db.voos.find(
   { ano: { $lt: 2017 } }
 ).count();
+
+// 8 - Retorne a quantidade de voos em que o ano seja maior do que 2016.
+use('dataFlights')
+db.voos.find(
+  { ano: { $gt: 2016 } }
+).count();
+
+// 9 - Retorne a quantidade de voos entre os anos de 2017 e 2018.
+use('dataFlights')
+db.voos.find(
+  { ano: { $in: [2017, 2018] } }
+).count();
