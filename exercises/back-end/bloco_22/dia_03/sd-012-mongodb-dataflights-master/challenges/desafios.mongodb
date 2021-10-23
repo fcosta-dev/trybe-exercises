@@ -1,3 +1,7 @@
+// ## GERAR UM REGISTRO
+use('dataFlights')
+db.voos.findOne();
+
 // 1 - Retorne a quantidade de documentos inseridos na coleção voos.
 use('dataFlights')
 db.voos.find().count()
@@ -21,3 +25,7 @@ db.voos.find(
 ).count();
 
 // 5 - Retorne o vooId do décimo ao décimo segundo documento da coleção voos.
+use('dataFlights')
+db.voos.find(
+  null, { vooId: 1, _id: 0 }
+).limit(3).skip(9);
