@@ -4,4 +4,20 @@ db.voos.find().count()
 
 // 2 - Retorne os 10 primeiros documentos com voos da empresa AZUL.
 use('dataFlights')
-db.voos.findOne()
+db.voos.find(
+  { "empresa.nome": "AZUL" },
+).limit(10);
+
+// 3 - Retorne a quantidade de voos da empresa AZUL.
+use('dataFlights')
+db.voos.find(
+  { "empresa.nome": "AZUL" },
+).count();
+
+// 4 - Retorne a quantidade de voos da empresa GOL.
+use('dataFlights')
+db.voos.find(
+  { "empresa.nome": "GOL" },
+).count();
+
+// 5 - Retorne o vooId do décimo ao décimo segundo documento da coleção voos.
