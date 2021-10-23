@@ -94,3 +94,14 @@ db.voos.find(
   { "aeroportoOrigem.pais": {$ne: "BRASIL" } }
 ).count()
 
+// 15 - Retorne o total de voos com mais de 20 decolagens.
+use('dataFlights')
+db.voos.find(
+  { decolagens: { $gt: 20 } }
+).count()
+
+// 16 - Retorne o total de voos em que o campo natureza possui o valor Internacional.
+use('dataFlights')
+db.voos.find(
+  { natureza: "Internacional" }
+).count()
