@@ -168,4 +168,16 @@ db.voos.findOne(
   { _id: 0, vooId: 1, "empresa.nome": 1, litrosCombustivel: 1 },
 );
 
+// 25 - Remova todos os voos da empresa AZUL em que a quantidade de combustível seja menor do que 400. Informe a quantidade de documentos removidos.
+use('dataFlights')
+db.voos.deleteMany(
+  { "empresa.nome": "AZUL", litrosCombustivel: {$lte: 400 } },
+  { acknowledge: 0 }
+)
 
+// 26 - Remova todos os voos da empresa GOL em que a quantidade de passageiros pagos esteja entre 5 e 10, incluindo os casos em que a quantidade é 5 e 10. Informe a quantidade de documentos removidos.
+use('dataFlights')
+db.voos.deleteMany(
+  { "empresa.nome": "GOL", "passageiros.pagos": {$lte: 10, $gte: 5 } },
+  { acknowledge: 0 }
+)
