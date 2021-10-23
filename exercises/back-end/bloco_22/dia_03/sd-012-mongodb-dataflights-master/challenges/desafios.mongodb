@@ -132,3 +132,22 @@ db.voos.findOne(
   { rtk: { $exists: false }},
   { _id: 0, vooId: 1 }
 )
+
+// 21 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel seja maior ou igual a 1000.
+use('dataFlights')
+db.voos.findOne(
+  { litrosCombustivel: { $gte: 1000 }},
+  { _id: 0, vooId: 1 }
+)
+
+// 22 - Retorne o vooId do primeiro voo em que a empresa seja DELTA AIRLINES ou AMERICAN AIRLINES, a sigla do aeroporto de origem seja SBGR e a sigla do aeroporto de destino seja KJFK.
+use('dataFlights')
+db.voos.findOne(
+  {
+    "empresa.nome": { $in: ["DELTA AIRLINES", "AMERICAN AIRLINES"] },
+    "aeroportoOrigem.sigla": "SBGR",
+    "aeroportoDestino.sigla": "KJFK", 
+  },
+  { _id: 0, vooId: 1 },
+);
+
