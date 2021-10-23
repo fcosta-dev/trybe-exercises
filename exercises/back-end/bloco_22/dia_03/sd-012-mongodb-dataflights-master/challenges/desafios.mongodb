@@ -1,0 +1,7 @@
+// 1 - Retorne a quantidade de documentos inseridos na coleção voos.
+use('dataFlights')
+db.voos.find().count()
+
+// 2 - Retorne os 10 primeiros documentos com voos da empresa AZUL.
+use('dataFlights')
+db.voos.findOne()
