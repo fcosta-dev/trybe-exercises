@@ -81,3 +81,16 @@ use('dataFlights')
 db.voos.find(
   { "aeroportoDestino.pais": {$in: ["BRASIL", "ARGENTINA", "CHILE"] } }
 ).count();
+
+// 13 - Retorne a quantidade de documentos em que o campo aeroportoDestino.continente não seja igual a EUROPA, ÁSIA e OCEANIA.
+use('dataFlights')
+db.voos.find(
+  { "aeroportoDestino.continente": {$nin: ["EUROPA", "ÁSIA", "OCEANIA"] } }
+).count();
+
+// 14 - Retorne o total de voos em que o país de origem não seja BRASIL.
+use('dataFlights')
+db.voos.find(
+  { "aeroportoOrigem.pais": {$ne: "BRASIL" } }
+).count()
+
