@@ -118,3 +118,17 @@ db.voos.findOne(
   { "passageiros.pagos": {$gt: 7000 } },
   { _id: 0, vooId: 1, mes: 1, ano: 1 }
 )
+
+// 19 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel exista.
+use('dataFlights')
+db.voos.findOne(
+  { litrosCombustivel: {$exists: true } },
+  { _id: 0, vooId: 1 }
+)
+
+// 20 - Retorne o vooId do primeiro voo em que o campo rtk não exista.
+use('dataFlights')
+db.voos.findOne(
+  { rtk: { $exists: false }},
+  { _id: 0, vooId: 1 }
+)
