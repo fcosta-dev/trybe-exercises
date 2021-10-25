@@ -168,3 +168,98 @@ db.movies.find(
   { title: "Home Alone" }
 )
 
+// Exercício 10: Crie um array de documentos chamado cast para o filme Batman com os seguintes dados:
+use('class');
+db.movies.updateMany(
+  { title: "Batman" },
+  {
+    $push: {
+      cast: {
+        $each: [
+          { "character": "Batman" },
+          { "character": "Alfred" },
+          { "character": "Coringa" }
+        ]
+      }
+    }
+  }
+)
+
+use('class');
+db.movies.find(
+  { title: "Batman" }
+)
+
+// Exercício 11: Produza três querys para o filme Batman :
+// 11.1 - Adicione o campo actor, que deve ser um array com o valor Christian Bale , ao array de cast em que o campo character seja igual a Batman ;
+use('class');
+db.movies.updateOne(
+  {
+    title: "Batman",
+    "cast.character": "Batman"
+  },
+  { 
+    $push: { "cast.$.actor": "Christian Bale" }
+  }
+)
+
+use('class');
+db.movies.find(
+  { title: "Batman" }
+)
+
+// 11.2 - Adicione o campo actor, que deve ser um array com o valor Michael Caine , ao array de cast em que o campo character seja igual a Alfred ;
+use('class');
+db.movies.updateOne(
+  {
+    title: "Batman",
+    "cast.character": "Alfred"
+  },
+  {
+    $push: { "cast.$.actor": "Michael Caine" }
+  }
+)
+
+use('class');
+db.movies.find(
+  { title: "Batman" }
+)
+
+// 11.3 - Adicione o campo actor, que deve ser um array com o valor Heath Ledger , ao array de cast em que o campo character seja igual a Coringa .
+use('class');
+db.movies.updateOne(
+  {
+    title: "Batman",
+    "cast.character": "Coringa"
+  },
+  {
+    $push: { "cast.$.actor": "Heath Ledget" }
+  }
+)
+
+use('class');
+db.movies.find(
+  { title: "Batman" }
+)
+
+// Exercício 12: Adicione aos atores de cast do character Batman do filme Batman os valores "Michael Keaton" , "Val Kilmer" e "George Clooney" , e deixe o array em ordem alfabética.
+use('class');
+db.movies.updateOne(
+  {
+    title: "Batman",
+    "cast.character": "Batman"
+  },
+  {
+    $push: {
+      "cast.$.actor": {
+        $each: ["Michael Keaton", "Val Kilmer", "George Clooney"],
+        $sort: 1
+      }
+    }
+  }
+)
+
+use('class');
+db.movies.find(
+  { title: "Batman" }
+)
