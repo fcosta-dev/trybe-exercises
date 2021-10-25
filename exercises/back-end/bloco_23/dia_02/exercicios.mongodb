@@ -168,3 +168,24 @@ db.movies.find(
   { title: "Home Alone" }
 )
 
+// Exercício 10: Crie um array de documentos chamado cast para o filme Batman com os seguintes dados:
+use('class');
+db.movies.updateMany(
+  { title: "Batman" },
+  {
+    $push: {
+      cast: {
+        $each: [
+          { "character": "Batman" },
+          { "character": "Alfred" },
+          { "character": "Coringa" }
+        ]
+      }
+    }
+  }
+)
+
+use('class');
+db.movies.find(
+  { title: "Batman" }
+)
