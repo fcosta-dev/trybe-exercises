@@ -1,0 +1,170 @@
+use('class');
+db.movies.drop();
+use('class');
+db.movies.insertMany([
+  {
+    title: "Batman",
+    category: [
+      "action",
+      "adventure",
+    ],
+    imdbRating: 7.7,
+    budget: 35,
+  },
+  {
+    title: "Godzilla",
+    category: [
+      "action",
+      "adventure",
+      "sci-fi",
+    ],
+    imdbRating: 6.6,
+    budget: 1,
+  },
+  {
+    title: "Home Alone",
+    category: [
+      "family",
+      "comedy",
+    ],
+    imdbRating: 7.4,
+  },
+]);
+
+// Exercício 1: Adicione a categoria "superhero" ao filme Batman .
+use('class');
+db.movies.updateOne(
+  { title: "Batman" },
+  {
+    $push: { category: "superhero" }
+  }
+)
+
+use('class');
+db.movies.findOne(
+  { title: "Batman" }
+)
+
+// Exercício 2: Utilizando o modificador $each , adicione as categorias "villain" e "comic-based" ao filme Batman.
+use('class');
+db.movies.updateOne(
+  { title: "Batman" },
+  {
+    $push: { 
+      category: {
+        $each: ["villain", "comic-based"], 
+      }
+    }
+  }
+)
+
+use('class');
+db.movies.findOne(
+  { title: "Batman" }
+)
+
+// Exercício 3: Remova a categoria "action" do filme Batman .
+use('class');
+db.movies.updateOne(
+  { title: "Batman" },
+  {
+    $pull: { category: "action" }
+  }
+)
+
+use('class');
+db.movies.findOne(
+  { title: "Batman" }
+)
+
+// Exercício 4: Remova o primeiro elemento do array category do filme Batman .
+use('class');
+db.movies.updateOne(
+  { title: "Batman" },
+  {
+    $pop: { category: -1 }
+  }
+)
+
+use('class');
+db.movies.findOne(
+  { title: "Batman" }
+)
+
+// Exercício 5: Remova o último elemento do array category do filme Batman .
+use('class');
+db.movies.updateOne(
+  { title: "Batman" },
+  {
+    $pop: { category: 1 }
+  }
+)
+
+use('class');
+db.movies.findOne(
+  { title: "Batman" }
+)
+
+// Exercício 6: Adicione o elemento "action" ao array category do filme Batman , garantindo que esse valor não se duplique.
+use('class');
+db.movies.updateOne(
+  { title: "Batman" },
+  {
+    $addToSet: { category: "action" }
+  }
+)
+
+use('class');
+db.movies.findOne(
+  { title: "Batman" }
+)
+
+// Exercício 7: Adicione a categoria "90's" aos filmes Batman e Home Alone .
+use('class');
+db.movies.updateMany(
+  { title: { $in: ["Batman", "Home Alone"] } },
+  { $push: { category: "90's" } }
+)
+
+use('class');
+db.movies.find(
+  { title: { $in: ["Batman", "Home Alone"] } }
+)
+
+// Exercício 8: Crie um array de documentos chamado cast para o filme Home Alone com os seguintes dados:
+use('class');
+db.movies.updateMany(
+  { title: "Home Alone" },
+  { 
+    $push: { 
+      cast: {
+        $each: [
+          { "actor": "Macaulay Culkin", "character": "Kevin" },
+          { "actor": "Joe Pesci", "character": "Harry" },
+          { "actor": "Daniel Stern" }
+        ]
+      }
+    }
+  }
+)
+
+use('class');
+db.movies.find(
+  { title: "Home Alone" }
+)
+
+// Exercício 9: Adicione o campo character com o valor Marv ao array de cast em que o campo actor seja igual a Daniel Stern no filme Home Alone .
+use('class');
+db.movies.updateOne(
+  {
+    title: "Home Alone",
+    "cast.actor": "Daniel Stern"
+  },
+  { $set: { "cast.$.character": "Marv" } }
+)
+
+use('class');
+db.movies.find(
+  { title: "Home Alone" }
+)
+
