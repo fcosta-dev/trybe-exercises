@@ -1,0 +1,5 @@
+{ "nome" : "Big Mac", "valorUnitario" : NumberDecimal("0.00") }
+{ "nome" : "Quarteirão com Queijo", "valorUnitario" : NumberDecimal("0.00") }
+{ "nome" : "Cheddar McMelt", "valorUnitario" : NumberDecimal("0.00") }
+{ "nome" : "McChicken", "valorUnitario" : NumberDecimal("0.00") }
+{ "nome" : "Extra Chicken", "valorUnitario" : NumberDecimal("0.00") }

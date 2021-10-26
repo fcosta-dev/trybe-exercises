@@ -1,0 +1,60 @@
+{
+	"nome" : "Big Mac",
+	"vendasPorDia" : [
+		0,
+		0,
+		0,
+		60,
+		0,
+		0,
+		120
+	]
+}
+{
+	"nome" : "Quarteirão com Queijo",
+	"vendasPorDia" : [
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	]
+}
+{
+	"nome" : "Cheddar McMelt",
+	"vendasPorDia" : [
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	]
+}
+{
+	"nome" : "McChicken",
+	"vendasPorDia" : [
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	]
+}
+{
+	"nome" : "Extra Chicken",
+	"vendasPorDia" : [
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	]
+}

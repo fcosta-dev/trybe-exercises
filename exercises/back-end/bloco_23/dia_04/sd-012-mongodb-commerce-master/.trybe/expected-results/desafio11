@@ -1,0 +1,13 @@
+{
+	"nome" : "Big Mac",
+	"tags" : [
+		"bovino",
+		"combo",
+		"pão",
+		"tasty"
+	]
+}
+{ "nome" : "Quarteirão com Queijo", "tags" : [ "combo", "tasty" ] }
+{ "nome" : "Cheddar McMelt", "tags" : [ "combo", "tasty" ] }
+{ "nome" : "McChicken", "tags" : [ "ave", "combo", "tasty" ] }
+{ "nome" : "Extra Chicken", "tags" : [ "ave", "combo", "tasty" ] }

@@ -1,0 +1,5 @@
+{ "nome" : "Big Mac", "tags" : [ "bovino", "pão" ] }
+{ "nome" : "Quarteirão com Queijo", "tags" : [ "contém sódio" ] }
+{ "nome" : "Cheddar McMelt", "tags" : [ "contém sódio" ] }
+{ "nome" : "McChicken", "tags" : [ "ave", "contém sódio" ] }
+{ "nome" : "Extra Chicken", "tags" : [ "ave" ] }

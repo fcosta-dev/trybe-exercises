@@ -1,0 +1,25 @@
+{
+  "name": "sd-0x-mongodb-commerce",
+  "version": "1.0.0",
+  "description": "Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betrybe/sd-0x-mongodb-commerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/betrybe/sd-0x-mongodb-commerce/issues"
+  },
+  "homepage": "https://github.com/betrybe/sd-0x-mongodb-commerce#readme",
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-trybe-backend": "1.0.3",
+    "typescript": "4.0.5"
+  }
+}

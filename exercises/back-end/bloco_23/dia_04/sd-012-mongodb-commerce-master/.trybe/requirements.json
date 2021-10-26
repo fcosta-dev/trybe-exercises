@@ -1,0 +1,114 @@
+{
+  "requirements": [
+    {
+      "identifier": "desafio1",
+      "description": "1 - Inclua o campo `criadoPor` em todos os documentos, colocando `Ronald McDonald` no valor desse campo.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio2",
+      "description": "2 - Inclua o campo `valorUnitario` em todos os documentos em que esse campo não existe e atribua a ele o valor `0.00`, com o tipo `NumberDecimal`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio3",
+      "description": "3 - Adicione o campo `avaliacao` em todos os documentos da coleção e efetue alterações nesse campo.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio4",
+      "description": "4 - Atribua a data corrente ao campo `ultimaModificacao` no sanduíche `Big Mac`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio5",
+      "description": "5 - Adicione `ketchup` aos `ingredientes` para todos os sanduíches menos o `McChicken`, garantindo que não haja duplicidade nos `ingredientes`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio6",
+      "description": "6 - Inclua `bacon` no final da lista de `ingredientes` dos sanduíches `Big Mac` e `Quarteirão com Queijo`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio7",
+      "description": "7 - Remova o item `cebola` de todos os sanduíches.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio8",
+      "description": "8 - Remova o **primeiro** `ingrediente` do sanduíche `Quarteirão com Queijo`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio9",
+      "description": "9 - Remova o **último** `ingrediente` do sanduíche `Cheddar McMelt`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio10",
+      "description": "10 - Adicione a quantidade de vendas dos sanduíches por dia da semana.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio11",
+      "description": "11 - Insira os elementos `combo` e `tasty` no _array_ `tags` de todos os sanduíches e aproveite para deixar os elementos em ordem alfabética ascendente.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio12",
+      "description": "12 - Ordene em todos os documentos os elementos do _array_ `valoresNutricionais` pelo campo `percentual` de forma descendente.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio13",
+      "description": "13 - Adicione o elemento `muito sódio` ao final do _array_ `tags` nos produtos em que o `percentual` de `sódio` seja maior ou igual a `40`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio14",
+      "description": "14 - Adicione o elemento `contém sódio` ao final do _array_ `tags` nos produtos em que o `percentual` de `sódio` seja maior do que `20` e menor do que `40`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio15",
+      "description": "15 - Conte quantos produtos contêm `Mc` no nome, sem considerar letras maiúsculas ou minúsculas.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio16",
+      "description": "16 - Conte quantos produtos têm `4` ingredientes.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio17",
+      "description": "17 - Conte quantos documentos contêm as palavras `frango` ou `hamburguer` utilizando o operador `$text`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio18",
+      "description": "18 - Conte quantos documentos contêm a **expressão** `feito com` utilizando o operador `$text`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio19",
+      "description": "19 - Renomeie o campo `descricao` para `descricaoSite` em todos os documentos.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio20",
+      "description": "20 - Remova o campo `curtidas` do item `Big Mac`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio21",
+      "description": "21 - Retorne o `nome` dos sanduíches em que o número de `curtidas` é maior que o número de sanduíches `vendidos`.",
+      "bonus": false
+    },
+    {
+      "identifier": "desafio22",
+      "description": "22 - Retorne o `nome` e a quantidade de vendas (`vendidos`) dos sanduíches em que o número de vendas é múltiplo de `5`.",
+      "bonus": false
+    }
+  ]
+}

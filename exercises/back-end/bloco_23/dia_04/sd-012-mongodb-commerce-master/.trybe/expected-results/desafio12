@@ -1,0 +1,175 @@
+{
+	"nome" : "Big Mac",
+	"valoresNutricionais" : [
+		{
+			"tipo" : "lipídios",
+			"quantidade" : 25,
+			"unidadeMedida" : "gramas",
+			"percentual" : 45
+		},
+		{
+			"tipo" : "sódio",
+			"quantidade" : 1047,
+			"unidadeMedida" : "miligramas",
+			"percentual" : 44
+		},
+		{
+			"tipo" : "proteínas",
+			"quantidade" : 27,
+			"unidadeMedida" : "gramas",
+			"percentual" : 36
+		},
+		{
+			"tipo" : "calorias",
+			"quantidade" : 502,
+			"unidadeMedida" : "kcal",
+			"percentual" : 25
+		},
+		{
+			"tipo" : "carboidratos",
+			"quantidade" : 45,
+			"unidadeMedida" : "gramas",
+			"percentual" : 15
+		}
+	]
+}
+{
+	"nome" : "Quarteirão com Queijo",
+	"valoresNutricionais" : [
+		{
+			"tipo" : "lipídios",
+			"quantidade" : 31,
+			"unidadeMedida" : "gramas",
+			"percentual" : 56
+		},
+		{
+			"tipo" : "proteínas",
+			"quantidade" : 30,
+			"unidadeMedida" : "gramas",
+			"percentual" : 40
+		},
+		{
+			"tipo" : "sódio",
+			"quantidade" : 1072,
+			"unidadeMedida" : "miligramas",
+			"percentual" : 35
+		},
+		{
+			"tipo" : "calorias",
+			"quantidade" : 528,
+			"unidadeMedida" : "kcal",
+			"percentual" : 26
+		},
+		{
+			"tipo" : "carboidratos",
+			"quantidade" : 33,
+			"unidadeMedida" : "gramas",
+			"percentual" : 11
+		}
+	]
+}
+{
+	"nome" : "Cheddar McMelt",
+	"valoresNutricionais" : [
+		{
+			"tipo" : "lipídios",
+			"quantidade" : 27,
+			"unidadeMedida" : "gramas",
+			"percentual" : 48
+		},
+		{
+			"tipo" : "proteínas",
+			"quantidade" : 28,
+			"unidadeMedida" : "gramas",
+			"percentual" : 37
+		},
+		{
+			"tipo" : "sódio",
+			"quantidade" : 819,
+			"unidadeMedida" : "miligramas",
+			"percentual" : 34
+		},
+		{
+			"tipo" : "calorias",
+			"quantidade" : 468,
+			"unidadeMedida" : "kcal",
+			"percentual" : 23
+		},
+		{
+			"tipo" : "carboidratos",
+			"quantidade" : 30,
+			"unidadeMedida" : "gramas",
+			"percentual" : 10
+		}
+	]
+}
+{
+	"nome" : "McChicken",
+	"valoresNutricionais" : [
+		{
+			"tipo" : "lipídios",
+			"quantidade" : 22,
+			"unidadeMedida" : "gramas",
+			"percentual" : 39
+		},
+		{
+			"tipo" : "sódio",
+			"quantidade" : 718,
+			"unidadeMedida" : "miligramas",
+			"percentual" : 24
+		},
+		{
+			"tipo" : "proteínas",
+			"quantidade" : 17,
+			"unidadeMedida" : "gramas",
+			"percentual" : 22
+		},
+		{
+			"tipo" : "calorias",
+			"quantidade" : 404,
+			"unidadeMedida" : "kcal",
+			"percentual" : 20
+		},
+		{
+			"tipo" : "carboidratos",
+			"quantidade" : 36,
+			"unidadeMedida" : "gramas",
+			"percentual" : 12
+		}
+	]
+}
+{
+	"nome" : "Extra Chicken",
+	"valoresNutricionais" : [
+		{
+			"tipo" : "lipídios",
+			"quantidade" : 17,
+			"unidadeMedida" : "gramas",
+			"percentual" : 29
+		},
+		{
+			"tipo" : "sódio",
+			"quantidade" : 662,
+			"unidadeMedida" : "miligramas",
+			"percentual" : 20
+		},
+		{
+			"tipo" : "proteínas",
+			"quantidade" : 13,
+			"unidadeMedida" : "gramas",
+			"percentual" : 18
+		},
+		{
+			"tipo" : "calorias",
+			"quantidade" : 345,
+			"unidadeMedida" : "kcal",
+			"percentual" : 17
+		},
+		{
+			"tipo" : "carboidratos",
+			"quantidade" : 35,
+			"unidadeMedida" : "gramas",
+			"percentual" : 12
+		}
+	]
+}
