@@ -110,36 +110,135 @@ use('class')
 db.movies.find();
 
 // 6 - Retorne todos os filmes com ratings maior do que 103 , exibindo apenas os campos title e ratings .
+use('class');
+db.movies.find(
+  {
+    ratings: {
+      $elemMatch: { $gt: 103 }
+    }
+  },
+  {
+    _id: 0,
+    title: 1,
+    ratings: 1
+  }
+)
 
 
 // 7 - Retorne todos os filmes com ratings entre 100 e 105 , exibindo apenas os campos title e ratings .
-
+use('class');
+db.movies.find(
+  {
+    ratings: {
+      $elemMatch: { $gte: 100, $lte: 105 }
+    }
+  },
+  {
+    _id: 0,
+    title: 1,
+    ratings: 1
+  }
+)
 
 // 8 - Retorne todos os filmes com ratings entre 64 e 105 e divisíveis por 9 , exibindo apenas os campos title e ratings .
-
+use('class');
+db.movies.find(
+  {
+    ratings: {
+      $elemMatch: { $gte: 64, $lte: 105, $mod: [9, 0] }
+    }
+  },
+  {
+    _id: 0,
+    title: 1,
+    ratings: 1
+  }
+)
 
 // 9 - Retorne os filmes da categoria adventure e com ratings maior do que 103 , exibindo apenas os campos title , ratings e category .
-
+use('class')
+db.movies.find(
+  {
+    ratings: {
+      $elemMatch: { $gt: 103 }
+    },
+    category: { $all: ["adventure"] }
+  },
+  {
+    _id: 0,
+    title: 1,
+    ratings: 1,
+    category: 1
+  }
+)
 
 // 10 - Retorne somente o título de todos os filmes com dois elementos no array category .
-
+use('class')
+db.movies.find(
+  { category: { $size: 2 } },
+  {
+    _id: 0,
+    title: 1
+  }
+)
 
 // 11 - Retorne somente o título de todos os filmes com quatro elementos no array ratings .
-
+use('class')
+db.movies.find(
+  { ratings: { $size: 4 } },
+  {
+    _id: 0,
+    title: 1
+  }
+)
 
 // 12 - Busque os filmes em que o módulo 5 do campo budget seja 0 e que o array category tenha tamanho 2 .
-
+use('class')
+db.movies.find(
+  {
+    budget: { $mod: [5, 0] },
+    category: { $size: 2 }
+  }
+)
 
 // 13 - Retorne os filmes da categoria "sci-fi" ou que possua o ratings maior do que 199 , exibindo apenas os campos title , ratings e category .
+use('class');
+db.movies.find(
+  {
+    $or: [
+      { category: { $all: ["sci-fi"] } },
+      { ratings: { $elemMatch: { $gt: 199 } } }
+    ]
+  },
 
+)
 
 // 14 - Retorne os filmes em que o ratings possua tamanho 4 e que seja da category "adventure" ou "family" , mas que não tenha o imdbRating menor que 7.
-
+use('class');
+db.movies.find(
+  {
+    $and: [
+      { ratings: { $size: 4 } },
+      { category: { $in: ["adventure", "family"] } },
+      { imdbRating: { $not: { $lt: 7 } } }
+    ]
+  }
+)
 
 // 15 - Adicione o campo description no filme Batman com o seguinte valor: "The Dark Knight of Gotham City begins his war on crime with his first major enemy being Jack Napier, a criminal who becomes the clownishly homicidal Joker." .
+use('class');
+db.movies.updateOne(
+  { title: "Batman" },
+  { $set: {
+    description: "The Dark Knight of Gotham City begins his war on crime with his first major enemy being Jack Napier, a criminal who becomes the clownishly homicidal Joker." }
+  }
+)
 
+use('class')
+db.movies.find()
 
 // 16 - Adicione o campo description no filme Godzilla com o seguinte valor: "The world is beset by the appearance of monstrous creatures, but one of them may be the only one who can save humanity." .
+use('class');
 
 
 // 17 - Adicione o campo description no filme Home Alone com o seguinte valor: "An eight-year-old troublemaker must protect his house from a pair of burglars when he is accidentally left home alone by his family during Christmas vacation." .
