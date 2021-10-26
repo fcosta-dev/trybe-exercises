@@ -1,0 +1,43 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  eslint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1.4.4
+        with:
+          node-version: '12'
+      - name: ESLint
+        uses: betrybe/eslint-linter-action@v2.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  evaluator_job:
+    name: Evaluator Job
+    runs-on: ubuntu-18.04
+    needs: eslint
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - "27017:27017"
+        options: -v ${{ github.workspace }}:/github/workspace
+    steps:
+      - uses: actions/checkout@v2
+      - name: MongoDB Query Evaluator Step
+        uses: betrybe/mongodb-query-evaluator-action@v2.2
+        id: evaluator
+        env:
+          DBNAME: 'commerce'
+        with:
+          repository-import-folder: 'assets'
+          repository-challenges-folder: 'challenges'
+      - name: Store evaluation step
+        uses: betrybe/store-evaluation-action@v2
+        with:
+          evaluation-data: ${{ steps.evaluator.outputs.result }}
+          environment: production
+          pr-number: ${{ github.event.number }}

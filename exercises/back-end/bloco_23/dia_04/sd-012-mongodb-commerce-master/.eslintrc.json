@@ -1,0 +1,20 @@
+{
+  "env": {
+    "mongo": true,
+    "browser": true,
+    "commonjs": true,
+    "es2020": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["trybe-backend"],
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "rules": {
+    "quotes": [2, "double"],
+    "no-undef": "off",
+    "camelcase": "off"
+  }
+}

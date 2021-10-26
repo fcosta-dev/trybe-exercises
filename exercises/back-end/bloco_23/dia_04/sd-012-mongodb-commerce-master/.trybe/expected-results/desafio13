@@ -1,0 +1,5 @@
+{ "nome" : "Big Mac", "tags" : [ "bovino", "pão", "muito sódio" ] }
+{ "nome" : "Quarteirão com Queijo" }
+{ "nome" : "Cheddar McMelt" }
+{ "nome" : "McChicken", "tags" : [ "ave" ] }
+{ "nome" : "Extra Chicken", "tags" : [ "ave" ] }

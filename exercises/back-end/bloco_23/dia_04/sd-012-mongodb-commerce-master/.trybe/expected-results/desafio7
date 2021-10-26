@@ -1,0 +1,51 @@
+{
+	"nome" : "Big Mac",
+	"ingredientes" : [
+		"hamburguer",
+		"alface",
+		"queijo",
+		"molho especial",
+		"picles",
+		"pão com gergelim"
+	]
+}
+{
+	"nome" : "Quarteirão com Queijo",
+	"ingredientes" : [
+		"hamburguer",
+		"queijo",
+		"picles",
+		"pão com gergelim",
+		"ketchup",
+		"mostarda"
+	]
+}
+{
+	"nome" : "Cheddar McMelt",
+	"ingredientes" : [
+		"hamburguer",
+		"queijo cheddar",
+		"molho shoyu",
+		"cebola grelhada",
+		"pão escuro com gergelim"
+	]
+}
+{
+	"nome" : "McChicken",
+	"ingredientes" : [
+		"frango empanado",
+		"molho suave",
+		"alface",
+		"pão com gergelim"
+	]
+}
+{
+	"nome" : "Extra Chicken",
+	"ingredientes" : [
+		"frango empanado",
+		"maionese",
+		"alface",
+		"pão com gergelim",
+		"tomate"
+	]
+}
