@@ -1,0 +1,11 @@
+Localmente:
+./scripts/evaluate.sh
+
+Um por um:
+./scripts/evaluate.sh desafioN
+
+
+
+
+Restaurar banco de dados:
+DBNAME=commerce ./scripts/resetdb.sh assets/produtos
