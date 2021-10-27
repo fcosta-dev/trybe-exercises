@@ -1,0 +1,19 @@
+// Utilizando o banco de dados storage , faça o seguinte exercício:
+// 1 - Calcule o valor absoluto do lucro total de cada produto.
+use('storage');
+db.products.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      delta: {
+        $abs: {
+          $subtract: [
+            "$sale_price",
+            { $add: ["$taxes", "$purchase_price"] }
+          ]
+        }
+      }
+    }
+  }
+]);
