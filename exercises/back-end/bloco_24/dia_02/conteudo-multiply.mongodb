@@ -1,0 +1,36 @@
+// Utilizando o banco de dados storage , faça os seguintes exercícios:
+// 1 - Calcule qual o valor total em estoque de cada produto, considerando o preço de venda e a quantidade;
+use('storage');
+db.products.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      total_profit: {
+        $multiply: ["$sale_price", "$quantity"]
+      }
+    }
+  }
+]);
+
+// 2 - Calcule qual será o lucro total de cada produto caso todo o estoque seja vendido.
+use('storage');
+db.products.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      total_profit: {
+        $multiply: [
+          {
+            $subtract: [
+              "$sale_price",
+              { $add: ["$taxes", "$purchase_price"] }
+            ]
+          }, 
+          "$quantity"
+        ]
+      }
+    }
+  }
+]);
