@@ -4,6 +4,7 @@ const scripts = [
   { name: 'Calcular IMC', arquivo: './imc.js' },
   { name: 'Calcular velocidade média', arquivo: './velocidade.js' },
   { name: 'Jogo de adivinhação', arquivo: './sorteio.js' },
+  { name: 'Fatorial', arquivo: './fatorial.js' },
 ];
 
 // Percorre os scrips para criar uma lista numerada para acessa-los
