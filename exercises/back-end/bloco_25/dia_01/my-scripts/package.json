@@ -8,5 +8,8 @@
     "imc": "node imc.js"
   },
   "author": "Fernando Costa",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
