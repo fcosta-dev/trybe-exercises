@@ -5,6 +5,7 @@ const scripts = [
   { name: 'Calcular velocidade média', arquivo: './velocidade.js' },
   { name: 'Jogo de adivinhação', arquivo: './sorteio.js' },
   { name: 'Fatorial', arquivo: './fatorial.js' },
+  { name: 'Fibonacci', arquivo: './fibonacci.js' },
 ];
 
 // Percorre os scrips para criar uma lista numerada para acessa-los
