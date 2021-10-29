@@ -3,3 +3,11 @@ Método fs.readFileSync
   O método readFileSync recebe dois parâmetros:
   - O nome do arquivo;
   - Um parâmetro opcional que, quando é uma string, define o encoding que será utilizado durante a leitura do arquivo.
+
+Método fs.readFile
+  Esse método também é responsável por ler arquivos e trazer seu conteúdo para dentro do Node.js.
+  Ele recebe três parâmetros:
+  - O nome do arquivo;
+  - Um parâmetro opcional que, quando é uma string, define o encoding que será utilizado durante a leitura do arquivo;
+  - Uma callback que permite receber e manipular os dados lidos do arquivo.
+  
