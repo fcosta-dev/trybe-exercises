@@ -7,6 +7,16 @@ const recipes = [
   { id: 3, name: 'Macarrão com molho branco', price: 35.0, waitTime: 25 },
 ];
 
+// DETALHE: Se colocamos a rota /recipes/search depois da rota /recipes/:id , o Express vai entender que a palavra search como um id e vai chamar a callback da rota /recipes/:id . Tenha atenção a esse detalhe ao utilizar rotas similares na definição da sua API.
+app.get('/recipes/search', function (req, res) {
+  // Utilizamos req.query e desestruturamos o atributo nome, para na sequência usar como parâmetro de busca.
+  const { name } = req.query;
+  // A função filter , para filtrar os receitas que contenham ( .includes ) o nome recebido através da query string
+  const filteredRecipes = recipes.filter((r) => r.name.includes(name));
+  // E no final devolvemos a lista de receitas obtidas por esse filtro.
+  res.status(200).json(filteredRecipes);
+});
+
 app.get('/recipes', function (req, res) {
   res.json(recipes);
 });
