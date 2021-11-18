@@ -11,12 +11,18 @@ app.get('/recipes', function (req, res) {
   res.json(recipes);
 });
 
+// Qualquer rota que chegar nesse formato, independente do id ser um número ou string vai cair nessa segunda rota
 app.get('/recipes/:id', function (req, res) {
+  // Pega o id pelo params
   const { id } = req.params;
+  // Guarda na variável 'recipe' informações do id que está sendo procurado conforme params acima
   const recipe = recipes.find((r) => r.id === parseInt(id));
 
+  // Se a variável recipe estiver nula, ou seja não foi encontrado pelo find, então retorna que Recipe não foi encontrado
+  // Isso serve para indicar para o express que ele deve quebrar o fluxo
   if (!recipe) return res.status(404).json({ message: 'Recipe not found!'});
 
+  // Ou, retorna informações do recupe
   res.status(200).json(recipe);
 });
 
