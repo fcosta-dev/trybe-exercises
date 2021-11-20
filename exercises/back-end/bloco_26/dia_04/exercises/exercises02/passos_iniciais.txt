@@ -1,0 +1,9 @@
+** 01 - Criar o novo pacote e instalar o express **
+
+mkdir exercises-26-4
+cd exercises-26-4
+npm init -y
+npm i express body-parser express-rescue
+
+** 02 - Criar o arquivo index.js e adicionar o middleware de erros e o body-parser **
+
