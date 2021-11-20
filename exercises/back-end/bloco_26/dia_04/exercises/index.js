@@ -14,12 +14,14 @@ app.use(bodyParser.json());
 // *** Iniciando as rotas ***
 // **************************
 
+// O get pega os objetos
 // Requisição com método GET para a rota '/ping' que retornará o seguinte JSON: { message: 'pong' }
 app.get('/ping', (_req, res) => { 
   res
     .json({ "message": "pong" })
 });
 
+// O post adiciona objetos
 // Requisição com método POST para a rota '/hello' que retornará o seguinte JSON: { message: 'Hello, ${name}!'}
 app.post('/hello', (req, res) => {
   // desestruturamos o atributo name do objeto req.body para pegar o <nome do usuário>
@@ -28,6 +30,34 @@ app.post('/hello', (req, res) => {
     .status(200) // O código HTTP 200 OK é a resposta de status de sucesso que indica que a requisição foi bem sucedida
     .json({ "message": 'Hello, ${name}!'})
 })
+
+// O post adiciona objetos
+// Requisição com método POST para a rota '/greetings' que retornará o seguinte JSON: { "name": "<nome do usuário>", "age": <idade do usuário> }
+app.post('/greetings', (req, res) => {
+  // Desestrutura o body da req pegando o name e o age
+  const { name, age } = req.body;
+  // Se caso a pessoa usuária tenha idade menor ou igual a 17 anos, retorna o status 401 abaixo
+  if (parseInt(age, 10) <= 17) {
+    return res
+      .status(401) // O código HTTP 401 Unauthorized - indica que a solicitação não foi aplicada porque não possui credenciais de autenticação válidas para o recurso de destino.
+      .json({ message: `Unauthorized` });
+  }
+  // Caso a pessoa usuária tenha idade maior que 17 anos, então retornará o status 200 abaixo
+  res
+    .status(200) // O código HTTP 200 OK é a resposta de status de sucesso que indica que a requisição foi bem sucedida
+    .json({ message: `Hello, ${name}!` });
+});
+
+// O put edita objetos
+// Requisição com método PUT para a rota '/users/:name/:age' que retornará o seguinte JSON: { "message": "Seu nome é <name> e você tem <age> anos de idade" }
+App.put('/users/:name/:age', (req, res) => {
+  // Desestrutura o params da req pegando o name e o age
+  const { name, age } = req.params;
+  res
+    .status(200) // O código HTTP 200 OK é a resposta de status de sucesso que indica que a requisição foi bem sucedida
+    .json({ "message": `Seu nome é ${name} e você tem ${age} anos de idade` })
+})
+
 
 // **************************
 // ***** Fim das rotas ******
