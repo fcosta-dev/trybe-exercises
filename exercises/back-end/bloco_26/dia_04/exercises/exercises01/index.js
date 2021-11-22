@@ -14,24 +14,24 @@ app.use(bodyParser.json());
 // *** Iniciando as rotas ***
 // **************************
 
-// O get pega os objetos
+// O get pega os objetos. Testagem: http :3000/ping
 // Requisição com método GET para a rota '/ping' que retornará o seguinte JSON: { message: 'pong' }
 app.get('/ping', (_req, res) => { 
   res
     .json({ "message": "pong" })
 });
 
-// O post adiciona objetos
+// O post adiciona objetos. Testagem: 
 // Requisição com método POST para a rota '/hello' que retornará o seguinte JSON: { message: 'Hello, ${name}!'}
 app.post('/hello', (req, res) => {
   // desestruturamos o atributo name do objeto req.body para pegar o <nome do usuário>
   const { name } = req.body;
   res
     .status(200) // O código HTTP 200 OK é a resposta de status de sucesso que indica que a requisição foi bem sucedida
-    .json({ "message": 'Hello, ${name}!'})
+    .json({ "message": `Hello, ${name}!` })
 })
 
-// O post adiciona objetos
+// O post adiciona objetos.
 // Requisição com método POST para a rota '/greetings' que retornará o seguinte JSON: { "name": "<nome do usuário>", "age": <idade do usuário> }
 app.post('/greetings', (req, res) => {
   // Desestrutura o body da req pegando o name e o age
@@ -50,7 +50,7 @@ app.post('/greetings', (req, res) => {
 
 // O put edita objetos
 // Requisição com método PUT para a rota '/users/:name/:age' que retornará o seguinte JSON: { "message": "Seu nome é <name> e você tem <age> anos de idade" }
-App.put('/users/:name/:age', (req, res) => {
+app.put('/users/:name/:age', (req, res) => {
   // Desestrutura o params da req pegando o name e o age
   const { name, age } = req.params;
   res
@@ -72,7 +72,7 @@ App.put('/users/:name/:age', (req, res) => {
 app.use(function(err, req, res, next) {
   res
     .status(500) // O código HTTP 500 indica problemas com a estrutura do site que o usuário deseja acessar
-    .send('Algo deu errado! Mensagem: ${err.message}'); // O método .send é um método que consegue retornar a resposta de uma requisição de uma forma genérica
+    .send(`Algo deu errado! Mensagem: ${err.message}`); // O método .send é um método que consegue retornar a resposta de uma requisição de uma forma genérica
 })
 
 // Peço ao Express que crie um servidor HTTP e escute por requisições na porta 3000;
