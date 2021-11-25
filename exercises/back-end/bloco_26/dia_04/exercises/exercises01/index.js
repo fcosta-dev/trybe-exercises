@@ -79,5 +79,3 @@ app.use(function(err, req, res, next) {
 app.listen(3000, () => {
   console.log('Aplicação ouvindo na porta 3000!')
 })
-
-color: #A00
