@@ -1,9 +1,19 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 
+
+const authMiddleware = require('./middlewares_globais/auth-middleware')
 const app = express();
 
 app.use(bodyParser.json())
+
+
+app.get('/open', function(req, res) {
+  res.send('open!')
+})
+
+app.use(authMiddleware);
+
 
 const recipes = [
   { id: 1, name: 'Lasanha', price: 40.0, waitTime: 30 },
