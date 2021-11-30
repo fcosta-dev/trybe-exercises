@@ -2,6 +2,9 @@
 const express = require('express');
 const router = express.Router();
 
+const authMiddleware = require('./auth-middleware');
+router.use(authMiddleware);
+
 const recipes = [
   { id: 1, name: 'Lasanha', preco: 40.0, tempoDePreparo: 30 },
   { id: 2, name: 'Macarrão a Bolonhesa', preco: 35.0, tempoDePreparo: 25 },
