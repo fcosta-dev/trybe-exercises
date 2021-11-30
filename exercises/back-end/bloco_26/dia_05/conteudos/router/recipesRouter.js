@@ -43,22 +43,16 @@ router.put('/:id', function (req, res) {
   const { id } = req.params;
   const { name, price } = req.body;
   const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id));
-
   if (recipeIndex === -1) return res.status(500).json({ message: 'Recipe not found!' });
-
   recipes[recipeIndex] = { ...recipes[recipeIndex], name, price };
-
   res.status(204).end();
 });
 
 router.delete('/:id', function (req, res) {
   const { id } = req.params;
   const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id));
-
   if (recipeIndex === -1) return res.status(500).json({ message: 'Recipe not found!' });
-
   recipes.splice(recipeIndex, 1);
-
   res.status(204).end();
 });
 
