@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const authMiddleware = require('./middlewares_globais/auth-middleware')
 const app = express();
 
+// diz ao body-parser que queremos um middleware que processe corpos de requisições escritos em JSON.
 app.use(bodyParser.json())
 
 
@@ -27,16 +28,12 @@ app.get('/recipes', function (req, res) {
   res.json(recipes);
 });
 
-app.post('/recipes', 
-  function (req, res, next) {
-    const { name } = req.body;
-    if (!name || name === '') return res.status(400).json({ message: 'Invalid data!'}); // 1
-
-    next(); // Caso não caia no if , este middleware endereça a requisição para o próximo middleware.
-  },
-  function (req, res) { // Esse middleware faz todo o processo de pegar os dados enviados, salvar em um array, e finalmente retornar uma mensagem de sucesso dizendo que o produto foi cadastrado.
+app.post('/recipes', validateName, function (req, res) { // Esse middleware faz todo o processo de pegar os dados enviados, salvar em um array, e finalmente retornar uma mensagem de sucesso dizendo que o produto foi cadastrado.
     const { id, name, price } = req.body;
-    recipes.push({ id, name, price});
+
+    const { username } = req.user; // Aqui estamos acessando o usuário encontrado no middleware de autenticação.
+    
+    recipes.push({ id, name, price, chef: username });
     res.status(201).json({ message: 'Recipe created successfully!'});
   }
 );
