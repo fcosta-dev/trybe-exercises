@@ -11,6 +11,21 @@ const { validateToken } = require('../middleware/authorization');
 const { validateName, validateAge } = require('../middleware/validateParams');
 const { validateTalk, validateSubTalk } = require('../middleware/validateParams2');
 
+router.get( // Rota de busca
+  '/search',
+  validateToken,
+  async (req, res) => {
+    const { q } = req.query; // Descontrói a query digitada q
+    const people = await readFileContent();
+
+    if (!q) return res.status(200).json(people);
+
+    // Faz um filtro buscando as pessoas que tem esse "q" incluso
+    const search = people.filter((value) => value.name.includes(q));
+    return res.status(200).json(search);
+  },
+);
+
 router.get('/', async (_req, res) => {
   const people = await readFileContent();
 
