@@ -25,5 +25,29 @@ const validateEmail = (req, res, next) => {
   next(); // Aciona próximo middleware
 };
 
+// MIDDLEWARE DE VALIDAÇÃO DE NAME
+const validateName = (req, res, next) => {
+  const { name } = req.body; // Pega o name do body
+
+  if (!name) return res.status(400).json({ message: 'O campo "name" é obrigatório' });
+  if (name.length < 3) {
+    return res.status(400).json({ message: 'O "name" deve ter pelo menos 3 caracteres' }); 
+  }
+
+  next(); // Aciona próximo middleware
+};
+
+// MIDDLEWARE DE VALIDAÇÃO DE IDADE
+const validateAge = (req, res, next) => {
+  const { age } = req.body; // Pega o age do body
+
+  if (!age) return res.status(400).json({ message: 'O campo "age" é obrigatório' });
+  if (age < 18) {
+    return res.status(400).json({ message: 'A pessoa palestrante deve ser maior de idade' }); 
+  }
+
+  next(); // Aciona próximo middleware
+};
+
 // Exporta as funções para outros módulos usarem
-module.exports = { validatePassword, validateEmail };
+module.exports = { validatePassword, validateEmail, validateName, validateAge };

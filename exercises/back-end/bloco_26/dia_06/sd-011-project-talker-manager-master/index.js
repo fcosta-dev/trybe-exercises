@@ -6,8 +6,8 @@ const loginRoutes = require('./routes/loginRoutes');
 const app = express();
 app.use(bodyParser.json());
 
-app.use('/talker', talkerRoutes);
 app.use('/login', loginRoutes);
+app.use('/talker', talkerRoutes);
 
 const HTTP_OK_STATUS = 200;
 const PORT = '3000';
