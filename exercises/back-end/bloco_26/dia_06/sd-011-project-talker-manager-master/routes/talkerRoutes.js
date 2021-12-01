@@ -12,4 +12,13 @@ router.get('/', async (_req, res) => {
   return res.status(200).json(people);
 });
 
-module.exports = router; 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params; // Desconstrói o id do params
+  const fileContent = await fs.readFile('./talker.json');
+  const people = JSON.parse(fileContent);
+  const filter = people.find((value) => value.id === Number(id));
+  if (!filter) return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
+  return res.status(200).json(filter);
+});
+
+module.exports = router;
