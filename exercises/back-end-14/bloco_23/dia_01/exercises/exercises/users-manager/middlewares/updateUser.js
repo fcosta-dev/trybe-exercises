@@ -1,5 +1,5 @@
 const rescue = require('express-rescue');
-const UserModel = require('../models/User');
+    const UserModel = require('../models/User');
 
 // Depois, exportamos um array de middlewares. O primeiro valida a requisição, o segundo chama o model
 module.exports = [
@@ -10,15 +10,14 @@ module.exports = [
     if (error) return next(error);
     // Se não há nenhum problema com os dados, podemos prosseguir para o próximo middleware
     next();
-
   },
   rescue(async (req, res) => {
-  // Extraimos os dados da requisição
-  const { firstName, lastName, email, password } = req.body;
-  /* Removemos a chamada para UserModel.isValid, já que ela já aconteceu no middleware anterior */
-  // Caso os dados sejam válidos, pedimos pro model criar o usuário
-  const newUser = await UserModel.create({ firstName, lastName, email, password });
-  // Com o usuário criado, devolvemos o status 201 Created, a mensagem informando sucesso na operação
-  res.status(201).json(newUser);
+    // Extraimos os dados da requisição
+    const { firstName, lastName, email, password } = req.body;
+    /* Removemos a chamada para UserModel.isValid, já que ela já aconteceu no middleware anterior */
+    // Caso os dados sejam válidos, pedimos pro model criar o usuário
+    const newUser = await UserModel.create({ firstName, lastName, email, password });
+    // Com o usuário criado, devolvemos o status 201 Created, a mensagem informando sucesso na operação
+    res.status(201).json(newUser);
   }),
 ];
