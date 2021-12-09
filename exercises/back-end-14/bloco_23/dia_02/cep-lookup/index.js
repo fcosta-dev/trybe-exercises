@@ -15,8 +15,9 @@ app.get('/ping', (req, res) => {
 });
 
 app.get('/cep/:cep', Cep.findAddressByCep);
+app.post('/cep', Cep.create);
 
-app.use(errorMiddleware)
+app.use(errorMiddleware);
 
 // Lemos a porta da variável de ambiente, ou usamos 3000
 const PORT = process.env.PORT || 3000;

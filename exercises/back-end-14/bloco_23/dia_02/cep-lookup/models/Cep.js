@@ -34,6 +34,17 @@ const findAddressByCep = async (cepToSearch) => {
   return getNewCep(result);
 };
 
+const create = async ({ cep: rawCep, logradouro, bairro, localidade, uf }) => {
+  // Removemos o traço do CEP para armazená-lo de forma limpa
+  const cep = rawCep.replace(/-/ig, '');
+  const query = 'INSERT INTO ceps (cep, logradouro, bairro, localidade, uf) VALUES (?, ?, ?, ?, ?)';
+  // Executamos a query
+  await connection.execute(query, [cep, logradouro, bairro, localidade, uf]);
+  // Depois de inserir, retornamos os dados, como sinal de que foram guardados no banco
+  return { cep, logradouro, bairro, localidade, uf };
+};
+
 module.exports = {
   findAddressByCep,
+  create,
 };

@@ -7,6 +7,7 @@ module.exports = (err, req, res, _next) => {
   if (err.code) {
     const statusByErrorCode = {
       notFound: 404,
+      alreadyExists: 409,
     }
     // Usamos o código do erro para determinar qual o status code adequado
     const status = statusByErrorCode[err.code] || 500;
